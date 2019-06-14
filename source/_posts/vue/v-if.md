@@ -1,12 +1,12 @@
 ---
-title:  Vue源码阅读笔记 (v-for)
+title:  Vue源码阅读笔记 (v-if)
 tags: Vue笔记
 date: 2018-6-7 11:08
 ---
 
 ## 开始
 
-在parseHTML首次处理v-for
+在parseHTML首次处理v-if
 代码在 vue/src/compiler/parser/index.js
 
 ```
