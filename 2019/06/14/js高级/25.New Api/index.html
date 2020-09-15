@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="requestAnimationFrame1234567891011121314(function()&amp;#123;        function draw(timestamp)&amp;#123;        var drawStart &#x3D; (timestamp || Date.now()),        diff &#x3D; drawStart - startTime;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="New Api">
+<meta property="og:url" content="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/index.html">
+<meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="requestAnimationFrame1234567891011121314(function()&amp;#123;        function draw(timestamp)&amp;#123;        var drawStart &#x3D; (timestamp || Date.now()),        diff &#x3D; drawStart - startTime;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-06-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-09-15T06:14:04.120Z">
+<meta property="article:author" content="lokve">
+<meta property="article:tag" content="javascript高级笔记">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>New Api | 学习笔记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学习笔记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="lokve">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          New Api
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-15 14:14:04" itemprop="dateModified" datetime="2020-09-15T14:14:04+08:00">2020-09-15</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="requestAnimationFrame"><a href="#requestAnimationFrame" class="headerlink" title="requestAnimationFrame"></a>requestAnimationFrame</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;</span><br><span class="line">        function draw(timestamp)&#123;</span><br><span class="line">        var drawStart &#x3D; (timestamp || Date.now()),</span><br><span class="line">        diff &#x3D; drawStart - startTime;</span><br><span class="line">        startTime &#x3D; drawStart;</span><br><span class="line">            requestAnimationFrame(draw);</span><br><span class="line">        &#125;</span><br><span class="line">        var requestAnimationFrame &#x3D; window.requestAnimationFrame ||</span><br><span class="line">                                    window.mozRequestAnimationFrame ||</span><br><span class="line">                                    window.webkitRequestAnimationFrame ||</span><br><span class="line">                                    window.msRequestAnimationFrame,</span><br><span class="line">            startTime &#x3D; window.mozAnimationStartTime || Date.now();</span><br><span class="line">        requestAnimationFrame(draw);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<h2 id="Page-Visibility-API"><a href="#Page-Visibility-API" class="headerlink" title="Page Visibility API"></a>Page Visibility API</h2><ul>
+<li>document.hidden: 页面影藏。包括页面在后台标签或浏览器最小化</li>
+<li>document.visibilityState (现不推荐使用)<ul>
+<li>页面在后台标签或浏览器最小化</li>
+<li>页面在前台标签</li>
+<li>页面已隐藏，但通过类似 win7 的预览窗口看到</li>
+<li>页面在屏幕外执行预渲染处理</li>
+</ul>
+</li>
+<li>visibilitychange: 文档可见(不可见)变化触发</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function isHiddenSupported()&#123;</span><br><span class="line">        return typeof (document.hidden || document.msHidden ||</span><br><span class="line">            document.webkitHidden) !&#x3D; &quot;undefined&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">if (document.hidden || document.msHidden || document.webKitHidden)&#123;</span><br><span class="line">    &#x2F;&#x2F;􏸌􏴌􏸍􏸎􏿲页面隐藏了</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    &#x2F;&#x2F;􏸌􏴌􏾼􏸍􏸎没隐藏</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function handleVisibilityChange()&#123;</span><br><span class="line">    var output &#x3D; document.getElementById(&quot;output&quot;),</span><br><span class="line">    msg;</span><br><span class="line">    if (document.hidden || document.msHidden || document.webkitHidden)&#123;</span><br><span class="line">        msg &#x3D; &quot;Page is now hidden. &quot; + (new Date()) + &quot;&lt;br&gt;&quot;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        msg &#x3D; &quot;Page is now visible. &quot; + (new Date()) + &quot;&lt;br&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    output.innerHTML +&#x3D; msg;</span><br><span class="line">&#125;</span><br><span class="line">EventUtil.addHandler(document, &quot;msvisibilitychange&quot;, handleVisibilityChange); EventUtil.addHandler(document, &quot;webkitvisibilitychange&quot;,handleVisibilityChange)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Geolocation-API"><a href="#Geolocation-API" class="headerlink" title="Geolocation API"></a>Geolocation API</h2><p>地理定位<code>navigator.geolocation </code></p>
+<p>getCurrentPosition()</p>
+<ul>
+<li>latitude: 十进制维度</li>
+<li>longitude：十进制经度</li>
+<li>accuracy：坐标精度，单位米</li>
+<li>altitude：海拔高度(m)</li>
+<li>altitudeAccuracy: 海拔高度精度(m)</li>
+<li>heading: 指南针方向 0 表示正北</li>
+<li>speed：每秒移动多少米</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">navigator.geolocation.getCurrentPosition(function(position)&#123;</span><br><span class="line">    drawMapCenteredAt(position.coords.latitude, positions.coords.longitude);</span><br><span class="line">&#125;, function(error)&#123; &#x2F;&#x2F; 错误处理</span><br><span class="line">    console.log(&quot;Error code: &quot; + error.code); console.log(&quot;Error message: &quot; + error.message);</span><br><span class="line">&#125;, &#123; &#x2F;&#x2F; 设定信息类型</span><br><span class="line">        enableHighAccuracy: true, &#x2F;&#x2F; 尽可能使用最准确的信息</span><br><span class="line">        timeout: 5000, &#x2F;&#x2F; 等待位置信息最长时间</span><br><span class="line">        maximumAge: 25000 &#x2F;&#x2F; 重获坐标时间</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><code>watchPosition</code> 持续获取位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var watchId &#x3D; navigator.geolocation.watchPosition(function(position)&#123;</span><br><span class="line">    drawMapCenteredAt(position.coords.latitude, positions.coords.longitude);</span><br><span class="line">&#125;, function(error)&#123;</span><br><span class="line">    console.log(&quot;Error code: &quot; + error.code); console.log(&quot;Error message: &quot; + error.message);</span><br><span class="line">&#125;);</span><br><span class="line">clearWatch(watchId); &#x2F;&#x2F; 取消</span><br></pre></td></tr></table></figure>
+
+<h2 id="file-API"><a href="#file-API" class="headerlink" title="file API"></a>file API</h2><h3 id="FileReader"><a href="#FileReader" class="headerlink" title="FileReader"></a>FileReader</h3><ul>
+<li><p>readAsText(file,encoding)：以纯文本读取文件</p>
+</li>
+<li><p>readAsDataURL(file)：读取文件并以数据 uri 的形式保存</p>
+</li>
+<li><p>readAsBinaryString(file)：读取文件字符窜，字符窜中的每一个字符表示一个字节</p>
+</li>
+<li><p>readAsArrayBuffer(file)：读取文件 ArrayBuffer 形式</p>
+</li>
+<li><p>progress􏱢 50ms 触发一次</p>
+</li>
+<li><p>error</p>
+</li>
+<li><p>load</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reader &#x3D; new FileReader();</span><br><span class="line">reader.onerror &#x3D; function()&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="读取部分内容"><a href="#读取部分内容" class="headerlink" title="读取部分内容"></a>读取部分内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function blobSlice(blob, startByte, length)&#123;</span><br><span class="line">    if (blob.slice)&#123;</span><br><span class="line">        return blob.slice(startByte, length);</span><br><span class="line">    &#125; else if (blob.webkitSlice)&#123;</span><br><span class="line">        return blob.webkitSlice(startByte, length);</span><br><span class="line">    &#125; else if (blob.mozSlice)&#123;</span><br><span class="line">        return blob.mozSlice(startByte, length);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">blob &#x3D; blobSlice(files[0], 0, 32);</span><br></pre></td></tr></table></figure>
+
+<h3 id="对象-URL"><a href="#对象-URL" class="headerlink" title="对象 URL"></a>对象 URL</h3><p>引用保存在 Blob 或 File 中数据的 url</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function createObjectURL(blob)&#123;</span><br><span class="line">    if (window.URL)&#123;</span><br><span class="line">        return window.URL.createObjectURL(blob);</span><br><span class="line">    &#125; else if (window.webkitURL)&#123;</span><br><span class="line">        return window.webkitURL.createObjectURL(blob);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">url &#x3D; createObjectURL(files[0]);</span><br><span class="line">...</span><br><span class="line">output.innerHTML &#x3D; &quot;&lt;img src&#x3D;\&quot;&quot; + url + &quot;\&quot;&gt;&quot;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="读取拖放的文件"><a href="#读取拖放的文件" class="headerlink" title="读取拖放的文件"></a>读取拖放的文件</h3><p><code>files = event.dataTransfer.files;</code></p>
+<h3 id="使用-XHR-上传文件"><a href="#使用-XHR-上传文件" class="headerlink" title="使用 XHR 上传文件"></a>使用 XHR 上传文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">data &#x3D; new FormData();</span><br><span class="line">files &#x3D; event.dataTransfer.files;</span><br><span class="line">i &#x3D; 0;</span><br><span class="line">len &#x3D; files.length;</span><br><span class="line">while (i &lt; len)&#123;</span><br><span class="line">    data.append(&quot;file&quot; + i, files[i]);</span><br><span class="line">i++; &#125;</span><br><span class="line">xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">xhr.open(&quot;post&quot;, &quot;FileAPIExample06Upload.php&quot;, true);</span><br><span class="line">xhr.onreadystatechange &#x3D; function()&#123;</span><br><span class="line">    if (xhr.readyState &#x3D;&#x3D; 4)&#123;</span><br><span class="line">        alert(xhr.responseText);</span><br><span class="line">&#125; &#125;;</span><br><span class="line">        xhr.send(data);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Web-计时"><a href="#Web-计时" class="headerlink" title="Web 计时"></a>Web 计时</h2><p><code>window.performance </code></p>
+<h2 id="Web-Workers"><a href="#Web-Workers" class="headerlink" title="Web Workers"></a>Web Workers</h2><p>让 javascript 在后台运行</p>
+<h3 id="使用-Worker"><a href="#使用-Worker" class="headerlink" title="使用 Worker"></a>使用 Worker</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var worker &#x3D; new Worker(&quot;stufftodo.js&quot;);</span><br><span class="line">worker.postMessage(􏸢start! &quot;); &#x2F;&#x2F; 发送消息，可传对象</span><br><span class="line">worker.postMessage(&#123;</span><br><span class="line">        type: &quot;command&quot;,</span><br><span class="line">        message: &quot;start! &quot;</span><br><span class="line"> &#125;);</span><br><span class="line"> worker.onmessage &#x3D; function(event)&#123;</span><br><span class="line">        var data &#x3D; event.data;</span><br><span class="line">&#125;</span><br><span class="line">worker.onerror &#x3D; function(event)&#123; &#x2F;&#x2F; 运行错误</span><br><span class="line">        console.log(&quot;ERROR: &quot; + event.filename + &quot; (&quot; + event.lineno + &quot;): &quot; +</span><br><span class="line">                    event.message);</span><br><span class="line">&#125;;</span><br><span class="line">worker.terminate(); &#x2F;&#x2F; 停止worker</span><br></pre></td></tr></table></figure>
+
+<h3 id="Worker-全局作用域"><a href="#Worker-全局作用域" class="headerlink" title="Worker 全局作用域"></a>Worker 全局作用域</h3><p>worker 与当前网页不共享作用域，也不能访问 dom</p>
+<ul>
+<li>navigator 部分属性</li>
+<li>只读 location 对象</li>
+<li>定时器</li>
+<li>XMLHttpRequest</li>
+</ul>
+<p>eg: worker 排序</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// worker内部代码</span></span><br><span class="line">self.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> data = event.data;</span><br><span class="line">    data.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> a – b;</span><br><span class="line">    &#125;);</span><br><span class="line">    self.postMessage(data);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 页面代码</span></span><br><span class="line"><span class="keyword">var</span> data = [<span class="number">23</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">14</span>,<span class="number">6</span>,<span class="number">651</span>,<span class="number">87</span>,<span class="number">41</span>,<span class="number">7798</span>,<span class="number">24</span>],</span><br><span class="line">    worker = <span class="keyword">new</span> Worker(<span class="string">&quot;WebWorkerExample01.js&quot;</span>);</span><br><span class="line">worker.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> data = event.data;</span><br><span class="line">    <span class="comment">// data是排序后的数组</span></span><br><span class="line">&#125;;</span><br><span class="line">worker.postMessage(data);</span><br><span class="line"></span><br><span class="line"><span class="comment">// worker内部</span></span><br><span class="line">self.close(); <span class="comment">// 关闭worker</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javascript%E9%AB%98%E7%BA%A7%E7%AC%94%E8%AE%B0/" rel="tag"># javascript高级笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" rel="prev" title="基本概念">
+      <i class="fa fa-chevron-left"></i> 基本概念
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/" rel="next" title="离线应用与客户端储存">
+      离线应用与客户端储存 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#requestAnimationFrame"><span class="nav-number">1.</span> <span class="nav-text">requestAnimationFrame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Page-Visibility-API"><span class="nav-number">2.</span> <span class="nav-text">Page Visibility API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Geolocation-API"><span class="nav-number">3.</span> <span class="nav-text">Geolocation API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file-API"><span class="nav-number">4.</span> <span class="nav-text">file API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FileReader"><span class="nav-number">4.1.</span> <span class="nav-text">FileReader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E9%83%A8%E5%88%86%E5%86%85%E5%AE%B9"><span class="nav-number">4.2.</span> <span class="nav-text">读取部分内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1-URL"><span class="nav-number">4.3.</span> <span class="nav-text">对象 URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96%E6%8B%96%E6%94%BE%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">4.4.</span> <span class="nav-text">读取拖放的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-XHR-%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="nav-number">4.5.</span> <span class="nav-text">使用 XHR 上传文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-%E8%AE%A1%E6%97%B6"><span class="nav-number">5.</span> <span class="nav-text">Web 计时</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Workers"><span class="nav-number">6.</span> <span class="nav-text">Web Workers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Worker"><span class="nav-number">6.1.</span> <span class="nav-text">使用 Worker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Worker-%E5%85%A8%E5%B1%80%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">6.2.</span> <span class="nav-text">Worker 全局作用域</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">lokve</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lokve</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

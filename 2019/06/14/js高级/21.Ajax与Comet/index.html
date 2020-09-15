@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="XMLHttpRequest 对象1234567891011121314151617181920&#x2F;&#x2F; ie7以前function createXHR()&amp;#123;    if (typeof arguments.callee.activeXString !&#x3D; &quot;string&quot;)&amp;#123;        var versions &#x3D; [">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ajax与Comet">
+<meta property="og:url" content="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/21.Ajax%E4%B8%8EComet/index.html">
+<meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="XMLHttpRequest 对象1234567891011121314151617181920&#x2F;&#x2F; ie7以前function createXHR()&amp;#123;    if (typeof arguments.callee.activeXString !&#x3D; &quot;string&quot;)&amp;#123;        var versions &#x3D; [">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-06-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-09-15T06:13:12.820Z">
+<meta property="article:author" content="lokve">
+<meta property="article:tag" content="javascript高级笔记">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/21.Ajax%E4%B8%8EComet/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Ajax与Comet | 学习笔记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学习笔记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/21.Ajax%E4%B8%8EComet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="lokve">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ajax与Comet
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-15 14:13:12" itemprop="dateModified" datetime="2020-09-15T14:13:12+08:00">2020-09-15</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="XMLHttpRequest-对象"><a href="#XMLHttpRequest-对象" class="headerlink" title="XMLHttpRequest 对象"></a>XMLHttpRequest 对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; ie7以前</span><br><span class="line">function createXHR()&#123;</span><br><span class="line">    if (typeof arguments.callee.activeXString !&#x3D; &quot;string&quot;)&#123;</span><br><span class="line">        var versions &#x3D; [&quot;MSXML2.XMLHttp.6.0&quot;, &quot;MSXML2.XMLHttp.3.0&quot;,</span><br><span class="line">                        &quot;MSXML2.XMLHttp&quot;],i, len;</span><br><span class="line">        for (i&#x3D;0,len&#x3D;versions.length; i &lt; len; i++)&#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                new ActiveXObject(versions[i]);</span><br><span class="line">                arguments.callee.activeXString &#x3D; versions[i];</span><br><span class="line">                break;</span><br><span class="line">            &#125; catch (ex)&#123;</span><br><span class="line">                &#x2F;&#x2F;􏰳􏰴</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return new ActiveXObject(arguments.callee.activeXString);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ie7之后</span><br><span class="line">new XMLHttpRequest()</span><br></pre></td></tr></table></figure>
+
+<h3 id="XHR-用法"><a href="#XHR-用法" class="headerlink" title="XHR 用法"></a>XHR 用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(&quot;get&quot;, &quot;example.php&quot;, false); &#x2F;&#x2F; 方法、url、是否异步</span><br><span class="line">xhr.send(null); &#x2F;&#x2F; 发送数据</span><br></pre></td></tr></table></figure>
+
+<p>响应之后 hxr 会有以下属性</p>
+<ul>
+<li>responseText: 返回数据</li>
+<li>responseXML: 内容类型</li>
+<li>status: http 状态</li>
+<li>statusText: http 状态说明</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if ((xhr.status &gt;&#x3D; 200 &amp;&amp; xhr.status &lt; 300) || xhr.status &#x3D;&#x3D; 304)&#123;</span><br><span class="line">      alert(xhr.responseText);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">      alert(&quot;Request was unsuccessful: &quot; + xhr.status);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>异步发送时，需判断 xhr 的 readyState,才能确定 ajax 的状态</p>
+<ul>
+<li>0：未初始化。未调用 open</li>
+<li>1：启动。已 open 未 send</li>
+<li>2：发送。已 send 未接收到响应</li>
+<li>3：接收。已接收到部分响应数据</li>
+<li>4：完成。接收到全部数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var xhr &#x3D; createXHR();</span><br><span class="line">xhr.onreadystatechange &#x3D; function()&#123;</span><br><span class="line">    if (xhr.readyState &#x3D;&#x3D; 4)&#123;</span><br><span class="line">        if ((xhr.status &gt;&#x3D; 200 &amp;&amp; xhr.status &lt; 300) || xhr.status &#x3D;&#x3D; 304)&#123;</span><br><span class="line">              alert(xhr.responseText);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">             alert(&quot;Request was unsuccessful: &quot; + xhr.status);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">xhr.open(&quot;get&quot;, &quot;example.txt&quot;, true);</span><br><span class="line">xhr.send(null);</span><br></pre></td></tr></table></figure>
+
+<h3 id="HTTP-头部信息"><a href="#HTTP-头部信息" class="headerlink" title="HTTP 头部信息"></a>HTTP 头部信息</h3><p>发送头部信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.setRequestHeader(&quot;MyHeader&quot;, &quot;MyValue&quot;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="XMLHttpRequest-2-级"><a href="#XMLHttpRequest-2-级" class="headerlink" title="XMLHttpRequest 2 级"></a>XMLHttpRequest 2 级</h2><h3 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h3><p>发送表单数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var form &#x3D; document.getElementById(&quot;user-info&quot;);</span><br><span class="line">xhr.send(new FormData(form));</span><br></pre></td></tr></table></figure>
+
+<h3 id="超时设定"><a href="#超时设定" class="headerlink" title="超时设定"></a>超时设定</h3><p>响应时间过长会停止</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xhr.timeout &#x3D; 1000; &#x2F;&#x2F;􏿬􏼭􏾭􏱵􏱹􏱺1􏱻􏱼􏱽􏱾􏱖􏿅􏱗IE8+􏱿</span><br><span class="line">xhr.ontimeout &#x3D; function()&#123;</span><br><span class="line">    alert(&quot;Request did not return in a second.&quot;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="overrideMimeType"><a href="#overrideMimeType" class="headerlink" title="overrideMimeType()"></a>overrideMimeType()</h3><p>重写返回的 MIME 类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var xhr &#x3D; createXHR();</span><br><span class="line">xhr.open(&quot;get&quot;, &quot;text.php&quot;, true); xhr.overrideMimeType(&quot;text&#x2F;xml&quot;);</span><br><span class="line">xhr.send(null);</span><br></pre></td></tr></table></figure>
+
+<h2 id="进度事件"><a href="#进度事件" class="headerlink" title="进度事件"></a>进度事件</h2><ul>
+<li>loadstart: 在接收到相应数据的第一个字节时触发</li>
+<li>progress: 响应期间持续触发</li>
+<li>error: 请求发生错误触发</li>
+<li>abort: 在主动调用 abort 时触发</li>
+<li>load: 接收完整数据后触发</li>
+<li>loadend: 类似 finally,结束都会触发</li>
+</ul>
+<p>progress 进度条</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var xhr &#x3D; createXHR(); 21 xhr.onload &#x3D; function(event)&#123;</span><br><span class="line">    if ((xhr.status &gt;&#x3D; 200 &amp;&amp; xhr.status &lt; 300) ||</span><br><span class="line">            xhr.status &#x3D;&#x3D; 304)&#123;</span><br><span class="line">        alert(xhr.responseText);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        alert(&quot;Request was unsuccessful: &quot; + xhr.status);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">xhr.onprogress &#x3D; function(event)&#123;</span><br><span class="line">    var divStatus &#x3D; document.getElementById(&quot;status&quot;);</span><br><span class="line">    if (event.lengthComputable)&#123;</span><br><span class="line">        divStatus.innerHTML &#x3D; &quot;Received &quot; + event.position + &quot; of &quot; +</span><br><span class="line">            event.totalSize +&quot; bytes&quot;;</span><br><span class="line">    &#125;;</span><br><span class="line">xhr.open(&quot;get&quot;, &quot;altevents.php&quot;, true);</span><br><span class="line">xhr.send(null);</span><br></pre></td></tr></table></figure>
+
+<h2 id="跨域资源共享"><a href="#跨域资源共享" class="headerlink" title="跨域资源共享"></a>跨域资源共享</h2><h2 id="其他跨域技术"><a href="#其他跨域技术" class="headerlink" title="其他跨域技术"></a>其他跨域技术</h2><h3 id="图像-ping"><a href="#图像-ping" class="headerlink" title="图像 ping"></a>图像 ping</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var img &#x3D; new Image();</span><br><span class="line">img.onload &#x3D; img.onerror &#x3D; function()&#123;</span><br><span class="line">    alert(&quot;Done!&quot;);</span><br><span class="line">&#125;;</span><br><span class="line">img.src &#x3D; &quot;http:&#x2F;&#x2F;www.example.com&#x2F;test?name&#x3D;Nicholas&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>只能 get,无法响应返回文本，是单向通信</p>
+<h3 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h3><p>利用 script 请求数据</p>
+<h3 id="Comet"><a href="#Comet" class="headerlink" title="Comet"></a>Comet</h3><p>服务器推送技术，有长轮询和流两种实现方式</p>
+<h4 id="长轮询"><a href="#长轮询" class="headerlink" title="长轮询"></a>长轮询</h4><p>浏览器发送请求，和服务器保持连接状态，直到服务器有数据更新，结束然后开始新的一次</p>
+<h4 id="流"><a href="#流" class="headerlink" title="流"></a>流</h4><p>readyState 会周期性的变更为 3<br>利用 readyState 状态 3，持续接收比较数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function createStreamingClient(url, progress, finished)&#123;</span><br><span class="line">    var xhr &#x3D; new XMLHttpRequest(),</span><br><span class="line">        received &#x3D; 0;</span><br><span class="line">    xhr.open(&quot;get&quot;, url, true);</span><br><span class="line">    xhr.onreadystatechange &#x3D; function()&#123;</span><br><span class="line">        var result;</span><br><span class="line">        if (xhr.readyState &#x3D;&#x3D; 3)&#123;</span><br><span class="line">            result &#x3D; xhr.responseText.substring(received);</span><br><span class="line">            received +&#x3D; result.length;</span><br><span class="line">            progress(result);</span><br><span class="line">        &#125; else if (xhr.readyState &#x3D;&#x3D; 4)&#123;</span><br><span class="line">            finished(xhr.responseText);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    xhr.send(null);</span><br><span class="line">    return xhr;</span><br><span class="line">&#125;</span><br><span class="line">var client &#x3D; createStreamingClient(&quot;streaming.php&quot;, function(data)&#123;</span><br><span class="line">    alert(&quot;Received: &quot; + data);</span><br><span class="line">&#125;, function(data)&#123;</span><br><span class="line">   alert(&quot;Done!&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="服务器发送事件"><a href="#服务器发送事件" class="headerlink" title="服务器发送事件"></a>服务器发送事件</h3><p>SSE api 用于创建到服务器的单向连接，服务器可发送任意数据。服务器的响应 MIME 必须是 text/event-stream</p>
+<h4 id="SSE-API"><a href="#SSE-API" class="headerlink" title="SSE API"></a>SSE API</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var source &#x3D; new EventSource(&quot;myevents.php&quot;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>open: 建立连接是触发</li>
+<li>mesage：从服务器收到新事件时触发</li>
+<li>error: 无法建立连接触发</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">source.onmessage &#x3D; function(event)&#123;</span><br><span class="line">    var data &#x3D; event.data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">source.close(); &#x2F;&#x2F; 关闭</span><br></pre></td></tr></table></figure>
+
+<h3 id="Web-Sockets"><a href="#Web-Sockets" class="headerlink" title="Web Sockets"></a>Web Sockets</h3><p>Web Sockets 的目标是在一个单独的持久连接上提供全双工、双向通信。</p>
+<h4 id="Web-Sockets-API"><a href="#Web-Sockets-API" class="headerlink" title="Web Sockets API"></a>Web Sockets API</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var socket &#x3D; new WebSocket(&quot;ws:&#x2F;&#x2F;www.example.com&#x2F;server.php&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>同源策略对 websockets 不适用<br>WebSocket 也有 readyState 属性</p>
+<ul>
+<li>WebSocket.OPENING (0)：正在建立连接</li>
+<li>WebSocket.OPEN (1)􏴣：已经建立连接</li>
+<li>WebSocket.CLOSING (2)：正在关闭连接</li>
+<li>WebSocket.CLOSE (3)：已经关闭连接</li>
+</ul>
+<p>socket.close(); 可以主动关闭连接</p>
+<h4 id="发送和接收数据"><a href="#发送和接收数据" class="headerlink" title="发送和接收数据"></a>发送和接收数据</h4><p>只能发送纯文本数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var socket &#x3D; new WebSocket(&quot;ws:&#x2F;&#x2F;www.example.com&#x2F;server.php&quot;);</span><br><span class="line">    socket.send(&quot;Hello world!&quot;);</span><br><span class="line">    socket.send(JSON.stringify(message));</span><br></pre></td></tr></table></figure>
+
+<p>接收数据(只能纯文本)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">socket.onmessage &#x3D; function(event)&#123;</span><br><span class="line">    var data &#x3D; event.data;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="其他事件"><a href="#其他事件" class="headerlink" title="其他事件"></a>其他事件</h4><p>在生命周期阶段触发</p>
+<ul>
+<li>open：成功建立连接触发</li>
+<li>error：发生错误是触发，连接不能持续</li>
+<li>close：连接关闭时触发</li>
+</ul>
+<p>只有 close 有 event<br>wasClean􏱢(是否关闭)、code(状态码)、reason(服务器返回信息)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">socket.onclose &#x3D; function(event)&#123;</span><br><span class="line">    console.log(&quot;Was clean? &quot; + event.wasClean + &quot; Code&#x3D;&quot; + event.code + &quot; Reason&#x3D;&quot; + event.reason);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javascript%E9%AB%98%E7%BA%A7%E7%AC%94%E8%AE%B0/" rel="tag"># javascript高级笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" rel="prev" title="高级技巧">
+      <i class="fa fa-chevron-left"></i> 高级技巧
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/06/14/js%E9%AB%98%E7%BA%A7/2.%E5%9C%A8html%E4%BD%BF%E7%94%A8js/" rel="next" title="在html使用js">
+      在html使用js <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#XMLHttpRequest-%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">XMLHttpRequest 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XHR-%E7%94%A8%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">XHR 用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF"><span class="nav-number">1.2.</span> <span class="nav-text">HTTP 头部信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XMLHttpRequest-2-%E7%BA%A7"><span class="nav-number">2.</span> <span class="nav-text">XMLHttpRequest 2 级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FormData"><span class="nav-number">2.1.</span> <span class="nav-text">FormData</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B6%85%E6%97%B6%E8%AE%BE%E5%AE%9A"><span class="nav-number">2.2.</span> <span class="nav-text">超时设定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overrideMimeType"><span class="nav-number">2.3.</span> <span class="nav-text">overrideMimeType()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E5%BA%A6%E4%BA%8B%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">进度事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%A8%E5%9F%9F%E8%B5%84%E6%BA%90%E5%85%B1%E4%BA%AB"><span class="nav-number">4.</span> <span class="nav-text">跨域资源共享</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%B7%A8%E5%9F%9F%E6%8A%80%E6%9C%AF"><span class="nav-number">5.</span> <span class="nav-text">其他跨域技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F-ping"><span class="nav-number">5.1.</span> <span class="nav-text">图像 ping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSONP"><span class="nav-number">5.2.</span> <span class="nav-text">JSONP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comet"><span class="nav-number">5.3.</span> <span class="nav-text">Comet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%95%BF%E8%BD%AE%E8%AF%A2"><span class="nav-number">5.3.1.</span> <span class="nav-text">长轮询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81"><span class="nav-number">5.3.2.</span> <span class="nav-text">流</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%91%E9%80%81%E4%BA%8B%E4%BB%B6"><span class="nav-number">5.4.</span> <span class="nav-text">服务器发送事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SSE-API"><span class="nav-number">5.4.1.</span> <span class="nav-text">SSE API</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web-Sockets"><span class="nav-number">5.5.</span> <span class="nav-text">Web Sockets</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Web-Sockets-API"><span class="nav-number">5.5.1.</span> <span class="nav-text">Web Sockets API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%91%E9%80%81%E5%92%8C%E6%8E%A5%E6%94%B6%E6%95%B0%E6%8D%AE"><span class="nav-number">5.5.2.</span> <span class="nav-text">发送和接收数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E4%BA%8B%E4%BB%B6"><span class="nav-number">5.5.3.</span> <span class="nav-text">其他事件</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">lokve</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lokve</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

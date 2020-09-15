@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="根据 fiber tag 创建 dom 节点 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293">
+<meta property="og:type" content="article">
+<meta property="og:title" content="completeWork">
+<meta property="og:url" content="http://example.com/2020/09/09/react/completeWork/index.html">
+<meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="根据 fiber tag 创建 dom 节点 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-09T03:00:00.000Z">
+<meta property="article:modified_time" content="2020-09-15T04:15:42.796Z">
+<meta property="article:author" content="lokve">
+<meta property="article:tag" content="react源码解析">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/09/09/react/completeWork/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>completeWork | 学习笔记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学习笔记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/09/react/completeWork/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="lokve">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          completeWork
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-09 11:00:00" itemprop="dateCreated datePublished" datetime="2020-09-09T11:00:00+08:00">2020-09-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-15 12:15:42" itemprop="dateModified" datetime="2020-09-15T12:15:42+08:00">2020-09-15</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>根据 fiber tag 创建 dom 节点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">completeWork</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    current: Fiber | null,</span></span></span><br><span class="line"><span class="function"><span class="params">    workInProgress: Fiber,</span></span></span><br><span class="line"><span class="function"><span class="params">    renderExpirationTime: ExpirationTime,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">Fiber</span> | <span class="title">null</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> newProps = workInProgress.pendingProps;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span> (workInProgress.tag) &#123;</span><br><span class="line">        <span class="keyword">case</span> IndeterminateComponent:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> LazyComponent:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> SimpleMemoComponent:</span><br><span class="line">        <span class="keyword">case</span> FunctionComponent:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> ClassComponent: &#123;</span><br><span class="line">            <span class="keyword">const</span> Component = workInProgress.type;</span><br><span class="line">            <span class="keyword">if</span> (isLegacyContextProvider(Component)) &#123;</span><br><span class="line">                popLegacyContext(workInProgress);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> HostRoot: &#123;</span><br><span class="line">            popHostContainer(workInProgress);</span><br><span class="line">            popTopLevelLegacyContextObject(workInProgress);</span><br><span class="line">            <span class="keyword">const</span> fiberRoot = (workInProgress.stateNode: FiberRoot);</span><br><span class="line">            <span class="keyword">if</span> (fiberRoot.pendingContext) &#123;</span><br><span class="line">                fiberRoot.context = fiberRoot.pendingContext;</span><br><span class="line">                fiberRoot.pendingContext = <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (current === <span class="literal">null</span> || current.child === <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="comment">// If we hydrated, pop so that we can delete any remaining children</span></span><br><span class="line">                <span class="comment">// that weren&#x27;t hydrated.</span></span><br><span class="line">                popHydrationState(workInProgress);</span><br><span class="line">                <span class="comment">// This resets the hacky state to fix isMounted before committing.</span></span><br><span class="line">                <span class="comment">// <span class="doctag">TODO:</span> Delete this when we delete isMounted and findDOMNode.</span></span><br><span class="line">                workInProgress.effectTag &amp;= ~Placement;</span><br><span class="line">            &#125;</span><br><span class="line">            updateHostContainer(workInProgress);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> HostComponent: &#123;</span><br><span class="line">            <span class="comment">// 5</span></span><br><span class="line">            popHostContext(workInProgress);</span><br><span class="line">            <span class="keyword">const</span> rootContainerInstance = getRootHostContainer(); <span class="comment">// 返回div#app</span></span><br><span class="line">            <span class="keyword">const</span> type = workInProgress.type;</span><br><span class="line">            <span class="keyword">if</span> (current !== <span class="literal">null</span> &amp;&amp; workInProgress.stateNode != <span class="literal">null</span>) &#123;</span><br><span class="line">                updateHostComponent(</span><br><span class="line">                    <span class="comment">// 有stateNode（dom）,更新</span></span><br><span class="line">                    current,</span><br><span class="line">                    workInProgress,</span><br><span class="line">                    type,</span><br><span class="line">                    newProps,</span><br><span class="line">                    rootContainerInstance,</span><br><span class="line">                );</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (current.ref !== workInProgress.ref) &#123;</span><br><span class="line">                    markRef(workInProgress);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (!newProps) &#123;</span><br><span class="line">                    invariant(</span><br><span class="line">                        workInProgress.stateNode !== <span class="literal">null</span>,</span><br><span class="line">                        <span class="string">&#x27;We must have new props for new mounts. This error is likely &#x27;</span> +</span><br><span class="line">                            <span class="string">&#x27;caused by a bug in React. Please file an issue.&#x27;</span>,</span><br><span class="line">                    );</span><br><span class="line">                    <span class="comment">// This can happen when we abort work.</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 返回 http://www.w3.org/1999/xhtml</span></span><br><span class="line">                <span class="keyword">const</span> currentHostContext = getHostContext();</span><br><span class="line">                <span class="comment">// <span class="doctag">TODO:</span> Move createInstance to beginWork and keep it on a context</span></span><br><span class="line">                <span class="comment">// &quot;stack&quot; as the parent. Then append children as we go in beginWork</span></span><br><span class="line">                <span class="comment">// or completeWork depending on we want to add then top-&gt;down or</span></span><br><span class="line">                <span class="comment">// bottom-&gt;up. Top-&gt;down is faster in IE11.</span></span><br><span class="line">                <span class="keyword">let</span> wasHydrated = popHydrationState(workInProgress);</span><br><span class="line">                <span class="keyword">if</span> (wasHydrated) &#123;</span><br><span class="line">                    <span class="comment">// <span class="doctag">TODO:</span> Move this and createInstance step into the beginPhase</span></span><br><span class="line">                    <span class="comment">// to consolidate.</span></span><br><span class="line">                    <span class="keyword">if</span> (</span><br><span class="line">                        prepareToHydrateHostInstance(</span><br><span class="line">                            workInProgress,</span><br><span class="line">                            rootContainerInstance,</span><br><span class="line">                            currentHostContext,</span><br><span class="line">                        )</span><br><span class="line">                    ) &#123;</span><br><span class="line">                        <span class="comment">// If changes to the hydrated node needs to be applied at the</span></span><br><span class="line">                        <span class="comment">// commit-phase we mark this as such.</span></span><br><span class="line">                        markUpdate(workInProgress);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// debugger</span></span><br><span class="line">                    <span class="comment">// 根据fiber创建dom</span></span><br><span class="line">                    <span class="comment">// 返回创建的dom节点</span></span><br><span class="line">                    <span class="keyword">let</span> instance = createInstance(</span><br><span class="line">                        type,</span><br><span class="line">                        newProps,</span><br><span class="line">                        rootContainerInstance,</span><br><span class="line">                        currentHostContext,</span><br><span class="line">                        workInProgress,</span><br><span class="line">                    );</span><br><span class="line"></span><br><span class="line">                    appendAllChildren(instance, workInProgress, <span class="literal">false</span>, <span class="literal">false</span>); <span class="comment">// 添加child ?</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment">// Certain renderers require commit-time effects for initial mount.</span></span><br><span class="line">                    <span class="comment">// (eg DOM renderer supports auto-focus for certain elements).</span></span><br><span class="line">                    <span class="comment">// Make sure such renderers get scheduled for later work.</span></span><br><span class="line">                    <span class="keyword">if</span> (</span><br><span class="line">                        finalizeInitialChildren(</span><br><span class="line">                            instance,</span><br><span class="line">                            type,</span><br><span class="line">                            newProps,</span><br><span class="line">                            rootContainerInstance,</span><br><span class="line">                            currentHostContext,</span><br><span class="line">                        )</span><br><span class="line">                    ) &#123;</span><br><span class="line">                        markUpdate(workInProgress);</span><br><span class="line">                    &#125;</span><br><span class="line">                    workInProgress.stateNode = instance;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (workInProgress.ref !== <span class="literal">null</span>) &#123;</span><br><span class="line">                    <span class="comment">// If there is a ref on a host node we need to schedule a callback</span></span><br><span class="line">                    markRef(workInProgress);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> HostText: &#123;</span><br><span class="line">            <span class="keyword">let</span> newText = newProps;</span><br><span class="line">            <span class="keyword">if</span> (current &amp;&amp; workInProgress.stateNode != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">const</span> oldText = current.memoizedProps;</span><br><span class="line">                <span class="comment">// If we have an alternate, that means this is an update and we need</span></span><br><span class="line">                <span class="comment">// to schedule a side-effect to do the updates.</span></span><br><span class="line">                updateHostText(current, workInProgress, oldText, newText);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">typeof</span> newText !== <span class="string">&#x27;string&#x27;</span>) &#123;</span><br><span class="line">                    invariant(</span><br><span class="line">                        workInProgress.stateNode !== <span class="literal">null</span>,</span><br><span class="line">                        <span class="string">&#x27;We must have new props for new mounts. This error is likely &#x27;</span> +</span><br><span class="line">                            <span class="string">&#x27;caused by a bug in React. Please file an issue.&#x27;</span>,</span><br><span class="line">                    );</span><br><span class="line">                    <span class="comment">// This can happen when we abort work.</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">const</span> rootContainerInstance = getRootHostContainer();</span><br><span class="line">                <span class="keyword">const</span> currentHostContext = getHostContext();</span><br><span class="line">                <span class="keyword">let</span> wasHydrated = popHydrationState(workInProgress);</span><br><span class="line">                <span class="keyword">if</span> (wasHydrated) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (prepareToHydrateHostTextInstance(workInProgress)) &#123;</span><br><span class="line">                        markUpdate(workInProgress);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    workInProgress.stateNode = createTextInstance(</span><br><span class="line">                        newText,</span><br><span class="line">                        rootContainerInstance,</span><br><span class="line">                        currentHostContext,</span><br><span class="line">                        workInProgress,</span><br><span class="line">                    );</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> ForwardRef:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> SuspenseComponent: &#123;</span><br><span class="line">            popSuspenseContext(workInProgress);</span><br><span class="line">            <span class="keyword">const</span> nextState: <span class="literal">null</span> | SuspenseState = workInProgress.memoizedState;</span><br><span class="line">            <span class="keyword">if</span> ((workInProgress.effectTag &amp; DidCapture) !== NoEffect) &#123;</span><br><span class="line">                <span class="comment">// Something suspended. Re-render with the fallback children.</span></span><br><span class="line">                workInProgress.expirationTime = renderExpirationTime;</span><br><span class="line">                <span class="comment">// Do not reset the effect list.</span></span><br><span class="line">                <span class="keyword">return</span> workInProgress;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">const</span> nextDidTimeout = nextState !== <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">let</span> prevDidTimeout = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (current === <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="comment">// In cases where we didn&#x27;t find a suitable hydration boundary we never</span></span><br><span class="line">                <span class="comment">// downgraded this to a DehydratedSuspenseComponent, but we still need to</span></span><br><span class="line">                <span class="comment">// pop the hydration state since we might be inside the insertion tree.</span></span><br><span class="line">                popHydrationState(workInProgress);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">const</span> prevState: <span class="literal">null</span> | SuspenseState = current.memoizedState;</span><br><span class="line">                prevDidTimeout = prevState !== <span class="literal">null</span>;</span><br><span class="line">                <span class="keyword">if</span> (!nextDidTimeout &amp;&amp; prevState !== <span class="literal">null</span>) &#123;</span><br><span class="line">                    <span class="comment">// We just switched from the fallback to the normal children.</span></span><br><span class="line">                    <span class="comment">// Delete the fallback.</span></span><br><span class="line">                    <span class="comment">// <span class="doctag">TODO:</span> Would it be better to store the fallback fragment on</span></span><br><span class="line">                    <span class="comment">// the stateNode during the begin phase?</span></span><br><span class="line">                    <span class="keyword">const</span> currentFallbackChild: Fiber | <span class="literal">null</span> = (current.child: any).sibling;</span><br><span class="line">                    <span class="keyword">if</span> (currentFallbackChild !== <span class="literal">null</span>) &#123;</span><br><span class="line">                        <span class="comment">// Deletions go at the beginning of the return fiber&#x27;s effect list</span></span><br><span class="line">                        <span class="keyword">const</span> first = workInProgress.firstEffect;</span><br><span class="line">                        <span class="keyword">if</span> (first !== <span class="literal">null</span>) &#123;</span><br><span class="line">                            workInProgress.firstEffect = currentFallbackChild;</span><br><span class="line">                            currentFallbackChild.nextEffect = first;</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            workInProgress.firstEffect = workInProgress.lastEffect = currentFallbackChild;</span><br><span class="line">                            currentFallbackChild.nextEffect = <span class="literal">null</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                        currentFallbackChild.effectTag = Deletion;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (nextDidTimeout &amp;&amp; !prevDidTimeout) &#123;</span><br><span class="line">                <span class="comment">// If this subtreee is running in batched mode we can suspend,</span></span><br><span class="line">                <span class="comment">// otherwise we won&#x27;t suspend.</span></span><br><span class="line">                <span class="comment">// <span class="doctag">TODO:</span> This will still suspend a synchronous tree if anything</span></span><br><span class="line">                <span class="comment">// in the concurrent tree already suspended during this render.</span></span><br><span class="line">                <span class="comment">// This is a known bug.</span></span><br><span class="line">                <span class="keyword">if</span> ((workInProgress.mode &amp; BatchedMode) !== NoMode) &#123;</span><br><span class="line">                    <span class="comment">// <span class="doctag">TODO:</span> Move this back to throwException because this is too late</span></span><br><span class="line">                    <span class="comment">// if this is a large tree which is common for initial loads. We</span></span><br><span class="line">                    <span class="comment">// don&#x27;t know if we should restart a render or not until we get</span></span><br><span class="line">                    <span class="comment">// this marker, and this is too late.</span></span><br><span class="line">                    <span class="comment">// If this render already had a ping or lower pri updates,</span></span><br><span class="line">                    <span class="comment">// and this is the first time we know we&#x27;re going to suspend we</span></span><br><span class="line">                    <span class="comment">// should be able to immediately restart from within throwException.</span></span><br><span class="line">                    <span class="keyword">const</span> hasInvisibleChildContext =</span><br><span class="line">                        current === <span class="literal">null</span> &amp;&amp;</span><br><span class="line">                        workInProgress.memoizedProps.unstable_avoidThisFallback !== <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">if</span> (</span><br><span class="line">                        hasInvisibleChildContext ||</span><br><span class="line">                        hasSuspenseContext(</span><br><span class="line">                            suspenseStackCursor.current,</span><br><span class="line">                            (InvisibleParentSuspenseContext: SuspenseContext),</span><br><span class="line">                        )</span><br><span class="line">                    ) &#123;</span><br><span class="line">                        <span class="comment">// If this was in an invisible tree or a new render, then showing</span></span><br><span class="line">                        <span class="comment">// this boundary is ok.</span></span><br><span class="line">                        renderDidSuspend();</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="comment">// Otherwise, we&#x27;re going to have to hide content so we should</span></span><br><span class="line">                        <span class="comment">// suspend for longer if possible.</span></span><br><span class="line">                        renderDidSuspendDelayIfPossible();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (supportsPersistence) &#123;</span><br><span class="line">                <span class="comment">// <span class="doctag">TODO:</span> Only schedule updates if not prevDidTimeout.</span></span><br><span class="line">                <span class="keyword">if</span> (nextDidTimeout) &#123;</span><br><span class="line">                    <span class="comment">// If this boundary just timed out, schedule an effect to attach a</span></span><br><span class="line">                    <span class="comment">// retry listener to the proimse. This flag is also used to hide the</span></span><br><span class="line">                    <span class="comment">// primary children.</span></span><br><span class="line">                    workInProgress.effectTag |= Update;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (supportsMutation) &#123;</span><br><span class="line">                <span class="comment">// <span class="doctag">TODO:</span> Only schedule updates if these values are non equal, i.e. it changed.</span></span><br><span class="line">                <span class="keyword">if</span> (nextDidTimeout || prevDidTimeout) &#123;</span><br><span class="line">                    <span class="comment">// If this boundary just timed out, schedule an effect to attach a</span></span><br><span class="line">                    <span class="comment">// retry listener to the proimse. This flag is also used to hide the</span></span><br><span class="line">                    <span class="comment">// primary children. In mutation mode, we also need the flag to</span></span><br><span class="line">                    <span class="comment">// *unhide* children that were previously hidden, so check if the</span></span><br><span class="line">                    <span class="comment">// is currently timed out, too.</span></span><br><span class="line">                    workInProgress.effectTag |= Update;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> Fragment:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> Mode:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> Profiler:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> HostPortal:</span><br><span class="line">            popHostContainer(workInProgress);</span><br><span class="line">            updateHostContainer(workInProgress);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> ContextProvider:</span><br><span class="line">            <span class="comment">// Pop provider fiber</span></span><br><span class="line">            popProvider(workInProgress);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> ContextConsumer:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> MemoComponent:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> IncompleteClassComponent: &#123;</span><br><span class="line">            <span class="comment">// Same as class component case. I put it down here so that the tags are</span></span><br><span class="line">            <span class="comment">// sequential to ensure this switch is compiled to a jump table.</span></span><br><span class="line">            <span class="keyword">const</span> Component = workInProgress.type;</span><br><span class="line">            <span class="keyword">if</span> (isLegacyContextProvider(Component)) &#123;</span><br><span class="line">                popLegacyContext(workInProgress);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> DehydratedSuspenseComponent: &#123;</span><br><span class="line">            <span class="keyword">if</span> (enableSuspenseServerRenderer) &#123;</span><br><span class="line">                popSuspenseContext(workInProgress);</span><br><span class="line">                <span class="keyword">if</span> (current === <span class="literal">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">let</span> wasHydrated = popHydrationState(workInProgress);</span><br><span class="line">                    invariant(</span><br><span class="line">                        wasHydrated,</span><br><span class="line">                        <span class="string">&#x27;A dehydrated suspense component was completed without a hydrated node. &#x27;</span> +</span><br><span class="line">                            <span class="string">&#x27;This is probably a bug in React.&#x27;</span>,</span><br><span class="line">                    );</span><br><span class="line">                    <span class="keyword">if</span> (enableSchedulerTracing) &#123;</span><br><span class="line">                        markDidDeprioritizeIdleSubtree();</span><br><span class="line">                    &#125;</span><br><span class="line">                    skipPastDehydratedSuspenseInstance(workInProgress);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((workInProgress.effectTag &amp; DidCapture) === NoEffect) &#123;</span><br><span class="line">                    <span class="comment">// This boundary did not suspend so it&#x27;s now hydrated.</span></span><br><span class="line">                    <span class="comment">// To handle any future suspense cases, we&#x27;re going to now upgrade it</span></span><br><span class="line">                    <span class="comment">// to a Suspense component. We detach it from the existing current fiber.</span></span><br><span class="line">                    current.alternate = <span class="literal">null</span>;</span><br><span class="line">                    workInProgress.alternate = <span class="literal">null</span>;</span><br><span class="line">                    workInProgress.tag = SuspenseComponent;</span><br><span class="line">                    workInProgress.memoizedState = <span class="literal">null</span>;</span><br><span class="line">                    workInProgress.stateNode = <span class="literal">null</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> SuspenseListComponent: &#123;</span><br><span class="line">            popSuspenseContext(workInProgress);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> ((workInProgress.effectTag &amp; DidCapture) === NoEffect) &#123;</span><br><span class="line">                <span class="comment">// This is the first pass. We need to figure out if anything is still</span></span><br><span class="line">                <span class="comment">// suspended in the rendered set.</span></span><br><span class="line">                <span class="keyword">const</span> renderedChildren = workInProgress.child;</span><br><span class="line">                <span class="comment">// If new content unsuspended, but there&#x27;s still some content that</span></span><br><span class="line">                <span class="comment">// didn&#x27;t. Then we need to do a second pass that forces everything</span></span><br><span class="line">                <span class="comment">// to keep showing their fallbacks.</span></span><br><span class="line">                <span class="keyword">const</span> needsRerender = hasSuspendedChildrenAndNewContent(</span><br><span class="line">                    workInProgress,</span><br><span class="line">                    renderedChildren,</span><br><span class="line">                );</span><br><span class="line">                <span class="keyword">if</span> (needsRerender) &#123;</span><br><span class="line">                    <span class="comment">// Rerender the whole list, but this time, we&#x27;ll force fallbacks</span></span><br><span class="line">                    <span class="comment">// to stay in place.</span></span><br><span class="line">                    workInProgress.effectTag |= DidCapture;</span><br><span class="line">                    <span class="comment">// Reset the effect list before doing the second pass since that&#x27;s now invalid.</span></span><br><span class="line">                    workInProgress.firstEffect = workInProgress.lastEffect = <span class="literal">null</span>;</span><br><span class="line">                    <span class="comment">// Schedule work so we know not to bail out.</span></span><br><span class="line">                    workInProgress.expirationTime = renderExpirationTime;</span><br><span class="line">                    <span class="keyword">return</span> workInProgress;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                workInProgress.effectTag &amp;= ~DidCapture;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> EventComponent: &#123;</span><br><span class="line">            <span class="keyword">if</span> (enableEventAPI) &#123;</span><br><span class="line">                popHostContext(workInProgress);</span><br><span class="line">                <span class="keyword">const</span> rootContainerInstance = getRootHostContainer();</span><br><span class="line">                <span class="keyword">const</span> responder = workInProgress.type.responder;</span><br><span class="line">                <span class="keyword">let</span> eventComponentInstance: ReactEventComponentInstance | <span class="literal">null</span> =</span><br><span class="line">                    workInProgress.stateNode;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (eventComponentInstance === <span class="literal">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">let</span> responderState = <span class="literal">null</span>;</span><br><span class="line">                    <span class="keyword">if</span> (__DEV__ &amp;&amp; !responder.allowMultipleHostChildren) &#123;</span><br><span class="line">                        <span class="keyword">const</span> hostChildrenCount = getEventComponentHostChildrenCount(</span><br><span class="line">                            workInProgress,</span><br><span class="line">                        );</span><br><span class="line">                        warning(</span><br><span class="line">                            (hostChildrenCount || <span class="number">0</span>) &lt; <span class="number">2</span>,</span><br><span class="line">                            <span class="string">&#x27;A &quot;&lt;%s&gt;&quot; event component cannot contain multiple host children.&#x27;</span>,</span><br><span class="line">                            getComponentName(workInProgress.type),</span><br><span class="line">                        );</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (responder.createInitialState !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">                        responderState = responder.createInitialState(newProps);</span><br><span class="line">                    &#125;</span><br><span class="line">                    eventComponentInstance = workInProgress.stateNode = &#123;</span><br><span class="line">                        currentFiber: workInProgress,</span><br><span class="line">                        props: newProps,</span><br><span class="line">                        responder,</span><br><span class="line">                        rootEventTypes: <span class="literal">null</span>,</span><br><span class="line">                        rootInstance: rootContainerInstance,</span><br><span class="line">                        state: responderState,</span><br><span class="line">                    &#125;;</span><br><span class="line">                    markUpdate(workInProgress);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// Update the props on the event component state node</span></span><br><span class="line">                    eventComponentInstance.props = newProps;</span><br><span class="line">                    <span class="comment">// Update the root container, so we can properly unmount events at some point</span></span><br><span class="line">                    eventComponentInstance.rootInstance = rootContainerInstance;</span><br><span class="line">                    <span class="comment">// Update the current fiber</span></span><br><span class="line">                    eventComponentInstance.currentFiber = workInProgress;</span><br><span class="line">                    updateEventComponent(eventComponentInstance);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">case</span> EventTarget: &#123;</span><br><span class="line">            <span class="keyword">if</span> (enableEventAPI) &#123;</span><br><span class="line">                popHostContext(workInProgress);</span><br><span class="line">                <span class="keyword">const</span> type = workInProgress.type.type;</span><br><span class="line">                <span class="keyword">const</span> rootContainerInstance = getRootHostContainer();</span><br><span class="line">                <span class="keyword">const</span> shouldUpdate = handleEventTarget(</span><br><span class="line">                    type,</span><br><span class="line">                    newProps,</span><br><span class="line">                    rootContainerInstance,</span><br><span class="line">                    workInProgress,</span><br><span class="line">                );</span><br><span class="line">                <span class="comment">// Update the latest props on the stateNode. This is used</span></span><br><span class="line">                <span class="comment">// during the event phase to find the most current props.</span></span><br><span class="line">                workInProgress.stateNode.props = newProps;</span><br><span class="line">                <span class="keyword">if</span> (shouldUpdate) &#123;</span><br><span class="line">                    markUpdate(workInProgress);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            invariant(</span><br><span class="line">                <span class="literal">false</span>,</span><br><span class="line">                <span class="string">&#x27;Unknown unit of work tag. This error is likely caused by a bug in &#x27;</span> +</span><br><span class="line">                    <span class="string">&#x27;React. Please file an issue.&#x27;</span>,</span><br><span class="line">            );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="createInstance"><a href="#createInstance" class="headerlink" title="createInstance"></a>createInstance</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createInstance</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    type: string,</span></span></span><br><span class="line"><span class="function"><span class="params">    props: Props,</span></span></span><br><span class="line"><span class="function"><span class="params">    rootContainerInstance: Container,</span></span></span><br><span class="line"><span class="function"><span class="params">    hostContext: HostContext,</span></span></span><br><span class="line"><span class="function"><span class="params">    internalInstanceHandle: Object,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">Instance</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> parentNamespace: string;</span><br><span class="line">    <span class="keyword">if</span> (__DEV__) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        parentNamespace = ((hostContext: any): HostContextProd);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 获得当前的dom实例 createElement结果</span></span><br><span class="line">    <span class="keyword">const</span> domElement: Instance = createElement(type, props, rootContainerInstance, parentNamespace);</span><br><span class="line">    <span class="comment">// 给dom添加属性指向对应fiber</span></span><br><span class="line">    precacheFiberNode(internalInstanceHandle, domElement);</span><br><span class="line">    <span class="comment">// 给dom添加属性指向对应props</span></span><br><span class="line">    updateFiberProps(domElement, props);</span><br><span class="line">    <span class="keyword">return</span> domElement;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="appendAllChildren"><a href="#appendAllChildren" class="headerlink" title="appendAllChildren"></a>appendAllChildren</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在浏览器环境中他固定为true</span></span><br><span class="line"><span class="keyword">if</span> (supportsMutation) &#123;</span><br><span class="line">    <span class="comment">// Mutation mode</span></span><br><span class="line"></span><br><span class="line">    appendAllChildren = <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">        parent: Instance,</span></span></span><br><span class="line"><span class="function"><span class="params">        workInProgress: Fiber,</span></span></span><br><span class="line"><span class="function"><span class="params">        needsVisibilityToggle: boolean,</span></span></span><br><span class="line"><span class="function"><span class="params">        isHidden: boolean,</span></span></span><br><span class="line"><span class="function"><span class="params">    </span>) </span>&#123;</span><br><span class="line">        <span class="comment">// We only have the top Fiber that was created but we need recurse down its</span></span><br><span class="line">        <span class="comment">// children to find all the terminal nodes.</span></span><br><span class="line">        <span class="keyword">let</span> node = workInProgress.child;</span><br><span class="line">        <span class="keyword">while</span> (node !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (node.tag === HostComponent || node.tag === HostText) &#123;</span><br><span class="line">                appendInitialChild(parent, node.stateNode);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (node.tag === HostPortal) &#123;</span><br><span class="line">                <span class="comment">// If we have a portal child, then we don&#x27;t want to traverse</span></span><br><span class="line">                <span class="comment">// down its children. Instead, we&#x27;ll get insertions from each child in</span></span><br><span class="line">                <span class="comment">// the portal directly.</span></span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (node.child !== <span class="literal">null</span>) &#123;</span><br><span class="line">                node.child.return = node;</span><br><span class="line">                node = node.child;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (node === workInProgress) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (node.sibling === <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (node.return === <span class="literal">null</span> || node.return === workInProgress) &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                node = node.return;</span><br><span class="line">            &#125;</span><br><span class="line">            node.sibling.return = node.return;</span><br><span class="line">            node = node.sibling;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="finalizeInitialChildren"><a href="#finalizeInitialChildren" class="headerlink" title="finalizeInitialChildren"></a>finalizeInitialChildren</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">finalizeInitialChildren</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    domElement: Instance,</span></span></span><br><span class="line"><span class="function"><span class="params">    type: string,</span></span></span><br><span class="line"><span class="function"><span class="params">    props: Props,</span></span></span><br><span class="line"><span class="function"><span class="params">    rootContainerInstance: Container,</span></span></span><br><span class="line"><span class="function"><span class="params">    hostContext: HostContext,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">boolean</span> </span>&#123;</span><br><span class="line">    setInitialProperties(domElement, type, props, rootContainerInstance);</span><br><span class="line">    <span class="comment">// 判断是否需要autoFocus</span></span><br><span class="line">    <span class="keyword">return</span> shouldAutoFocusHostComponent(type, props);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="setInitialProperties"><a href="#setInitialProperties" class="headerlink" title="setInitialProperties"></a>setInitialProperties</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">setInitialProperties</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    domElement: Element,</span></span></span><br><span class="line"><span class="function"><span class="params">    tag: string,</span></span></span><br><span class="line"><span class="function"><span class="params">    rawProps: Object,</span></span></span><br><span class="line"><span class="function"><span class="params">    rootContainerElement: Element | Document,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> isCustomComponentTag = isCustomComponent(tag, rawProps); <span class="comment">// 是否自定义标签</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> Make sure that we check isMounted before firing any of these events.</span></span><br><span class="line">    <span class="keyword">let</span> props: <span class="built_in">Object</span>;</span><br><span class="line">    <span class="keyword">switch</span> (</span><br><span class="line">        tag <span class="comment">// 给以下特殊标签添加默认事件</span></span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;iframe&#x27;</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;object&#x27;</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;embed&#x27;</span>:</span><br><span class="line">            trapBubbledEvent(TOP_LOAD, domElement);</span><br><span class="line">            props = rawProps;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;video&#x27;</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;audio&#x27;</span>:</span><br><span class="line">            <span class="comment">// Create listener for each media event</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; mediaEventTypes.length; i++) &#123;</span><br><span class="line">                trapBubbledEvent(mediaEventTypes[i], domElement);</span><br><span class="line">            &#125;</span><br><span class="line">            props = rawProps;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;source&#x27;</span>:</span><br><span class="line">            trapBubbledEvent(TOP_ERROR, domElement);</span><br><span class="line">            props = rawProps;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;img&#x27;</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;image&#x27;</span>:</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;link&#x27;</span>:</span><br><span class="line">            trapBubbledEvent(TOP_ERROR, domElement);</span><br><span class="line">            trapBubbledEvent(TOP_LOAD, domElement);</span><br><span class="line">            props = rawProps;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;form&#x27;</span>:</span><br><span class="line">            trapBubbledEvent(TOP_RESET, domElement);</span><br><span class="line">            trapBubbledEvent(TOP_SUBMIT, domElement);</span><br><span class="line">            props = rawProps;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;details&#x27;</span>:</span><br><span class="line">            trapBubbledEvent(TOP_TOGGLE, domElement);</span><br><span class="line">            props = rawProps;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;input&#x27;</span>:</span><br><span class="line">            ReactDOMInputInitWrapperState(domElement, rawProps);</span><br><span class="line">            props = ReactDOMInputGetHostProps(domElement, rawProps);</span><br><span class="line">            trapBubbledEvent(TOP_INVALID, domElement);</span><br><span class="line">            <span class="comment">// For controlled components we always need to ensure we&#x27;re listening</span></span><br><span class="line">            <span class="comment">// to onChange. Even if there is no listener.</span></span><br><span class="line">            ensureListeningTo(rootContainerElement, <span class="string">&#x27;onChange&#x27;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;option&#x27;</span>:</span><br><span class="line">            ReactDOMOptionValidateProps(domElement, rawProps);</span><br><span class="line">            props = ReactDOMOptionGetHostProps(domElement, rawProps);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;select&#x27;</span>:</span><br><span class="line">            ReactDOMSelectInitWrapperState(domElement, rawProps);</span><br><span class="line">            props = ReactDOMSelectGetHostProps(domElement, rawProps);</span><br><span class="line">            trapBubbledEvent(TOP_INVALID, domElement);</span><br><span class="line">            <span class="comment">// For controlled components we always need to ensure we&#x27;re listening</span></span><br><span class="line">            <span class="comment">// to onChange. Even if there is no listener.</span></span><br><span class="line">            ensureListeningTo(rootContainerElement, <span class="string">&#x27;onChange&#x27;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;textarea&#x27;</span>:</span><br><span class="line">            ReactDOMTextareaInitWrapperState(domElement, rawProps);</span><br><span class="line">            props = ReactDOMTextareaGetHostProps(domElement, rawProps);</span><br><span class="line">            trapBubbledEvent(TOP_INVALID, domElement);</span><br><span class="line">            <span class="comment">// For controlled components we always need to ensure we&#x27;re listening</span></span><br><span class="line">            <span class="comment">// to onChange. Even if there is no listener.</span></span><br><span class="line">            ensureListeningTo(rootContainerElement, <span class="string">&#x27;onChange&#x27;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            props = rawProps;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    assertValidProps(tag, props); <span class="comment">// 判断props合法</span></span><br><span class="line">    setInitialDOMProperties(</span><br><span class="line">        <span class="comment">// 根据props设置dom属性, 事件绑定的开始</span></span><br><span class="line">        tag,</span><br><span class="line">        domElement,</span><br><span class="line">        rootContainerElement,</span><br><span class="line">        props,</span><br><span class="line">        isCustomComponentTag,</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span> (tag) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;input&#x27;</span>:</span><br><span class="line">            <span class="comment">// <span class="doctag">TODO:</span> Make sure we check if this is still unmounted or do any clean</span></span><br><span class="line">            <span class="comment">// up necessary since we never stop tracking anymore.</span></span><br><span class="line">            track((domElement: any));</span><br><span class="line">            ReactDOMInputPostMountWrapper(domElement, rawProps, <span class="literal">false</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;textarea&#x27;</span>:</span><br><span class="line">            <span class="comment">// <span class="doctag">TODO:</span> Make sure we check if this is still unmounted or do any clean</span></span><br><span class="line">            <span class="comment">// up necessary since we never stop tracking anymore.</span></span><br><span class="line">            track((domElement: any));</span><br><span class="line">            ReactDOMTextareaPostMountWrapper(domElement, rawProps);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;option&#x27;</span>:</span><br><span class="line">            ReactDOMOptionPostMountWrapper(domElement, rawProps);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;select&#x27;</span>:</span><br><span class="line">            ReactDOMSelectPostMountWrapper(domElement, rawProps);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> props.onClick === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">                <span class="comment">// <span class="doctag">TODO:</span> This cast may not be sound for SVG, MathML or custom elements.</span></span><br><span class="line">                trapClickOnNonInteractiveElement(((domElement: any): HTMLElement));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/react%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag"># react源码解析</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/09/react/commitRoot/" rel="prev" title="commitRoot">
+      <i class="fa fa-chevron-left"></i> commitRoot
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/09/react/hooks/" rel="next" title="hooks">
+      hooks <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#createInstance"><span class="nav-number">1.</span> <span class="nav-text">createInstance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#appendAllChildren"><span class="nav-number">2.</span> <span class="nav-text">appendAllChildren</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finalizeInitialChildren"><span class="nav-number">3.</span> <span class="nav-text">finalizeInitialChildren</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setInitialProperties"><span class="nav-number">4.</span> <span class="nav-text">setInitialProperties</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">lokve</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lokve</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

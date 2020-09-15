@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="创建createContext123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051export function createContext&lt;T&gt;(    defaultValue: T,    calculateChangedBits: ?(a: T,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="completeWork">
+<meta property="og:url" content="http://example.com/2020/09/11/react/context/index.html">
+<meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="创建createContext123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051export function createContext&lt;T&gt;(    defaultValue: T,    calculateChangedBits: ?(a: T,">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-11T03:00:00.000Z">
+<meta property="article:modified_time" content="2020-09-15T04:15:42.797Z">
+<meta property="article:author" content="lokve">
+<meta property="article:tag" content="react源码解析">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/09/11/react/context/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>completeWork | 学习笔记</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">学习笔记</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/11/react/context/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="lokve">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习笔记">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          completeWork
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-11 11:00:00" itemprop="dateCreated datePublished" datetime="2020-09-11T11:00:00+08:00">2020-09-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-15 12:15:42" itemprop="dateModified" datetime="2020-09-15T12:15:42+08:00">2020-09-15</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><h3 id="createContext"><a href="#createContext" class="headerlink" title="createContext"></a>createContext</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createContext</span>&lt;<span class="title">T</span>&gt;(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    defaultValue: T,</span></span></span><br><span class="line"><span class="function"><span class="params">    calculateChangedBits: ?(a: T, b: T) =&gt; number,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">ReactContext</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (calculateChangedBits === <span class="literal">undefined</span>) &#123;</span><br><span class="line">        calculateChangedBits = <span class="literal">null</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (__DEV__) &#123;</span><br><span class="line">            warningWithoutStack(</span><br><span class="line">                calculateChangedBits === <span class="literal">null</span> || <span class="keyword">typeof</span> calculateChangedBits === <span class="string">&#x27;function&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;createContext: Expected the optional second argument to be a &#x27;</span> +</span><br><span class="line">                    <span class="string">&#x27;function. Instead received: %s&#x27;</span>,</span><br><span class="line">                calculateChangedBits,</span><br><span class="line">            );</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> context: ReactContext&lt;T&gt; = &#123;</span><br><span class="line">        $$typeof: REACT_CONTEXT_TYPE,</span><br><span class="line">        _calculateChangedBits: calculateChangedBits,</span><br><span class="line">        <span class="comment">// As a workaround to support multiple concurrent renderers, we categorize</span></span><br><span class="line">        <span class="comment">// some renderers as primary and others as secondary. We only expect</span></span><br><span class="line">        <span class="comment">// there to be two concurrent renderers at most: React Native (primary) and</span></span><br><span class="line">        <span class="comment">// Fabric (secondary); React DOM (primary) and React ART (secondary).</span></span><br><span class="line">        <span class="comment">// Secondary renderers store their context values on separate fields.</span></span><br><span class="line">        _currentValue: defaultValue,</span><br><span class="line">        _currentValue2: defaultValue,</span><br><span class="line">        <span class="comment">// Used to track how many concurrent renderers this context currently</span></span><br><span class="line">        <span class="comment">// supports within in a single renderer. Such as parallel server rendering.</span></span><br><span class="line">        _threadCount: <span class="number">0</span>,</span><br><span class="line">        <span class="comment">// These are circular</span></span><br><span class="line">        Provider: (<span class="literal">null</span>: any),</span><br><span class="line">        Consumer: (<span class="literal">null</span>: any),</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    context.Provider = &#123;</span><br><span class="line">        $$typeof: REACT_PROVIDER_TYPE,</span><br><span class="line">        _context: context,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> hasWarnedAboutUsingNestedContextConsumers = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">let</span> hasWarnedAboutUsingConsumerProvider = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (__DEV__) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        context.Consumer = context;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> context;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="跟新数据"><a href="#跟新数据" class="headerlink" title="跟新数据"></a>跟新数据</h2><h3 id="updateContextProvider"><a href="#updateContextProvider" class="headerlink" title="updateContextProvider"></a>updateContextProvider</h3><p>处理 fiber 时</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// case ContextProvider:</span></span><br><span class="line"><span class="comment">//      return updateContextProvider(current, workInProgress, renderExpirationTime);</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateContextProvider</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    current: Fiber | null,</span></span></span><br><span class="line"><span class="function"><span class="params">    workInProgress: Fiber,</span></span></span><br><span class="line"><span class="function"><span class="params">    renderExpirationTime: ExpirationTime,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> providerType: ReactProviderType&lt;any&gt; = workInProgress.type;</span><br><span class="line">    <span class="keyword">const</span> context: ReactContext&lt;any&gt; = providerType._context;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> newProps = workInProgress.pendingProps;</span><br><span class="line">    <span class="keyword">const</span> oldProps = workInProgress.memoizedProps;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> newValue = newProps.value;</span><br><span class="line"></span><br><span class="line">    pushProvider(workInProgress, newValue);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (oldProps !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> oldValue = oldProps.value;</span><br><span class="line">        <span class="keyword">const</span> changedBits = calculateChangedBits(context, newValue, oldValue);</span><br><span class="line">        <span class="keyword">if</span> (changedBits === <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// No change. Bailout early if children are the same.</span></span><br><span class="line">            <span class="keyword">if</span> (oldProps.children === newProps.children &amp;&amp; !hasLegacyContextChanged()) &#123;</span><br><span class="line">                <span class="keyword">return</span> bailoutOnAlreadyFinishedWork(current, workInProgress, renderExpirationTime);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// The context value changed. Search for matching consumers and schedule</span></span><br><span class="line">            <span class="comment">// them to update.</span></span><br><span class="line">            propagateContextChange(workInProgress, context, changedBits, renderExpirationTime);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> newChildren = newProps.children;</span><br><span class="line">    reconcileChildren(current, workInProgress, newChildren, renderExpirationTime);</span><br><span class="line">    <span class="keyword">return</span> workInProgress.child;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="pushProvider"><a href="#pushProvider" class="headerlink" title="pushProvider"></a>pushProvider</h3><p>context._currentValue = nextValue;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">pushProvider</span>&lt;<span class="title">T</span>&gt;(<span class="params">providerFiber: Fiber, nextValue: T</span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> context: ReactContext&lt;T&gt; = providerFiber.type._context;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (isPrimaryRenderer) &#123;</span><br><span class="line">        push(valueCursor, context._currentValue, providerFiber);</span><br><span class="line"></span><br><span class="line">        context._currentValue = nextValue;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        push(valueCursor, context._currentValue2, providerFiber);</span><br><span class="line"></span><br><span class="line">        context._currentValue2 = nextValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="propagateContextChange"><a href="#propagateContextChange" class="headerlink" title="propagateContextChange"></a>propagateContextChange</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">propagateContextChange</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    workInProgress: Fiber,</span></span></span><br><span class="line"><span class="function"><span class="params">    context: ReactContext&lt;mixed&gt;,</span></span></span><br><span class="line"><span class="function"><span class="params">    changedBits: number,</span></span></span><br><span class="line"><span class="function"><span class="params">    renderExpirationTime: ExpirationTime,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">void</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> fiber = workInProgress.child;</span><br><span class="line">    <span class="keyword">if</span> (fiber !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// Set the return pointer of the child to the work-in-progress fiber.</span></span><br><span class="line">        fiber.return = workInProgress;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (fiber !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> nextFiber;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Visit this fiber.</span></span><br><span class="line">        <span class="keyword">const</span> list = fiber.contextDependencies;</span><br><span class="line">        <span class="keyword">if</span> (list !== <span class="literal">null</span>) &#123;</span><br><span class="line">            nextFiber = fiber.child;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> dependency = list.first;</span><br><span class="line">            <span class="keyword">while</span> (dependency !== <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="comment">// Check if the context matches.</span></span><br><span class="line">                <span class="keyword">if</span> (</span><br><span class="line">                    dependency.context === context &amp;&amp;</span><br><span class="line">                    (dependency.observedBits &amp; changedBits) !== <span class="number">0</span></span><br><span class="line">                ) &#123;</span><br><span class="line">                    <span class="comment">// Match! Schedule an update on this fiber.</span></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (fiber.tag === ClassComponent) &#123;</span><br><span class="line">                        <span class="comment">// Schedule a force update on the work-in-progress.</span></span><br><span class="line">                        <span class="keyword">const</span> update = createUpdate(renderExpirationTime, <span class="literal">null</span>);</span><br><span class="line">                        update.tag = ForceUpdate;</span><br><span class="line">                        <span class="comment">// <span class="doctag">TODO:</span> Because we don&#x27;t have a work-in-progress, this will add the</span></span><br><span class="line">                        <span class="comment">// update to the current fiber, too, which means it will persist even if</span></span><br><span class="line">                        <span class="comment">// this render is thrown away. Since it&#x27;s a race condition, not sure it&#x27;s</span></span><br><span class="line">                        <span class="comment">// worth fixing.</span></span><br><span class="line">                        enqueueUpdate(fiber, update);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span> (fiber.expirationTime &lt; renderExpirationTime) &#123;</span><br><span class="line">                        fiber.expirationTime = renderExpirationTime;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">let</span> alternate = fiber.alternate;</span><br><span class="line">                    <span class="keyword">if</span> (alternate !== <span class="literal">null</span> &amp;&amp; alternate.expirationTime &lt; renderExpirationTime) &#123;</span><br><span class="line">                        alternate.expirationTime = renderExpirationTime;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    scheduleWorkOnParentPath(fiber.return, renderExpirationTime);</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// Mark the expiration time on the list, too.</span></span><br><span class="line">                    <span class="keyword">if</span> (list.expirationTime &lt; renderExpirationTime) &#123;</span><br><span class="line">                        list.expirationTime = renderExpirationTime;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// Since we already found a match, we can stop traversing the</span></span><br><span class="line">                    <span class="comment">// dependency list.</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                dependency = dependency.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (fiber.tag === ContextProvider) &#123;</span><br><span class="line">            <span class="comment">// Don&#x27;t scan deeper if this is a matching provider</span></span><br><span class="line">            nextFiber = fiber.type === workInProgress.type ? <span class="literal">null</span> : fiber.child;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (enableSuspenseServerRenderer &amp;&amp; fiber.tag === DehydratedSuspenseComponent) &#123;</span><br><span class="line">            <span class="comment">// If a dehydrated suspense component is in this subtree, we don&#x27;t know</span></span><br><span class="line">            <span class="comment">// if it will have any context consumers in it. The best we can do is</span></span><br><span class="line">            <span class="comment">// mark it as having updates on its children.</span></span><br><span class="line">            <span class="keyword">if</span> (fiber.expirationTime &lt; renderExpirationTime) &#123;</span><br><span class="line">                fiber.expirationTime = renderExpirationTime;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">let</span> alternate = fiber.alternate;</span><br><span class="line">            <span class="keyword">if</span> (alternate !== <span class="literal">null</span> &amp;&amp; alternate.expirationTime &lt; renderExpirationTime) &#123;</span><br><span class="line">                alternate.expirationTime = renderExpirationTime;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// This is intentionally passing this fiber as the parent</span></span><br><span class="line">            <span class="comment">// because we want to schedule this fiber as having work</span></span><br><span class="line">            <span class="comment">// on its children. We&#x27;ll use the childExpirationTime on</span></span><br><span class="line">            <span class="comment">// this fiber to indicate that a context has changed.</span></span><br><span class="line">            scheduleWorkOnParentPath(fiber, renderExpirationTime);</span><br><span class="line">            nextFiber = fiber.sibling;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// Traverse down.</span></span><br><span class="line">            nextFiber = fiber.child;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (nextFiber !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// Set the return pointer of the child to the work-in-progress fiber.</span></span><br><span class="line">            nextFiber.return = fiber;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// No child. Traverse to next sibling.</span></span><br><span class="line">            nextFiber = fiber;</span><br><span class="line">            <span class="keyword">while</span> (nextFiber !== <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nextFiber === workInProgress) &#123;</span><br><span class="line">                    <span class="comment">// We&#x27;re back to the root of this subtree. Exit.</span></span><br><span class="line">                    nextFiber = <span class="literal">null</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">let</span> sibling = nextFiber.sibling;</span><br><span class="line">                <span class="keyword">if</span> (sibling !== <span class="literal">null</span>) &#123;</span><br><span class="line">                    <span class="comment">// Set the return pointer of the sibling to the work-in-progress fiber.</span></span><br><span class="line">                    sibling.return = nextFiber.return;</span><br><span class="line">                    nextFiber = sibling;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// No more siblings. Traverse up.</span></span><br><span class="line">                nextFiber = nextFiber.return;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        fiber = nextFiber;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h2><p>在 function 组件中</p>
+<h3 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">useContext</span>&lt;<span class="title">T</span>&gt;(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    Context: ReactContext&lt;T&gt;,</span></span></span><br><span class="line"><span class="function"><span class="params">    unstable_observedBits: number | boolean | void,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> dispatcher = resolveDispatcher();</span><br><span class="line">    <span class="keyword">return</span> dispatcher.useContext(Context, unstable_observedBits);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>useContext 是只读的，用于获取 context 数据</p>
+<p>在 class 组件中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> contextType === <span class="string">&#x27;object&#x27;</span> &amp;&amp; contextType !== <span class="literal">null</span>) &#123;</span><br><span class="line">    context = readContext((contextType: any));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ctor即class定义</span></span><br><span class="line"><span class="keyword">const</span> instance = <span class="keyword">new</span> ctor(props, context);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Component</span>(<span class="params">props, context, updater</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.props = props;</span><br><span class="line">    <span class="built_in">this</span>.context = context;</span><br><span class="line">    <span class="comment">// If a component has string refs, we will assign a different object later.</span></span><br><span class="line">    <span class="built_in">this</span>.refs = emptyObject;</span><br><span class="line">    <span class="comment">// We initialize the default updater but the real one gets injected by the</span></span><br><span class="line">    <span class="comment">// renderer.</span></span><br><span class="line">    <span class="built_in">this</span>.updater = updater || ReactNoopUpdateQueue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="readContext"><a href="#readContext" class="headerlink" title="readContext"></a>readContext</h3><p>读取 <code>context._currentValue</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">readContext</span>&lt;<span class="title">T</span>&gt;(<span class="params">context: ReactContext&lt;T&gt;, observedBits: void | number | boolean</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (lastContextWithAllBitsObserved === context) &#123;</span><br><span class="line">        <span class="comment">// Nothing to do. We already observe everything in this context.</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (observedBits === <span class="literal">false</span> || observedBits === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// Do not observe any updates.</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> resolvedObservedBits; <span class="comment">// Avoid deopting on observable arguments or heterogeneous types.</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> observedBits !== <span class="string">&#x27;number&#x27;</span> || observedBits === MAX_SIGNED_31_BIT_INT) &#123;</span><br><span class="line">            <span class="comment">// Observe all updates.</span></span><br><span class="line">            lastContextWithAllBitsObserved = ((context: any): ReactContext&lt;mixed&gt;);</span><br><span class="line">            resolvedObservedBits = MAX_SIGNED_31_BIT_INT;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            resolvedObservedBits = observedBits;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> contextItem = &#123;</span><br><span class="line">            context: ((context: any): ReactContext&lt;mixed&gt;),</span><br><span class="line">            observedBits: resolvedObservedBits,</span><br><span class="line">            next: <span class="literal">null</span>,</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (lastContextDependency === <span class="literal">null</span>) &#123;</span><br><span class="line">            invariant(</span><br><span class="line">                currentlyRenderingFiber !== <span class="literal">null</span>,</span><br><span class="line">                <span class="string">&#x27;Context can only be read while React is rendering. &#x27;</span> +</span><br><span class="line">                    <span class="string">&#x27;In classes, you can read it in the render method or getDerivedStateFromProps. &#x27;</span> +</span><br><span class="line">                    <span class="string">&#x27;In function components, you can read it directly in the function body, but not &#x27;</span> +</span><br><span class="line">                    <span class="string">&#x27;inside Hooks like useReducer() or useMemo().&#x27;</span>,</span><br><span class="line">            );</span><br><span class="line"></span><br><span class="line">            <span class="comment">// This is the first dependency for this component. Create a new list.</span></span><br><span class="line">            lastContextDependency = contextItem;</span><br><span class="line">            currentlyRenderingFiber.contextDependencies = &#123;</span><br><span class="line">                first: contextItem,</span><br><span class="line">                expirationTime: NoWork,</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// Append a new context item.</span></span><br><span class="line">            lastContextDependency = lastContextDependency.next = contextItem;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> isPrimaryRenderer ? context._currentValue : context._currentValue2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Context-Consumer"><a href="#Context-Consumer" class="headerlink" title="Context.Consumer"></a>Context.Consumer</h3><p>还是执行 readContext 获取，然后 child(value)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateContextConsumer</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    current: Fiber | null,</span></span></span><br><span class="line"><span class="function"><span class="params">    workInProgress: Fiber,</span></span></span><br><span class="line"><span class="function"><span class="params">    renderExpirationTime: ExpirationTime,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> context: ReactContext&lt;any&gt; = workInProgress.type;</span><br><span class="line">    <span class="comment">// The logic below for Context differs depending on PROD or DEV mode. In</span></span><br><span class="line">    <span class="comment">// DEV mode, we create a separate object for Context.Consumer that acts</span></span><br><span class="line">    <span class="comment">// like a proxy to Context. This proxy object adds unnecessary code in PROD</span></span><br><span class="line">    <span class="comment">// so we use the old behaviour (Context.Consumer references Context) to</span></span><br><span class="line">    <span class="comment">// reduce size and overhead. The separate object references context via</span></span><br><span class="line">    <span class="comment">// a property called &quot;_context&quot;, which also gives us the ability to check</span></span><br><span class="line">    <span class="comment">// in DEV mode if this property exists or not and warn if it does not.</span></span><br><span class="line">    <span class="keyword">const</span> newProps = workInProgress.pendingProps;</span><br><span class="line">    <span class="keyword">const</span> render = newProps.children;</span><br><span class="line"></span><br><span class="line">    prepareToReadContext(workInProgress, renderExpirationTime);</span><br><span class="line">    <span class="keyword">const</span> newValue = readContext(context, newProps.unstable_observedBits);</span><br><span class="line">    <span class="keyword">let</span> newChildren;</span><br><span class="line">    <span class="keyword">if</span> (__DEV__) &#123;</span><br><span class="line">        ReactCurrentOwner.current = workInProgress;</span><br><span class="line">        setCurrentPhase(<span class="string">&#x27;render&#x27;</span>);</span><br><span class="line">        newChildren = render(newValue);</span><br><span class="line">        setCurrentPhase(<span class="literal">null</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        newChildren = render(newValue);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// React DevTools reads this flag.</span></span><br><span class="line">    workInProgress.effectTag |= PerformedWork;</span><br><span class="line">    reconcileChildren(current, workInProgress, newChildren, renderExpirationTime);</span><br><span class="line">    <span class="keyword">return</span> workInProgress.child;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/react%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag"># react源码解析</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/10/react/createElement(dom)/" rel="prev" title="createElement(dom)">
+      <i class="fa fa-chevron-left"></i> createElement(dom)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/09/14/react-redux/%E5%BC%80%E5%A7%8B/" rel="next" title="流程">
+      流程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA"><span class="nav-number">1.</span> <span class="nav-text">创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#createContext"><span class="nav-number">1.1.</span> <span class="nav-text">createContext</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%9F%E6%96%B0%E6%95%B0%E6%8D%AE"><span class="nav-number">2.</span> <span class="nav-text">跟新数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#updateContextProvider"><span class="nav-number">2.1.</span> <span class="nav-text">updateContextProvider</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pushProvider"><span class="nav-number">2.2.</span> <span class="nav-text">pushProvider</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#propagateContextChange"><span class="nav-number">2.3.</span> <span class="nav-text">propagateContextChange</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96"><span class="nav-number">3.</span> <span class="nav-text">读取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#useContext"><span class="nav-number">3.1.</span> <span class="nav-text">useContext</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#readContext"><span class="nav-number">3.2.</span> <span class="nav-text">readContext</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Context-Consumer"><span class="nav-number">3.3.</span> <span class="nav-text">Context.Consumer</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">lokve</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lokve</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
