@@ -98,11 +98,17 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
+# 搜索
+search:
+    path: search.xml
+    field: post
+    format: html
+    limit: 10000
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
     type: git
     repo: git@my-notes:lokve/my-notes.git # https://github.com/TJ-XiaJiaHao/TJ-XiaJiaHao.github.io
-    branch: master
+    branch: pages

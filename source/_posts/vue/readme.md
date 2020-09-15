@@ -1,3 +1,9 @@
-vue2.2.6的源码阅读笔记
+---
+title: 说明
+tags: Vue笔记
+date: 2018-1-22 14:30
+---
 
-利用官方vue项目，配合debugger和npm dev命令，学习vue源码
+vue2.2.6 的源码阅读笔记
+
+利用官方 vue 项目，配合 debugger 和 npm dev 命令，学习 vue 源码
