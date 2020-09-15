@@ -1,3 +1,9 @@
+---
+title: hooks
+tags: react源码解析
+date: 2020-9-9 14:00
+---
+
 在`renderWithHooks`中添加了方法,调用的 mount 或者 uodate 的 hooks 方法
 
 ```js

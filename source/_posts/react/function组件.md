@@ -1,3 +1,9 @@
+---
+title: function组件
+tags: react源码解析
+date: 2020-9-9 14:00
+---
+
 ### 从 beginWork 开始
 
 ```js

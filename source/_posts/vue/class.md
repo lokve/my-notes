@@ -1,12 +1,12 @@
 ---
-title:  Vue源码阅读笔记 (class,style)
+title: Vue源码阅读笔记 (class,style)
 tags: Vue笔记
 date: 2018-6-7 09:43
 ---
 
 ## 开始
 
-在parseHTML首次处理class,style
+在 parseHTML 首次处理 class,style
 代码在 vue/src/compiler/parser/index.js
 
 ```
@@ -24,11 +24,12 @@ parseHTML(template, {
 }
 ```
 
-transforms里面包含了两个函数
+transforms 里面包含了两个函数
 
 ## class
 
 src/platforms/web/compiler/modules/class.js
+
 ```
 function transformNode (el: ASTElement, options: CompilerOptions) {
   const warn = options.warn || baseWarn
@@ -163,10 +164,10 @@ export function parseFilters (exp: string): string {
 }
 ```
 
-
 ## style
 
 src/platforms/web/compiler/modules/style.js
+
 ```
 function transformNode (el: ASTElement, options: CompilerOptions) {
   const warn = options.warn || baseWarn

@@ -1,12 +1,12 @@
 ---
-title:  Vue源码阅读笔记 (attr v-on @ : ...)
+title: attr
 tags: Vue笔记
 date: 2018-6-7 14:08
 ---
 
 ## 开始
 
-在parseHTML首次处理(剩下的属性都在这个方法里进行了第一次处理)
+在 parseHTML 首次处理(剩下的属性都在这个方法里进行了第一次处理)
 代码在 vue/src/compiler/parser/index.js
 
 ```
@@ -26,6 +26,7 @@ parseHTML(template, {
 ## processAttrs
 
 代码在 vue/src/compiler/parser/index.js
+
 ```
 function processAttrs (el) {
   const list = el.attrsList

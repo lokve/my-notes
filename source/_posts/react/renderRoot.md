@@ -1,3 +1,9 @@
+---
+title: renderRoot
+tags: react源码解析
+date: 2020-9-8 14:00
+---
+
 构建 fiber 树和 dom 树，互相对应为参数，能互相找到，并执行了渲染前的生命周期
 
 ### 然后是`renderRoot`

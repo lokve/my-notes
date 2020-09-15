@@ -1,12 +1,12 @@
 ---
-title:  Vue源码阅读笔记 (v-if)
+title: Vue源码阅读笔记 (v-if)
 tags: Vue笔记
 date: 2018-6-7 11:08
 ---
 
 ## 开始
 
-在parseHTML首次处理v-if
+在 parseHTML 首次处理 v-if
 代码在 vue/src/compiler/parser/index.js
 
 ```
@@ -25,6 +25,7 @@ parseHTML(template, {
 ## processIf
 
 代码在 vue/src/compiler/parser/index.js
+
 ```
 function processIf (el) {
   const exp = getAndRemoveAttr(el, 'v-if')
@@ -53,7 +54,7 @@ function addIfCondition (el, condition) {
 }
 ```
 
-element多几个属性
+element 多几个属性
 
 ```
 element = {

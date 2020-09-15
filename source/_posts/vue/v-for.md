@@ -1,12 +1,12 @@
 ---
-title:  Vue源码阅读笔记 (v-for)
+title: Vue源码阅读笔记 (v-for)
 tags: Vue笔记
 date: 2018-6-7 11:08
 ---
 
 ## 开始
 
-在parseHTML首次处理v-for
+在 parseHTML 首次处理 v-for
 代码在 vue/src/compiler/parser/index.js
 
 ```
@@ -25,6 +25,7 @@ parseHTML(template, {
 ## processFor
 
 代码在 vue/src/compiler/parser/index.js
+
 ```
 function processFor (el) {
   let exp
@@ -55,7 +56,7 @@ function processFor (el) {
 }
 ```
 
-element多几个属性
+element 多几个属性
 
 ```
 element = {
@@ -85,6 +86,5 @@ element = {
   key:"i"
 }
 ```
-
 
 未完待续
