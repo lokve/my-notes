@@ -767,3 +767,41 @@ function updateEffectImpl(fiberEffectTag, hookEffectTag, create, deps): void {
 ## useContext
 
 context 见 context.md
+
+## useMome
+
+### mountMemo
+
+```js
+function mountMemo<T>(nextCreate: () => T, deps: Array<mixed> | void | null): T {
+    const hook = mountWorkInProgressHook();
+    const nextDeps = deps === undefined ? null : deps;
+    const nextValue = nextCreate();
+    hook.memoizedState = [nextValue, nextDeps];
+    return nextValue;
+}
+```
+
+### updateMemo
+
+```js
+function updateMemo<T>(nextCreate: () => T, deps: Array<mixed> | void | null): T {
+    const hook = updateWorkInProgressHook();
+    const nextDeps = deps === undefined ? null : deps;
+    const prevState = hook.memoizedState;
+    if (prevState !== null) {
+        // Assume these are defined. If they're not, areHookInputsEqual will warn.
+        if (nextDeps !== null) {
+            // 依赖不变，就取旧值
+            const prevDeps: Array<mixed> | null = prevState[1];
+            if (areHookInputsEqual(nextDeps, prevDeps)) {
+                return prevState[0];
+            }
+        }
+    }
+    // 否则重新执行获得最新值
+    const nextValue = nextCreate();
+    hook.memoizedState = [nextValue, nextDeps];
+    return nextValue;
+}
+```
