@@ -32,4 +32,4 @@ var diffWaysToCompute = function(input) {
 };
 
 
-diffWaysToCompute('20-10')
+diffWaysToCompute('20-10-30*40')
