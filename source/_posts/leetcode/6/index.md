@@ -12,7 +12,7 @@ date: 2024-1-7 16:00
 
 以两列为一组，塞数字到矩阵
 
-![img.png](img.png)
+![img.png](/my-notes/assets/6.png)
 
 ```js
 /**

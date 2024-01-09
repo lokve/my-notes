@@ -96,5 +96,5 @@ feed:
     template: "themes/shoka/layout/_alternate/json.ejs"
     output: "feed.json"
 
-post_asset_folder: true
-
+include:
+  - "assets/*"

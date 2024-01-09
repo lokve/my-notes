@@ -42,9 +42,6 @@ external_link:
 filename_case: 0
 render_drafts: false
 post_asset_folder: false
-marked:
-    prependRoot: true
-    postAsset: true
 relative_link: false
 future: true
 highlight:
@@ -115,3 +112,4 @@ deploy:
     type: git
     repo: git@my-notes:lokve/my-notes.git # https://github.com/TJ-XiaJiaHao/TJ-XiaJiaHao.github.io
     branch: pages
+
