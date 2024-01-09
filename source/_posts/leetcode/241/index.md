@@ -1,3 +1,9 @@
+---
+title: 241. Different Ways to Add Parentheses
+tags: leetcode
+date: 2024-1-7 16:00
+---
+
 ## 题目
 
 [地址](https://leetcode.com/problems/different-ways-to-add-parentheses/description/)
@@ -99,3 +105,38 @@ diffWaysToCompute("21-12-1");
 
 利用递归遍历，以加减乘为中间分隔成左算式和右算式，
 返回最小算式的结果，再循环组合
+(哦，原来这是[分治算法](https://pdai.tech/md/algorithm/alg-core-divide-and-conquer.html))
+
+```js
+/**
+ * @param {string} input
+ * @return {number[]}
+ */
+var diffWaysToCompute = function(input) {    
+    let res = [];
+    for (let i = 0; i < input.length; i++) {
+        if (isNaN(input[i])) {
+            let left = diffWaysToCompute(input.slice(0, i));
+            let right = diffWaysToCompute(input.slice(i+1));
+            for (let l of left) {
+                for (let r of right) {
+                    l = Number(l);
+                    r = Number(r);
+                    
+                    if (input[i]=='+') {
+                        res.push(l + r);       
+                    } else if (input[i]=='-') {
+                        res.push(l - r);
+                    } else {
+                        res.push(l * r);
+                    }
+
+                }
+            }
+        }
+    }
+    
+    if (res.length!=0) return res;
+    return [input];
+};
+```

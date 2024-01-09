@@ -1,3 +1,9 @@
+---
+title: 32. Longest Valid Parentheses
+tags: leetcode
+date: 2024-1-8 16:00
+---
+
 ## 题目
 
 [地址](https://leetcode.com/problems/longest-valid-parentheses/description/)
