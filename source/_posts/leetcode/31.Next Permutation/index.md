@@ -1,5 +1,5 @@
 ---
-title: 31. Next Permutation
+title: 31.Next Permutation
 tags: leetcode
 date: 2024-1-8 16:00
 ---

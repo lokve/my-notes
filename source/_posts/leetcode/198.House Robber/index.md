@@ -1,5 +1,5 @@
 ---
-title: 198. House Robber
+title: 198.House Robber
 tags: leetcode
 date: 2024-1-9 14:00
 ---

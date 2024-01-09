@@ -1,5 +1,5 @@
 ---
-title: 29. Divide Two Integers
+title: 29.Divide Two Integers
 tags: leetcode
 date: 2024-1-8 16:00
 ---

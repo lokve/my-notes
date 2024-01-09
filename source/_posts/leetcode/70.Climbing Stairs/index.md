@@ -1,5 +1,5 @@
 ---
-title: 70. Climbing Stairs
+title: 70.Climbing Stairs
 tags: leetcode
 date: 2024-1-9 10:00
 ---
