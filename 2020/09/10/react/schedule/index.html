@@ -1,492 +1,577 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.1.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/my-notes/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/my-notes/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/my-notes/images/logo.svg" color="#222">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon.png">
 
-<link rel="stylesheet" href="/my-notes/css/main.css">
+<link rel="icon" type="image/ico" sizes="32x32" href="/my-notes/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 
-<link rel="stylesheet" href="/my-notes/lib/font-awesome/css/all.min.css">
+<link rel="alternate" type="application/rss+xml" title="学习笔记" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="学习笔记" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="学习笔记" href="http://example.com/feed.json" />
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/my-notes/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-  <meta name="description" content="scheduleWork1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768export function scheduleUpdateOnFiber(fiber: Fiber, expiratio">
-<meta property="og:type" content="article">
-<meta property="og:title" content="reconcileChildFibers">
-<meta property="og:url" content="http://example.com/2020/09/10/react/schedule/index.html">
-<meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="scheduleWork1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768export function scheduleUpdateOnFiber(fiber: Fiber, expiratio">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-10T06:00:00.000Z">
-<meta property="article:modified_time" content="2020-09-15T04:15:42.804Z">
-<meta property="article:author" content="lokve">
-<meta property="article:tag" content="react源码解析">
-<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/my-notes/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="react源码解析" />
+
 
 <link rel="canonical" href="http://example.com/2020/09/10/react/schedule/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>reconcileChildFibers | 学习笔记</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
+  <title>
+reconcileChildFibers - react |
+hee note = 学习笔记</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
     </div>
   </div>
-
-  <div class="site-meta">
-
-    <a href="/my-notes/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">学习笔记</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">reconcileChildFibers
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2020-09-10 14:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2020-09-10T14:00:00+08:00">2020-09-10</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>15k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>13 分钟</span>
+  </span>
 </div>
 
 
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/my-notes/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/my-notes/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/my-notes/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/my-notes/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/my-notes/" rel="start">hee note</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
       </li>
-  </ul>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
 </nav>
 
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipesx5fdwj20zk0m81kx.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclj9410cj20zk0m8h12.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
+        </ul>
+      </div>
     </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
           
-
-          <div class="content post posts-expand">
-            
-
+  <div class="article wrap">
     
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/10/react/schedule/">
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/my-notes/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/my-notes/categories/react/" itemprop="item" rel="index" title="分类于 react"><span itemprop="name">react</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
-    </span>
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/10/react/schedule/">
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          reconcileChildFibers
-        </h1>
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/my-notes/images/head.jpeg">
+    <meta itemprop="name" content="lokve">
+    <meta itemprop="description" content=", ">
+  </span>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="学习笔记">
+  </span>
 
-              <time title="创建时间：2020-09-10 14:00:00" itemprop="dateCreated datePublished" datetime="2020-09-10T14:00:00+08:00">2020-09-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 12:15:42" itemprop="dateModified" datetime="2020-09-15T12:15:42+08:00">2020-09-15</time>
-              </span>
-
-          
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-
-        </div>
-      </header>
-
+  <div class="body md" itemprop="articleBody">
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
 
-      
-        <h3 id="scheduleWork"><a href="#scheduleWork" class="headerlink" title="scheduleWork"></a>scheduleWork</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">scheduleUpdateOnFiber</span>(<span class="params">fiber: Fiber, expirationTime: ExpirationTime</span>) </span>&#123;</span><br><span class="line">    checkForNestedUpdates(); <span class="comment">// 判断是否超出更新限制 50条，否则报错</span></span><br><span class="line">    <span class="comment">// 根节点：更新了fiber.stateNode的时间，返回fiber.stateNode，即FiberRoot</span></span><br><span class="line">    <span class="comment">// 子节点： 返回根节点</span></span><br><span class="line">    <span class="keyword">const</span> root = markUpdateTimeFromFiberToRoot(fiber, expirationTime);</span><br><span class="line">    <span class="keyword">if</span> (root === <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    root.pingTime = NoWork;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回优先级,见常量 ReactPriorityLevel</span></span><br><span class="line">    <span class="comment">// 已知第一次渲染是97，setState是98，useState是98</span></span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span>currentPriorityLevel仅在flushTask李改变，目前还没找到什么时候调用过</span></span><br><span class="line">    <span class="keyword">const</span> priorityLevel = getCurrentPriorityLevel();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (expirationTime === Sync) &#123;</span><br><span class="line">        <span class="keyword">if</span> (</span><br><span class="line">            <span class="comment">// Check if we&#x27;re inside unbatchedUpdates 8 &amp; 8 = 8 !== 0</span></span><br><span class="line">            (executionContext &amp; LegacyUnbatchedContext) !== NoContext &amp;&amp;</span><br><span class="line">            <span class="comment">// Check if we&#x27;re not already rendering 8 &amp; (16 | 32) = 0</span></span><br><span class="line">            (executionContext &amp; (RenderContext | CommitContext)) === NoContext</span><br><span class="line">        ) &#123;</span><br><span class="line">            <span class="comment">// This is a legacy edge case. The initial mount of a ReactDOM.render-ed</span></span><br><span class="line">            <span class="comment">// root inside of batchedUpdates should be synchronous, but layout updates</span></span><br><span class="line">            <span class="comment">// should be deferred until the end of the batch.</span></span><br><span class="line">            <span class="keyword">let</span> callback = renderRoot(root, Sync, <span class="literal">true</span>); <span class="comment">// 返回commitRoot</span></span><br><span class="line">            <span class="comment">// 前景：react完成了fiber树的构建并已经执行了渲染前的状态合并(getDerivedStateFromProps等生命周期已执行)</span></span><br><span class="line">            <span class="comment">// fiber树里已经构建好了真实的dom节点，放在stateNode里，就差一步插入了</span></span><br><span class="line">            <span class="comment">// debugger</span></span><br><span class="line">            <span class="keyword">while</span> (callback !== <span class="literal">null</span>) &#123;</span><br><span class="line">                callback = callback(<span class="literal">true</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// setState, useState进这里</span></span><br><span class="line">            scheduleCallbackForRoot(root, ImmediatePriority, Sync);</span><br><span class="line">            <span class="keyword">if</span> (executionContext === NoContext) &#123;</span><br><span class="line">                <span class="comment">// Flush the synchronous work now, wnless we&#x27;re already working or inside</span></span><br><span class="line">                <span class="comment">// a batch. This is intentionally inside scheduleUpdateOnFiber instead of</span></span><br><span class="line">                <span class="comment">// scheduleCallbackForFiber to preserve the ability to schedule a callback</span></span><br><span class="line">                <span class="comment">// without immediately flushing it. We only do this for user-initated</span></span><br><span class="line">                <span class="comment">// updates, to preserve historical behavior of sync mode.</span></span><br><span class="line">                flushSyncCallbackQueue();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        scheduleCallbackForRoot(root, priorityLevel, expirationTime);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">        (executionContext &amp; DiscreteEventContext) !== NoContext &amp;&amp;</span><br><span class="line">        <span class="comment">// Only updates at user-blocking priority or greater are considered</span></span><br><span class="line">        <span class="comment">// discrete, even inside a discrete event.</span></span><br><span class="line">        (priorityLevel === UserBlockingPriority || priorityLevel === ImmediatePriority)</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="comment">// This is the result of a discrete event. Track the lowest priority</span></span><br><span class="line">        <span class="comment">// discrete update per root so we can flush them early, if needed.</span></span><br><span class="line">        <span class="keyword">if</span> (rootsWithPendingDiscreteUpdates === <span class="literal">null</span>) &#123;</span><br><span class="line">            rootsWithPendingDiscreteUpdates = <span class="keyword">new</span> <span class="built_in">Map</span>([[root, expirationTime]]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> lastDiscreteTime = rootsWithPendingDiscreteUpdates.get(root);</span><br><span class="line">            <span class="keyword">if</span> (lastDiscreteTime === <span class="literal">undefined</span> || lastDiscreteTime &gt; expirationTime) &#123;</span><br><span class="line">                rootsWithPendingDiscreteUpdates.set(root, expirationTime);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> scheduleWork = scheduleUpdateOnFiber;</span><br></pre></td></tr></table></figure>
-
-<h3 id="markUpdateTimeFromFiberToRoot"><a href="#markUpdateTimeFromFiberToRoot" class="headerlink" title="markUpdateTimeFromFiberToRoot"></a>markUpdateTimeFromFiberToRoot</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">markUpdateTimeFromFiberToRoot</span>(<span class="params">fiber, expirationTime</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Update the source fiber&#x27;s expiration time</span></span><br><span class="line">    <span class="comment">// fiber.expirationTime默认是0</span></span><br><span class="line">    <span class="keyword">if</span> (fiber.expirationTime &lt; expirationTime) &#123;</span><br><span class="line">        fiber.expirationTime = expirationTime;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> alternate = fiber.alternate;</span><br><span class="line">    <span class="keyword">if</span> (alternate !== <span class="literal">null</span> &amp;&amp; alternate.expirationTime &lt; expirationTime) &#123;</span><br><span class="line">        alternate.expirationTime = expirationTime;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Walk the parent path to the root and update the child expiration time.</span></span><br><span class="line">    <span class="keyword">let</span> node = fiber.return;</span><br><span class="line">    <span class="keyword">let</span> root = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (node === <span class="literal">null</span> &amp;&amp; fiber.tag === HostRoot) &#123;</span><br><span class="line">        <span class="comment">// 3 === 3</span></span><br><span class="line">        root = fiber.stateNode;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (node !== <span class="literal">null</span>) &#123;</span><br><span class="line">            alternate = node.alternate;</span><br><span class="line">            <span class="comment">// 跟新childExpirationTime</span></span><br><span class="line">            <span class="keyword">if</span> (node.childExpirationTime &lt; expirationTime) &#123;</span><br><span class="line">                node.childExpirationTime = expirationTime;</span><br><span class="line">                <span class="keyword">if</span> (alternate !== <span class="literal">null</span> &amp;&amp; alternate.childExpirationTime &lt; expirationTime) &#123;</span><br><span class="line">                    alternate.childExpirationTime = expirationTime;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (alternate !== <span class="literal">null</span> &amp;&amp; alternate.childExpirationTime &lt; expirationTime) &#123;</span><br><span class="line">                alternate.childExpirationTime = expirationTime;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (node.return === <span class="literal">null</span> &amp;&amp; node.tag === HostRoot) &#123;</span><br><span class="line">                root = node.stateNode;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            node = node.return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (root !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// 注释：跟新根节点的firstPendingTime和lastPendingTime</span></span><br><span class="line">        <span class="comment">// Update the first and last pending expiration times in this root</span></span><br><span class="line">        <span class="keyword">const</span> firstPendingTime = root.firstPendingTime;</span><br><span class="line">        <span class="keyword">if</span> (expirationTime &gt; firstPendingTime) &#123;</span><br><span class="line">            root.firstPendingTime = expirationTime;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> lastPendingTime = root.lastPendingTime;</span><br><span class="line">        <span class="keyword">if</span> (lastPendingTime === NoWork || expirationTime &lt; lastPendingTime) &#123;</span><br><span class="line">            root.lastPendingTime = expirationTime;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="scheduleCallbackForRoot"><a href="#scheduleCallbackForRoot" class="headerlink" title="scheduleCallbackForRoot"></a>scheduleCallbackForRoot</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Use this function, along with runRootCallback, to ensure that only a single</span></span><br><span class="line"><span class="comment">// callback per root is scheduled. It&#x27;s still possible to call renderRoot</span></span><br><span class="line"><span class="comment">// directly, but scheduling via this function helps avoid excessive callbacks.</span></span><br><span class="line"><span class="comment">// It works by storing the callback node and expiration time on the root. When a</span></span><br><span class="line"><span class="comment">// new callback comes in, it compares the expiration time to determine if it</span></span><br><span class="line"><span class="comment">// should cancel the previous one. It also relies on commitRoot scheduling a</span></span><br><span class="line"><span class="comment">// callback to render the next level, because that means we don&#x27;t need a</span></span><br><span class="line"><span class="comment">// separate callback per expiration time.</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scheduleCallbackForRoot</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    root: FiberRoot,</span></span></span><br><span class="line"><span class="function"><span class="params">    priorityLevel: ReactPriorityLevel,</span></span></span><br><span class="line"><span class="function"><span class="params">    expirationTime: ExpirationTime,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> existingCallbackExpirationTime = root.callbackExpirationTime;</span><br><span class="line">    <span class="keyword">if</span> (existingCallbackExpirationTime &lt; expirationTime) &#123;</span><br><span class="line">        <span class="comment">// New callback has higher priority than the existing one.</span></span><br><span class="line">        <span class="keyword">const</span> existingCallbackNode = root.callbackNode;</span><br><span class="line">        <span class="keyword">if</span> (existingCallbackNode !== <span class="literal">null</span>) &#123;</span><br><span class="line">            cancelCallback(existingCallbackNode);</span><br><span class="line">        &#125;</span><br><span class="line">        root.callbackExpirationTime = expirationTime;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (expirationTime === Sync) &#123;</span><br><span class="line">            <span class="comment">// Sync React callbacks are scheduled on a special internal queue</span></span><br><span class="line">            <span class="comment">// 同步的放在一个队列中</span></span><br><span class="line">            root.callbackNode = scheduleSyncCallback(</span><br><span class="line">                runRootCallback.bind(<span class="literal">null</span>, root, renderRoot.bind(<span class="literal">null</span>, root, expirationTime)),</span><br><span class="line">            );</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> options = <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">if</span> (expirationTime !== Never) &#123;</span><br><span class="line">                <span class="keyword">let</span> timeout = expirationTimeToMs(expirationTime) - now();</span><br><span class="line">                options = &#123;timeout&#125;;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            root.callbackNode = scheduleCallback(</span><br><span class="line">                priorityLevel,</span><br><span class="line">                runRootCallback.bind(<span class="literal">null</span>, root, renderRoot.bind(<span class="literal">null</span>, root, expirationTime)),</span><br><span class="line">                options,</span><br><span class="line">            );</span><br><span class="line">            <span class="keyword">if</span> (</span><br><span class="line">                enableUserTimingAPI &amp;&amp;</span><br><span class="line">                expirationTime !== Sync &amp;&amp;</span><br><span class="line">                (executionContext &amp; (RenderContext | CommitContext)) === NoContext</span><br><span class="line">            ) &#123;</span><br><span class="line">                <span class="comment">// Scheduled an async callback, and we&#x27;re not already working. Add an</span></span><br><span class="line">                <span class="comment">// entry to the flamegraph that shows we&#x27;re waiting for a callback</span></span><br><span class="line">                <span class="comment">// to fire.</span></span><br><span class="line">                startRequestCallbackTimer();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Associate the current interactions with this new root+priority.</span></span><br><span class="line">    schedulePendingInteractions(root, expirationTime);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="scheduleSyncCallback"><a href="#scheduleSyncCallback" class="headerlink" title="scheduleSyncCallback"></a>scheduleSyncCallback</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> syncQueue: <span class="built_in">Array</span>&lt;SchedulerCallback&gt; | <span class="literal">null</span> = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">scheduleSyncCallback</span>(<span class="params">callback: SchedulerCallback</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Push this callback into an internal queue. We&#x27;ll flush these either in</span></span><br><span class="line">    <span class="comment">// the next tick, or earlier if something calls `flushSyncCallbackQueue`.</span></span><br><span class="line">    <span class="keyword">if</span> (syncQueue === <span class="literal">null</span>) &#123;</span><br><span class="line">        syncQueue = [callback];</span><br><span class="line">        <span class="comment">// Flush the queue in the next tick, at the earliest.</span></span><br><span class="line">        immediateQueueCallbackNode = Scheduler_scheduleCallback(</span><br><span class="line">            Scheduler_ImmediatePriority, <span class="comment">// 立即优先级 1</span></span><br><span class="line">            flushSyncCallbackQueueImpl, <span class="comment">// 回调方法 执行syncQueue里的方法</span></span><br><span class="line">        );</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// Push onto existing queue. Don&#x27;t need to schedule a callback because</span></span><br><span class="line">        <span class="comment">// we already scheduled one when we created the queue.</span></span><br><span class="line">        syncQueue.push(callback);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fakeCallbackNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Scheduler-scheduleCallback"><a href="#Scheduler-scheduleCallback" class="headerlink" title="Scheduler_scheduleCallback"></a>Scheduler_scheduleCallback</h3><p>即<code>unstable_scheduleCallback</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unstable_scheduleCallback</span>(<span class="params">priorityLevel, callback, options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> currentTime = getCurrentTime(); <span class="comment">// 获取当前时间</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> startTime;</span><br><span class="line">    <span class="keyword">var</span> timeout;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> options === <span class="string">&#x27;object&#x27;</span> &amp;&amp; options !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> delay = options.delay;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> delay === <span class="string">&#x27;number&#x27;</span> &amp;&amp; delay &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            startTime = currentTime + delay;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            startTime = currentTime;</span><br><span class="line">        &#125;</span><br><span class="line">        timeout =</span><br><span class="line">            <span class="keyword">typeof</span> options.timeout === <span class="string">&#x27;number&#x27;</span></span><br><span class="line">                ? options.timeout</span><br><span class="line">                : timeoutForPriorityLevel(priorityLevel);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        timeout = timeoutForPriorityLevel(priorityLevel);</span><br><span class="line">        startTime = currentTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> expirationTime = startTime + timeout;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> newTask = &#123;</span><br><span class="line">        callback,</span><br><span class="line">        priorityLevel,</span><br><span class="line">        startTime,</span><br><span class="line">        expirationTime,</span><br><span class="line">        next: <span class="literal">null</span>,</span><br><span class="line">        previous: <span class="literal">null</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (startTime &gt; currentTime) &#123;</span><br><span class="line">        <span class="comment">// This is a delayed task.</span></span><br><span class="line">        insertDelayedTask(newTask, startTime);</span><br><span class="line">        <span class="keyword">if</span> (firstTask === <span class="literal">null</span> &amp;&amp; firstDelayedTask === newTask) &#123;</span><br><span class="line">            <span class="comment">// All tasks are delayed, and this is the task with the earliest delay.</span></span><br><span class="line">            <span class="keyword">if</span> (isHostTimeoutScheduled) &#123;</span><br><span class="line">                <span class="comment">// Cancel an existing timeout.</span></span><br><span class="line">                cancelHostTimeout();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                isHostTimeoutScheduled = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// Schedule a timeout.</span></span><br><span class="line">            requestHostTimeout(handleTimeout, startTime - currentTime);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        insertScheduledTask(newTask, expirationTime);</span><br><span class="line">        <span class="comment">// Schedule a host callback, if needed. If we&#x27;re already performing work,</span></span><br><span class="line">        <span class="comment">// wait until the next time we yield.</span></span><br><span class="line">        <span class="keyword">if</span> (!isHostCallbackScheduled &amp;&amp; !isPerformingWork) &#123;</span><br><span class="line">            isHostCallbackScheduled = <span class="literal">true</span>;</span><br><span class="line">            requestHostCallback(flushWork);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> newTask;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="timeoutForPriorityLevel"><a href="#timeoutForPriorityLevel" class="headerlink" title="timeoutForPriorityLevel"></a>timeoutForPriorityLevel</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">固定参数见 <span class="string">`常量.md`</span>-&gt;<span class="string">`优先级`</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeoutForPriorityLevel</span>(<span class="params">priorityLevel</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (priorityLevel) &#123;</span><br><span class="line">    <span class="keyword">case</span> ImmediatePriority:</span><br><span class="line">      <span class="keyword">return</span> IMMEDIATE_PRIORITY_TIMEOUT;</span><br><span class="line">    <span class="keyword">case</span> UserBlockingPriority:</span><br><span class="line">      <span class="keyword">return</span> USER_BLOCKING_PRIORITY;</span><br><span class="line">    <span class="keyword">case</span> IdlePriority:</span><br><span class="line">      <span class="keyword">return</span> IDLE_PRIORITY;</span><br><span class="line">    <span class="keyword">case</span> LowPriority:</span><br><span class="line">      <span class="keyword">return</span> LOW_PRIORITY_TIMEOUT;</span><br><span class="line">    <span class="keyword">case</span> NormalPriority:</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> NORMAL_PRIORITY_TIMEOUT;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="insertScheduledTask"><a href="#insertScheduledTask" class="headerlink" title="insertScheduledTask"></a>insertScheduledTask</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertScheduledTask</span>(<span class="params">newTask, expirationTime</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Insert the new task into the list, ordered first by its timeout, then by</span></span><br><span class="line">    <span class="comment">// insertion. So the new task is inserted after any other task the</span></span><br><span class="line">    <span class="comment">// same timeout</span></span><br><span class="line">    <span class="keyword">if</span> (firstTask === <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// 第一个任务</span></span><br><span class="line">        <span class="comment">// This is the first task in the list.</span></span><br><span class="line">        firstTask = newTask.next = newTask.previous = newTask;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> next = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">var</span> task = firstTask;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (expirationTime &lt; task.expirationTime) &#123;</span><br><span class="line">                <span class="comment">// The new task times out before this one.</span></span><br><span class="line">                next = task;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            task = task.next;</span><br><span class="line">        &#125; <span class="keyword">while</span> (task !== firstTask);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (next === <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// No task with a later timeout was found, which means the new task has</span></span><br><span class="line">            <span class="comment">// the latest timeout in the list.</span></span><br><span class="line">            next = firstTask;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (next === firstTask) &#123;</span><br><span class="line">            <span class="comment">// The new task has the earliest expiration in the entire list.</span></span><br><span class="line">            firstTask = newTask;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> previous = next.previous;</span><br><span class="line">        previous.next = next.previous = newTask;</span><br><span class="line">        newTask.next = next;</span><br><span class="line">        newTask.previous = previous;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="requestHostCallback"><a href="#requestHostCallback" class="headerlink" title="requestHostCallback"></a>requestHostCallback</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">requestHostCallback = <span class="function"><span class="keyword">function</span> (<span class="params">callback</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (scheduledHostCallback === <span class="literal">null</span>) &#123;</span><br><span class="line">        scheduledHostCallback = callback;</span><br><span class="line">        <span class="keyword">if</span> (!isAnimationFrameScheduled) &#123;</span><br><span class="line">            <span class="comment">// If rAF didn&#x27;t already schedule one, we need to schedule a frame.</span></span><br><span class="line">            <span class="comment">// <span class="doctag">TODO:</span> If this rAF doesn&#x27;t materialize because the browser throttles,</span></span><br><span class="line">            <span class="comment">// we might want to still have setTimeout trigger rIC as a backup to</span></span><br><span class="line">            <span class="comment">// ensure that we keep performing work.</span></span><br><span class="line">            isAnimationFrameScheduled = <span class="literal">true</span>;</span><br><span class="line">            requestAnimationFrameWithTimeout(animationTick);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="requestAnimationFrameWithTimeout"><a href="#requestAnimationFrameWithTimeout" class="headerlink" title="requestAnimationFrameWithTimeout"></a>requestAnimationFrameWithTimeout</h3><p><code>equestAnimationFrame</code>在后台时会停止工作，所以需要<code>localSetTimeout</code>辅助</p>
-<p>把渲染流程放在了<code>requestAnimationFrame</code>或<code>setTimeOut</code>里面</p>
-<p><code>requestAnimationFrame</code>使得在一次同步事件中的所有更改都一起处理</p>
-<p>最后的处理就是<code>callback</code>了</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// requestAnimationFrame does not run when the tab is in the background. If</span></span><br><span class="line"><span class="comment">// we&#x27;re backgrounded we prefer for that work to happen so that the page</span></span><br><span class="line"><span class="comment">// continues to load in the background. So we also schedule a &#x27;setTimeout&#x27; as</span></span><br><span class="line"><span class="comment">// a fallback.</span></span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span> Need a better heuristic for backgrounded work.</span></span><br><span class="line"><span class="keyword">const</span> ANIMATION_FRAME_TIMEOUT = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">let</span> rAFID;</span><br><span class="line"><span class="keyword">let</span> rAFTimeoutID;</span><br><span class="line"><span class="keyword">const</span> requestAnimationFrameWithTimeout = <span class="function"><span class="keyword">function</span> (<span class="params">callback</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// schedule rAF and also a setTimeout</span></span><br><span class="line">    rAFID = localRequestAnimationFrame(<span class="function"><span class="keyword">function</span> (<span class="params">timestamp</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// cancel the setTimeout</span></span><br><span class="line">        localClearTimeout(rAFTimeoutID);</span><br><span class="line">        callback(timestamp);</span><br><span class="line">    &#125;);</span><br><span class="line">    rAFTimeoutID = localSetTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// cancel the requestAnimationFrame</span></span><br><span class="line">        localCancelAnimationFrame(rAFID);</span><br><span class="line">        callback(getCurrentTime());</span><br><span class="line">    &#125;, ANIMATION_FRAME_TIMEOUT);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="animationTick"><a href="#animationTick" class="headerlink" title="animationTick"></a>animationTick</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> animationTick = <span class="function"><span class="keyword">function</span> (<span class="params">rafTime</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (scheduledHostCallback !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// Eagerly schedule the next animation callback at the beginning of the</span></span><br><span class="line">        <span class="comment">// frame. If the scheduler queue is not empty at the end of the frame, it</span></span><br><span class="line">        <span class="comment">// will continue flushing inside that callback. If the queue *is* empty,</span></span><br><span class="line">        <span class="comment">// then it will exit immediately. Posting the callback at the start of the</span></span><br><span class="line">        <span class="comment">// frame ensures it&#x27;s fired within the earliest possible frame. If we</span></span><br><span class="line">        <span class="comment">// waited until the end of the frame to post the callback, we risk the</span></span><br><span class="line">        <span class="comment">// browser skipping a frame and not firing the callback until the frame</span></span><br><span class="line">        <span class="comment">// after that.</span></span><br><span class="line">        requestAnimationFrameWithTimeout(animationTick);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// No pending work. Exit.</span></span><br><span class="line">        isAnimationFrameScheduled = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> nextFrameTime = rafTime - frameDeadline + activeFrameTime;</span><br><span class="line">    <span class="keyword">if</span> (nextFrameTime &lt; activeFrameTime &amp;&amp; previousFrameTime &lt; activeFrameTime &amp;&amp; !fpsLocked) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nextFrameTime &lt; <span class="number">8</span>) &#123;</span><br><span class="line">            <span class="comment">// Defensive coding. We don&#x27;t support higher frame rates than 120hz.</span></span><br><span class="line">            <span class="comment">// If the calculated frame time gets lower than 8, it is probably a bug.</span></span><br><span class="line">            nextFrameTime = <span class="number">8</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// If one frame goes long, then the next one can be short to catch up.</span></span><br><span class="line">        <span class="comment">// If two frames are short in a row, then that&#x27;s an indication that we</span></span><br><span class="line">        <span class="comment">// actually have a higher frame rate than what we&#x27;re currently optimizing.</span></span><br><span class="line">        <span class="comment">// We adjust our heuristic dynamically accordingly. For example, if we&#x27;re</span></span><br><span class="line">        <span class="comment">// running on 120hz display or 90hz VR display.</span></span><br><span class="line">        <span class="comment">// Take the max of the two in case one of them was an anomaly due to</span></span><br><span class="line">        <span class="comment">// missed frame deadlines.</span></span><br><span class="line">        activeFrameTime = nextFrameTime &lt; previousFrameTime ? previousFrameTime : nextFrameTime;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        previousFrameTime = nextFrameTime;</span><br><span class="line">    &#125;</span><br><span class="line">    frameDeadline = rafTime + activeFrameTime;</span><br><span class="line">    <span class="keyword">if</span> (!isMessageEventScheduled) &#123;</span><br><span class="line">        isMessageEventScheduled = <span class="literal">true</span>;</span><br><span class="line">        port.postMessage(<span class="literal">undefined</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="flushSyncCallbackQueue"><a href="#flushSyncCallbackQueue" class="headerlink" title="flushSyncCallbackQueue"></a>flushSyncCallbackQueue</h3><p><code>callback</code>看上方<code>scheduleCallbackForRoot</code>里面</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">flushSyncCallbackQueue</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (immediateQueueCallbackNode !== <span class="literal">null</span>) &#123;</span><br><span class="line">        Scheduler_cancelCallback(immediateQueueCallbackNode);</span><br><span class="line">    &#125;</span><br><span class="line">    flushSyncCallbackQueueImpl();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flushSyncCallbackQueueImpl</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!isFlushingSyncQueue &amp;&amp; syncQueue !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// Prevent re-entrancy.</span></span><br><span class="line">        isFlushingSyncQueue = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> isSync = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">for</span> (; i &lt; syncQueue.length; i++) &#123;</span><br><span class="line">                <span class="keyword">let</span> callback = syncQueue[i];</span><br><span class="line">                <span class="keyword">do</span> &#123;</span><br><span class="line">                    callback = callback(isSync);</span><br><span class="line">                &#125; <span class="keyword">while</span> (callback !== <span class="literal">null</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            syncQueue = <span class="literal">null</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">            <span class="comment">// If something throws, leave the remaining callbacks on the queue.</span></span><br><span class="line">            <span class="keyword">if</span> (syncQueue !== <span class="literal">null</span>) &#123;</span><br><span class="line">                syncQueue = syncQueue.slice(i + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// Resume flushing in the next tick</span></span><br><span class="line">            Scheduler_scheduleCallback(Scheduler_ImmediatePriority, flushSyncCallbackQueue);</span><br><span class="line">            <span class="keyword">throw</span> error;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            isFlushingSyncQueue = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="runRootCallback"><a href="#runRootCallback" class="headerlink" title="runRootCallback"></a>runRootCallback</h3><p><code>runRootCallback</code>里面又执行了<code>renderRoot</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runRootCallback</span>(<span class="params">root, callback, isSync</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">debugger</span>;</span><br><span class="line">    <span class="keyword">const</span> prevCallbackNode = root.callbackNode;</span><br><span class="line">    <span class="keyword">let</span> continuation = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        continuation = callback(isSync);</span><br><span class="line">        <span class="keyword">if</span> (continuation !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> runRootCallback.bind(<span class="literal">null</span>, root, continuation);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="comment">// If the callback exits without returning a continuation, remove the</span></span><br><span class="line">        <span class="comment">// corresponding callback node from the root. Unless the callback node</span></span><br><span class="line">        <span class="comment">// has changed, which implies that it was already cancelled by a high</span></span><br><span class="line">        <span class="comment">// priority update.</span></span><br><span class="line">        <span class="keyword">if</span> (continuation === <span class="literal">null</span> &amp;&amp; prevCallbackNode === root.callbackNode) &#123;</span><br><span class="line">            root.callbackNode = <span class="literal">null</span>;</span><br><span class="line">            root.callbackExpirationTime = NoWork;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="renderRoot"><a href="#renderRoot" class="headerlink" title="renderRoot"></a>renderRoot</h3><p>见 renderRoot.md</p>
+    <h3 id="schedulework"><a class="markdownIt-Anchor" href="#schedulework">#</a> scheduleWork</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">scheduleUpdateOnFiber</span>(<span class="params">fiber: Fiber, expirationTime: ExpirationTime</span>) &#123;</span><br><span class="line">    <span class="title function_">checkForNestedUpdates</span>(); <span class="comment">// 判断是否超出更新限制 50条，否则报错</span></span><br><span class="line">    <span class="comment">// 根节点：更新了fiber.stateNode的时间，返回fiber.stateNode，即FiberRoot</span></span><br><span class="line">    <span class="comment">// 子节点： 返回根节点</span></span><br><span class="line">    <span class="keyword">const</span> root = <span class="title function_">markUpdateTimeFromFiberToRoot</span>(fiber, expirationTime);</span><br><span class="line">    <span class="keyword">if</span> (root === <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    root.<span class="property">pingTime</span> = <span class="title class_">NoWork</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回优先级,见常量 ReactPriorityLevel</span></span><br><span class="line">    <span class="comment">// 已知第一次渲染是97，setState是98，useState是98</span></span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span>currentPriorityLevel仅在flushTask李改变，目前还没找到什么时候调用过</span></span><br><span class="line">    <span class="keyword">const</span> priorityLevel = <span class="title function_">getCurrentPriorityLevel</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (expirationTime === <span class="title class_">Sync</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (</span><br><span class="line">            <span class="comment">// Check if we&#x27;re inside unbatchedUpdates 8 &amp; 8 = 8 !== 0</span></span><br><span class="line">            (executionContext &amp; <span class="title class_">LegacyUnbatchedContext</span>) !== <span class="title class_">NoContext</span> &amp;&amp;</span><br><span class="line">            <span class="comment">// Check if we&#x27;re not already rendering 8 &amp; (16 | 32) = 0</span></span><br><span class="line">            (executionContext &amp; (<span class="title class_">RenderContext</span> | <span class="title class_">CommitContext</span>)) === <span class="title class_">NoContext</span></span><br><span class="line">        ) &#123;</span><br><span class="line">            <span class="comment">// This is a legacy edge case. The initial mount of a ReactDOM.render-ed</span></span><br><span class="line">            <span class="comment">// root inside of batchedUpdates should be synchronous, but layout updates</span></span><br><span class="line">            <span class="comment">// should be deferred until the end of the batch.</span></span><br><span class="line">            <span class="keyword">let</span> callback = <span class="title function_">renderRoot</span>(root, <span class="title class_">Sync</span>, <span class="literal">true</span>); <span class="comment">// 返回commitRoot</span></span><br><span class="line">            <span class="comment">// 前景：react完成了fiber树的构建并已经执行了渲染前的状态合并(getDerivedStateFromProps等生命周期已执行)</span></span><br><span class="line">            <span class="comment">// fiber树里已经构建好了真实的dom节点，放在stateNode里，就差一步插入了</span></span><br><span class="line">            <span class="comment">// debugger</span></span><br><span class="line">            <span class="keyword">while</span> (callback !== <span class="literal">null</span>) &#123;</span><br><span class="line">                callback = <span class="title function_">callback</span>(<span class="literal">true</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// setState, useState进这里</span></span><br><span class="line">            <span class="title function_">scheduleCallbackForRoot</span>(root, <span class="title class_">ImmediatePriority</span>, <span class="title class_">Sync</span>);</span><br><span class="line">            <span class="keyword">if</span> (executionContext === <span class="title class_">NoContext</span>) &#123;</span><br><span class="line">                <span class="comment">// Flush the synchronous work now, wnless we&#x27;re already working or inside</span></span><br><span class="line">                <span class="comment">// a batch. This is intentionally inside scheduleUpdateOnFiber instead of</span></span><br><span class="line">                <span class="comment">// scheduleCallbackForFiber to preserve the ability to schedule a callback</span></span><br><span class="line">                <span class="comment">// without immediately flushing it. We only do this for user-initated</span></span><br><span class="line">                <span class="comment">// updates, to preserve historical behavior of sync mode.</span></span><br><span class="line">                <span class="title function_">flushSyncCallbackQueue</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="title function_">scheduleCallbackForRoot</span>(root, priorityLevel, expirationTime);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">        (executionContext &amp; <span class="title class_">DiscreteEventContext</span>) !== <span class="title class_">NoContext</span> &amp;&amp;</span><br><span class="line">        <span class="comment">// Only updates at user-blocking priority or greater are considered</span></span><br><span class="line">        <span class="comment">// discrete, even inside a discrete event.</span></span><br><span class="line">        (priorityLevel === <span class="title class_">UserBlockingPriority</span> || priorityLevel === <span class="title class_">ImmediatePriority</span>)</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="comment">// This is the result of a discrete event. Track the lowest priority</span></span><br><span class="line">        <span class="comment">// discrete update per root so we can flush them early, if needed.</span></span><br><span class="line">        <span class="keyword">if</span> (rootsWithPendingDiscreteUpdates === <span class="literal">null</span>) &#123;</span><br><span class="line">            rootsWithPendingDiscreteUpdates = <span class="keyword">new</span> <span class="title class_">Map</span>([[root, expirationTime]]);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> lastDiscreteTime = rootsWithPendingDiscreteUpdates.<span class="title function_">get</span>(root);</span><br><span class="line">            <span class="keyword">if</span> (lastDiscreteTime === <span class="literal">undefined</span> || lastDiscreteTime &gt; expirationTime) &#123;</span><br><span class="line">                rootsWithPendingDiscreteUpdates.<span class="title function_">set</span>(root, expirationTime);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> scheduleWork = scheduleUpdateOnFiber;</span><br></pre></td></tr></table></figure>
+<h3 id="markupdatetimefromfibertoroot"><a class="markdownIt-Anchor" href="#markupdatetimefromfibertoroot">#</a> markUpdateTimeFromFiberToRoot</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">markUpdateTimeFromFiberToRoot</span>(<span class="params">fiber, expirationTime</span>) &#123;</span><br><span class="line">    <span class="comment">// Update the source fiber&#x27;s expiration time</span></span><br><span class="line">    <span class="comment">// fiber.expirationTime默认是0</span></span><br><span class="line">    <span class="keyword">if</span> (fiber.<span class="property">expirationTime</span> &lt; expirationTime) &#123;</span><br><span class="line">        fiber.<span class="property">expirationTime</span> = expirationTime;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> alternate = fiber.<span class="property">alternate</span>;</span><br><span class="line">    <span class="keyword">if</span> (alternate !== <span class="literal">null</span> &amp;&amp; alternate.<span class="property">expirationTime</span> &lt; expirationTime) &#123;</span><br><span class="line">        alternate.<span class="property">expirationTime</span> = expirationTime;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Walk the parent path to the root and update the child expiration time.</span></span><br><span class="line">    <span class="keyword">let</span> node = fiber.<span class="property">return</span>;</span><br><span class="line">    <span class="keyword">let</span> root = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (node === <span class="literal">null</span> &amp;&amp; fiber.<span class="property">tag</span> === <span class="title class_">HostRoot</span>) &#123;</span><br><span class="line">        <span class="comment">// 3 === 3</span></span><br><span class="line">        root = fiber.<span class="property">stateNode</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (node !== <span class="literal">null</span>) &#123;</span><br><span class="line">            alternate = node.<span class="property">alternate</span>;</span><br><span class="line">            <span class="comment">// 跟新childExpirationTime</span></span><br><span class="line">            <span class="keyword">if</span> (node.<span class="property">childExpirationTime</span> &lt; expirationTime) &#123;</span><br><span class="line">                node.<span class="property">childExpirationTime</span> = expirationTime;</span><br><span class="line">                <span class="keyword">if</span> (alternate !== <span class="literal">null</span> &amp;&amp; alternate.<span class="property">childExpirationTime</span> &lt; expirationTime) &#123;</span><br><span class="line">                    alternate.<span class="property">childExpirationTime</span> = expirationTime;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (alternate !== <span class="literal">null</span> &amp;&amp; alternate.<span class="property">childExpirationTime</span> &lt; expirationTime) &#123;</span><br><span class="line">                alternate.<span class="property">childExpirationTime</span> = expirationTime;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (node.<span class="property">return</span> === <span class="literal">null</span> &amp;&amp; node.<span class="property">tag</span> === <span class="title class_">HostRoot</span>) &#123;</span><br><span class="line">                root = node.<span class="property">stateNode</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            node = node.<span class="property">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (root !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// 注释：跟新根节点的firstPendingTime和lastPendingTime</span></span><br><span class="line">        <span class="comment">// Update the first and last pending expiration times in this root</span></span><br><span class="line">        <span class="keyword">const</span> firstPendingTime = root.<span class="property">firstPendingTime</span>;</span><br><span class="line">        <span class="keyword">if</span> (expirationTime &gt; firstPendingTime) &#123;</span><br><span class="line">            root.<span class="property">firstPendingTime</span> = expirationTime;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> lastPendingTime = root.<span class="property">lastPendingTime</span>;</span><br><span class="line">        <span class="keyword">if</span> (lastPendingTime === <span class="title class_">NoWork</span> || expirationTime &lt; lastPendingTime) &#123;</span><br><span class="line">            root.<span class="property">lastPendingTime</span> = expirationTime;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="schedulecallbackforroot"><a class="markdownIt-Anchor" href="#schedulecallbackforroot">#</a> scheduleCallbackForRoot</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Use this function, along with runRootCallback, to ensure that only a single</span></span><br><span class="line"><span class="comment">// callback per root is scheduled. It&#x27;s still possible to call renderRoot</span></span><br><span class="line"><span class="comment">// directly, but scheduling via this function helps avoid excessive callbacks.</span></span><br><span class="line"><span class="comment">// It works by storing the callback node and expiration time on the root. When a</span></span><br><span class="line"><span class="comment">// new callback comes in, it compares the expiration time to determine if it</span></span><br><span class="line"><span class="comment">// should cancel the previous one. It also relies on commitRoot scheduling a</span></span><br><span class="line"><span class="comment">// callback to render the next level, because that means we don&#x27;t need a</span></span><br><span class="line"><span class="comment">// separate callback per expiration time.</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">scheduleCallbackForRoot</span>(<span class="params"></span></span><br><span class="line"><span class="params">    root: FiberRoot,</span></span><br><span class="line"><span class="params">    priorityLevel: ReactPriorityLevel,</span></span><br><span class="line"><span class="params">    expirationTime: ExpirationTime,</span></span><br><span class="line"><span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> existingCallbackExpirationTime = root.<span class="property">callbackExpirationTime</span>;</span><br><span class="line">    <span class="keyword">if</span> (existingCallbackExpirationTime &lt; expirationTime) &#123;</span><br><span class="line">        <span class="comment">// New callback has higher priority than the existing one.</span></span><br><span class="line">        <span class="keyword">const</span> existingCallbackNode = root.<span class="property">callbackNode</span>;</span><br><span class="line">        <span class="keyword">if</span> (existingCallbackNode !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="title function_">cancelCallback</span>(existingCallbackNode);</span><br><span class="line">        &#125;</span><br><span class="line">        root.<span class="property">callbackExpirationTime</span> = expirationTime;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (expirationTime === <span class="title class_">Sync</span>) &#123;</span><br><span class="line">            <span class="comment">// Sync React callbacks are scheduled on a special internal queue</span></span><br><span class="line">            <span class="comment">// 同步的放在一个队列中</span></span><br><span class="line">            root.<span class="property">callbackNode</span> = <span class="title function_">scheduleSyncCallback</span>(</span><br><span class="line">                runRootCallback.<span class="title function_">bind</span>(<span class="literal">null</span>, root, renderRoot.<span class="title function_">bind</span>(<span class="literal">null</span>, root, expirationTime)),</span><br><span class="line">            );</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> options = <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">if</span> (expirationTime !== <span class="title class_">Never</span>) &#123;</span><br><span class="line">                <span class="keyword">let</span> timeout = <span class="title function_">expirationTimeToMs</span>(expirationTime) - <span class="title function_">now</span>();</span><br><span class="line">                options = &#123;timeout&#125;;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            root.<span class="property">callbackNode</span> = <span class="title function_">scheduleCallback</span>(</span><br><span class="line">                priorityLevel,</span><br><span class="line">                runRootCallback.<span class="title function_">bind</span>(<span class="literal">null</span>, root, renderRoot.<span class="title function_">bind</span>(<span class="literal">null</span>, root, expirationTime)),</span><br><span class="line">                options,</span><br><span class="line">            );</span><br><span class="line">            <span class="keyword">if</span> (</span><br><span class="line">                enableUserTimingAPI &amp;&amp;</span><br><span class="line">                expirationTime !== <span class="title class_">Sync</span> &amp;&amp;</span><br><span class="line">                (executionContext &amp; (<span class="title class_">RenderContext</span> | <span class="title class_">CommitContext</span>)) === <span class="title class_">NoContext</span></span><br><span class="line">            ) &#123;</span><br><span class="line">                <span class="comment">// Scheduled an async callback, and we&#x27;re not already working. Add an</span></span><br><span class="line">                <span class="comment">// entry to the flamegraph that shows we&#x27;re waiting for a callback</span></span><br><span class="line">                <span class="comment">// to fire.</span></span><br><span class="line">                <span class="title function_">startRequestCallbackTimer</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Associate the current interactions with this new root+priority.</span></span><br><span class="line">    <span class="title function_">schedulePendingInteractions</span>(root, expirationTime);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="schedulesynccallback"><a class="markdownIt-Anchor" href="#schedulesynccallback">#</a> scheduleSyncCallback</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">syncQueue</span>: <span class="title class_">Array</span>&lt;<span class="title class_">SchedulerCallback</span>&gt; | <span class="literal">null</span> = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">scheduleSyncCallback</span>(<span class="params">callback: SchedulerCallback</span>) &#123;</span><br><span class="line">    <span class="comment">// Push this callback into an internal queue. We&#x27;ll flush these either in</span></span><br><span class="line">    <span class="comment">// the next tick, or earlier if something calls `flushSyncCallbackQueue`.</span></span><br><span class="line">    <span class="keyword">if</span> (syncQueue === <span class="literal">null</span>) &#123;</span><br><span class="line">        syncQueue = [callback];</span><br><span class="line">        <span class="comment">// Flush the queue in the next tick, at the earliest.</span></span><br><span class="line">        immediateQueueCallbackNode = <span class="title class_">Scheduler</span>_scheduleCallback(</span><br><span class="line">            <span class="title class_">Scheduler</span>_ImmediatePriority, <span class="comment">// 立即优先级 1</span></span><br><span class="line">            flushSyncCallbackQueueImpl, <span class="comment">// 回调方法 执行syncQueue里的方法</span></span><br><span class="line">        );</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// Push onto existing queue. Don&#x27;t need to schedule a callback because</span></span><br><span class="line">        <span class="comment">// we already scheduled one when we created the queue.</span></span><br><span class="line">        syncQueue.<span class="title function_">push</span>(callback);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fakeCallbackNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="scheduler_schedulecallback"><a class="markdownIt-Anchor" href="#scheduler_schedulecallback">#</a> Scheduler_scheduleCallback</h3>
+<p>即 <code>unstable_scheduleCallback</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">unstable_scheduleCallback</span>(<span class="params">priorityLevel, callback, options</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> currentTime = <span class="title function_">getCurrentTime</span>(); <span class="comment">// 获取当前时间</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> startTime;</span><br><span class="line">    <span class="keyword">var</span> timeout;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> options === <span class="string">&#x27;object&#x27;</span> &amp;&amp; options !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> delay = options.<span class="property">delay</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> delay === <span class="string">&#x27;number&#x27;</span> &amp;&amp; delay &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            startTime = currentTime + delay;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            startTime = currentTime;</span><br><span class="line">        &#125;</span><br><span class="line">        timeout =</span><br><span class="line">            <span class="keyword">typeof</span> options.<span class="property">timeout</span> === <span class="string">&#x27;number&#x27;</span></span><br><span class="line">                ? options.<span class="property">timeout</span></span><br><span class="line">                : <span class="title function_">timeoutForPriorityLevel</span>(priorityLevel);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        timeout = <span class="title function_">timeoutForPriorityLevel</span>(priorityLevel);</span><br><span class="line">        startTime = currentTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> expirationTime = startTime + timeout;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> newTask = &#123;</span><br><span class="line">        callback,</span><br><span class="line">        priorityLevel,</span><br><span class="line">        startTime,</span><br><span class="line">        expirationTime,</span><br><span class="line">        <span class="attr">next</span>: <span class="literal">null</span>,</span><br><span class="line">        <span class="attr">previous</span>: <span class="literal">null</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (startTime &gt; currentTime) &#123;</span><br><span class="line">        <span class="comment">// This is a delayed task.</span></span><br><span class="line">        <span class="title function_">insertDelayedTask</span>(newTask, startTime);</span><br><span class="line">        <span class="keyword">if</span> (firstTask === <span class="literal">null</span> &amp;&amp; firstDelayedTask === newTask) &#123;</span><br><span class="line">            <span class="comment">// All tasks are delayed, and this is the task with the earliest delay.</span></span><br><span class="line">            <span class="keyword">if</span> (isHostTimeoutScheduled) &#123;</span><br><span class="line">                <span class="comment">// Cancel an existing timeout.</span></span><br><span class="line">                <span class="title function_">cancelHostTimeout</span>();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                isHostTimeoutScheduled = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// Schedule a timeout.</span></span><br><span class="line">            <span class="title function_">requestHostTimeout</span>(handleTimeout, startTime - currentTime);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="title function_">insertScheduledTask</span>(newTask, expirationTime);</span><br><span class="line">        <span class="comment">// Schedule a host callback, if needed. If we&#x27;re already performing work,</span></span><br><span class="line">        <span class="comment">// wait until the next time we yield.</span></span><br><span class="line">        <span class="keyword">if</span> (!isHostCallbackScheduled &amp;&amp; !isPerformingWork) &#123;</span><br><span class="line">            isHostCallbackScheduled = <span class="literal">true</span>;</span><br><span class="line">            <span class="title function_">requestHostCallback</span>(flushWork);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> newTask;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="timeoutforprioritylevel"><a class="markdownIt-Anchor" href="#timeoutforprioritylevel">#</a> timeoutForPriorityLevel</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">固定参数见 <span class="string">`常量.md`</span>-&gt;<span class="string">`优先级`</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">timeoutForPriorityLevel</span>(<span class="params">priorityLevel</span>) &#123;</span><br><span class="line">  <span class="keyword">switch</span> (priorityLevel) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="title class_">ImmediatePriority</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="variable constant_">IMMEDIATE_PRIORITY_TIMEOUT</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="title class_">UserBlockingPriority</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="variable constant_">USER_BLOCKING_PRIORITY</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="title class_">IdlePriority</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="variable constant_">IDLE_PRIORITY</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="title class_">LowPriority</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="variable constant_">LOW_PRIORITY_TIMEOUT</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="title class_">NormalPriority</span>:</span><br><span class="line">    <span class="attr">default</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="variable constant_">NORMAL_PRIORITY_TIMEOUT</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="insertscheduledtask"><a class="markdownIt-Anchor" href="#insertscheduledtask">#</a> insertScheduledTask</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">insertScheduledTask</span>(<span class="params">newTask, expirationTime</span>) &#123;</span><br><span class="line">    <span class="comment">// Insert the new task into the list, ordered first by its timeout, then by</span></span><br><span class="line">    <span class="comment">// insertion. So the new task is inserted after any other task the</span></span><br><span class="line">    <span class="comment">// same timeout</span></span><br><span class="line">    <span class="keyword">if</span> (firstTask === <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// 第一个任务</span></span><br><span class="line">        <span class="comment">// This is the first task in the list.</span></span><br><span class="line">        firstTask = newTask.<span class="property">next</span> = newTask.<span class="property">previous</span> = newTask;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> next = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">var</span> task = firstTask;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (expirationTime &lt; task.<span class="property">expirationTime</span>) &#123;</span><br><span class="line">                <span class="comment">// The new task times out before this one.</span></span><br><span class="line">                next = task;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            task = task.<span class="property">next</span>;</span><br><span class="line">        &#125; <span class="keyword">while</span> (task !== firstTask);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (next === <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// No task with a later timeout was found, which means the new task has</span></span><br><span class="line">            <span class="comment">// the latest timeout in the list.</span></span><br><span class="line">            next = firstTask;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (next === firstTask) &#123;</span><br><span class="line">            <span class="comment">// The new task has the earliest expiration in the entire list.</span></span><br><span class="line">            firstTask = newTask;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> previous = next.<span class="property">previous</span>;</span><br><span class="line">        previous.<span class="property">next</span> = next.<span class="property">previous</span> = newTask;</span><br><span class="line">        newTask.<span class="property">next</span> = next;</span><br><span class="line">        newTask.<span class="property">previous</span> = previous;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="requesthostcallback"><a class="markdownIt-Anchor" href="#requesthostcallback">#</a> requestHostCallback</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">requestHostCallback = <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (scheduledHostCallback === <span class="literal">null</span>) &#123;</span><br><span class="line">        scheduledHostCallback = callback;</span><br><span class="line">        <span class="keyword">if</span> (!isAnimationFrameScheduled) &#123;</span><br><span class="line">            <span class="comment">// If rAF didn&#x27;t already schedule one, we need to schedule a frame.</span></span><br><span class="line">            <span class="comment">// <span class="doctag">TODO:</span> If this rAF doesn&#x27;t materialize because the browser throttles,</span></span><br><span class="line">            <span class="comment">// we might want to still have setTimeout trigger rIC as a backup to</span></span><br><span class="line">            <span class="comment">// ensure that we keep performing work.</span></span><br><span class="line">            isAnimationFrameScheduled = <span class="literal">true</span>;</span><br><span class="line">            <span class="title function_">requestAnimationFrameWithTimeout</span>(animationTick);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="requestanimationframewithtimeout"><a class="markdownIt-Anchor" href="#requestanimationframewithtimeout">#</a> requestAnimationFrameWithTimeout</h3>
+<p><code>equestAnimationFrame</code>  在后台时会停止工作，所以需要 <code>localSetTimeout</code>  辅助</p>
+<p>把渲染流程放在了 <code>requestAnimationFrame</code>  或 <code>setTimeOut</code>  里面</p>
+<p><code>requestAnimationFrame</code>  使得在一次同步事件中的所有更改都一起处理</p>
+<p>最后的处理就是 <code>callback</code>  了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// requestAnimationFrame does not run when the tab is in the background. If</span></span><br><span class="line"><span class="comment">// we&#x27;re backgrounded we prefer for that work to happen so that the page</span></span><br><span class="line"><span class="comment">// continues to load in the background. So we also schedule a &#x27;setTimeout&#x27; as</span></span><br><span class="line"><span class="comment">// a fallback.</span></span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span> Need a better heuristic for backgrounded work.</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">ANIMATION_FRAME_TIMEOUT</span> = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">let</span> rAFID;</span><br><span class="line"><span class="keyword">let</span> rAFTimeoutID;</span><br><span class="line"><span class="keyword">const</span> requestAnimationFrameWithTimeout = <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">    <span class="comment">// schedule rAF and also a setTimeout</span></span><br><span class="line">    rAFID = <span class="title function_">localRequestAnimationFrame</span>(<span class="keyword">function</span> (<span class="params">timestamp</span>) &#123;</span><br><span class="line">        <span class="comment">// cancel the setTimeout</span></span><br><span class="line">        <span class="title function_">localClearTimeout</span>(rAFTimeoutID);</span><br><span class="line">        <span class="title function_">callback</span>(timestamp);</span><br><span class="line">    &#125;);</span><br><span class="line">    rAFTimeoutID = <span class="title function_">localSetTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="comment">// cancel the requestAnimationFrame</span></span><br><span class="line">        <span class="title function_">localCancelAnimationFrame</span>(rAFID);</span><br><span class="line">        <span class="title function_">callback</span>(<span class="title function_">getCurrentTime</span>());</span><br><span class="line">    &#125;, <span class="variable constant_">ANIMATION_FRAME_TIMEOUT</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="animationtick"><a class="markdownIt-Anchor" href="#animationtick">#</a> animationTick</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> animationTick = <span class="keyword">function</span> (<span class="params">rafTime</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (scheduledHostCallback !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// Eagerly schedule the next animation callback at the beginning of the</span></span><br><span class="line">        <span class="comment">// frame. If the scheduler queue is not empty at the end of the frame, it</span></span><br><span class="line">        <span class="comment">// will continue flushing inside that callback. If the queue *is* empty,</span></span><br><span class="line">        <span class="comment">// then it will exit immediately. Posting the callback at the start of the</span></span><br><span class="line">        <span class="comment">// frame ensures it&#x27;s fired within the earliest possible frame. If we</span></span><br><span class="line">        <span class="comment">// waited until the end of the frame to post the callback, we risk the</span></span><br><span class="line">        <span class="comment">// browser skipping a frame and not firing the callback until the frame</span></span><br><span class="line">        <span class="comment">// after that.</span></span><br><span class="line">        <span class="title function_">requestAnimationFrameWithTimeout</span>(animationTick);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// No pending work. Exit.</span></span><br><span class="line">        isAnimationFrameScheduled = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> nextFrameTime = rafTime - frameDeadline + activeFrameTime;</span><br><span class="line">    <span class="keyword">if</span> (nextFrameTime &lt; activeFrameTime &amp;&amp; previousFrameTime &lt; activeFrameTime &amp;&amp; !fpsLocked) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nextFrameTime &lt; <span class="number">8</span>) &#123;</span><br><span class="line">            <span class="comment">// Defensive coding. We don&#x27;t support higher frame rates than 120hz.</span></span><br><span class="line">            <span class="comment">// If the calculated frame time gets lower than 8, it is probably a bug.</span></span><br><span class="line">            nextFrameTime = <span class="number">8</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// If one frame goes long, then the next one can be short to catch up.</span></span><br><span class="line">        <span class="comment">// If two frames are short in a row, then that&#x27;s an indication that we</span></span><br><span class="line">        <span class="comment">// actually have a higher frame rate than what we&#x27;re currently optimizing.</span></span><br><span class="line">        <span class="comment">// We adjust our heuristic dynamically accordingly. For example, if we&#x27;re</span></span><br><span class="line">        <span class="comment">// running on 120hz display or 90hz VR display.</span></span><br><span class="line">        <span class="comment">// Take the max of the two in case one of them was an anomaly due to</span></span><br><span class="line">        <span class="comment">// missed frame deadlines.</span></span><br><span class="line">        activeFrameTime = nextFrameTime &lt; previousFrameTime ? previousFrameTime : nextFrameTime;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        previousFrameTime = nextFrameTime;</span><br><span class="line">    &#125;</span><br><span class="line">    frameDeadline = rafTime + activeFrameTime;</span><br><span class="line">    <span class="keyword">if</span> (!isMessageEventScheduled) &#123;</span><br><span class="line">        isMessageEventScheduled = <span class="literal">true</span>;</span><br><span class="line">        port.<span class="title function_">postMessage</span>(<span class="literal">undefined</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="flushsynccallbackqueue"><a class="markdownIt-Anchor" href="#flushsynccallbackqueue">#</a> flushSyncCallbackQueue</h3>
+<p><code>callback</code>  看上方 <code>scheduleCallbackForRoot</code>  里面</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">flushSyncCallbackQueue</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (immediateQueueCallbackNode !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="title class_">Scheduler</span>_cancelCallback(immediateQueueCallbackNode);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">flushSyncCallbackQueueImpl</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">flushSyncCallbackQueueImpl</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isFlushingSyncQueue &amp;&amp; syncQueue !== <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="comment">// Prevent re-entrancy.</span></span><br><span class="line">        isFlushingSyncQueue = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> isSync = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">for</span> (; i &lt; syncQueue.<span class="property">length</span>; i++) &#123;</span><br><span class="line">                <span class="keyword">let</span> callback = syncQueue[i];</span><br><span class="line">                <span class="keyword">do</span> &#123;</span><br><span class="line">                    callback = <span class="title function_">callback</span>(isSync);</span><br><span class="line">                &#125; <span class="keyword">while</span> (callback !== <span class="literal">null</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            syncQueue = <span class="literal">null</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">            <span class="comment">// If something throws, leave the remaining callbacks on the queue.</span></span><br><span class="line">            <span class="keyword">if</span> (syncQueue !== <span class="literal">null</span>) &#123;</span><br><span class="line">                syncQueue = syncQueue.<span class="title function_">slice</span>(i + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// Resume flushing in the next tick</span></span><br><span class="line">            <span class="title class_">Scheduler</span>_scheduleCallback(<span class="title class_">Scheduler</span>_ImmediatePriority, flushSyncCallbackQueue);</span><br><span class="line">            <span class="keyword">throw</span> error;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            isFlushingSyncQueue = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="runrootcallback"><a class="markdownIt-Anchor" href="#runrootcallback">#</a> runRootCallback</h3>
+<p><code>runRootCallback</code>  里面又执行了 <code>renderRoot</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">runRootCallback</span>(<span class="params">root, callback, isSync</span>) &#123;</span><br><span class="line">    <span class="keyword">debugger</span>;</span><br><span class="line">    <span class="keyword">const</span> prevCallbackNode = root.<span class="property">callbackNode</span>;</span><br><span class="line">    <span class="keyword">let</span> continuation = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        continuation = <span class="title function_">callback</span>(isSync);</span><br><span class="line">        <span class="keyword">if</span> (continuation !== <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> runRootCallback.<span class="title function_">bind</span>(<span class="literal">null</span>, root, continuation);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="comment">// If the callback exits without returning a continuation, remove the</span></span><br><span class="line">        <span class="comment">// corresponding callback node from the root. Unless the callback node</span></span><br><span class="line">        <span class="comment">// has changed, which implies that it was already cancelled by a high</span></span><br><span class="line">        <span class="comment">// priority update.</span></span><br><span class="line">        <span class="keyword">if</span> (continuation === <span class="literal">null</span> &amp;&amp; prevCallbackNode === root.<span class="property">callbackNode</span>) &#123;</span><br><span class="line">            root.<span class="property">callbackNode</span> = <span class="literal">null</span>;</span><br><span class="line">            root.<span class="property">callbackExpirationTime</span> = <span class="title class_">NoWork</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="renderroot"><a class="markdownIt-Anchor" href="#renderroot">#</a> renderRoot</h3>
+<p>见 <span class="exturl" data-url="aHR0cDovL3JlbmRlclJvb3QubWQ=">renderRoot.md</span></p>
 <p>之后就是渲染那一套</p>
 
+      <div class="tags">
+          <a href="/my-notes/tags/react%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag"><i class="ic i-tag"></i> react源码解析</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2024-01-10 14:24:20" itemprop="dateModified" datetime="2024-01-10T14:24:20+08:00">2024-01-10</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/my-notes/images/wechatpay.png" alt="lokve 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/alipay.png" alt="lokve 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/paypal.png" alt="lokve 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>lokve <i class="ic i-at"><em>@</em></i>学习笔记
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2020/09/10/react/schedule/" title="reconcileChildFibers">http://example.com/2020/09/10/react/schedule/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/my-notes/2020/09/10/react/%E4%BA%8B%E4%BB%B6/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclj9410cj20zk0m8h12.jpg" title="事件系统">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> react</span>
+  <h3>事件系统</h3>
+  </a>
+
     </div>
+    <div class="item right">
+      
 
-    
-    
-    
+  <a href="/my-notes/2020/09/10/react/createElement(react%20element)/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipex2cdtbj20zk0m8x6p.jpg" title="createElement(react element)">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> react</span>
+  <h3>createElement(react element)</h3>
+  </a>
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/my-notes/tags/react%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag"># react源码解析</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/my-notes/2020/09/10/react/%E4%BA%8B%E4%BB%B6/" rel="prev" title="事件系统">
-      <i class="fa fa-chevron-left"></i> 事件系统
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/my-notes/2020/09/10/react/createElement(react%20element)/" rel="next" title="createElement(react element)">
-      createElement(react element) <i class="fa fa-chevron-right"></i>
-    </a></div>
     </div>
-      </footer>
-    
-  </article>
+</div>
+
   
-  
-  
+  <div class="wrap" id="comments"></div>
 
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
 
         </div>
+        <div id="sidebar">
           
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#schedulework"><span class="toc-number">1.</span> <span class="toc-text"> scheduleWork</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#markupdatetimefromfibertoroot"><span class="toc-number">2.</span> <span class="toc-text"> markUpdateTimeFromFiberToRoot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#schedulecallbackforroot"><span class="toc-number">3.</span> <span class="toc-text"> scheduleCallbackForRoot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#schedulesynccallback"><span class="toc-number">4.</span> <span class="toc-text"> scheduleSyncCallback</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scheduler_schedulecallback"><span class="toc-number">5.</span> <span class="toc-text"> Scheduler_scheduleCallback</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#timeoutforprioritylevel"><span class="toc-number">6.</span> <span class="toc-text"> timeoutForPriorityLevel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#insertscheduledtask"><span class="toc-number">7.</span> <span class="toc-text"> insertScheduledTask</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#requesthostcallback"><span class="toc-number">8.</span> <span class="toc-text"> requestHostCallback</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#requestanimationframewithtimeout"><span class="toc-number">9.</span> <span class="toc-text"> requestAnimationFrameWithTimeout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#animationtick"><span class="toc-number">10.</span> <span class="toc-text"> animationTick</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flushsynccallbackqueue"><span class="toc-number">11.</span> <span class="toc-text"> flushSyncCallbackQueue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#runrootcallback"><span class="toc-number">12.</span> <span class="toc-text"> runRootCallback</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#renderroot"><span class="toc-number">13.</span> <span class="toc-text"> renderRoot</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" rel="bookmark" title="初始流程">初始流程</a></li><li><a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" rel="bookmark" title="常量">常量</a></li><li><a href="/my-notes/2020/09/08/react/%E5%90%84%E7%A7%8D%E5%AF%B9%E8%B1%A1/" rel="bookmark" title="一些对象定义">一些对象定义</a></li><li><a href="/my-notes/2020/09/08/react/%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/" rel="bookmark" title="时间">时间</a></li><li><a href="/my-notes/2020/09/08/react/fiber/" rel="bookmark" title="fiber">fiber</a></li><li><a href="/my-notes/2020/09/08/react/renderRoot/" rel="bookmark" title="renderRoot">renderRoot</a></li><li><a href="/my-notes/2020/09/09/react/completeWork/" rel="bookmark" title="completeWork">completeWork</a></li><li><a href="/my-notes/2020/09/09/react/commitRoot/" rel="bookmark" title="commitRoot">commitRoot</a></li><li><a href="/my-notes/2020/09/09/react/hooks/" rel="bookmark" title="hooks">hooks</a></li><li><a href="/my-notes/2020/09/09/react/function%E7%BB%84%E4%BB%B6/" rel="bookmark" title="function组件">function组件</a></li><li><a href="/my-notes/2020/09/09/react/reconcileChildFibers/" rel="bookmark" title="reconcileChildFibers">reconcileChildFibers</a></li><li><a href="/my-notes/2020/09/10/react/%E4%BA%8B%E4%BB%B6/" rel="bookmark" title="事件系统">事件系统</a></li><li><a href="/my-notes/2020/09/10/react/createElement(dom)/" rel="bookmark" title="createElement(dom)">createElement(dom)</a></li><li><a href="/my-notes/2020/09/10/react/createElement(react%20element)/" rel="bookmark" title="createElement(react element)">createElement(react element)</a></li><li class="active"><a href="/my-notes/2020/09/10/react/schedule/" rel="bookmark" title="reconcileChildFibers">reconcileChildFibers</a></li><li><a href="/my-notes/2020/09/11/react/context/" rel="bookmark" title="completeWork">completeWork</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="lokve"
+      data-src="/my-notes/images/head.jpeg">
+  <p class="name" itemprop="name">lokve</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/my-notes/archives/">
+        <span class="count">71</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/my-notes/categories/">
+        <span class="count">2</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/my-notes/tags/">
+        <span class="count">8</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xva3Zl" title="https:&#x2F;&#x2F;github.com&#x2F;lokve"><i class="ic i-github"></i></span>
+</div>
+
+<ul class="menu">
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+    
+  <li class="item">
+    <a href="/my-notes/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/my-notes/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/my-notes/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
   </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#scheduleWork"><span class="nav-number">1.</span> <span class="nav-text">scheduleWork</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#markUpdateTimeFromFiberToRoot"><span class="nav-number">2.</span> <span class="nav-text">markUpdateTimeFromFiberToRoot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scheduleCallbackForRoot"><span class="nav-number">3.</span> <span class="nav-text">scheduleCallbackForRoot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scheduleSyncCallback"><span class="nav-number">4.</span> <span class="nav-text">scheduleSyncCallback</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scheduler-scheduleCallback"><span class="nav-number">5.</span> <span class="nav-text">Scheduler_scheduleCallback</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#timeoutForPriorityLevel"><span class="nav-number">6.</span> <span class="nav-text">timeoutForPriorityLevel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#insertScheduledTask"><span class="nav-number">7.</span> <span class="nav-text">insertScheduledTask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#requestHostCallback"><span class="nav-number">8.</span> <span class="nav-text">requestHostCallback</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#requestAnimationFrameWithTimeout"><span class="nav-number">9.</span> <span class="nav-text">requestAnimationFrameWithTimeout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#animationTick"><span class="nav-number">10.</span> <span class="nav-text">animationTick</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flushSyncCallbackQueue"><span class="nav-number">11.</span> <span class="nav-text">flushSyncCallbackQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#runRootCallback"><span class="nav-number">12.</span> <span class="nav-text">runRootCallback</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#renderRoot"><span class="nav-number">13.</span> <span class="nav-text">renderRoot</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">lokve</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/my-notes/archives/">
-        
-          <span class="site-state-item-count">63</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/my-notes/tags/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/my-notes/2020/09/10/react/%E4%BA%8B%E4%BB%B6/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/my-notes/2020/09/10/react/createElement(react%20element)/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
 </div>
 
 
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
+        </div>
+        <div class="dimmer"></div>
       </div>
     </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">lokve</span>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+
+    <span><a href="/my-notes/2017/05/25/bue/readme/" title="说明">说明</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/Provider/" title="Provider">Provider</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/5.%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" title="引用类型">引用类型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/" title="DOM2和DOM3">DOM2和DOM3</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/09/react/function%E7%BB%84%E4%BB%B6/" title="function组件">function组件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/" title="离线应用与客户端储存">离线应用与客户端储存</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2017/05/09/bue/2/" title="Bue源码阅读笔记（2）">Bue源码阅读笔记（2）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/08/react/fiber/" title="fiber">fiber</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/09/leetcode/70.Climbing%20Stairs/index/" title="70.Climbing Stairs">70.Climbing Stairs</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2018/06/07/vue/v-if/" title="Vue源码阅读笔记 (v-if)">Vue源码阅读笔记 (v-if)</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">lokve @ hee note</span>
   </div>
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
     </span>
+    <span title="站点总字数">374k 字</span>
+
     <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
     </span>
+    <span title="站点阅读时长">5:40</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
 </div>
-
-
-
-
-
-
-
 
       </div>
     </footer>
   </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2020/09/10/react/schedule/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
 
-  
-  <script src="/my-notes/lib/anime.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.ui.min.js"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
 
-<script src="/my-notes/js/utils.js"></script>
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 
-<script src="/my-notes/js/motion.js"></script>
-
-
-<script src="/my-notes/js/schemes/pisces.js"></script>
-
-
-<script src="/my-notes/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/my-notes/js/local-search.js"></script>
-
-
-
-
-
-
+<script src="/my-notes/js/app.js?v=0.2.5"></script>
 
 
 
-
-
-
-
-  
-
-  
 
 </body>
 </html>

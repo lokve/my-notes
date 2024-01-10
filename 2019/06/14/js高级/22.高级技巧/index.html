@@ -1,476 +1,567 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.1.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/my-notes/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/my-notes/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/my-notes/images/logo.svg" color="#222">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon.png">
 
-<link rel="stylesheet" href="/my-notes/css/main.css">
+<link rel="icon" type="image/ico" sizes="32x32" href="/my-notes/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 
-<link rel="stylesheet" href="/my-notes/lib/font-awesome/css/all.min.css">
+<link rel="alternate" type="application/rss+xml" title="学习笔记" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="学习笔记" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="学习笔记" href="http://example.com/feed.json" />
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/my-notes/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-  <meta name="description" content="高级函数安全的类型检测Object.prototype.toString.call 作用域安全的构造函数123456789function Person(name, age, job)&amp;#123;    if (this instanceof Person)&amp;#123;        this.name &#x3D; name;        this.age &#x3D; age;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="高级技巧">
-<meta property="og:url" content="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/index.html">
-<meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="高级函数安全的类型检测Object.prototype.toString.call 作用域安全的构造函数123456789function Person(name, age, job)&amp;#123;    if (this instanceof Person)&amp;#123;        this.name &#x3D; name;        this.age &#x3D; age;">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-06-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-09-15T06:13:25.734Z">
-<meta property="article:author" content="lokve">
-<meta property="article:tag" content="javascript高级笔记">
-<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/my-notes/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="javascript高级笔记" />
+
 
 <link rel="canonical" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>高级技巧 | 学习笔记</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
+  <title>
+高级技巧 |
+hee note = 学习笔记</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
     </div>
   </div>
-
-  <div class="site-meta">
-
-    <a href="/my-notes/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">学习笔记</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">高级技巧
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>2.3k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>2 分钟</span>
+  </span>
 </div>
 
 
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/my-notes/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/my-notes/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/my-notes/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/my-notes/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/my-notes/" rel="start">hee note</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
       </li>
-  </ul>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
 </nav>
 
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexj2jgzj20zk0m8b09.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicliierfjj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexbei4hj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyonbf9j20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
+        </ul>
+      </div>
     </header>
-
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/my-notes/">首页</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/my-notes/images/head.jpeg">
+    <meta itemprop="name" content="lokve">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="学习笔记">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="高级函数"><a class="markdownIt-Anchor" href="#高级函数">#</a> 高级函数</h2>
+<h3 id="安全的类型检测"><a class="markdownIt-Anchor" href="#安全的类型检测">#</a> 安全的类型检测</h3>
+<p><code>Object.prototype.toString.call</code></p>
+<h3 id="作用域安全的构造函数"><a class="markdownIt-Anchor" href="#作用域安全的构造函数">#</a> 作用域安全的构造函数</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age, job)&#123;</span><br><span class="line">    if (this instanceof Person)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">        this.job = job;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return new Person(name, age, job);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="惰性载入函数"><a class="markdownIt-Anchor" href="#惰性载入函数">#</a> 惰性载入函数</h3>
+<p>在判断之后直接把判断后的函数赋给当前函数，这样就不用每次都判断了</p>
+<h3 id="函数-curry-化"><a class="markdownIt-Anchor" href="#函数-curry-化">#</a> 函数 curry 化</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function curry(fn)&#123;</span><br><span class="line">    var args = Array.prototype.slice.call(arguments, 1);</span><br><span class="line">    return function()&#123;</span><br><span class="line">        var innerArgs = Array.prototype.slice.call(arguments);</span><br><span class="line">        var finalArgs = args.concat(innerArgs);</span><br><span class="line">        return fn.apply(null, finalArgs);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="防篡改对象"><a class="markdownIt-Anchor" href="#防篡改对象">#</a> 防篡改对象</h2>
+<h3 id="不可扩展对象"><a class="markdownIt-Anchor" href="#不可扩展对象">#</a> 不可扩展对象</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123; name: &quot;Nicholas&quot; &#125;;</span><br><span class="line">Object.preventExtensions(person);</span><br><span class="line">person.age = 29;</span><br><span class="line">alert(person.age); //undefined</span><br><span class="line">alert(Object.isExtensible(person)); //false</span><br></pre></td></tr></table></figure>
+<h3 id="密封的对象"><a class="markdownIt-Anchor" href="#密封的对象">#</a> 密封的对象</h3>
+<p>不可扩展，[[Configurable]] 为 flase</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123; name: &quot;Nicholas&quot; &#125;;</span><br><span class="line">Object.seal(person);</span><br><span class="line">person.age = 29;</span><br><span class="line">alert(person.age); //undefined</span><br><span class="line">delete person.name;</span><br><span class="line">alert(person.name); //&quot;Nicholas&quot;</span><br><span class="line">alert(Object.isExtensible(person)); //false</span><br><span class="line">alert(Object.isSealed(person));     //true</span><br></pre></td></tr></table></figure>
+<h3 id="冻结对象"><a class="markdownIt-Anchor" href="#冻结对象">#</a> 冻结对象</h3>
+<p>既不可扩展，又是密封的，[[Writable]] 为 false</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123; name: &quot;Nicholas&quot; &#125;;</span><br><span class="line">Object.freeze(person);</span><br><span class="line">person.age = 29;</span><br><span class="line">alert(person.age); //undefined</span><br><span class="line">delete person.name;</span><br><span class="line">alert(person.name); //&quot;Nicholas&quot;</span><br><span class="line">person.name = &quot;Greg&quot;;</span><br><span class="line">alert(person.name); //&quot;Nicholas&quot;</span><br><span class="line">alert(Object.isExtensible(person)); // false</span><br><span class="line">alert(Object.isSealed(person)); // true</span><br><span class="line">alert(Object.isFrozen(person)); // true</span><br></pre></td></tr></table></figure>
+<h2 id="高级定时器"><a class="markdownIt-Anchor" href="#高级定时器">#</a> 高级定时器</h2>
+<h3 id="重复的定时器"><a class="markdownIt-Anchor" href="#重复的定时器">#</a> 重复的定时器</h3>
+<p><code>setTimeout</code>   <code>setInterval</code> <br>
+ 定时器的时间并不一定准确</p>
+<h3 id="yielding-processes"><a class="markdownIt-Anchor" href="#yielding-processes">#</a> Yielding Processes</h3>
+<h2 id="自定义事件"><a class="markdownIt-Anchor" href="#自定义事件">#</a> 自定义事件</h2>
+<p>观察者模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">function EventTarget()&#123;</span><br><span class="line">        this.handlers = &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line">    EventTarget.prototype = &#123;</span><br><span class="line">        constructor: EventTarget,</span><br><span class="line">        addHandler: function(type, handler)&#123;</span><br><span class="line">            if (typeof this.handlers[type] == &quot;undefined&quot;)&#123;</span><br><span class="line">                this.handlers[type] = [];</span><br><span class="line">&#125;</span><br><span class="line">            this.handlers[type].push(handler);</span><br><span class="line">        &#125;,</span><br><span class="line">        fire: function(event)&#123;</span><br><span class="line">            if (!event.target)&#123;</span><br><span class="line">                event.target = this;</span><br><span class="line">            &#125;</span><br><span class="line">            if (this.handlers[event.type] instanceof Array)&#123;</span><br><span class="line">                var handlers = this.handlers[event.type];</span><br><span class="line">                for (var i=0, len=handlers.length; i &lt; len; i++)&#123;</span><br><span class="line">                    handlers[i](event);</span><br><span class="line">                &#125;</span><br><span class="line">&#125; &#125;,</span><br><span class="line">        removeHandler: function(type, handler)&#123;</span><br><span class="line">            if (this.handlers[type] instanceof Array)&#123;</span><br><span class="line">                var handlers = this.handlers[type];</span><br><span class="line">                for (var i=0, len=handlers.length; i &lt; len; i++)&#123;</span><br><span class="line">                    if (handlers[i] === handler)&#123;</span><br><span class="line">                        break;</span><br><span class="line">&#125; &#125;</span><br><span class="line">                handlers.splice(i, 1);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/my-notes/tags/javascript%E9%AB%98%E7%BA%A7%E7%AC%94%E8%AE%B0/" rel="tag"><i class="ic i-tag"></i> javascript高级笔记</a>
+      </div>
   </div>
 
+   <footer>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
     </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          高级技巧
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 14:13:25" itemprop="dateModified" datetime="2020-09-15T14:13:25+08:00">2020-09-15</time>
-              </span>
-
-          
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <span class="text">更新于</span>
+    <time title="修改时间：2020-09-15 14:13:25" itemprop="dateModified" datetime="2020-09-15T14:13:25+08:00">2020-09-15</time>
+  </span>
+</div>
 
       
-        <h2 id="高级函数"><a href="#高级函数" class="headerlink" title="高级函数"></a>高级函数</h2><h3 id="安全的类型检测"><a href="#安全的类型检测" class="headerlink" title="安全的类型检测"></a>安全的类型检测</h3><p><code>Object.prototype.toString.call</code></p>
-<h3 id="作用域安全的构造函数"><a href="#作用域安全的构造函数" class="headerlink" title="作用域安全的构造函数"></a>作用域安全的构造函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age, job)&#123;</span><br><span class="line">    if (this instanceof Person)&#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line">        this.job &#x3D; job;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return new Person(name, age, job);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/my-notes/images/wechatpay.png" alt="lokve 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/alipay.png" alt="lokve 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/paypal.png" alt="lokve 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
 
-<h3 id="惰性载入函数"><a href="#惰性载入函数" class="headerlink" title="惰性载入函数"></a>惰性载入函数</h3><p>在判断之后直接把判断后的函数赋给当前函数，这样就不用每次都判断了</p>
-<h3 id="函数-curry-化"><a href="#函数-curry-化" class="headerlink" title="函数 curry 化"></a>函数 curry 化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function curry(fn)&#123;</span><br><span class="line">    var args &#x3D; Array.prototype.slice.call(arguments, 1);</span><br><span class="line">    return function()&#123;</span><br><span class="line">        var innerArgs &#x3D; Array.prototype.slice.call(arguments);</span><br><span class="line">        var finalArgs &#x3D; args.concat(innerArgs);</span><br><span class="line">        return fn.apply(null, finalArgs);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
 
-<h2 id="防篡改对象"><a href="#防篡改对象" class="headerlink" title="防篡改对象"></a>防篡改对象</h2><h3 id="不可扩展对象"><a href="#不可扩展对象" class="headerlink" title="不可扩展对象"></a>不可扩展对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var person &#x3D; &#123; name: &quot;Nicholas&quot; &#125;;</span><br><span class="line">Object.preventExtensions(person);</span><br><span class="line">person.age &#x3D; 29;</span><br><span class="line">alert(person.age); &#x2F;&#x2F;undefined</span><br><span class="line">alert(Object.isExtensible(person)); &#x2F;&#x2F;false</span><br></pre></td></tr></table></figure>
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>lokve <i class="ic i-at"><em>@</em></i>学习笔记
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" title="高级技巧">http://example.com/2019/06/14/js高级/22.高级技巧/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-<h3 id="密封的对象"><a href="#密封的对象" class="headerlink" title="密封的对象"></a>密封的对象</h3><p>不可扩展，[[Configurable]]为 flase</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person &#x3D; &#123; name: &quot;Nicholas&quot; &#125;;</span><br><span class="line">Object.seal(person);</span><br><span class="line">person.age &#x3D; 29;</span><br><span class="line">alert(person.age); &#x2F;&#x2F;undefined</span><br><span class="line">delete person.name;</span><br><span class="line">alert(person.name); &#x2F;&#x2F;&quot;Nicholas&quot;</span><br><span class="line">alert(Object.isExtensible(person)); &#x2F;&#x2F;false</span><br><span class="line">alert(Object.isSealed(person));     &#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
+  </footer>
 
-<h3 id="冻结对象"><a href="#冻结对象" class="headerlink" title="冻结对象"></a>冻结对象</h3><p>既不可扩展，又是密封的，[[Writable]]为 false</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var person &#x3D; &#123; name: &quot;Nicholas&quot; &#125;;</span><br><span class="line">Object.freeze(person);</span><br><span class="line">person.age &#x3D; 29;</span><br><span class="line">alert(person.age); &#x2F;&#x2F;undefined</span><br><span class="line">delete person.name;</span><br><span class="line">alert(person.name); &#x2F;&#x2F;&quot;Nicholas&quot;</span><br><span class="line">person.name &#x3D; &quot;Greg&quot;;</span><br><span class="line">alert(person.name); &#x2F;&#x2F;&quot;Nicholas&quot;</span><br><span class="line">alert(Object.isExtensible(person)); &#x2F;&#x2F; false</span><br><span class="line">alert(Object.isSealed(person)); &#x2F;&#x2F; true</span><br><span class="line">alert(Object.isFrozen(person)); &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
+</article>
 
-<h2 id="高级定时器"><a href="#高级定时器" class="headerlink" title="高级定时器"></a>高级定时器</h2><h3 id="重复的定时器"><a href="#重复的定时器" class="headerlink" title="重复的定时器"></a>重复的定时器</h3><p><code>setTimeout</code> <code>setInterval</code><br>定时器的时间并不一定准确</p>
-<h3 id="Yielding-Processes"><a href="#Yielding-Processes" class="headerlink" title="Yielding Processes"></a>Yielding Processes</h3><h2 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h2><p>观察者模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">function EventTarget()&#123;</span><br><span class="line">        this.handlers &#x3D; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line">    EventTarget.prototype &#x3D; &#123;</span><br><span class="line">        constructor: EventTarget,</span><br><span class="line">        addHandler: function(type, handler)&#123;</span><br><span class="line">            if (typeof this.handlers[type] &#x3D;&#x3D; &quot;undefined&quot;)&#123;</span><br><span class="line">                this.handlers[type] &#x3D; [];</span><br><span class="line">&#125;</span><br><span class="line">            this.handlers[type].push(handler);</span><br><span class="line">        &#125;,</span><br><span class="line">        fire: function(event)&#123;</span><br><span class="line">            if (!event.target)&#123;</span><br><span class="line">                event.target &#x3D; this;</span><br><span class="line">            &#125;</span><br><span class="line">            if (this.handlers[event.type] instanceof Array)&#123;</span><br><span class="line">                var handlers &#x3D; this.handlers[event.type];</span><br><span class="line">                for (var i&#x3D;0, len&#x3D;handlers.length; i &lt; len; i++)&#123;</span><br><span class="line">                    handlers[i](event);</span><br><span class="line">                &#125;</span><br><span class="line">&#125; &#125;,</span><br><span class="line">        removeHandler: function(type, handler)&#123;</span><br><span class="line">            if (this.handlers[type] instanceof Array)&#123;</span><br><span class="line">                var handlers &#x3D; this.handlers[type];</span><br><span class="line">                for (var i&#x3D;0, len&#x3D;handlers.length; i &lt; len; i++)&#123;</span><br><span class="line">                    if (handlers[i] &#x3D;&#x3D;&#x3D; handler)&#123;</span><br><span class="line">                        break;</span><br><span class="line">&#125; &#125;</span><br><span class="line">                handlers.splice(i, 1);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4fomxoj20zk0m8axp.jpg" title="New Api">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>New Api</h3>
+  </a>
 
     </div>
+    <div class="item right">
+      
 
-    
-    
-    
+  <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/21.Ajax%E4%B8%8EComet/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicli3sbvtj20zk0m8x6p.jpg" title="Ajax与Comet">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>Ajax与Comet</h3>
+  </a>
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/my-notes/tags/javascript%E9%AB%98%E7%BA%A7%E7%AC%94%E8%AE%B0/" rel="tag"># javascript高级笔记</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/" rel="prev" title="离线应用与客户端储存">
-      <i class="fa fa-chevron-left"></i> 离线应用与客户端储存
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/21.Ajax%E4%B8%8EComet/" rel="next" title="Ajax与Comet">
-      Ajax与Comet <i class="fa fa-chevron-right"></i>
-    </a></div>
     </div>
-      </footer>
-    
-  </article>
+</div>
+
   
-  
-  
+  <div class="wrap" id="comments"></div>
 
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
 
         </div>
+        <div id="sidebar">
           
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text"> 高级函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%B5%8B"><span class="toc-number">1.1.</span> <span class="toc-text"> 安全的类型检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%AE%89%E5%85%A8%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text"> 作用域安全的构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%B0%E6%80%A7%E8%BD%BD%E5%85%A5%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.</span> <span class="toc-text"> 惰性载入函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0-curry-%E5%8C%96"><span class="toc-number">1.4.</span> <span class="toc-text"> 函数 curry 化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E7%AF%A1%E6%94%B9%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text"> 防篡改对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E6%89%A9%E5%B1%95%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.1.</span> <span class="toc-text"> 不可扩展对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E5%B0%81%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.2.</span> <span class="toc-text"> 密封的对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%BB%E7%BB%93%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.3.</span> <span class="toc-text"> 冻结对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text"> 高级定时器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-number">3.1.</span> <span class="toc-text"> 重复的定时器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yielding-processes"><span class="toc-number">3.2.</span> <span class="toc-text"> Yielding Processes</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text"> 自定义事件</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="lokve"
+      data-src="/my-notes/images/head.jpeg">
+  <p class="name" itemprop="name">lokve</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/my-notes/archives/">
+        <span class="count">71</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/my-notes/categories/">
+        <span class="count">2</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/my-notes/tags/">
+        <span class="count">8</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xva3Zl" title="https:&#x2F;&#x2F;github.com&#x2F;lokve"><i class="ic i-github"></i></span>
+</div>
+
+<ul class="menu">
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+    
+  <li class="item">
+    <a href="/my-notes/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/my-notes/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/my-notes/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
   </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">高级函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%B5%8B"><span class="nav-number">1.1.</span> <span class="nav-text">安全的类型检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%AE%89%E5%85%A8%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">作用域安全的构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%B0%E6%80%A7%E8%BD%BD%E5%85%A5%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">惰性载入函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0-curry-%E5%8C%96"><span class="nav-number">1.4.</span> <span class="nav-text">函数 curry 化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%B2%E7%AF%A1%E6%94%B9%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.</span> <span class="nav-text">防篡改对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E6%89%A9%E5%B1%95%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.1.</span> <span class="nav-text">不可扩展对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%86%E5%B0%81%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.2.</span> <span class="nav-text">密封的对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%BB%E7%BB%93%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.3.</span> <span class="nav-text">冻结对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">高级定时器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-number">3.1.</span> <span class="nav-text">重复的定时器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Yielding-Processes"><span class="nav-number">3.2.</span> <span class="nav-text">Yielding Processes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">自定义事件</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">lokve</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/my-notes/archives/">
-        
-          <span class="site-state-item-count">63</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/my-notes/tags/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/21.Ajax%E4%B8%8EComet/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
 </div>
 
 
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
+        </div>
+        <div class="dimmer"></div>
       </div>
     </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">lokve</span>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+
+    <span><a href="/my-notes/2024/01/08/leetcode/32.Longest%20Valid%20Parentheses/index/" title="32.Longest Valid Parentheses">32.Longest Valid Parentheses</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/08/react/%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/" title="时间">时间</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/11/react/context/" title="completeWork">completeWork</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/%E5%BC%80%E5%A7%8B/" title="流程">流程</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/08/react/%E5%90%84%E7%A7%8D%E5%AF%B9%E8%B1%A1/" title="一些对象定义">一些对象定义</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/09/react/reconcileChildFibers/" title="reconcileChildFibers">reconcileChildFibers</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/09/react/hooks/" title="hooks">hooks</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/" title="DOM2和DOM3">DOM2和DOM3</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/15.Canvas/" title="Canvas">Canvas</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2018/01/23/vue/2/" title="Vue源码阅读笔记（2）(Vue的生命周期)">Vue源码阅读笔记（2）(Vue的生命周期)</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">lokve @ hee note</span>
   </div>
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
     </span>
+    <span title="站点总字数">374k 字</span>
+
     <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
     </span>
+    <span title="站点阅读时长">5:40</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
 </div>
-
-
-
-
-
-
-
 
       </div>
     </footer>
   </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2019/06/14/js高级/22.高级技巧/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
 
-  
-  <script src="/my-notes/lib/anime.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.ui.min.js"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
 
-<script src="/my-notes/js/utils.js"></script>
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 
-<script src="/my-notes/js/motion.js"></script>
-
-
-<script src="/my-notes/js/schemes/pisces.js"></script>
-
-
-<script src="/my-notes/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/my-notes/js/local-search.js"></script>
-
-
-
-
-
-
+<script src="/my-notes/js/app.js?v=0.2.5"></script>
 
 
 
-
-
-
-
-  
-
-  
 
 </body>
 </html>

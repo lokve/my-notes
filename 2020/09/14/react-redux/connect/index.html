@@ -1,470 +1,551 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.1.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/my-notes/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/my-notes/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/my-notes/images/logo.svg" color="#222">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon.png">
 
-<link rel="stylesheet" href="/my-notes/css/main.css">
+<link rel="icon" type="image/ico" sizes="32x32" href="/my-notes/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 
-<link rel="stylesheet" href="/my-notes/lib/font-awesome/css/all.min.css">
+<link rel="alternate" type="application/rss+xml" title="学习笔记" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="学习笔记" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="学习笔记" href="http://example.com/feed.json" />
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/my-notes/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
-<meta property="og:type" content="article">
-<meta property="og:title" content="connect">
-<meta property="og:url" content="http://example.com/2020/09/14/react-redux/connect/index.html">
-<meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-14T06:00:00.000Z">
-<meta property="article:modified_time" content="2020-09-15T04:15:42.790Z">
-<meta property="article:author" content="lokve">
-<meta property="article:tag" content="react-redux">
-<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/my-notes/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="react-redux" />
+
 
 <link rel="canonical" href="http://example.com/2020/09/14/react-redux/connect/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>connect | 学习笔记</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
+  <title>
+connect |
+hee note = 学习笔记</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
     </div>
   </div>
-
-  <div class="site-meta">
-
-    <a href="/my-notes/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">学习笔记</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">connect
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2020-09-14 14:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2020-09-14T14:00:00+08:00">2020-09-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>8.5k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>8 分钟</span>
+  </span>
 </div>
 
 
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/my-notes/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/my-notes/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/my-notes/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/my-notes/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/my-notes/" rel="start">hee note</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
       </li>
-  </ul>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
 </nav>
 
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclj9410cj20zk0m8h12.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciuv0socj20zk0m8qes.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipesng5oej20zk0m87d4.jpg"></li>
+        </ul>
+      </div>
     </header>
-
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/my-notes/">首页</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/14/react-redux/connect/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/my-notes/images/head.jpeg">
+    <meta itemprop="name" content="lokve">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="学习笔记">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  connect is a facade over connectAdvanced. It turns its args into a compatible</span></span><br><span class="line"><span class="comment">  selectorFactory, which has the signature:</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    (dispatch, options) =&gt; (nextState, nextOwnProps) =&gt; nextFinalProps</span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">  connect passes its args to connectAdvanced as options, which will in turn pass them to</span></span><br><span class="line"><span class="comment">  selectorFactory each time a Connect component instance is instantiated or hot reloaded.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  selectorFactory returns a final props selector from its mapStateToProps,</span></span><br><span class="line"><span class="comment">  mapStateToPropsFactories, mapDispatchToProps, mapDispatchToPropsFactories, mergeProps,</span></span><br><span class="line"><span class="comment">  mergePropsFactories, and pure args.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  The resulting final props selector is called by the Connect component instance whenever</span></span><br><span class="line"><span class="comment">  it receives new props or store state.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">match</span>(<span class="params">arg, factories, name</span>) &#123;</span><br><span class="line">    <span class="comment">// 依次执行函数，直到有一个返回结果</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = factories.<span class="property">length</span> - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">const</span> result = factories[i](arg);</span><br><span class="line">        <span class="keyword">if</span> (result) <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">dispatch, options</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(</span><br><span class="line">            <span class="string">`Invalid value of type <span class="subst">$&#123;<span class="keyword">typeof</span> arg&#125;</span> for <span class="subst">$&#123;name&#125;</span> argument when connecting component <span class="subst">$&#123;</span></span></span><br><span class="line"><span class="subst"><span class="string">                options.wrappedComponentName</span></span></span><br><span class="line"><span class="subst"><span class="string">            &#125;</span>.`</span>,</span><br><span class="line">        );</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">strictEqual</span>(<span class="params">a, b</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> a === b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// createConnect with default args builds the &#x27;official&#x27; connect behavior. Calling it with</span></span><br><span class="line"><span class="comment">// different options opens up some testing and extensibility scenarios</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">createConnect</span>(<span class="params">&#123;</span></span><br><span class="line"><span class="params">    connectHOC = connectAdvanced,</span></span><br><span class="line"><span class="params">    mapStateToPropsFactories = defaultMapStateToPropsFactories,</span></span><br><span class="line"><span class="params">    mapDispatchToPropsFactories = defaultMapDispatchToPropsFactories,</span></span><br><span class="line"><span class="params">    mergePropsFactories = defaultMergePropsFactories,</span></span><br><span class="line"><span class="params">    selectorFactory = defaultSelectorFactory,</span></span><br><span class="line"><span class="params">&#125; = &#123;&#125;</span>) &#123;</span><br><span class="line">    <span class="comment">// 用户传递的参数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">connect</span>(<span class="params"></span></span><br><span class="line"><span class="params">        mapStateToProps,</span></span><br><span class="line"><span class="params">        mapDispatchToProps,</span></span><br><span class="line"><span class="params">        mergeProps,</span></span><br><span class="line"><span class="params">        <span class="comment">// 比较方法</span></span></span><br><span class="line"><span class="params">        &#123;</span></span><br><span class="line"><span class="params">            pure = <span class="literal">true</span>,</span></span><br><span class="line"><span class="params">            areStatesEqual = strictEqual,</span></span><br><span class="line"><span class="params">            areOwnPropsEqual = shallowEqual,</span></span><br><span class="line"><span class="params">            areStatePropsEqual = shallowEqual,</span></span><br><span class="line"><span class="params">            areMergedPropsEqual = shallowEqual,</span></span><br><span class="line"><span class="params">            ...extraOptions</span></span><br><span class="line"><span class="params">        &#125; = &#123;&#125;,</span></span><br><span class="line"><span class="params">    </span>) &#123;</span><br><span class="line">        <span class="comment">// 返回一个函数</span></span><br><span class="line">        <span class="keyword">const</span> initMapStateToProps = <span class="title function_">match</span>(</span><br><span class="line">            <span class="comment">// mapStateToProps作为参数放到mapStateToPropsFactories[]执行，第三个是报错用</span></span><br><span class="line">            mapStateToProps,</span><br><span class="line">            mapStateToPropsFactories,</span><br><span class="line">            <span class="string">&#x27;mapStateToProps&#x27;</span>,</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">// 返回一个函数</span></span><br><span class="line">        <span class="keyword">const</span> initMapDispatchToProps = <span class="title function_">match</span>(</span><br><span class="line">            mapDispatchToProps,</span><br><span class="line">            mapDispatchToPropsFactories,</span><br><span class="line">            <span class="string">&#x27;mapDispatchToProps&#x27;</span>,</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">// 返回一个函数</span></span><br><span class="line">        <span class="keyword">const</span> initMergeProps = <span class="title function_">match</span>(mergeProps, mergePropsFactories, <span class="string">&#x27;mergeProps&#x27;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 见connectAdvanced.md</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">connectHOC</span>(selectorFactory, &#123;</span><br><span class="line">            <span class="comment">// used in error messages</span></span><br><span class="line">            <span class="comment">// 用于错误消息</span></span><br><span class="line">            <span class="attr">methodName</span>: <span class="string">&#x27;connect&#x27;</span>,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// used to compute Connect&#x27;s displayName from the wrapped component&#x27;s displayName.</span></span><br><span class="line">            <span class="attr">getDisplayName</span>: <span class="function">(<span class="params">name</span>) =&gt;</span> <span class="string">`Connect(<span class="subst">$&#123;name&#125;</span>)`</span>,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// if mapStateToProps is falsy, the Connect component doesn&#x27;t subscribe to store state changes</span></span><br><span class="line">            <span class="attr">shouldHandleStateChanges</span>: <span class="title class_">Boolean</span>(mapStateToProps),</span><br><span class="line"></span><br><span class="line">            <span class="comment">// passed through to selectorFactory</span></span><br><span class="line">            initMapStateToProps,</span><br><span class="line">            initMapDispatchToProps,</span><br><span class="line">            initMergeProps,</span><br><span class="line">            pure,</span><br><span class="line">            areStatesEqual,</span><br><span class="line">            areOwnPropsEqual,</span><br><span class="line">            areStatePropsEqual,</span><br><span class="line">            areMergedPropsEqual,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// any extra options args can override defaults of connect or connectAdvanced</span></span><br><span class="line">            ...extraOptions,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">createConnect</span>();</span><br></pre></td></tr></table></figure>
+<p>直接执行了 <code>createConnect</code> , 参数都取默认的</p>
+<h3 id="mapstatetoprops"><a class="markdownIt-Anchor" href="#mapstatetoprops">#</a> mapStateToProps</h3>
+<p>判断用户的传递参数，对不同传递参数返回对应的结果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当函数的时候</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">whenMapStateToPropsIsFunction</span>(<span class="params">mapStateToProps</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> mapStateToProps === <span class="string">&#x27;function&#x27;</span></span><br><span class="line">        ? <span class="title function_">wrapMapToPropsFunc</span>(mapStateToProps, <span class="string">&#x27;mapStateToProps&#x27;</span>)</span><br><span class="line">        : <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当不传的时候</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">whenMapStateToPropsIsMissing</span>(<span class="params">mapStateToProps</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> !mapStateToProps ? <span class="title function_">wrapMapToPropsConstant</span>(<span class="function">() =&gt;</span> (&#123;&#125;)) : <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> [whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing];</span><br></pre></td></tr></table></figure>
+<h3 id="wrapmaptoprops"><a class="markdownIt-Anchor" href="#wrapmaptoprops">#</a> wrapMapToProps</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">wrapMapToPropsConstant</span>(<span class="params">getConstant</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">initConstantSelector</span>(<span class="params">dispatch, options</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> constant = <span class="title function_">getConstant</span>(dispatch, options);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">function</span> <span class="title function_">constantSelector</span>(<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> constant;</span><br><span class="line">        &#125;</span><br><span class="line">        constantSelector.<span class="property">dependsOnOwnProps</span> = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> constantSelector;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// dependsOnOwnProps is used by createMapToPropsProxy to determine whether to pass props as args</span></span><br><span class="line"><span class="comment">// to the mapToProps function being wrapped. It is also used by makePurePropsSelector to determine</span></span><br><span class="line"><span class="comment">// whether mapToProps needs to be invoked when props have changed.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// A length of one signals that mapToProps does not depend on props from the parent component.</span></span><br><span class="line"><span class="comment">// A length of zero is assumed to mean mapToProps is getting args via arguments or ...args and</span></span><br><span class="line"><span class="comment">// therefore not reporting its length accurately..</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">getDependsOnOwnProps</span>(<span class="params">mapToProps</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> mapToProps.<span class="property">dependsOnOwnProps</span> !== <span class="literal">null</span> &amp;&amp; mapToProps.<span class="property">dependsOnOwnProps</span> !== <span class="literal">undefined</span></span><br><span class="line">        ? <span class="title class_">Boolean</span>(mapToProps.<span class="property">dependsOnOwnProps</span>)</span><br><span class="line">        : mapToProps.<span class="property">length</span> !== <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Used by whenMapStateToPropsIsFunction and whenMapDispatchToPropsIsFunction,</span></span><br><span class="line"><span class="comment">// this function wraps mapToProps in a proxy function which does several things:</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  * Detects whether the mapToProps function being called depends on props, which</span></span><br><span class="line"><span class="comment">//    is used by selectorFactory to decide if it should reinvoke on props changes.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  * On first call, handles mapToProps if returns another function, and treats that</span></span><br><span class="line"><span class="comment">//    new function as the true mapToProps for subsequent calls.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  * On first call, verifies the first result is a plain object, in order to warn</span></span><br><span class="line"><span class="comment">//    the developer that their mapToProps function is not returning a valid result.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">wrapMapToPropsFunc</span>(<span class="params">mapToProps, methodName</span>) &#123;</span><br><span class="line">    <span class="comment">// mapToProps是用户在connect传进来的函数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">initProxySelector</span>(<span class="params">dispatch, &#123;displayName&#125;</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> proxy = <span class="keyword">function</span> <span class="title function_">mapToPropsProxy</span>(<span class="params">stateOrDispatch, ownProps</span>) &#123;</span><br><span class="line">            <span class="comment">// state或dispatch</span></span><br><span class="line">            <span class="keyword">return</span> proxy.<span class="property">dependsOnOwnProps</span></span><br><span class="line">                ? proxy.<span class="title function_">mapToProps</span>(stateOrDispatch, ownProps)</span><br><span class="line">                : proxy.<span class="title function_">mapToProps</span>(stateOrDispatch);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// allow detectFactoryAndVerify to get ownProps</span></span><br><span class="line">        proxy.<span class="property">dependsOnOwnProps</span> = <span class="literal">true</span>; <span class="comment">// 是否依赖组件传进来的参数</span></span><br><span class="line"></span><br><span class="line">        proxy.<span class="property">mapToProps</span> = <span class="keyword">function</span> <span class="title function_">detectFactoryAndVerify</span>(<span class="params">stateOrDispatch, ownProps</span>) &#123;</span><br><span class="line">            <span class="comment">// 这里的 mapToProps 是用户传递的 conncet 的参数</span></span><br><span class="line">            proxy.<span class="property">mapToProps</span> = mapToProps;</span><br><span class="line">            proxy.<span class="property">dependsOnOwnProps</span> = <span class="title function_">getDependsOnOwnProps</span>(mapToProps); <span class="comment">// mapToProps的参数数量 !== 1</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 这里执行第二遍proxy, 此时的mapToProps已经是用户传进来的mapToProps了，所以这里的返回对象是用户的返回</span></span><br><span class="line">            <span class="keyword">let</span> props = <span class="title function_">proxy</span>(stateOrDispatch, ownProps);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 如果用户返回函数，就执行他</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> props === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">                proxy.<span class="property">mapToProps</span> = props;</span><br><span class="line">                proxy.<span class="property">dependsOnOwnProps</span> = <span class="title function_">getDependsOnOwnProps</span>(props);</span><br><span class="line">                props = <span class="title function_">proxy</span>(stateOrDispatch, ownProps);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (process.<span class="property">env</span>.<span class="property">NODE_ENV</span> !== <span class="string">&#x27;production&#x27;</span>)</span><br><span class="line">                <span class="title function_">verifyPlainObject</span>(props, displayName, methodName);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 最后返回的用户返回的对象或者用户返回的函数的执行结果</span></span><br><span class="line">            <span class="keyword">return</span> props;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> proxy;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="mapdispatchtoprops"><a class="markdownIt-Anchor" href="#mapdispatchtoprops">#</a> mapDispatchToProps</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;bindActionCreators&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;wrapMapToPropsConstant, wrapMapToPropsFunc&#125; <span class="keyword">from</span> <span class="string">&#x27;./wrapMapToProps&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 传了函数</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">whenMapDispatchToPropsIsFunction</span>(<span class="params">mapDispatchToProps</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> mapDispatchToProps === <span class="string">&#x27;function&#x27;</span></span><br><span class="line">        ? <span class="title function_">wrapMapToPropsFunc</span>(mapDispatchToProps, <span class="string">&#x27;mapDispatchToProps&#x27;</span>)</span><br><span class="line">        : <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 没穿</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">whenMapDispatchToPropsIsMissing</span>(<span class="params">mapDispatchToProps</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> !mapDispatchToProps ? <span class="title function_">wrapMapToPropsConstant</span>(<span class="function">(<span class="params">dispatch</span>) =&gt;</span> (&#123;dispatch&#125;)) : <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 传了对象</span></span><br><span class="line"><span class="comment">// 这里mapDispatchToProps即action合集</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">whenMapDispatchToPropsIsObject</span>(<span class="params">mapDispatchToProps</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> mapDispatchToProps &amp;&amp; <span class="keyword">typeof</span> mapDispatchToProps === <span class="string">&#x27;object&#x27;</span></span><br><span class="line">        ? <span class="title function_">wrapMapToPropsConstant</span>(<span class="function">(<span class="params">dispatch</span>) =&gt;</span> <span class="title function_">bindActionCreators</span>(mapDispatchToProps, dispatch))</span><br><span class="line">        : <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> [</span><br><span class="line">    whenMapDispatchToPropsIsFunction,</span><br><span class="line">    whenMapDispatchToPropsIsMissing,</span><br><span class="line">    whenMapDispatchToPropsIsObject,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<h3 id="mergeprops"><a class="markdownIt-Anchor" href="#mergeprops">#</a> mergeProps</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">defaultMergeProps</span>(<span class="params">stateProps, dispatchProps, ownProps</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;...ownProps, ...stateProps, ...dispatchProps&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">wrapMergePropsFunc</span>(<span class="params">mergeProps</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">initMergePropsProxy</span>(<span class="params">dispatch, &#123;displayName, pure, areMergedPropsEqual&#125;</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> hasRunOnce = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">let</span> mergedProps;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">mergePropsProxy</span>(<span class="params">stateProps, dispatchProps, ownProps</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> nextMergedProps = <span class="title function_">mergeProps</span>(stateProps, dispatchProps, ownProps);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (hasRunOnce) &#123;</span><br><span class="line">                <span class="comment">// 后续</span></span><br><span class="line">                <span class="comment">// pure下才去比较</span></span><br><span class="line">                <span class="keyword">if</span> (!pure || !<span class="title function_">areMergedPropsEqual</span>(nextMergedProps, mergedProps))</span><br><span class="line">                    <span class="comment">// 浅层比较新旧</span></span><br><span class="line">                    mergedProps = nextMergedProps;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 第一次</span></span><br><span class="line">                hasRunOnce = <span class="literal">true</span>;</span><br><span class="line">                mergedProps = nextMergedProps;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (process.<span class="property">env</span>.<span class="property">NODE_ENV</span> !== <span class="string">&#x27;production&#x27;</span>)</span><br><span class="line">                    <span class="title function_">verifyPlainObject</span>(mergedProps, displayName, <span class="string">&#x27;mergeProps&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> mergedProps;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 传了函数</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">whenMergePropsIsFunction</span>(<span class="params">mergeProps</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> mergeProps === <span class="string">&#x27;function&#x27;</span> ? <span class="title function_">wrapMergePropsFunc</span>(mergeProps) : <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 没传直接合并3个参数&#123;...,...,...&#125;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">whenMergePropsIsOmitted</span>(<span class="params">mergeProps</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> !mergeProps ? <span class="function">() =&gt;</span> defaultMergeProps : <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> [whenMergePropsIsFunction, whenMergePropsIsOmitted];</span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/my-notes/tags/react-redux/" rel="tag"><i class="ic i-tag"></i> react-redux</a>
+      </div>
   </div>
 
+   <footer>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/14/react-redux/connect/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
     </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          connect
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-14 14:00:00" itemprop="dateCreated datePublished" datetime="2020-09-14T14:00:00+08:00">2020-09-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 12:15:42" itemprop="dateModified" datetime="2020-09-15T12:15:42+08:00">2020-09-15</time>
-              </span>
-
-          
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <span class="text">更新于</span>
+    <time title="修改时间：2020-09-15 12:15:42" itemprop="dateModified" datetime="2020-09-15T12:15:42+08:00">2020-09-15</time>
+  </span>
+</div>
 
       
-        <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  connect is a facade over connectAdvanced. It turns its args into a compatible</span></span><br><span class="line"><span class="comment">  selectorFactory, which has the signature:</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    (dispatch, options) =&gt; (nextState, nextOwnProps) =&gt; nextFinalProps</span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">  connect passes its args to connectAdvanced as options, which will in turn pass them to</span></span><br><span class="line"><span class="comment">  selectorFactory each time a Connect component instance is instantiated or hot reloaded.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  selectorFactory returns a final props selector from its mapStateToProps,</span></span><br><span class="line"><span class="comment">  mapStateToPropsFactories, mapDispatchToProps, mapDispatchToPropsFactories, mergeProps,</span></span><br><span class="line"><span class="comment">  mergePropsFactories, and pure args.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  The resulting final props selector is called by the Connect component instance whenever</span></span><br><span class="line"><span class="comment">  it receives new props or store state.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">match</span>(<span class="params">arg, factories, name</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 依次执行函数，直到有一个返回结果</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = factories.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">const</span> result = factories[i](arg);</span><br><span class="line">        <span class="keyword">if</span> (result) <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">dispatch, options</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</span><br><span class="line">            <span class="string">`Invalid value of type <span class="subst">$&#123;<span class="keyword">typeof</span> arg&#125;</span> for <span class="subst">$&#123;name&#125;</span> argument when connecting component <span class="subst">$&#123;</span></span></span><br><span class="line"><span class="string"><span class="subst">                options.wrappedComponentName</span></span></span><br><span class="line"><span class="string"><span class="subst">            &#125;</span>.`</span>,</span><br><span class="line">        );</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strictEqual</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a === b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// createConnect with default args builds the &#x27;official&#x27; connect behavior. Calling it with</span></span><br><span class="line"><span class="comment">// different options opens up some testing and extensibility scenarios</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createConnect</span>(<span class="params">&#123;</span></span></span><br><span class="line"><span class="function"><span class="params">    connectHOC = connectAdvanced,</span></span></span><br><span class="line"><span class="function"><span class="params">    mapStateToPropsFactories = defaultMapStateToPropsFactories,</span></span></span><br><span class="line"><span class="function"><span class="params">    mapDispatchToPropsFactories = defaultMapDispatchToPropsFactories,</span></span></span><br><span class="line"><span class="function"><span class="params">    mergePropsFactories = defaultMergePropsFactories,</span></span></span><br><span class="line"><span class="function"><span class="params">    selectorFactory = defaultSelectorFactory,</span></span></span><br><span class="line"><span class="function"><span class="params">&#125; = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 用户传递的参数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">connect</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">        mapStateToProps,</span></span></span><br><span class="line"><span class="function"><span class="params">        mapDispatchToProps,</span></span></span><br><span class="line"><span class="function"><span class="params">        mergeProps,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="regexp">//</span> 比较方法</span></span></span><br><span class="line"><span class="function"><span class="params">        &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">            pure = true,</span></span></span><br><span class="line"><span class="function"><span class="params">            areStatesEqual = strictEqual,</span></span></span><br><span class="line"><span class="function"><span class="params">            areOwnPropsEqual = shallowEqual,</span></span></span><br><span class="line"><span class="function"><span class="params">            areStatePropsEqual = shallowEqual,</span></span></span><br><span class="line"><span class="function"><span class="params">            areMergedPropsEqual = shallowEqual,</span></span></span><br><span class="line"><span class="function"><span class="params">            ...extraOptions</span></span></span><br><span class="line"><span class="function"><span class="params">        &#125; = &#123;&#125;,</span></span></span><br><span class="line"><span class="function"><span class="params">    </span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 返回一个函数</span></span><br><span class="line">        <span class="keyword">const</span> initMapStateToProps = match(</span><br><span class="line">            <span class="comment">// mapStateToProps作为参数放到mapStateToPropsFactories[]执行，第三个是报错用</span></span><br><span class="line">            mapStateToProps,</span><br><span class="line">            mapStateToPropsFactories,</span><br><span class="line">            <span class="string">&#x27;mapStateToProps&#x27;</span>,</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">// 返回一个函数</span></span><br><span class="line">        <span class="keyword">const</span> initMapDispatchToProps = match(</span><br><span class="line">            mapDispatchToProps,</span><br><span class="line">            mapDispatchToPropsFactories,</span><br><span class="line">            <span class="string">&#x27;mapDispatchToProps&#x27;</span>,</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">// 返回一个函数</span></span><br><span class="line">        <span class="keyword">const</span> initMergeProps = match(mergeProps, mergePropsFactories, <span class="string">&#x27;mergeProps&#x27;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 见connectAdvanced.md</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> connectHOC(selectorFactory, &#123;</span><br><span class="line">            <span class="comment">// used in error messages</span></span><br><span class="line">            <span class="comment">// 用于错误消息</span></span><br><span class="line">            methodName: <span class="string">&#x27;connect&#x27;</span>,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// used to compute Connect&#x27;s displayName from the wrapped component&#x27;s displayName.</span></span><br><span class="line">            getDisplayName: <span class="function">(<span class="params">name</span>) =&gt;</span> <span class="string">`Connect(<span class="subst">$&#123;name&#125;</span>)`</span>,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// if mapStateToProps is falsy, the Connect component doesn&#x27;t subscribe to store state changes</span></span><br><span class="line">            shouldHandleStateChanges: <span class="built_in">Boolean</span>(mapStateToProps),</span><br><span class="line"></span><br><span class="line">            <span class="comment">// passed through to selectorFactory</span></span><br><span class="line">            initMapStateToProps,</span><br><span class="line">            initMapDispatchToProps,</span><br><span class="line">            initMergeProps,</span><br><span class="line">            pure,</span><br><span class="line">            areStatesEqual,</span><br><span class="line">            areOwnPropsEqual,</span><br><span class="line">            areStatePropsEqual,</span><br><span class="line">            areMergedPropsEqual,</span><br><span class="line"></span><br><span class="line">            <span class="comment">// any extra options args can override defaults of connect or connectAdvanced</span></span><br><span class="line">            ...extraOptions,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> createConnect();</span><br></pre></td></tr></table></figure>
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/my-notes/images/wechatpay.png" alt="lokve 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/alipay.png" alt="lokve 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/paypal.png" alt="lokve 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
 
-<p>直接执行了<code>createConnect</code>,参数都取默认的</p>
-<h3 id="mapStateToProps"><a href="#mapStateToProps" class="headerlink" title="mapStateToProps"></a>mapStateToProps</h3><p>判断用户的传递参数，对不同传递参数返回对应的结果</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当函数的时候</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">whenMapStateToPropsIsFunction</span>(<span class="params">mapStateToProps</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> mapStateToProps === <span class="string">&#x27;function&#x27;</span></span><br><span class="line">        ? wrapMapToPropsFunc(mapStateToProps, <span class="string">&#x27;mapStateToProps&#x27;</span>)</span><br><span class="line">        : <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当不传的时候</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">whenMapStateToPropsIsMissing</span>(<span class="params">mapStateToProps</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> !mapStateToProps ? wrapMapToPropsConstant(<span class="function">() =&gt;</span> (&#123;&#125;)) : <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> [whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing];</span><br></pre></td></tr></table></figure>
+      
 
-<h3 id="wrapMapToProps"><a href="#wrapMapToProps" class="headerlink" title="wrapMapToProps"></a>wrapMapToProps</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">wrapMapToPropsConstant</span>(<span class="params">getConstant</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">initConstantSelector</span>(<span class="params">dispatch, options</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> constant = getConstant(dispatch, options);</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">constantSelector</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> constant;</span><br><span class="line">        &#125;</span><br><span class="line">        constantSelector.dependsOnOwnProps = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> constantSelector;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// dependsOnOwnProps is used by createMapToPropsProxy to determine whether to pass props as args</span></span><br><span class="line"><span class="comment">// to the mapToProps function being wrapped. It is also used by makePurePropsSelector to determine</span></span><br><span class="line"><span class="comment">// whether mapToProps needs to be invoked when props have changed.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// A length of one signals that mapToProps does not depend on props from the parent component.</span></span><br><span class="line"><span class="comment">// A length of zero is assumed to mean mapToProps is getting args via arguments or ...args and</span></span><br><span class="line"><span class="comment">// therefore not reporting its length accurately..</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">getDependsOnOwnProps</span>(<span class="params">mapToProps</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mapToProps.dependsOnOwnProps !== <span class="literal">null</span> &amp;&amp; mapToProps.dependsOnOwnProps !== <span class="literal">undefined</span></span><br><span class="line">        ? <span class="built_in">Boolean</span>(mapToProps.dependsOnOwnProps)</span><br><span class="line">        : mapToProps.length !== <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Used by whenMapStateToPropsIsFunction and whenMapDispatchToPropsIsFunction,</span></span><br><span class="line"><span class="comment">// this function wraps mapToProps in a proxy function which does several things:</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  * Detects whether the mapToProps function being called depends on props, which</span></span><br><span class="line"><span class="comment">//    is used by selectorFactory to decide if it should reinvoke on props changes.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  * On first call, handles mapToProps if returns another function, and treats that</span></span><br><span class="line"><span class="comment">//    new function as the true mapToProps for subsequent calls.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  * On first call, verifies the first result is a plain object, in order to warn</span></span><br><span class="line"><span class="comment">//    the developer that their mapToProps function is not returning a valid result.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">wrapMapToPropsFunc</span>(<span class="params">mapToProps, methodName</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// mapToProps是用户在connect传进来的函数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">initProxySelector</span>(<span class="params">dispatch, &#123;displayName&#125;</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> proxy = <span class="function"><span class="keyword">function</span> <span class="title">mapToPropsProxy</span>(<span class="params">stateOrDispatch, ownProps</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// state或dispatch</span></span><br><span class="line">            <span class="keyword">return</span> proxy.dependsOnOwnProps</span><br><span class="line">                ? proxy.mapToProps(stateOrDispatch, ownProps)</span><br><span class="line">                : proxy.mapToProps(stateOrDispatch);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// allow detectFactoryAndVerify to get ownProps</span></span><br><span class="line">        proxy.dependsOnOwnProps = <span class="literal">true</span>; <span class="comment">// 是否依赖组件传进来的参数</span></span><br><span class="line"></span><br><span class="line">        proxy.mapToProps = <span class="function"><span class="keyword">function</span> <span class="title">detectFactoryAndVerify</span>(<span class="params">stateOrDispatch, ownProps</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 这里的 mapToProps 是用户传递的 conncet 的参数</span></span><br><span class="line">            proxy.mapToProps = mapToProps;</span><br><span class="line">            proxy.dependsOnOwnProps = getDependsOnOwnProps(mapToProps); <span class="comment">// mapToProps的参数数量 !== 1</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 这里执行第二遍proxy, 此时的mapToProps已经是用户传进来的mapToProps了，所以这里的返回对象是用户的返回</span></span><br><span class="line">            <span class="keyword">let</span> props = proxy(stateOrDispatch, ownProps);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 如果用户返回函数，就执行他</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> props === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">                proxy.mapToProps = props;</span><br><span class="line">                proxy.dependsOnOwnProps = getDependsOnOwnProps(props);</span><br><span class="line">                props = proxy(stateOrDispatch, ownProps);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">&#x27;production&#x27;</span>)</span><br><span class="line">                verifyPlainObject(props, displayName, methodName);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 最后返回的用户返回的对象或者用户返回的函数的执行结果</span></span><br><span class="line">            <span class="keyword">return</span> props;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> proxy;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>lokve <i class="ic i-at"><em>@</em></i>学习笔记
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2020/09/14/react-redux/connect/" title="connect">http://example.com/2020/09/14/react-redux/connect/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-<h3 id="mapDispatchToProps"><a href="#mapDispatchToProps" class="headerlink" title="mapDispatchToProps"></a>mapDispatchToProps</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;bindActionCreators&#125; <span class="keyword">from</span> <span class="string">&#x27;redux&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;wrapMapToPropsConstant, wrapMapToPropsFunc&#125; <span class="keyword">from</span> <span class="string">&#x27;./wrapMapToProps&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 传了函数</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">whenMapDispatchToPropsIsFunction</span>(<span class="params">mapDispatchToProps</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> mapDispatchToProps === <span class="string">&#x27;function&#x27;</span></span><br><span class="line">        ? wrapMapToPropsFunc(mapDispatchToProps, <span class="string">&#x27;mapDispatchToProps&#x27;</span>)</span><br><span class="line">        : <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 没穿</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">whenMapDispatchToPropsIsMissing</span>(<span class="params">mapDispatchToProps</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> !mapDispatchToProps ? wrapMapToPropsConstant(<span class="function">(<span class="params">dispatch</span>) =&gt;</span> (&#123;dispatch&#125;)) : <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 传了对象</span></span><br><span class="line"><span class="comment">// 这里mapDispatchToProps即action合集</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">whenMapDispatchToPropsIsObject</span>(<span class="params">mapDispatchToProps</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mapDispatchToProps &amp;&amp; <span class="keyword">typeof</span> mapDispatchToProps === <span class="string">&#x27;object&#x27;</span></span><br><span class="line">        ? wrapMapToPropsConstant(<span class="function">(<span class="params">dispatch</span>) =&gt;</span> bindActionCreators(mapDispatchToProps, dispatch))</span><br><span class="line">        : <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> [</span><br><span class="line">    whenMapDispatchToPropsIsFunction,</span><br><span class="line">    whenMapDispatchToPropsIsMissing,</span><br><span class="line">    whenMapDispatchToPropsIsObject,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+  </footer>
 
-<h3 id="mergeProps"><a href="#mergeProps" class="headerlink" title="mergeProps"></a>mergeProps</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">defaultMergeProps</span>(<span class="params">stateProps, dispatchProps, ownProps</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;...ownProps, ...stateProps, ...dispatchProps&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">wrapMergePropsFunc</span>(<span class="params">mergeProps</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">initMergePropsProxy</span>(<span class="params">dispatch, &#123;displayName, pure, areMergedPropsEqual&#125;</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> hasRunOnce = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">let</span> mergedProps;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">mergePropsProxy</span>(<span class="params">stateProps, dispatchProps, ownProps</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">const</span> nextMergedProps = mergeProps(stateProps, dispatchProps, ownProps);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (hasRunOnce) &#123;</span><br><span class="line">                <span class="comment">// 后续</span></span><br><span class="line">                <span class="comment">// pure下才去比较</span></span><br><span class="line">                <span class="keyword">if</span> (!pure || !areMergedPropsEqual(nextMergedProps, mergedProps))</span><br><span class="line">                    <span class="comment">// 浅层比较新旧</span></span><br><span class="line">                    mergedProps = nextMergedProps;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 第一次</span></span><br><span class="line">                hasRunOnce = <span class="literal">true</span>;</span><br><span class="line">                mergedProps = nextMergedProps;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">&#x27;production&#x27;</span>)</span><br><span class="line">                    verifyPlainObject(mergedProps, displayName, <span class="string">&#x27;mergeProps&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> mergedProps;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 传了函数</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">whenMergePropsIsFunction</span>(<span class="params">mergeProps</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> mergeProps === <span class="string">&#x27;function&#x27;</span> ? wrapMergePropsFunc(mergeProps) : <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 没传直接合并3个参数&#123;...,...,...&#125;</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">whenMergePropsIsOmitted</span>(<span class="params">mergeProps</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> !mergeProps ? <span class="function">() =&gt;</span> defaultMergeProps : <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> [whenMergePropsIsFunction, whenMergePropsIsOmitted];</span><br></pre></td></tr></table></figure>
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/my-notes/2020/09/14/react-redux/connectAdvanced/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyonbf9j20zk0m8e81.jpg" title="connectAdvanced">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>connectAdvanced</h3>
+  </a>
 
     </div>
+    <div class="item right">
+      
 
-    
-    
-    
+  <a href="/my-notes/2020/09/14/react-redux/bindActionCreators/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyonbf9j20zk0m8e81.jpg" title="bindActionCreators">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>bindActionCreators</h3>
+  </a>
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/my-notes/tags/react-redux/" rel="tag"># react-redux</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/my-notes/2020/09/14/react-redux/createStore/" rel="prev" title="createStore">
-      <i class="fa fa-chevron-left"></i> createStore
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/my-notes/2020/09/14/react-redux/bindActionCreators/" rel="next" title="bindActionCreators">
-      bindActionCreators <i class="fa fa-chevron-right"></i>
-    </a></div>
     </div>
-      </footer>
-    
-  </article>
+</div>
+
   
-  
-  
+  <div class="wrap" id="comments"></div>
 
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
 
         </div>
+        <div id="sidebar">
           
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#mapstatetoprops"><span class="toc-number">1.</span> <span class="toc-text"> mapStateToProps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wrapmaptoprops"><span class="toc-number">2.</span> <span class="toc-text"> wrapMapToProps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mapdispatchtoprops"><span class="toc-number">3.</span> <span class="toc-text"> mapDispatchToProps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mergeprops"><span class="toc-number">4.</span> <span class="toc-text"> mergeProps</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="lokve"
+      data-src="/my-notes/images/head.jpeg">
+  <p class="name" itemprop="name">lokve</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/my-notes/archives/">
+        <span class="count">71</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/my-notes/categories/">
+        <span class="count">2</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/my-notes/tags/">
+        <span class="count">8</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xva3Zl" title="https:&#x2F;&#x2F;github.com&#x2F;lokve"><i class="ic i-github"></i></span>
+</div>
+
+<ul class="menu">
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+    
+  <li class="item">
+    <a href="/my-notes/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/my-notes/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/my-notes/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
   </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#mapStateToProps"><span class="nav-number">1.</span> <span class="nav-text">mapStateToProps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wrapMapToProps"><span class="nav-number">2.</span> <span class="nav-text">wrapMapToProps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mapDispatchToProps"><span class="nav-number">3.</span> <span class="nav-text">mapDispatchToProps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mergeProps"><span class="nav-number">4.</span> <span class="nav-text">mergeProps</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">lokve</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/my-notes/archives/">
-        
-          <span class="site-state-item-count">63</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/my-notes/tags/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/my-notes/2020/09/14/react-redux/connectAdvanced/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/my-notes/2020/09/14/react-redux/bindActionCreators/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
 </div>
 
 
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
+        </div>
+        <div class="dimmer"></div>
       </div>
     </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">lokve</span>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+
+    <span><a href="/my-notes/2020/09/08/react/%E5%90%84%E7%A7%8D%E5%AF%B9%E8%B1%A1/" title="一些对象定义">一些对象定义</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" title="基本概念">基本概念</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/11/react/context/" title="completeWork">completeWork</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/07/leetcode/241.Different%20Ways%20to%20Add%20Parentheses/index/" title="241.Different Ways to Add Parentheses">241.Different Ways to Add Parentheses</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" title="常量">常量</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/Subscription/" title="selectorFactory">selectorFactory</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2018/01/22/vue/readme/" title="说明">说明</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/09/react/reconcileChildFibers/" title="reconcileChildFibers">reconcileChildFibers</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/%E5%BC%80%E5%A7%8B/" title="流程">流程</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/5.%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" title="引用类型">引用类型</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">lokve @ hee note</span>
   </div>
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
     </span>
+    <span title="站点总字数">374k 字</span>
+
     <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
     </span>
+    <span title="站点阅读时长">5:40</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
 </div>
-
-
-
-
-
-
-
 
       </div>
     </footer>
   </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2020/09/14/react-redux/connect/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
 
-  
-  <script src="/my-notes/lib/anime.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.ui.min.js"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
 
-<script src="/my-notes/js/utils.js"></script>
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 
-<script src="/my-notes/js/motion.js"></script>
-
-
-<script src="/my-notes/js/schemes/pisces.js"></script>
-
-
-<script src="/my-notes/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/my-notes/js/local-search.js"></script>
-
-
-
-
-
-
+<script src="/my-notes/js/app.js?v=0.2.5"></script>
 
 
 
-
-
-
-
-  
-
-  
 
 </body>
 </html>

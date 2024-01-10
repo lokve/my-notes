@@ -1,480 +1,565 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.1.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/my-notes/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/my-notes/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/my-notes/images/logo.svg" color="#222">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon.png">
 
-<link rel="stylesheet" href="/my-notes/css/main.css">
+<link rel="icon" type="image/ico" sizes="32x32" href="/my-notes/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 
-<link rel="stylesheet" href="/my-notes/lib/font-awesome/css/all.min.css">
+<link rel="alternate" type="application/rss+xml" title="学习笔记" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="学习笔记" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="学习笔记" href="http://example.com/feed.json" />
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/my-notes/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-  <meta name="description" content="RootTag12345export type RootTag &#x3D; 0 | 1 | 2;export const LegacyRoot &#x3D; 0;export const BatchedRoot &#x3D; 1;export const ConcurrentRoot &#x3D; 2;  TypeOfMode123456789export type TypeOfMode &#x3D; number;export const N">
-<meta property="og:type" content="article">
-<meta property="og:title" content="常量">
-<meta property="og:url" content="http://example.com/2020/09/07/react/%E5%B8%B8%E9%87%8F/index.html">
-<meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="RootTag12345export type RootTag &#x3D; 0 | 1 | 2;export const LegacyRoot &#x3D; 0;export const BatchedRoot &#x3D; 1;export const ConcurrentRoot &#x3D; 2;  TypeOfMode123456789export type TypeOfMode &#x3D; number;export const N">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-07T03:03:00.000Z">
-<meta property="article:modified_time" content="2020-09-15T04:15:42.807Z">
-<meta property="article:author" content="lokve">
-<meta property="article:tag" content="react源码解析">
-<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/my-notes/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="react源码解析" />
+
 
 <link rel="canonical" href="http://example.com/2020/09/07/react/%E5%B8%B8%E9%87%8F/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>常量 | 学习笔记</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
+  <title>
+常量 - react |
+hee note = 学习笔记</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
     </div>
   </div>
-
-  <div class="site-meta">
-
-    <a href="/my-notes/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">学习笔记</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">常量
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2020-09-07 11:03:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2020-09-07T11:03:00+08:00">2020-09-07</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>4.5k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>4 分钟</span>
+  </span>
 </div>
 
 
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/my-notes/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/my-notes/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/my-notes/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/my-notes/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/my-notes/" rel="start">hee note</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
       </li>
-  </ul>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
 </nav>
 
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipevarprfj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciuja1j1j20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipew28b65j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
+        </ul>
+      </div>
     </header>
-
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/my-notes/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/my-notes/categories/react/" itemprop="item" rel="index" title="分类于 react"><span itemprop="name">react</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/07/react/%E5%B8%B8%E9%87%8F/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/my-notes/images/head.jpeg">
+    <meta itemprop="name" content="lokve">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="学习笔记">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="roottag"><a class="markdownIt-Anchor" href="#roottag">#</a> RootTag</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type <span class="title class_">RootTag</span> = <span class="number">0</span> | <span class="number">1</span> | <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">LegacyRoot</span> = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">BatchedRoot</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">ConcurrentRoot</span> = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="typeofmode"><a class="markdownIt-Anchor" href="#typeofmode">#</a> TypeOfMode</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type <span class="title class_">TypeOfMode</span> = number;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">NoMode</span> = <span class="number">0b0000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">StrictMode</span> = <span class="number">0b0001</span>;</span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span> Remove BatchedMode and ConcurrentMode by reading from the root</span></span><br><span class="line"><span class="comment">// tag instead</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">BatchedMode</span> = <span class="number">0b0010</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">ConcurrentMode</span> = <span class="number">0b0100</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">ProfileMode</span> = <span class="number">0b1000</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="worktag"><a class="markdownIt-Anchor" href="#worktag">#</a> WorkTag</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type <span class="title class_">WorkTag</span> =</span><br><span class="line">    | <span class="number">0</span></span><br><span class="line">    | <span class="number">1</span></span><br><span class="line">    | <span class="number">2</span></span><br><span class="line">    | <span class="number">3</span></span><br><span class="line">    | <span class="number">4</span></span><br><span class="line">    | <span class="number">5</span></span><br><span class="line">    | <span class="number">6</span></span><br><span class="line">    | <span class="number">7</span></span><br><span class="line">    | <span class="number">8</span></span><br><span class="line">    | <span class="number">9</span></span><br><span class="line">    | <span class="number">10</span></span><br><span class="line">    | <span class="number">11</span></span><br><span class="line">    | <span class="number">12</span></span><br><span class="line">    | <span class="number">13</span></span><br><span class="line">    | <span class="number">14</span></span><br><span class="line">    | <span class="number">15</span></span><br><span class="line">    | <span class="number">16</span></span><br><span class="line">    | <span class="number">17</span></span><br><span class="line">    | <span class="number">18</span></span><br><span class="line">    | <span class="number">19</span></span><br><span class="line">    | <span class="number">20</span></span><br><span class="line">    | <span class="number">21</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">FunctionComponent</span> = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">ClassComponent</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">IndeterminateComponent</span> = <span class="number">2</span>; <span class="comment">// Before we know whether it is function or class</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">HostRoot</span> = <span class="number">3</span>; <span class="comment">// Root of a host tree. Could be nested inside another node.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">HostPortal</span> = <span class="number">4</span>; <span class="comment">// A subtree. Could be an entry point to a different renderer.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">HostComponent</span> = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">HostText</span> = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">Fragment</span> = <span class="number">7</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">Mode</span> = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">ContextConsumer</span> = <span class="number">9</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">ContextProvider</span> = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">ForwardRef</span> = <span class="number">11</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">Profiler</span> = <span class="number">12</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">SuspenseComponent</span> = <span class="number">13</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">MemoComponent</span> = <span class="number">14</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">SimpleMemoComponent</span> = <span class="number">15</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">LazyComponent</span> = <span class="number">16</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">IncompleteClassComponent</span> = <span class="number">17</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">DehydratedSuspenseComponent</span> = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">EventComponent</span> = <span class="number">19</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">EventTarget</span> = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">SuspenseListComponent</span> = <span class="number">21</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="executioncontext"><a class="markdownIt-Anchor" href="#executioncontext">#</a> ExecutionContext</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">type <span class="title class_">ExecutionContext</span> = number;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">NoContext</span> = <span class="number">0b000000</span>; <span class="comment">// 0</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">BatchedContext</span> = <span class="number">0b000001</span>; <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">EventContext</span> = <span class="number">0b000010</span>; <span class="comment">// 2</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">DiscreteEventContext</span> = <span class="number">0b000100</span>; <span class="comment">// 4</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">LegacyUnbatchedContext</span> = <span class="number">0b001000</span>; <span class="comment">// 8</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">RenderContext</span> = <span class="number">0b010000</span>; <span class="comment">// 16</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">CommitContext</span> = <span class="number">0b100000</span>; <span class="comment">// 32</span></span><br></pre></td></tr></table></figure>
+<h2 id="expirationtime"><a class="markdownIt-Anchor" href="#expirationtime">#</a> ExpirationTime</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type <span class="title class_">ExpirationTime</span> = number;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">NoWork</span> = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">Never</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">Sync</span> = <span class="variable constant_">MAX_SIGNED_31_BIT_INT</span>; <span class="comment">// Math.pow(2, 30) - 1</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">Batched</span> = <span class="title class_">Sync</span> - <span class="number">1</span>; <span class="comment">// Math.pow(2, 30) - 2</span></span><br></pre></td></tr></table></figure>
+<h2 id="reactprioritylevel"><a class="markdownIt-Anchor" href="#reactprioritylevel">#</a> ReactPriorityLevel</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> opaque type <span class="title class_">ReactPriorityLevel</span> = <span class="number">99</span> | <span class="number">98</span> | <span class="number">97</span> | <span class="number">96</span> | <span class="number">95</span> | <span class="number">90</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Except for NoPriority, these correspond to Scheduler priorities. We use</span></span><br><span class="line"><span class="comment">// ascending numbers so we can compare them like numbers. They start at 90 to</span></span><br><span class="line"><span class="comment">// avoid clashing with Scheduler&#x27;s priorities.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">ImmediatePriority</span>: <span class="title class_">ReactPriorityLevel</span> = <span class="number">99</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">UserBlockingPriority</span>: <span class="title class_">ReactPriorityLevel</span> = <span class="number">98</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">NormalPriority</span>: <span class="title class_">ReactPriorityLevel</span> = <span class="number">97</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">LowPriority</span>: <span class="title class_">ReactPriorityLevel</span> = <span class="number">96</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">IdlePriority</span>: <span class="title class_">ReactPriorityLevel</span> = <span class="number">95</span>;</span><br><span class="line"><span class="comment">// NoPriority is the absence of priority. Also React-only.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">NoPriority</span>: <span class="title class_">ReactPriorityLevel</span> = <span class="number">90</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="sideeffecttag"><a class="markdownIt-Anchor" href="#sideeffecttag">#</a> SideEffectTag</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type <span class="title class_">SideEffectTag</span> = number;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Don&#x27;t change these two values. They&#x27;re used by React Dev Tools.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">NoEffect</span> = <span class="comment">/*              */</span> <span class="number">0b000000000000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">PerformedWork</span> = <span class="comment">/*         */</span> <span class="number">0b000000000001</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// You can change the rest (and add more).</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">Placement</span> = <span class="comment">/*             */</span> <span class="number">0b000000000010</span>; <span class="comment">// 替换</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">Update</span> = <span class="comment">/*                */</span> <span class="number">0b000000000100</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">PlacementAndUpdate</span> = <span class="comment">/*    */</span> <span class="number">0b000000000110</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">Deletion</span> = <span class="comment">/*              */</span> <span class="number">0b000000001000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">ContentReset</span> = <span class="comment">/*          */</span> <span class="number">0b000000010000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">Callback</span> = <span class="comment">/*              */</span> <span class="number">0b000000100000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">DidCapture</span> = <span class="comment">/*            */</span> <span class="number">0b000001000000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">Ref</span> = <span class="comment">/*                   */</span> <span class="number">0b000010000000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">Snapshot</span> = <span class="comment">/*              */</span> <span class="number">0b000100000000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">Passive</span> = <span class="comment">/*               */</span> <span class="number">0b001000000000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Passive &amp; Update &amp; Callback &amp; Ref &amp; Snapshot</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">LifecycleEffectMask</span> = <span class="comment">/*   */</span> <span class="number">0b001110100100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Union of all host effects</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">HostEffectMask</span> = <span class="comment">/*        */</span> <span class="number">0b001111111111</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">Incomplete</span> = <span class="comment">/*            */</span> <span class="number">0b010000000000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">ShouldCapture</span> = <span class="comment">/*         */</span> <span class="number">0b100000000000</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="supportsmutation"><a class="markdownIt-Anchor" href="#supportsmutation">#</a> supportsMutation</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在浏览器环境中</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> supportsMutation = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="hookeffecttag"><a class="markdownIt-Anchor" href="#hookeffecttag">#</a> HookEffectTag</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type <span class="title class_">HookEffectTag</span> = number;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">NoEffect</span> = <span class="comment">/*             */</span> <span class="number">0b00000000</span>; <span class="comment">// 0</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">UnmountSnapshot</span> = <span class="comment">/*      */</span> <span class="number">0b00000010</span>; <span class="comment">// 2</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">UnmountMutation</span> = <span class="comment">/*      */</span> <span class="number">0b00000100</span>; <span class="comment">// 4</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">MountMutation</span> = <span class="comment">/*        */</span> <span class="number">0b00001000</span>; <span class="comment">// 8</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">UnmountLayout</span> = <span class="comment">/*        */</span> <span class="number">0b00010000</span>; <span class="comment">// 16</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">MountLayout</span> = <span class="comment">/*          */</span> <span class="number">0b00100000</span>; <span class="comment">// 32</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">MountPassive</span> = <span class="comment">/*         */</span> <span class="number">0b01000000</span>; <span class="comment">// 64</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">UnmountPassive</span> = <span class="comment">/*       */</span> <span class="number">0b10000000</span>; <span class="comment">// 128</span></span><br></pre></td></tr></table></figure>
+<h2 id="htmlnodetype"><a class="markdownIt-Anchor" href="#htmlnodetype">#</a> HTMLNodeType</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="variable constant_">ELEMENT_NODE</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="variable constant_">TEXT_NODE</span> = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="variable constant_">COMMENT_NODE</span> = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="variable constant_">DOCUMENT_NODE</span> = <span class="number">9</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="variable constant_">DOCUMENT_FRAGMENT_NODE</span> = <span class="number">11</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="优先级相关"><a class="markdownIt-Anchor" href="#优先级相关">#</a> 优先级相关</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// <span class="doctag">TODO:</span> Use symbols?</span></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">ImmediatePriority</span> = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">UserBlockingPriority</span> = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">NormalPriority</span> = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">LowPriority</span> = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">IdlePriority</span> = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Max 31 bit integer. The max integer size in V8 for 32-bit systems.</span></span><br><span class="line"><span class="comment">// Math.pow(2, 30) - 1</span></span><br><span class="line"><span class="comment">// 0b111111111111111111111111111111</span></span><br><span class="line"><span class="keyword">var</span> maxSigned31BitInt = <span class="number">1073741823</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Times out immediately</span></span><br><span class="line"><span class="keyword">var</span> <span class="variable constant_">IMMEDIATE_PRIORITY_TIMEOUT</span> = -<span class="number">1</span>;</span><br><span class="line"><span class="comment">// Eventually times out</span></span><br><span class="line"><span class="keyword">var</span> <span class="variable constant_">USER_BLOCKING_PRIORITY</span> = <span class="number">250</span>;</span><br><span class="line"><span class="keyword">var</span> <span class="variable constant_">NORMAL_PRIORITY_TIMEOUT</span> = <span class="number">5000</span>;</span><br><span class="line"><span class="keyword">var</span> <span class="variable constant_">LOW_PRIORITY_TIMEOUT</span> = <span class="number">10000</span>;</span><br><span class="line"><span class="comment">// Never times out</span></span><br><span class="line"><span class="keyword">var</span> <span class="variable constant_">IDLE_PRIORITY</span> = maxSigned31BitInt;</span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/my-notes/tags/react%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag"><i class="ic i-tag"></i> react源码解析</a>
+      </div>
   </div>
 
+   <footer>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/07/react/%E5%B8%B8%E9%87%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
     </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          常量
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-07 11:03:00" itemprop="dateCreated datePublished" datetime="2020-09-07T11:03:00+08:00">2020-09-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 12:15:42" itemprop="dateModified" datetime="2020-09-15T12:15:42+08:00">2020-09-15</time>
-              </span>
-
-          
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <span class="text">更新于</span>
+    <time title="修改时间：2024-01-10 14:24:43" itemprop="dateModified" datetime="2024-01-10T14:24:43+08:00">2024-01-10</time>
+  </span>
+</div>
 
       
-        <h2 id="RootTag"><a href="#RootTag" class="headerlink" title="RootTag"></a>RootTag</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type RootTag = <span class="number">0</span> | <span class="number">1</span> | <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> LegacyRoot = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> BatchedRoot = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ConcurrentRoot = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/my-notes/images/wechatpay.png" alt="lokve 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/alipay.png" alt="lokve 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/paypal.png" alt="lokve 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
 
-<h2 id="TypeOfMode"><a href="#TypeOfMode" class="headerlink" title="TypeOfMode"></a>TypeOfMode</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type TypeOfMode = number;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> NoMode = <span class="number">0b0000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> StrictMode = <span class="number">0b0001</span>;</span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span> Remove BatchedMode and ConcurrentMode by reading from the root</span></span><br><span class="line"><span class="comment">// tag instead</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> BatchedMode = <span class="number">0b0010</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ConcurrentMode = <span class="number">0b0100</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ProfileMode = <span class="number">0b1000</span>;</span><br></pre></td></tr></table></figure>
+      
 
-<h2 id="WorkTag"><a href="#WorkTag" class="headerlink" title="WorkTag"></a>WorkTag</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type WorkTag =</span><br><span class="line">    | <span class="number">0</span></span><br><span class="line">    | <span class="number">1</span></span><br><span class="line">    | <span class="number">2</span></span><br><span class="line">    | <span class="number">3</span></span><br><span class="line">    | <span class="number">4</span></span><br><span class="line">    | <span class="number">5</span></span><br><span class="line">    | <span class="number">6</span></span><br><span class="line">    | <span class="number">7</span></span><br><span class="line">    | <span class="number">8</span></span><br><span class="line">    | <span class="number">9</span></span><br><span class="line">    | <span class="number">10</span></span><br><span class="line">    | <span class="number">11</span></span><br><span class="line">    | <span class="number">12</span></span><br><span class="line">    | <span class="number">13</span></span><br><span class="line">    | <span class="number">14</span></span><br><span class="line">    | <span class="number">15</span></span><br><span class="line">    | <span class="number">16</span></span><br><span class="line">    | <span class="number">17</span></span><br><span class="line">    | <span class="number">18</span></span><br><span class="line">    | <span class="number">19</span></span><br><span class="line">    | <span class="number">20</span></span><br><span class="line">    | <span class="number">21</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> FunctionComponent = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ClassComponent = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> IndeterminateComponent = <span class="number">2</span>; <span class="comment">// Before we know whether it is function or class</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> HostRoot = <span class="number">3</span>; <span class="comment">// Root of a host tree. Could be nested inside another node.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> HostPortal = <span class="number">4</span>; <span class="comment">// A subtree. Could be an entry point to a different renderer.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> HostComponent = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> HostText = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Fragment = <span class="number">7</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Mode = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ContextConsumer = <span class="number">9</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ContextProvider = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ForwardRef = <span class="number">11</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Profiler = <span class="number">12</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SuspenseComponent = <span class="number">13</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> MemoComponent = <span class="number">14</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SimpleMemoComponent = <span class="number">15</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> LazyComponent = <span class="number">16</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> IncompleteClassComponent = <span class="number">17</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> DehydratedSuspenseComponent = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> EventComponent = <span class="number">19</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> EventTarget = <span class="number">20</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SuspenseListComponent = <span class="number">21</span>;</span><br></pre></td></tr></table></figure>
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>lokve <i class="ic i-at"><em>@</em></i>学习笔记
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2020/09/07/react/%E5%B8%B8%E9%87%8F/" title="常量">http://example.com/2020/09/07/react/常量/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-<h2 id="ExecutionContext"><a href="#ExecutionContext" class="headerlink" title="ExecutionContext"></a>ExecutionContext</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">type ExecutionContext = number;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> NoContext = <span class="number">0b000000</span>; <span class="comment">// 0</span></span><br><span class="line"><span class="keyword">const</span> BatchedContext = <span class="number">0b000001</span>; <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">const</span> EventContext = <span class="number">0b000010</span>; <span class="comment">// 2</span></span><br><span class="line"><span class="keyword">const</span> DiscreteEventContext = <span class="number">0b000100</span>; <span class="comment">// 4</span></span><br><span class="line"><span class="keyword">const</span> LegacyUnbatchedContext = <span class="number">0b001000</span>; <span class="comment">// 8</span></span><br><span class="line"><span class="keyword">const</span> RenderContext = <span class="number">0b010000</span>; <span class="comment">// 16</span></span><br><span class="line"><span class="keyword">const</span> CommitContext = <span class="number">0b100000</span>; <span class="comment">// 32</span></span><br></pre></td></tr></table></figure>
+  </footer>
 
-<h2 id="ExpirationTime"><a href="#ExpirationTime" class="headerlink" title="ExpirationTime"></a>ExpirationTime</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type ExpirationTime = number;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> NoWork = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Never = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Sync = MAX_SIGNED_31_BIT_INT; <span class="comment">// Math.pow(2, 30) - 1</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Batched = Sync - <span class="number">1</span>; <span class="comment">// Math.pow(2, 30) - 2</span></span><br></pre></td></tr></table></figure>
+</article>
 
-<h2 id="ReactPriorityLevel"><a href="#ReactPriorityLevel" class="headerlink" title="ReactPriorityLevel"></a>ReactPriorityLevel</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> opaque type ReactPriorityLevel = <span class="number">99</span> | <span class="number">98</span> | <span class="number">97</span> | <span class="number">96</span> | <span class="number">95</span> | <span class="number">90</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Except for NoPriority, these correspond to Scheduler priorities. We use</span></span><br><span class="line"><span class="comment">// ascending numbers so we can compare them like numbers. They start at 90 to</span></span><br><span class="line"><span class="comment">// avoid clashing with Scheduler&#x27;s priorities.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ImmediatePriority: ReactPriorityLevel = <span class="number">99</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> UserBlockingPriority: ReactPriorityLevel = <span class="number">98</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> NormalPriority: ReactPriorityLevel = <span class="number">97</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> LowPriority: ReactPriorityLevel = <span class="number">96</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> IdlePriority: ReactPriorityLevel = <span class="number">95</span>;</span><br><span class="line"><span class="comment">// NoPriority is the absence of priority. Also React-only.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> NoPriority: ReactPriorityLevel = <span class="number">90</span>;</span><br></pre></td></tr></table></figure>
+  </div>
+  
 
-<h2 id="SideEffectTag"><a href="#SideEffectTag" class="headerlink" title="SideEffectTag"></a>SideEffectTag</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type SideEffectTag = number;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Don&#x27;t change these two values. They&#x27;re used by React Dev Tools.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> NoEffect = <span class="comment">/*              */</span> <span class="number">0b000000000000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> PerformedWork = <span class="comment">/*         */</span> <span class="number">0b000000000001</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// You can change the rest (and add more).</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Placement = <span class="comment">/*             */</span> <span class="number">0b000000000010</span>; <span class="comment">// 替换</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Update = <span class="comment">/*                */</span> <span class="number">0b000000000100</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> PlacementAndUpdate = <span class="comment">/*    */</span> <span class="number">0b000000000110</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Deletion = <span class="comment">/*              */</span> <span class="number">0b000000001000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ContentReset = <span class="comment">/*          */</span> <span class="number">0b000000010000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Callback = <span class="comment">/*              */</span> <span class="number">0b000000100000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> DidCapture = <span class="comment">/*            */</span> <span class="number">0b000001000000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Ref = <span class="comment">/*                   */</span> <span class="number">0b000010000000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Snapshot = <span class="comment">/*              */</span> <span class="number">0b000100000000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Passive = <span class="comment">/*               */</span> <span class="number">0b001000000000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Passive &amp; Update &amp; Callback &amp; Ref &amp; Snapshot</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> LifecycleEffectMask = <span class="comment">/*   */</span> <span class="number">0b001110100100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Union of all host effects</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> HostEffectMask = <span class="comment">/*        */</span> <span class="number">0b001111111111</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> Incomplete = <span class="comment">/*            */</span> <span class="number">0b010000000000</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ShouldCapture = <span class="comment">/*         */</span> <span class="number">0b100000000000</span>;</span><br></pre></td></tr></table></figure>
+<div class="post-nav">
+    <div class="item left">
+      
 
-<h2 id="supportsMutation"><a href="#supportsMutation" class="headerlink" title="supportsMutation"></a>supportsMutation</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在浏览器环境中</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> supportsMutation = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="HookEffectTag"><a href="#HookEffectTag" class="headerlink" title="HookEffectTag"></a>HookEffectTag</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type HookEffectTag = number;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> NoEffect = <span class="comment">/*             */</span> <span class="number">0b00000000</span>; <span class="comment">// 0</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> UnmountSnapshot = <span class="comment">/*      */</span> <span class="number">0b00000010</span>; <span class="comment">// 2</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> UnmountMutation = <span class="comment">/*      */</span> <span class="number">0b00000100</span>; <span class="comment">// 4</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> MountMutation = <span class="comment">/*        */</span> <span class="number">0b00001000</span>; <span class="comment">// 8</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> UnmountLayout = <span class="comment">/*        */</span> <span class="number">0b00010000</span>; <span class="comment">// 16</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> MountLayout = <span class="comment">/*          */</span> <span class="number">0b00100000</span>; <span class="comment">// 32</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> MountPassive = <span class="comment">/*         */</span> <span class="number">0b01000000</span>; <span class="comment">// 64</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> UnmountPassive = <span class="comment">/*       */</span> <span class="number">0b10000000</span>; <span class="comment">// 128</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="HTMLNodeType"><a href="#HTMLNodeType" class="headerlink" title="HTMLNodeType"></a>HTMLNodeType</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ELEMENT_NODE = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> TEXT_NODE = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> COMMENT_NODE = <span class="number">8</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> DOCUMENT_NODE = <span class="number">9</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> DOCUMENT_FRAGMENT_NODE = <span class="number">11</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="优先级相关"><a href="#优先级相关" class="headerlink" title="优先级相关"></a>优先级相关</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// <span class="doctag">TODO:</span> Use symbols?</span></span><br><span class="line"><span class="keyword">var</span> ImmediatePriority = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> UserBlockingPriority = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> NormalPriority = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">var</span> LowPriority = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">var</span> IdlePriority = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Max 31 bit integer. The max integer size in V8 for 32-bit systems.</span></span><br><span class="line"><span class="comment">// Math.pow(2, 30) - 1</span></span><br><span class="line"><span class="comment">// 0b111111111111111111111111111111</span></span><br><span class="line"><span class="keyword">var</span> maxSigned31BitInt = <span class="number">1073741823</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Times out immediately</span></span><br><span class="line"><span class="keyword">var</span> IMMEDIATE_PRIORITY_TIMEOUT = <span class="number">-1</span>;</span><br><span class="line"><span class="comment">// Eventually times out</span></span><br><span class="line"><span class="keyword">var</span> USER_BLOCKING_PRIORITY = <span class="number">250</span>;</span><br><span class="line"><span class="keyword">var</span> NORMAL_PRIORITY_TIMEOUT = <span class="number">5000</span>;</span><br><span class="line"><span class="keyword">var</span> LOW_PRIORITY_TIMEOUT = <span class="number">10000</span>;</span><br><span class="line"><span class="comment">// Never times out</span></span><br><span class="line"><span class="keyword">var</span> IDLE_PRIORITY = maxSigned31BitInt;</span><br></pre></td></tr></table></figure>
+  <a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclxp31goj20zk0m8qv5.jpg" title="初始流程">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> react</span>
+  <h3>初始流程</h3>
+  </a>
 
     </div>
+    <div class="item right">
+      
 
-    
-    
-    
+  <a href="/my-notes/2020/09/08/react/%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclxfdlttj20zk0m8npd.jpg" title="时间">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> react</span>
+  <h3>时间</h3>
+  </a>
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/my-notes/tags/react%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag"># react源码解析</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" rel="prev" title="初始流程">
-      <i class="fa fa-chevron-left"></i> 初始流程
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/my-notes/2020/09/08/react/%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/" rel="next" title="时间">
-      时间 <i class="fa fa-chevron-right"></i>
-    </a></div>
     </div>
-      </footer>
-    
-  </article>
+</div>
+
   
-  
-  
+  <div class="wrap" id="comments"></div>
 
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
 
         </div>
+        <div id="sidebar">
           
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#roottag"><span class="toc-number">1.</span> <span class="toc-text"> RootTag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#typeofmode"><span class="toc-number">2.</span> <span class="toc-text"> TypeOfMode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#worktag"><span class="toc-number">3.</span> <span class="toc-text"> WorkTag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#executioncontext"><span class="toc-number">4.</span> <span class="toc-text"> ExecutionContext</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#expirationtime"><span class="toc-number">5.</span> <span class="toc-text"> ExpirationTime</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reactprioritylevel"><span class="toc-number">6.</span> <span class="toc-text"> ReactPriorityLevel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sideeffecttag"><span class="toc-number">7.</span> <span class="toc-text"> SideEffectTag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#supportsmutation"><span class="toc-number">8.</span> <span class="toc-text"> supportsMutation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hookeffecttag"><span class="toc-number">9.</span> <span class="toc-text"> HookEffectTag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#htmlnodetype"><span class="toc-number">10.</span> <span class="toc-text"> HTMLNodeType</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7%E7%9B%B8%E5%85%B3"><span class="toc-number">11.</span> <span class="toc-text"> 优先级相关</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" rel="bookmark" title="初始流程">初始流程</a></li><li class="active"><a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" rel="bookmark" title="常量">常量</a></li><li><a href="/my-notes/2020/09/08/react/%E5%90%84%E7%A7%8D%E5%AF%B9%E8%B1%A1/" rel="bookmark" title="一些对象定义">一些对象定义</a></li><li><a href="/my-notes/2020/09/08/react/%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/" rel="bookmark" title="时间">时间</a></li><li><a href="/my-notes/2020/09/08/react/fiber/" rel="bookmark" title="fiber">fiber</a></li><li><a href="/my-notes/2020/09/08/react/renderRoot/" rel="bookmark" title="renderRoot">renderRoot</a></li><li><a href="/my-notes/2020/09/09/react/completeWork/" rel="bookmark" title="completeWork">completeWork</a></li><li><a href="/my-notes/2020/09/09/react/commitRoot/" rel="bookmark" title="commitRoot">commitRoot</a></li><li><a href="/my-notes/2020/09/09/react/hooks/" rel="bookmark" title="hooks">hooks</a></li><li><a href="/my-notes/2020/09/09/react/function%E7%BB%84%E4%BB%B6/" rel="bookmark" title="function组件">function组件</a></li><li><a href="/my-notes/2020/09/09/react/reconcileChildFibers/" rel="bookmark" title="reconcileChildFibers">reconcileChildFibers</a></li><li><a href="/my-notes/2020/09/10/react/%E4%BA%8B%E4%BB%B6/" rel="bookmark" title="事件系统">事件系统</a></li><li><a href="/my-notes/2020/09/10/react/createElement(dom)/" rel="bookmark" title="createElement(dom)">createElement(dom)</a></li><li><a href="/my-notes/2020/09/10/react/createElement(react%20element)/" rel="bookmark" title="createElement(react element)">createElement(react element)</a></li><li><a href="/my-notes/2020/09/10/react/schedule/" rel="bookmark" title="reconcileChildFibers">reconcileChildFibers</a></li><li><a href="/my-notes/2020/09/11/react/context/" rel="bookmark" title="completeWork">completeWork</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="lokve"
+      data-src="/my-notes/images/head.jpeg">
+  <p class="name" itemprop="name">lokve</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/my-notes/archives/">
+        <span class="count">71</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/my-notes/categories/">
+        <span class="count">2</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/my-notes/tags/">
+        <span class="count">8</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xva3Zl" title="https:&#x2F;&#x2F;github.com&#x2F;lokve"><i class="ic i-github"></i></span>
+</div>
+
+<ul class="menu">
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+    
+  <li class="item">
+    <a href="/my-notes/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/my-notes/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/my-notes/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
   </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RootTag"><span class="nav-number">1.</span> <span class="nav-text">RootTag</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TypeOfMode"><span class="nav-number">2.</span> <span class="nav-text">TypeOfMode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WorkTag"><span class="nav-number">3.</span> <span class="nav-text">WorkTag</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ExecutionContext"><span class="nav-number">4.</span> <span class="nav-text">ExecutionContext</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ExpirationTime"><span class="nav-number">5.</span> <span class="nav-text">ExpirationTime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReactPriorityLevel"><span class="nav-number">6.</span> <span class="nav-text">ReactPriorityLevel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SideEffectTag"><span class="nav-number">7.</span> <span class="nav-text">SideEffectTag</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#supportsMutation"><span class="nav-number">8.</span> <span class="nav-text">supportsMutation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HookEffectTag"><span class="nav-number">9.</span> <span class="nav-text">HookEffectTag</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTMLNodeType"><span class="nav-number">10.</span> <span class="nav-text">HTMLNodeType</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7%E7%9B%B8%E5%85%B3"><span class="nav-number">11.</span> <span class="nav-text">优先级相关</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">lokve</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/my-notes/archives/">
-        
-          <span class="site-state-item-count">63</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/my-notes/tags/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/my-notes/2020/09/08/react/%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
 </div>
 
 
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
+        </div>
+        <div class="dimmer"></div>
       </div>
     </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">lokve</span>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+
+    <span><a href="/my-notes/2018/05/25/vue/4/" title="Vue源码阅读笔记（4）(compile)">Vue源码阅读笔记（4）(compile)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/09/leetcode/70.Climbing%20Stairs/index/" title="70.Climbing Stairs">70.Climbing Stairs</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" title="DOM">DOM</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/" title="BOM">BOM</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/07/02/%E7%AE%97%E6%B3%95/0.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">数据结构</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/09/react/reconcileChildFibers/" title="reconcileChildFibers">reconcileChildFibers</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/07/10/%E7%AE%97%E6%B3%95/01.%E6%8E%92%E5%BA%8F/" title="数据结构">数据结构</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/selectorFactory/" title="selectorFactory">selectorFactory</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/09/react/hooks/" title="hooks">hooks</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2017/05/09/bue/2/" title="Bue源码阅读笔记（2）">Bue源码阅读笔记（2）</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">lokve @ hee note</span>
   </div>
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
     </span>
+    <span title="站点总字数">374k 字</span>
+
     <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
     </span>
+    <span title="站点阅读时长">5:40</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
 </div>
-
-
-
-
-
-
-
 
       </div>
     </footer>
   </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2020/09/07/react/常量/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
 
-  
-  <script src="/my-notes/lib/anime.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.ui.min.js"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
 
-<script src="/my-notes/js/utils.js"></script>
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 
-<script src="/my-notes/js/motion.js"></script>
-
-
-<script src="/my-notes/js/schemes/pisces.js"></script>
-
-
-<script src="/my-notes/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/my-notes/js/local-search.js"></script>
-
-
-
-
-
-
+<script src="/my-notes/js/app.js?v=0.2.5"></script>
 
 
 
-
-
-
-
-  
-
-  
 
 </body>
 </html>

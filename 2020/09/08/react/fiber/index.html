@@ -1,481 +1,559 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.1.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/my-notes/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/my-notes/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/my-notes/images/logo.svg" color="#222">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon.png">
 
-<link rel="stylesheet" href="/my-notes/css/main.css">
+<link rel="icon" type="image/ico" sizes="32x32" href="/my-notes/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 
-<link rel="stylesheet" href="/my-notes/lib/font-awesome/css/all.min.css">
+<link rel="alternate" type="application/rss+xml" title="学习笔记" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="学习笔记" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="学习笔记" href="http://example.com/feed.json" />
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/my-notes/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-  <meta name="description" content="从 ReactSyncRoot开始 123&#x2F;&#x2F; dom, 0, falseconst root &#x3D; createContainer(container, tag, hydrate); &#x2F;&#x2F; FiberRootNodethis._internalRoot &#x3D; root;  createContainer在react-reconciler&#x2F;inline.dom,引用的.&#x2F;src&#x2F;ReactFiberR">
-<meta property="og:type" content="article">
-<meta property="og:title" content="fiber">
-<meta property="og:url" content="http://example.com/2020/09/08/react/fiber/index.html">
-<meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="从 ReactSyncRoot开始 123&#x2F;&#x2F; dom, 0, falseconst root &#x3D; createContainer(container, tag, hydrate); &#x2F;&#x2F; FiberRootNodethis._internalRoot &#x3D; root;  createContainer在react-reconciler&#x2F;inline.dom,引用的.&#x2F;src&#x2F;ReactFiberR">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-08T06:00:00.000Z">
-<meta property="article:modified_time" content="2020-09-15T04:15:42.800Z">
-<meta property="article:author" content="lokve">
-<meta property="article:tag" content="react源码解析">
-<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/my-notes/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="react源码解析" />
+
 
 <link rel="canonical" href="http://example.com/2020/09/08/react/fiber/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>fiber | 学习笔记</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
+  <title>
+fiber - react |
+hee note = 学习笔记</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
     </div>
   </div>
-
-  <div class="site-meta">
-
-    <a href="/my-notes/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">学习笔记</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">fiber
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2020-09-08 14:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2020-09-08T14:00:00+08:00">2020-09-08</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>5.9k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>5 分钟</span>
+  </span>
 </div>
 
 
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/my-notes/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/my-notes/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/my-notes/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/my-notes/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/my-notes/" rel="start">hee note</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
       </li>
-  </ul>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
 </nav>
 
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicli9lfebj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giph4fomxoj20zk0m8axp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclh0m9pdj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giph47e9vtj20zk0m8x6l.jpg"></li>
+        </ul>
+      </div>
     </header>
-
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/my-notes/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/my-notes/categories/react/" itemprop="item" rel="index" title="分类于 react"><span itemprop="name">react</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/08/react/fiber/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/my-notes/images/head.jpeg">
+    <meta itemprop="name" content="lokve">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="学习笔记">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p>从  <code>ReactSyncRoot</code>  开始</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dom, 0, false</span></span><br><span class="line"><span class="keyword">const</span> root = <span class="title function_">createContainer</span>(container, tag, hydrate); <span class="comment">// FiberRootNode</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">_internalRoot</span> = root;</span><br></pre></td></tr></table></figure>
+<p><code>createContainer</code>  在 <code>react-reconciler/inline.dom</code> , 引用的 <code>./src/ReactFiberReconciler</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">createContainer</span>(<span class="params"></span></span><br><span class="line"><span class="params">    containerInfo: Container,</span></span><br><span class="line"><span class="params">    tag: RootTag,</span></span><br><span class="line"><span class="params">    hydrate: boolean,</span></span><br><span class="line"><span class="params"></span>): <span class="title class_">OpaqueRoot</span> &#123;</span><br><span class="line">    <span class="comment">// 创建fiberroot</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">createFiberRoot</span>(containerInfo, tag, hydrate);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">createFiberRoot</span>(<span class="params">containerInfo: any, tag: RootTag, hydrate: boolean</span>): <span class="title class_">FiberRoot</span> &#123;</span><br><span class="line">    <span class="comment">// 创建fiber对象</span></span><br><span class="line">    <span class="keyword">const</span> <span class="attr">root</span>: <span class="title class_">FiberRoot</span> = (<span class="keyword">new</span> <span class="title class_">FiberRootNode</span>(containerInfo, tag, hydrate): any);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Cyclic construction. This cheats the type system right now because</span></span><br><span class="line">    <span class="comment">// stateNode is any.</span></span><br><span class="line">    <span class="keyword">const</span> uninitializedFiber = <span class="title function_">createHostRootFiber</span>(tag);</span><br><span class="line">    root.<span class="property">current</span> = uninitializedFiber;</span><br><span class="line">    uninitializedFiber.<span class="property">stateNode</span> = root;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>创建 <code>FiberRoot</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在其他文件定义的常量</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">NoWork</span> = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> noTimeout = -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面有注释</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">FiberRootNode</span>(<span class="params">containerInfo, tag, hydrate</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tag</span> = tag;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">current</span> = <span class="literal">null</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">containerInfo</span> = containerInfo;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">pendingChildren</span> = <span class="literal">null</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">pingCache</span> = <span class="literal">null</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">finishedExpirationTime</span> = <span class="title class_">NoWork</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">finishedWork</span> = <span class="literal">null</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">timeoutHandle</span> = noTimeout; <span class="comment">// -1</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">context</span> = <span class="literal">null</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">pendingContext</span> = <span class="literal">null</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">hydrate</span> = hydrate;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">firstBatch</span> = <span class="literal">null</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">callbackNode</span> = <span class="literal">null</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">callbackExpirationTime</span> = <span class="title class_">NoWork</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">firstPendingTime</span> = <span class="title class_">NoWork</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">lastPendingTime</span> = <span class="title class_">NoWork</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">pingTime</span> = <span class="title class_">NoWork</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// false 无视</span></span><br><span class="line">    <span class="keyword">if</span> (enableSchedulerTracing) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">interactionThreadID</span> = <span class="title function_">unstable_getThreadID</span>();</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">memoizedInteractions</span> = <span class="keyword">new</span> <span class="title class_">Set</span>();</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">pendingInteractionMap</span> = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 <code>BaseFiberRootProperties</code>  中有相关注释</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">type <span class="title class_">BaseFiberRootProperties</span> = &#123;|</span><br><span class="line">    <span class="comment">// The type of root (legacy, batched, concurrent, etc.)</span></span><br><span class="line">    <span class="comment">// 类型0或1或2</span></span><br><span class="line">    <span class="attr">tag</span>: <span class="title class_">RootTag</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Any additional information from the host associated with this root.</span></span><br><span class="line">    <span class="comment">// 根节点挂载元素</span></span><br><span class="line">    <span class="attr">containerInfo</span>: any,</span><br><span class="line">    <span class="comment">// Used only by persistent updates.</span></span><br><span class="line">    <span class="attr">pendingChildren</span>: any,</span><br><span class="line">    <span class="comment">// The currently active root fiber. This is the mutable root of the tree.</span></span><br><span class="line">    <span class="attr">current</span>: <span class="title class_">Fiber</span>,</span><br><span class="line"></span><br><span class="line">    <span class="attr">pingCache</span>: <span class="title class_">WeakMap</span>&lt;<span class="title class_">Thenable</span>, <span class="title class_">Set</span>&lt;<span class="title class_">ExpirationTime</span>&gt;&gt; | <span class="title class_">Map</span>&lt;<span class="title class_">Thenable</span>, <span class="title class_">Set</span>&lt;<span class="title class_">ExpirationTime</span>&gt;&gt; | <span class="literal">null</span>,</span><br><span class="line"></span><br><span class="line">    <span class="attr">finishedExpirationTime</span>: <span class="title class_">ExpirationTime</span>,</span><br><span class="line">    <span class="comment">// A finished work-in-progress HostRoot that&#x27;s ready to be committed.</span></span><br><span class="line">    <span class="attr">finishedWork</span>: <span class="title class_">Fiber</span> | <span class="literal">null</span>,</span><br><span class="line">    <span class="comment">// Timeout handle returned by setTimeout. Used to cancel a pending timeout, if</span></span><br><span class="line">    <span class="comment">// it&#x27;s superseded by a new one.</span></span><br><span class="line">    <span class="attr">timeoutHandle</span>: <span class="title class_">TimeoutHandle</span> | <span class="title class_">NoTimeout</span>,</span><br><span class="line">    <span class="comment">// Top context object, used by renderSubtreeIntoContainer</span></span><br><span class="line">    <span class="attr">context</span>: <span class="title class_">Object</span> | <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">pendingContext</span>: <span class="title class_">Object</span> | <span class="literal">null</span>,</span><br><span class="line">    <span class="comment">// Determines if we should attempt to hydrate on the initial mount</span></span><br><span class="line">    +<span class="attr">hydrate</span>: boolean,</span><br><span class="line">    <span class="comment">// List of top-level batches. This list indicates whether a commit should be</span></span><br><span class="line">    <span class="comment">// deferred. Also contains completion callbacks.</span></span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> Lift this into the renderer</span></span><br><span class="line">    <span class="attr">firstBatch</span>: <span class="title class_">Batch</span> | <span class="literal">null</span>,</span><br><span class="line">    <span class="comment">// Node returned by Scheduler.scheduleCallback</span></span><br><span class="line">    <span class="attr">callbackNode</span>: *,</span><br><span class="line">    <span class="comment">// Expiration of the callback associated with this root</span></span><br><span class="line">    <span class="attr">callbackExpirationTime</span>: <span class="title class_">ExpirationTime</span>,</span><br><span class="line">    <span class="comment">// The earliest pending expiration time that exists in the tree</span></span><br><span class="line">    <span class="attr">firstPendingTime</span>: <span class="title class_">ExpirationTime</span>,</span><br><span class="line">    <span class="comment">// The latest pending expiration time that exists in the tree</span></span><br><span class="line">    <span class="attr">lastPendingTime</span>: <span class="title class_">ExpirationTime</span>,</span><br><span class="line">    <span class="comment">// The time at which a suspended component pinged the root to render again</span></span><br><span class="line">    <span class="attr">pingTime</span>: <span class="title class_">ExpirationTime</span>,</span><br><span class="line">|&#125;;</span><br></pre></td></tr></table></figure>
+<p>创建 <code>RootFiber</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">createHostRootFiber</span>(<span class="params">tag: RootTag</span>): <span class="title class_">Fiber</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> mode;</span><br><span class="line">    <span class="keyword">if</span> (tag === <span class="title class_">ConcurrentRoot</span>) &#123;</span><br><span class="line">        mode = <span class="title class_">ConcurrentMode</span> | <span class="title class_">BatchedMode</span> | <span class="title class_">StrictMode</span>; <span class="comment">// 利用二进制特性,一个参数就能同时表示多种状态</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (tag === <span class="title class_">BatchedRoot</span>) &#123;</span><br><span class="line">        mode = <span class="title class_">BatchedMode</span> | <span class="title class_">StrictMode</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        mode = <span class="title class_">NoMode</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3, null, null, 0</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">createFiber</span>(<span class="title class_">HostRoot</span>, <span class="literal">null</span>, <span class="literal">null</span>, mode);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">FiberNode</span>(<span class="params">tag: WorkTag, pendingProps: mixed, key: <span class="literal">null</span> | string, mode: TypeOfMode</span>) &#123;</span><br><span class="line">    <span class="comment">// Instance</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">tag</span> = tag; <span class="comment">// 标记不同的组件类型 3</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">key</span> = key; <span class="comment">// ReactElement里面的key null</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">elementType</span> = <span class="literal">null</span>; <span class="comment">// ReactElement.type，也就是我们调用`createElement`的第一个参数</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">type</span> = <span class="literal">null</span>; <span class="comment">// 异步组件resolved之后返回的内容，一般是`function`或者`class`</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">stateNode</span> = <span class="literal">null</span>; <span class="comment">// 跟当前Fiber相关本地状态（比如浏览器环境就是DOM节点）</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Fiber</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">return</span> = <span class="literal">null</span>; <span class="comment">// 指向他在Fiber节点树中的`parent`，用来在处理完这个节点之后向上返回</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">child</span> = <span class="literal">null</span>; <span class="comment">// 单链表树结构 指向自己的第一个子节点</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">sibling</span> = <span class="literal">null</span>; <span class="comment">// 指向自己的兄弟结构 兄弟节点的return指向同一个父节点</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">index</span> = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">ref</span> = <span class="literal">null</span>; <span class="comment">// ref属性</span></span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">pendingProps</span> = pendingProps; <span class="comment">// 新的变动带来的新的props</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">memoizedProps</span> = <span class="literal">null</span>; <span class="comment">// 上一次渲染完成之后的props</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">updateQueue</span> = <span class="literal">null</span>; <span class="comment">// 该Fiber对应的组件产生的Update会存放在这个队列里面</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">memoizedState</span> = <span class="literal">null</span>; <span class="comment">// 上一次渲染的时候的state</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">contextDependencies</span> = <span class="literal">null</span>; <span class="comment">// 一个列表，存放这个Fiber依赖的context</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用来描述当前Fiber和他子树的`Bitfield`</span></span><br><span class="line">    <span class="comment">// 共存的模式表示这个子树是否默认是异步渲染的</span></span><br><span class="line">    <span class="comment">// Fiber被创建的时候他会继承父Fiber</span></span><br><span class="line">    <span class="comment">// 其他的标识也可以在创建的时候被设置</span></span><br><span class="line">    <span class="comment">// 但是在创建之后不应该再被修改，特别是他的子Fiber创建之前</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">mode</span> = mode;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Effects</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">effectTag</span> = <span class="title class_">NoEffect</span>; <span class="comment">// 用来记录Side Effect</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">nextEffect</span> = <span class="literal">null</span>; <span class="comment">// 单链表用来快速查找下一个side effect</span></span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">firstEffect</span> = <span class="literal">null</span>; <span class="comment">// 子树中第一个side effect</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">lastEffect</span> = <span class="literal">null</span>; <span class="comment">// 子树中最后一个side effect</span></span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">expirationTime</span> = <span class="title class_">NoWork</span>; <span class="comment">// 代表任务在未来的哪个时间点应该被完成 不包括他的子树产生的任务</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">childExpirationTime</span> = <span class="title class_">NoWork</span>; <span class="comment">// 快速确定子树中是否有不在等待的变化</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在Fiber树更新的过程中，每个Fiber都会有一个跟其对应的Fiber</span></span><br><span class="line">    <span class="comment">// 我们称他为`current &lt;==&gt; workInProgress`</span></span><br><span class="line">    <span class="comment">// 在渲染完成之后他们会交换位置</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">alternate</span> = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This is a constructor function, rather than a POJO constructor, still</span></span><br><span class="line"><span class="comment">// please ensure we do the following:</span></span><br><span class="line"><span class="comment">// 1) Nobody should add any instance methods on this. Instance methods can be</span></span><br><span class="line"><span class="comment">//    more difficult to predict when they get optimized and they are almost</span></span><br><span class="line"><span class="comment">//    never inlined properly in static compilers.</span></span><br><span class="line"><span class="comment">// 2) Nobody should rely on `instanceof Fiber` for type testing. We should</span></span><br><span class="line"><span class="comment">//    always know when it is a fiber.</span></span><br><span class="line"><span class="comment">// 3) We might want to experiment with using numeric keys since they are easier</span></span><br><span class="line"><span class="comment">//    to optimize in a non-JIT environment.</span></span><br><span class="line"><span class="comment">// 4) We can easily go from a constructor to a createFiber object literal if that</span></span><br><span class="line"><span class="comment">//    is faster.</span></span><br><span class="line"><span class="comment">// 5) It should be easy to port this to a C struct and keep a C implementation</span></span><br><span class="line"><span class="comment">//    compatible.</span></span><br><span class="line"><span class="keyword">const</span> createFiber = <span class="keyword">function</span> (<span class="params"></span></span><br><span class="line"><span class="params">    tag: WorkTag,</span></span><br><span class="line"><span class="params">    pendingProps: mixed,</span></span><br><span class="line"><span class="params">    key: <span class="literal">null</span> | string,</span></span><br><span class="line"><span class="params">    mode: TypeOfMode,</span></span><br><span class="line"><span class="params"></span>): <span class="title class_">Fiber</span> &#123;</span><br><span class="line">    <span class="comment">// $FlowFixMe: the shapes are exact here but Flow doesn&#x27;t like constructors</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">FiberNode</span>(tag, pendingProps, key, mode);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>之后是两个对象的互相引用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root.<span class="property">current</span> = uninitializedFiber; <span class="comment">// root即FiberRoot</span></span><br><span class="line">uninitializedFiber.<span class="property">stateNode</span> = root; <span class="comment">// uninitializedFiber即RootFiber</span></span><br></pre></td></tr></table></figure>
+<p><code>FiberRoot</code>  更多的是和 dom 相关的作用<br>
+ <code>RootFiber</code>  更多的是一个虚拟 dom，他也有类似 dom 的树结构，每次 react 跟新，都先处理 <code>RootFiber</code> ，然后在作用于 <code>FiberRoot</code> , 最后更新 dom</p>
+
+      <div class="tags">
+          <a href="/my-notes/tags/react%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag"><i class="ic i-tag"></i> react源码解析</a>
+      </div>
   </div>
 
+   <footer>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/08/react/fiber/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
     </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          fiber
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-08 14:00:00" itemprop="dateCreated datePublished" datetime="2020-09-08T14:00:00+08:00">2020-09-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 12:15:42" itemprop="dateModified" datetime="2020-09-15T12:15:42+08:00">2020-09-15</time>
-              </span>
-
-          
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <span class="text">更新于</span>
+    <time title="修改时间：2024-01-10 14:24:03" itemprop="dateModified" datetime="2024-01-10T14:24:03+08:00">2024-01-10</time>
+  </span>
+</div>
 
       
-        <p>从 <code>ReactSyncRoot</code>开始</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dom, 0, false</span></span><br><span class="line"><span class="keyword">const</span> root = createContainer(container, tag, hydrate); <span class="comment">// FiberRootNode</span></span><br><span class="line"><span class="built_in">this</span>._internalRoot = root;</span><br></pre></td></tr></table></figure>
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/my-notes/images/wechatpay.png" alt="lokve 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/alipay.png" alt="lokve 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/paypal.png" alt="lokve 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
 
-<p><code>createContainer</code>在<code>react-reconciler/inline.dom</code>,引用的<code>./src/ReactFiberReconciler</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createContainer</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    containerInfo: Container,</span></span></span><br><span class="line"><span class="function"><span class="params">    tag: RootTag,</span></span></span><br><span class="line"><span class="function"><span class="params">    hydrate: boolean,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">OpaqueRoot</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 创建fiberroot</span></span><br><span class="line">    <span class="keyword">return</span> createFiberRoot(containerInfo, tag, hydrate);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createFiberRoot</span>(<span class="params">containerInfo: any, tag: RootTag, hydrate: boolean</span>): <span class="title">FiberRoot</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 创建fiber对象</span></span><br><span class="line">    <span class="keyword">const</span> root: FiberRoot = (<span class="keyword">new</span> FiberRootNode(containerInfo, tag, hydrate): any);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Cyclic construction. This cheats the type system right now because</span></span><br><span class="line">    <span class="comment">// stateNode is any.</span></span><br><span class="line">    <span class="keyword">const</span> uninitializedFiber = createHostRootFiber(tag);</span><br><span class="line">    root.current = uninitializedFiber;</span><br><span class="line">    uninitializedFiber.stateNode = root;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>lokve <i class="ic i-at"><em>@</em></i>学习笔记
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2020/09/08/react/fiber/" title="fiber">http://example.com/2020/09/08/react/fiber/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-<p>创建<code>FiberRoot</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在其他文件定义的常量</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> NoWork = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> noTimeout = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面有注释</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FiberRootNode</span>(<span class="params">containerInfo, tag, hydrate</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.tag = tag;</span><br><span class="line">    <span class="built_in">this</span>.current = <span class="literal">null</span>;</span><br><span class="line">    <span class="built_in">this</span>.containerInfo = containerInfo;</span><br><span class="line">    <span class="built_in">this</span>.pendingChildren = <span class="literal">null</span>;</span><br><span class="line">    <span class="built_in">this</span>.pingCache = <span class="literal">null</span>;</span><br><span class="line">    <span class="built_in">this</span>.finishedExpirationTime = NoWork;</span><br><span class="line">    <span class="built_in">this</span>.finishedWork = <span class="literal">null</span>;</span><br><span class="line">    <span class="built_in">this</span>.timeoutHandle = noTimeout; <span class="comment">// -1</span></span><br><span class="line">    <span class="built_in">this</span>.context = <span class="literal">null</span>;</span><br><span class="line">    <span class="built_in">this</span>.pendingContext = <span class="literal">null</span>;</span><br><span class="line">    <span class="built_in">this</span>.hydrate = hydrate;</span><br><span class="line">    <span class="built_in">this</span>.firstBatch = <span class="literal">null</span>;</span><br><span class="line">    <span class="built_in">this</span>.callbackNode = <span class="literal">null</span>;</span><br><span class="line">    <span class="built_in">this</span>.callbackExpirationTime = NoWork;</span><br><span class="line">    <span class="built_in">this</span>.firstPendingTime = NoWork;</span><br><span class="line">    <span class="built_in">this</span>.lastPendingTime = NoWork;</span><br><span class="line">    <span class="built_in">this</span>.pingTime = NoWork;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// false 无视</span></span><br><span class="line">    <span class="keyword">if</span> (enableSchedulerTracing) &#123;</span><br><span class="line">        <span class="built_in">this</span>.interactionThreadID = unstable_getThreadID();</span><br><span class="line">        <span class="built_in">this</span>.memoizedInteractions = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">        <span class="built_in">this</span>.pendingInteractionMap = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </footer>
 
-<p>在<code>BaseFiberRootProperties</code>中有相关注释</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">type BaseFiberRootProperties = &#123;|</span><br><span class="line">    <span class="comment">// The type of root (legacy, batched, concurrent, etc.)</span></span><br><span class="line">    <span class="comment">// 类型0或1或2</span></span><br><span class="line">    tag: RootTag,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Any additional information from the host associated with this root.</span></span><br><span class="line">    <span class="comment">// 根节点挂载元素</span></span><br><span class="line">    containerInfo: any,</span><br><span class="line">    <span class="comment">// Used only by persistent updates.</span></span><br><span class="line">    pendingChildren: any,</span><br><span class="line">    <span class="comment">// The currently active root fiber. This is the mutable root of the tree.</span></span><br><span class="line">    current: Fiber,</span><br><span class="line"></span><br><span class="line">    pingCache: <span class="built_in">WeakMap</span>&lt;Thenable, <span class="built_in">Set</span>&lt;ExpirationTime&gt;&gt; | <span class="built_in">Map</span>&lt;Thenable, <span class="built_in">Set</span>&lt;ExpirationTime&gt;&gt; | <span class="literal">null</span>,</span><br><span class="line"></span><br><span class="line">    finishedExpirationTime: ExpirationTime,</span><br><span class="line">    <span class="comment">// A finished work-in-progress HostRoot that&#x27;s ready to be committed.</span></span><br><span class="line">    finishedWork: Fiber | <span class="literal">null</span>,</span><br><span class="line">    <span class="comment">// Timeout handle returned by setTimeout. Used to cancel a pending timeout, if</span></span><br><span class="line">    <span class="comment">// it&#x27;s superseded by a new one.</span></span><br><span class="line">    timeoutHandle: TimeoutHandle | NoTimeout,</span><br><span class="line">    <span class="comment">// Top context object, used by renderSubtreeIntoContainer</span></span><br><span class="line">    context: <span class="built_in">Object</span> | <span class="literal">null</span>,</span><br><span class="line">    pendingContext: <span class="built_in">Object</span> | <span class="literal">null</span>,</span><br><span class="line">    <span class="comment">// Determines if we should attempt to hydrate on the initial mount</span></span><br><span class="line">    +hydrate: boolean,</span><br><span class="line">    <span class="comment">// List of top-level batches. This list indicates whether a commit should be</span></span><br><span class="line">    <span class="comment">// deferred. Also contains completion callbacks.</span></span><br><span class="line">    <span class="comment">// <span class="doctag">TODO:</span> Lift this into the renderer</span></span><br><span class="line">    firstBatch: Batch | <span class="literal">null</span>,</span><br><span class="line">    <span class="comment">// Node returned by Scheduler.scheduleCallback</span></span><br><span class="line">    callbackNode: *,</span><br><span class="line">    <span class="comment">// Expiration of the callback associated with this root</span></span><br><span class="line">    callbackExpirationTime: ExpirationTime,</span><br><span class="line">    <span class="comment">// The earliest pending expiration time that exists in the tree</span></span><br><span class="line">    firstPendingTime: ExpirationTime,</span><br><span class="line">    <span class="comment">// The latest pending expiration time that exists in the tree</span></span><br><span class="line">    lastPendingTime: ExpirationTime,</span><br><span class="line">    <span class="comment">// The time at which a suspended component pinged the root to render again</span></span><br><span class="line">    pingTime: ExpirationTime,</span><br><span class="line">|&#125;;</span><br></pre></td></tr></table></figure>
+</article>
 
-<p>创建<code>RootFiber</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createHostRootFiber</span>(<span class="params">tag: RootTag</span>): <span class="title">Fiber</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> mode;</span><br><span class="line">    <span class="keyword">if</span> (tag === ConcurrentRoot) &#123;</span><br><span class="line">        mode = ConcurrentMode | BatchedMode | StrictMode; <span class="comment">// 利用二进制特性,一个参数就能同时表示多种状态</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (tag === BatchedRoot) &#123;</span><br><span class="line">        mode = BatchedMode | StrictMode;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        mode = NoMode;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3, null, null, 0</span></span><br><span class="line">    <span class="keyword">return</span> createFiber(HostRoot, <span class="literal">null</span>, <span class="literal">null</span>, mode);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+  
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FiberNode</span>(<span class="params">tag: WorkTag, pendingProps: mixed, key: null | string, mode: TypeOfMode</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Instance</span></span><br><span class="line">    <span class="built_in">this</span>.tag = tag; <span class="comment">// 标记不同的组件类型 3</span></span><br><span class="line">    <span class="built_in">this</span>.key = key; <span class="comment">// ReactElement里面的key null</span></span><br><span class="line">    <span class="built_in">this</span>.elementType = <span class="literal">null</span>; <span class="comment">// ReactElement.type，也就是我们调用`createElement`的第一个参数</span></span><br><span class="line">    <span class="built_in">this</span>.type = <span class="literal">null</span>; <span class="comment">// 异步组件resolved之后返回的内容，一般是`function`或者`class`</span></span><br><span class="line">    <span class="built_in">this</span>.stateNode = <span class="literal">null</span>; <span class="comment">// 跟当前Fiber相关本地状态（比如浏览器环境就是DOM节点）</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Fiber</span></span><br><span class="line">    <span class="built_in">this</span>.return = <span class="literal">null</span>; <span class="comment">// 指向他在Fiber节点树中的`parent`，用来在处理完这个节点之后向上返回</span></span><br><span class="line">    <span class="built_in">this</span>.child = <span class="literal">null</span>; <span class="comment">// 单链表树结构 指向自己的第一个子节点</span></span><br><span class="line">    <span class="built_in">this</span>.sibling = <span class="literal">null</span>; <span class="comment">// 指向自己的兄弟结构 兄弟节点的return指向同一个父节点</span></span><br><span class="line">    <span class="built_in">this</span>.index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.ref = <span class="literal">null</span>; <span class="comment">// ref属性</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.pendingProps = pendingProps; <span class="comment">// 新的变动带来的新的props</span></span><br><span class="line">    <span class="built_in">this</span>.memoizedProps = <span class="literal">null</span>; <span class="comment">// 上一次渲染完成之后的props</span></span><br><span class="line">    <span class="built_in">this</span>.updateQueue = <span class="literal">null</span>; <span class="comment">// 该Fiber对应的组件产生的Update会存放在这个队列里面</span></span><br><span class="line">    <span class="built_in">this</span>.memoizedState = <span class="literal">null</span>; <span class="comment">// 上一次渲染的时候的state</span></span><br><span class="line">    <span class="built_in">this</span>.contextDependencies = <span class="literal">null</span>; <span class="comment">// 一个列表，存放这个Fiber依赖的context</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用来描述当前Fiber和他子树的`Bitfield`</span></span><br><span class="line">    <span class="comment">// 共存的模式表示这个子树是否默认是异步渲染的</span></span><br><span class="line">    <span class="comment">// Fiber被创建的时候他会继承父Fiber</span></span><br><span class="line">    <span class="comment">// 其他的标识也可以在创建的时候被设置</span></span><br><span class="line">    <span class="comment">// 但是在创建之后不应该再被修改，特别是他的子Fiber创建之前</span></span><br><span class="line">    <span class="built_in">this</span>.mode = mode;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Effects</span></span><br><span class="line">    <span class="built_in">this</span>.effectTag = NoEffect; <span class="comment">// 用来记录Side Effect</span></span><br><span class="line">    <span class="built_in">this</span>.nextEffect = <span class="literal">null</span>; <span class="comment">// 单链表用来快速查找下一个side effect</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.firstEffect = <span class="literal">null</span>; <span class="comment">// 子树中第一个side effect</span></span><br><span class="line">    <span class="built_in">this</span>.lastEffect = <span class="literal">null</span>; <span class="comment">// 子树中最后一个side effect</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.expirationTime = NoWork; <span class="comment">// 代表任务在未来的哪个时间点应该被完成 不包括他的子树产生的任务</span></span><br><span class="line">    <span class="built_in">this</span>.childExpirationTime = NoWork; <span class="comment">// 快速确定子树中是否有不在等待的变化</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在Fiber树更新的过程中，每个Fiber都会有一个跟其对应的Fiber</span></span><br><span class="line">    <span class="comment">// 我们称他为`current &lt;==&gt; workInProgress`</span></span><br><span class="line">    <span class="comment">// 在渲染完成之后他们会交换位置</span></span><br><span class="line">    <span class="built_in">this</span>.alternate = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This is a constructor function, rather than a POJO constructor, still</span></span><br><span class="line"><span class="comment">// please ensure we do the following:</span></span><br><span class="line"><span class="comment">// 1) Nobody should add any instance methods on this. Instance methods can be</span></span><br><span class="line"><span class="comment">//    more difficult to predict when they get optimized and they are almost</span></span><br><span class="line"><span class="comment">//    never inlined properly in static compilers.</span></span><br><span class="line"><span class="comment">// 2) Nobody should rely on `instanceof Fiber` for type testing. We should</span></span><br><span class="line"><span class="comment">//    always know when it is a fiber.</span></span><br><span class="line"><span class="comment">// 3) We might want to experiment with using numeric keys since they are easier</span></span><br><span class="line"><span class="comment">//    to optimize in a non-JIT environment.</span></span><br><span class="line"><span class="comment">// 4) We can easily go from a constructor to a createFiber object literal if that</span></span><br><span class="line"><span class="comment">//    is faster.</span></span><br><span class="line"><span class="comment">// 5) It should be easy to port this to a C struct and keep a C implementation</span></span><br><span class="line"><span class="comment">//    compatible.</span></span><br><span class="line"><span class="keyword">const</span> createFiber = <span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    tag: WorkTag,</span></span></span><br><span class="line"><span class="function"><span class="params">    pendingProps: mixed,</span></span></span><br><span class="line"><span class="function"><span class="params">    key: null | string,</span></span></span><br><span class="line"><span class="function"><span class="params">    mode: TypeOfMode,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">Fiber</span> </span>&#123;</span><br><span class="line">    <span class="comment">// $FlowFixMe: the shapes are exact here but Flow doesn&#x27;t like constructors</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> FiberNode(tag, pendingProps, key, mode);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<div class="post-nav">
+    <div class="item left">
+      
 
-<p>之后是两个对象的互相引用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root.current = uninitializedFiber; <span class="comment">// root即FiberRoot</span></span><br><span class="line">uninitializedFiber.stateNode = root; <span class="comment">// uninitializedFiber即RootFiber</span></span><br></pre></td></tr></table></figure>
-
-<p><code>FiberRoot</code>更多的是和 dom 相关的作用<br><code>RootFiber</code>更多的是一个虚拟 dom，他也有类似 dom 的树结构，每次 react 跟新，都先处理<code>RootFiber</code>，然后在作用于<code>FiberRoot</code>,最后更新 dom</p>
+  <a href="/my-notes/2020/09/08/react/renderRoot/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclwrdwyaj20zk0m8are.jpg" title="renderRoot">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> react</span>
+  <h3>renderRoot</h3>
+  </a>
 
     </div>
+    <div class="item right">
+      
 
-    
-    
-    
+  <a href="/my-notes/2020/09/09/react/commitRoot/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetfk5zwj20zk0m8e81.jpg" title="commitRoot">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> react</span>
+  <h3>commitRoot</h3>
+  </a>
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/my-notes/tags/react%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag"># react源码解析</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/my-notes/2020/09/08/react/renderRoot/" rel="prev" title="renderRoot">
-      <i class="fa fa-chevron-left"></i> renderRoot
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/my-notes/2020/09/09/react/completeWork/" rel="next" title="completeWork">
-      completeWork <i class="fa fa-chevron-right"></i>
-    </a></div>
     </div>
-      </footer>
-    
-  </article>
+</div>
+
   
-  
-  
+  <div class="wrap" id="comments"></div>
 
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
 
         </div>
+        <div id="sidebar">
           
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" rel="bookmark" title="初始流程">初始流程</a></li><li><a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" rel="bookmark" title="常量">常量</a></li><li><a href="/my-notes/2020/09/08/react/%E5%90%84%E7%A7%8D%E5%AF%B9%E8%B1%A1/" rel="bookmark" title="一些对象定义">一些对象定义</a></li><li><a href="/my-notes/2020/09/08/react/%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/" rel="bookmark" title="时间">时间</a></li><li class="active"><a href="/my-notes/2020/09/08/react/fiber/" rel="bookmark" title="fiber">fiber</a></li><li><a href="/my-notes/2020/09/08/react/renderRoot/" rel="bookmark" title="renderRoot">renderRoot</a></li><li><a href="/my-notes/2020/09/09/react/completeWork/" rel="bookmark" title="completeWork">completeWork</a></li><li><a href="/my-notes/2020/09/09/react/commitRoot/" rel="bookmark" title="commitRoot">commitRoot</a></li><li><a href="/my-notes/2020/09/09/react/hooks/" rel="bookmark" title="hooks">hooks</a></li><li><a href="/my-notes/2020/09/09/react/function%E7%BB%84%E4%BB%B6/" rel="bookmark" title="function组件">function组件</a></li><li><a href="/my-notes/2020/09/09/react/reconcileChildFibers/" rel="bookmark" title="reconcileChildFibers">reconcileChildFibers</a></li><li><a href="/my-notes/2020/09/10/react/%E4%BA%8B%E4%BB%B6/" rel="bookmark" title="事件系统">事件系统</a></li><li><a href="/my-notes/2020/09/10/react/createElement(dom)/" rel="bookmark" title="createElement(dom)">createElement(dom)</a></li><li><a href="/my-notes/2020/09/10/react/createElement(react%20element)/" rel="bookmark" title="createElement(react element)">createElement(react element)</a></li><li><a href="/my-notes/2020/09/10/react/schedule/" rel="bookmark" title="reconcileChildFibers">reconcileChildFibers</a></li><li><a href="/my-notes/2020/09/11/react/context/" rel="bookmark" title="completeWork">completeWork</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="lokve"
+      data-src="/my-notes/images/head.jpeg">
+  <p class="name" itemprop="name">lokve</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/my-notes/archives/">
+        <span class="count">71</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/my-notes/categories/">
+        <span class="count">2</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/my-notes/tags/">
+        <span class="count">8</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xva3Zl" title="https:&#x2F;&#x2F;github.com&#x2F;lokve"><i class="ic i-github"></i></span>
+</div>
+
+<ul class="menu">
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+    
+  <li class="item">
+    <a href="/my-notes/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/my-notes/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/my-notes/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
   </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">lokve</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/my-notes/archives/">
-        
-          <span class="site-state-item-count">63</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/my-notes/tags/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/my-notes/2020/09/08/react/renderRoot/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/my-notes/2020/09/09/react/commitRoot/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
 </div>
 
 
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
+        </div>
+        <div class="dimmer"></div>
       </div>
     </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">lokve</span>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/4.%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98/" title="变量作用域内存">变量作用域内存</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/08/leetcode/29.Divide%20Two%20Integers/index/" title="29.Divide Two Integers">29.Divide Two Integers</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/09/leetcode/198.House%20Robber/index/" title="198.House Robber">198.House Robber</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2017/05/25/bue/readme/" title="说明">说明</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/" title="离线应用与客户端储存">离线应用与客户端储存</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/selectorFactory/" title="selectorFactory">selectorFactory</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2017/05/09/bue/2/" title="Bue源码阅读笔记（2）">Bue源码阅读笔记（2）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/08/react/fiber/" title="fiber">fiber</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/bindActionCreators/" title="bindActionCreators">bindActionCreators</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/08/react/%E5%90%84%E7%A7%8D%E5%AF%B9%E8%B1%A1/" title="一些对象定义">一些对象定义</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">lokve @ hee note</span>
   </div>
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
     </span>
+    <span title="站点总字数">374k 字</span>
+
     <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
     </span>
+    <span title="站点阅读时长">5:40</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
 </div>
-
-
-
-
-
-
-
 
       </div>
     </footer>
   </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2020/09/08/react/fiber/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
 
-  
-  <script src="/my-notes/lib/anime.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.ui.min.js"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
 
-<script src="/my-notes/js/utils.js"></script>
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 
-<script src="/my-notes/js/motion.js"></script>
-
-
-<script src="/my-notes/js/schemes/pisces.js"></script>
-
-
-<script src="/my-notes/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/my-notes/js/local-search.js"></script>
-
-
-
-
-
-
+<script src="/my-notes/js/app.js?v=0.2.5"></script>
 
 
 
-
-
-
-
-  
-
-  
 
 </body>
 </html>

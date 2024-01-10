@@ -1,491 +1,569 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.1.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/my-notes/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/my-notes/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/my-notes/images/logo.svg" color="#222">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon.png">
 
-<link rel="stylesheet" href="/my-notes/css/main.css">
+<link rel="icon" type="image/ico" sizes="32x32" href="/my-notes/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 
-<link rel="stylesheet" href="/my-notes/lib/font-awesome/css/all.min.css">
+<link rel="alternate" type="application/rss+xml" title="学习笔记" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="学习笔记" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="学习笔记" href="http://example.com/feed.json" />
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/my-notes/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-  <meta name="description" content="本次阅读会无视DEV等没有运行到的分支条件 react 的渲染主要由 react-dom 完成，首先从 ReactDOM.render 开始 12345678910var ReactDOM &#x3D; &amp;#123;  ...  render: function (element, container, callback) &amp;#123;    ... &#x2F;&#x2F; 一些验证参数合法的方法    return leg">
-<meta property="og:type" content="article">
-<meta property="og:title" content="初始流程">
-<meta property="og:url" content="http://example.com/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/index.html">
-<meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="本次阅读会无视DEV等没有运行到的分支条件 react 的渲染主要由 react-dom 完成，首先从 ReactDOM.render 开始 12345678910var ReactDOM &#x3D; &amp;#123;  ...  render: function (element, container, callback) &amp;#123;    ... &#x2F;&#x2F; 一些验证参数合法的方法    return leg">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-07T02:23:00.000Z">
-<meta property="article:modified_time" content="2020-09-15T04:15:42.794Z">
-<meta property="article:author" content="lokve">
-<meta property="article:tag" content="react源码解析">
-<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/my-notes/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="react源码解析" />
+
 
 <link rel="canonical" href="http://example.com/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>初始流程 | 学习笔记</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
+  <title>
+初始流程 - react |
+hee note = 学习笔记</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
     </div>
   </div>
-
-  <div class="site-meta">
-
-    <a href="/my-notes/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">学习笔记</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">初始流程
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2020-09-07 10:23:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2020-09-07T10:23:00+08:00">2020-09-07</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>3.9k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>4 分钟</span>
+  </span>
 </div>
 
 
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/my-notes/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/my-notes/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/my-notes/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/my-notes/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/my-notes/" rel="start">hee note</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
       </li>
-  </ul>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
 </nav>
 
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicmnywqgpj20zk0m8dwx.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciuja1j1j20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclip4jbpj20zk0m87cv.jpg"></li>
+        </ul>
+      </div>
     </header>
-
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/my-notes/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/my-notes/categories/react/" itemprop="item" rel="index" title="分类于 react"><span itemprop="name">react</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/my-notes/images/head.jpeg">
+    <meta itemprop="name" content="lokve">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="学习笔记">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <p>本次阅读会无视<em> DEV</em> 等没有运行到的分支条件</p>
+<p>react 的渲染主要由 react-dom 完成，首先从 ReactDOM.render 开始</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title class_">ReactDOM</span> = &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="attr">render</span>: <span class="keyword">function</span> (<span class="params">element, container, callback</span>) &#123;</span><br><span class="line">    ... <span class="comment">// 一些验证参数合法的方法</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">legacyRenderSubtreeIntoContainer</span>(<span class="literal">null</span>, element, container, <span class="literal">false</span>, callback);</span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>然后看 <code>legacyRenderSubtreeIntoContainer</code></p>
+<p>参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">parentComponent</span>: ?<span class="title class_">React</span>$Component&lt;any, any&gt;, <span class="comment">// 父组件</span></span><br><span class="line">    <span class="attr">children</span>: <span class="title class_">ReactNodeList</span>, <span class="comment">// 已经被处理的react node</span></span><br><span class="line">    <span class="attr">container</span>: <span class="title class_">DOMContainer</span>, <span class="comment">// 挂载dom元素</span></span><br><span class="line">    <span class="attr">forceHydrate</span>: boolean,</span><br><span class="line">    <span class="attr">callback</span>: ?<span class="title class_">Function</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第一次进来，root 不存在</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">root</span>: _ReactSyncRoot = (container.<span class="property">_reactRootContainer</span>: any);</span><br><span class="line">    <span class="keyword">let</span> fiberRoot;</span><br><span class="line">    <span class="keyword">if</span> (!root) &#123;</span><br><span class="line">        <span class="comment">// Initial mount</span></span><br><span class="line">        root = container.<span class="property">_reactRootContainer</span> = <span class="title function_">legacyCreateRootFromDOMContainer</span>(</span><br><span class="line">            container,</span><br><span class="line">            forceHydrate,</span><br><span class="line">        );</span><br><span class="line">        fiberRoot = root.<span class="property">_internalRoot</span>; <span class="comment">// FiberNode</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> originalCallback = callback;</span><br><span class="line">            callback = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">                <span class="keyword">const</span> instance = <span class="title function_">getPublicRootInstance</span>(fiberRoot);</span><br><span class="line">                originalCallback.<span class="title function_">call</span>(instance);</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Initial mount should not be batched.</span></span><br><span class="line">        <span class="title function_">unbatchedUpdates</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="title function_">updateContainer</span>(children, fiberRoot, parentComponent, callback);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;...&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="title function_">getPublicRootInstance</span>(fiberRoot);</span><br></pre></td></tr></table></figure>
+<p><code>legacyCreateRootFromDOMContainer</code>  的作用是删除 container 中已经存在的子节点，然后返回 <code>new ReactSyncRoot(container, LegacyRoot, shouldHydrate)</code>  // dom, 0, false</p>
+<p>之后是创建 fiber, 见 <code>fiber.md</code> , 然后开始第一次的 mount</p>
+<p><code>unbatchedUpdates</code>  里主要是改变执行状态，然后就执行回调函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 非批量修改， 第一次渲染会执行</span></span><br><span class="line">executionContext = <span class="title class_">NoContext</span>; <span class="comment">// 初始为0（二进制）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> unbatchedUpdates&lt;A, R&gt;(<span class="attr">fn</span>: <span class="function">(<span class="params">a: A</span>) =&gt;</span> R, <span class="attr">a</span>: A): R &#123;</span><br><span class="line">    <span class="keyword">const</span> prevExecutionContext = executionContext; <span class="comment">// 记住状态</span></span><br><span class="line">    executionContext &amp;= ~<span class="title class_">BatchedContext</span>; <span class="comment">// 删除BatchedContext状态</span></span><br><span class="line">    executionContext |= <span class="title class_">LegacyUnbatchedContext</span>; <span class="comment">// 添加LegacyUnbatchedContext状态</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">fn</span>(a);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        executionContext = prevExecutionContext; <span class="comment">// 归还状态</span></span><br><span class="line">        <span class="keyword">if</span> (executionContext === <span class="title class_">NoContext</span>) &#123;</span><br><span class="line">            <span class="comment">// Flush the immediate callbacks that were scheduled during this batch</span></span><br><span class="line">            <span class="title function_">flushSyncCallbackQueue</span>(); <span class="comment">// 刷新同步回调队列</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>计算时间</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">updateContainer</span>(<span class="params"></span></span><br><span class="line"><span class="params">    element: ReactNodeList, <span class="comment">// children</span></span></span><br><span class="line"><span class="params">    container: OpaqueRoot, <span class="comment">// fiber</span></span></span><br><span class="line"><span class="params">    parentComponent: ?React$Component&lt;any, any&gt;,</span></span><br><span class="line"><span class="params">    callback: ?<span class="built_in">Function</span>,</span></span><br><span class="line"><span class="params"></span>): <span class="title class_">ExpirationTime</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> current = container.<span class="property">current</span>; <span class="comment">// FiberNode</span></span><br><span class="line">    <span class="comment">// 获取当前时间</span></span><br><span class="line">    <span class="comment">// 在10ms内获取到的是同一数值</span></span><br><span class="line">    <span class="keyword">const</span> currentTime = <span class="title function_">requestCurrentTime</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> suspenseConfig = <span class="title function_">requestCurrentSuspenseConfig</span>(); <span class="comment">// null</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> expirationTime = <span class="title function_">computeExpirationForFiber</span>(currentTime, current, suspenseConfig);</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">updateContainerAtExpirationTime</span>(</span><br><span class="line">        element,</span><br><span class="line">        container,</span><br><span class="line">        parentComponent,</span><br><span class="line">        expirationTime,</span><br><span class="line">        suspenseConfig,</span><br><span class="line">        callback,</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>初始化 container.context，这里暂时不细看，第一次得到的是 {}</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">updateContainerAtExpirationTime</span>(<span class="params"></span></span><br><span class="line"><span class="params">    element: ReactNodeList,</span></span><br><span class="line"><span class="params">    container: OpaqueRoot,</span></span><br><span class="line"><span class="params">    parentComponent: ?React$Component&lt;any, any&gt;,</span></span><br><span class="line"><span class="params">    expirationTime: ExpirationTime,</span></span><br><span class="line"><span class="params">    suspenseConfig: <span class="literal">null</span> | SuspenseConfig,</span></span><br><span class="line"><span class="params">    callback: ?<span class="built_in">Function</span>,</span></span><br><span class="line"><span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> current = container.<span class="property">current</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> context = <span class="title function_">getContextForSubtree</span>(parentComponent); <span class="comment">// 第一次是 &#123;&#125;</span></span><br><span class="line">    <span class="keyword">if</span> (container.<span class="property">context</span> === <span class="literal">null</span>) &#123;</span><br><span class="line">        container.<span class="property">context</span> = context;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        container.<span class="property">pendingContext</span> = context;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">scheduleRootUpdate</span>(current, element, expirationTime, suspenseConfig, callback);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="schedulerootupdate"><a class="markdownIt-Anchor" href="#schedulerootupdate">#</a> scheduleRootUpdate</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">scheduleRootUpdate</span>(<span class="params"></span></span><br><span class="line"><span class="params">  current: Fiber,</span></span><br><span class="line"><span class="params">  element: ReactNodeList,</span></span><br><span class="line"><span class="params">  expirationTime: ExpirationTime,</span></span><br><span class="line"><span class="params">  suspenseConfig: <span class="literal">null</span> | SuspenseConfig,</span></span><br><span class="line"><span class="params">  callback: ?<span class="built_in">Function</span>,</span></span><br><span class="line"><span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> update = <span class="title function_">createUpdate</span>(expirationTime, suspenseConfig); <span class="comment">// 返回一个update对象</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Caution: React DevTools currently depends on this property</span></span><br><span class="line">  <span class="comment">// being called &quot;element&quot;.</span></span><br><span class="line">  update.<span class="property">payload</span> = &#123;element&#125;; <span class="comment">// element是react组件 &#123;type:xxxx...&#125;</span></span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  <span class="title function_">enqueueUpdate</span>(current, update); <span class="comment">// 主要是fiber(current).updateQueue数据变动（初始化）,先不细看</span></span><br><span class="line">  <span class="title function_">scheduleWork</span>(current, expirationTime); <span class="comment">// 完成了到DidMount的生命周期</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> expirationTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后是 <code>scheduleWork</code>  即 <code>scheduleUpdateOnFiber</code></p>
+<p>见 <span class="exturl" data-url="aHR0cDovL3NjaGVkdWxlLm1k">schedule.md</span></p>
+<h2 id="renderroot"><a class="markdownIt-Anchor" href="#renderroot">#</a> renderRoot</h2>
+<p>构建 fiber 树和 dom 树，互相对应为参数，能互相找到，并执行了渲染前的生命周期</p>
+<p>见 <span class="exturl" data-url="aHR0cDovL3JlbmRlclJvb3QubWQ=">renderRoot.md</span></p>
+<p>最后</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> commitRoot.<span class="title function_">bind</span>(<span class="literal">null</span>, root);</span><br></pre></td></tr></table></figure>
+<h2 id="commitroot"><a class="markdownIt-Anchor" href="#commitroot">#</a> commitRoot</h2>
+<p>见 <span class="exturl" data-url="aHR0cDovL2NvbW1pdFJvb3QubWQ=">commitRoot.md</span></p>
+
+      <div class="tags">
+          <a href="/my-notes/tags/react%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag"><i class="ic i-tag"></i> react源码解析</a>
+      </div>
   </div>
 
+   <footer>
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
     </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          初始流程
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-07 10:23:00" itemprop="dateCreated datePublished" datetime="2020-09-07T10:23:00+08:00">2020-09-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 12:15:42" itemprop="dateModified" datetime="2020-09-15T12:15:42+08:00">2020-09-15</time>
-              </span>
-
-          
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <span class="text">更新于</span>
+    <time title="修改时间：2024-01-10 14:22:58" itemprop="dateModified" datetime="2024-01-10T14:22:58+08:00">2024-01-10</time>
+  </span>
+</div>
 
       
-        <p>本次阅读会无视<em>DEV</em>等没有运行到的分支条件</p>
-<p>react 的渲染主要由 react-dom 完成，首先从 ReactDOM.render 开始</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ReactDOM = &#123;</span><br><span class="line">  ...</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span> (<span class="params">element, container, callback</span>) </span>&#123;</span><br><span class="line">    ... <span class="comment">// 一些验证参数合法的方法</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> legacyRenderSubtreeIntoContainer(<span class="literal">null</span>, element, container, <span class="literal">false</span>, callback);</span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/my-notes/images/wechatpay.png" alt="lokve 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/alipay.png" alt="lokve 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/paypal.png" alt="lokve 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
 
-<p>然后看<code>legacyRenderSubtreeIntoContainer</code></p>
-<p>参数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    parentComponent: ?React$Component&lt;any, any&gt;, <span class="comment">// 父组件</span></span><br><span class="line">    children: ReactNodeList, <span class="comment">// 已经被处理的react node</span></span><br><span class="line">    container: DOMContainer, <span class="comment">// 挂载dom元素</span></span><br><span class="line">    forceHydrate: boolean,</span><br><span class="line">    callback: ?<span class="built_in">Function</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
 
-<p>第一次进来，root 不存在</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> root: _ReactSyncRoot = (container._reactRootContainer: any);</span><br><span class="line">    <span class="keyword">let</span> fiberRoot;</span><br><span class="line">    <span class="keyword">if</span> (!root) &#123;</span><br><span class="line">        <span class="comment">// Initial mount</span></span><br><span class="line">        root = container._reactRootContainer = legacyCreateRootFromDOMContainer(</span><br><span class="line">            container,</span><br><span class="line">            forceHydrate,</span><br><span class="line">        );</span><br><span class="line">        fiberRoot = root._internalRoot; <span class="comment">// FiberNode</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> callback === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">const</span> originalCallback = callback;</span><br><span class="line">            callback = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">const</span> instance = getPublicRootInstance(fiberRoot);</span><br><span class="line">                originalCallback.call(instance);</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Initial mount should not be batched.</span></span><br><span class="line">        unbatchedUpdates(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            updateContainer(children, fiberRoot, parentComponent, callback);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;...&#125;</span><br><span class="line"><span class="keyword">return</span> getPublicRootInstance(fiberRoot);</span><br></pre></td></tr></table></figure>
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>lokve <i class="ic i-at"><em>@</em></i>学习笔记
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" title="初始流程">http://example.com/2020/09/07/react/1.初始流程/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-<p><code>legacyCreateRootFromDOMContainer</code>的作用是删除 container 中已经存在的子节点，然后返回<code>new ReactSyncRoot(container, LegacyRoot, shouldHydrate)</code> // dom, 0, false</p>
-<p>之后是创建 fiber,见<code>fiber.md</code>,然后开始第一次的 mount</p>
-<p><code>unbatchedUpdates</code>里主要是改变执行状态，然后就执行回调函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 非批量修改， 第一次渲染会执行</span></span><br><span class="line">executionContext = NoContext; <span class="comment">// 初始为0（二进制）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">unbatchedUpdates</span>&lt;<span class="title">A</span>, <span class="title">R</span>&gt;(<span class="params">fn: (a: A) =&gt; R, a: A</span>): <span class="title">R</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> prevExecutionContext = executionContext; <span class="comment">// 记住状态</span></span><br><span class="line">    executionContext &amp;= ~BatchedContext; <span class="comment">// 删除BatchedContext状态</span></span><br><span class="line">    executionContext |= LegacyUnbatchedContext; <span class="comment">// 添加LegacyUnbatchedContext状态</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> fn(a);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        executionContext = prevExecutionContext; <span class="comment">// 归还状态</span></span><br><span class="line">        <span class="keyword">if</span> (executionContext === NoContext) &#123;</span><br><span class="line">            <span class="comment">// Flush the immediate callbacks that were scheduled during this batch</span></span><br><span class="line">            flushSyncCallbackQueue(); <span class="comment">// 刷新同步回调队列</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </footer>
 
-<p>计算时间</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">updateContainer</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    element: ReactNodeList, <span class="regexp">//</span> children</span></span></span><br><span class="line"><span class="function"><span class="params">    container: OpaqueRoot, <span class="regexp">//</span> fiber</span></span></span><br><span class="line"><span class="function"><span class="params">    parentComponent: ?React$Component&lt;any, any&gt;,</span></span></span><br><span class="line"><span class="function"><span class="params">    callback: ?Function,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>): <span class="title">ExpirationTime</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> current = container.current; <span class="comment">// FiberNode</span></span><br><span class="line">    <span class="comment">// 获取当前时间</span></span><br><span class="line">    <span class="comment">// 在10ms内获取到的是同一数值</span></span><br><span class="line">    <span class="keyword">const</span> currentTime = requestCurrentTime();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> suspenseConfig = requestCurrentSuspenseConfig(); <span class="comment">// null</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> expirationTime = computeExpirationForFiber(currentTime, current, suspenseConfig);</span><br><span class="line">    <span class="keyword">return</span> updateContainerAtExpirationTime(</span><br><span class="line">        element,</span><br><span class="line">        container,</span><br><span class="line">        parentComponent,</span><br><span class="line">        expirationTime,</span><br><span class="line">        suspenseConfig,</span><br><span class="line">        callback,</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article>
 
-<p>初始化 container.context，这里暂时不细看，第一次得到的是{}</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">updateContainerAtExpirationTime</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    element: ReactNodeList,</span></span></span><br><span class="line"><span class="function"><span class="params">    container: OpaqueRoot,</span></span></span><br><span class="line"><span class="function"><span class="params">    parentComponent: ?React$Component&lt;any, any&gt;,</span></span></span><br><span class="line"><span class="function"><span class="params">    expirationTime: ExpirationTime,</span></span></span><br><span class="line"><span class="function"><span class="params">    suspenseConfig: null | SuspenseConfig,</span></span></span><br><span class="line"><span class="function"><span class="params">    callback: ?Function,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> current = container.current;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> context = getContextForSubtree(parentComponent); <span class="comment">// 第一次是 &#123;&#125;</span></span><br><span class="line">    <span class="keyword">if</span> (container.context === <span class="literal">null</span>) &#123;</span><br><span class="line">        container.context = context;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        container.pendingContext = context;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> scheduleRootUpdate(current, element, expirationTime, suspenseConfig, callback);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+  
 
-<h3 id="scheduleRootUpdate"><a href="#scheduleRootUpdate" class="headerlink" title="scheduleRootUpdate"></a>scheduleRootUpdate</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scheduleRootUpdate</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">  current: Fiber,</span></span></span><br><span class="line"><span class="function"><span class="params">  element: ReactNodeList,</span></span></span><br><span class="line"><span class="function"><span class="params">  expirationTime: ExpirationTime,</span></span></span><br><span class="line"><span class="function"><span class="params">  suspenseConfig: null | SuspenseConfig,</span></span></span><br><span class="line"><span class="function"><span class="params">  callback: ?Function,</span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> update = createUpdate(expirationTime, suspenseConfig); <span class="comment">// 返回一个update对象</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Caution: React DevTools currently depends on this property</span></span><br><span class="line">  <span class="comment">// being called &quot;element&quot;.</span></span><br><span class="line">  update.payload = &#123;element&#125;; <span class="comment">// element是react组件 &#123;type:xxxx...&#125;</span></span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line">  enqueueUpdate(current, update); <span class="comment">// 主要是fiber(current).updateQueue数据变动（初始化）,先不细看</span></span><br><span class="line">  scheduleWork(current, expirationTime); <span class="comment">// 完成了到DidMount的生命周期</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> expirationTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="post-nav">
+    <div class="item left">
+      
 
-<p>然后是<code>scheduleWork</code>即<code>scheduleUpdateOnFiber</code></p>
-<p>见 schedule.md</p>
-<h2 id="renderRoot"><a href="#renderRoot" class="headerlink" title="renderRoot"></a>renderRoot</h2><p>构建 fiber 树和 dom 树，互相对应为参数，能互相找到，并执行了渲染前的生命周期</p>
-<p>见 renderRoot.md</p>
-<p>最后</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> commitRoot.bind(<span class="literal">null</span>, root);</span><br></pre></td></tr></table></figure>
-
-<h2 id="commitRoot"><a href="#commitRoot" class="headerlink" title="commitRoot"></a>commitRoot</h2><p>见 commitRoot.md</p>
+  <a href="/my-notes/2019/07/10/%E7%AE%97%E6%B3%95/01.%E6%8E%92%E5%BA%8F/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexw3o58j20zk0m8e81.jpg" title="数据结构">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>数据结构</h3>
+  </a>
 
     </div>
+    <div class="item right">
+      
 
-    
-    
-    
+  <a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeybxm1pj20zk0m8niv.jpg" title="常量">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> react</span>
+  <h3>常量</h3>
+  </a>
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/my-notes/tags/react%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" rel="tag"># react源码解析</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/my-notes/2019/07/10/%E7%AE%97%E6%B3%95/01.%E6%8E%92%E5%BA%8F/" rel="prev" title="数据结构">
-      <i class="fa fa-chevron-left"></i> 数据结构
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" rel="next" title="常量">
-      常量 <i class="fa fa-chevron-right"></i>
-    </a></div>
     </div>
-      </footer>
-    
-  </article>
+</div>
+
   
-  
-  
+  <div class="wrap" id="comments"></div>
 
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
 
         </div>
+        <div id="sidebar">
           
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#schedulerootupdate"><span class="toc-number">1.</span> <span class="toc-text"> scheduleRootUpdate</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#renderroot"><span class="toc-number"></span> <span class="toc-text"> renderRoot</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#commitroot"><span class="toc-number"></span> <span class="toc-text"> commitRoot</span></a>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" rel="bookmark" title="初始流程">初始流程</a></li><li><a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" rel="bookmark" title="常量">常量</a></li><li><a href="/my-notes/2020/09/08/react/%E5%90%84%E7%A7%8D%E5%AF%B9%E8%B1%A1/" rel="bookmark" title="一些对象定义">一些对象定义</a></li><li><a href="/my-notes/2020/09/08/react/%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/" rel="bookmark" title="时间">时间</a></li><li><a href="/my-notes/2020/09/08/react/fiber/" rel="bookmark" title="fiber">fiber</a></li><li><a href="/my-notes/2020/09/08/react/renderRoot/" rel="bookmark" title="renderRoot">renderRoot</a></li><li><a href="/my-notes/2020/09/09/react/completeWork/" rel="bookmark" title="completeWork">completeWork</a></li><li><a href="/my-notes/2020/09/09/react/commitRoot/" rel="bookmark" title="commitRoot">commitRoot</a></li><li><a href="/my-notes/2020/09/09/react/hooks/" rel="bookmark" title="hooks">hooks</a></li><li><a href="/my-notes/2020/09/09/react/function%E7%BB%84%E4%BB%B6/" rel="bookmark" title="function组件">function组件</a></li><li><a href="/my-notes/2020/09/09/react/reconcileChildFibers/" rel="bookmark" title="reconcileChildFibers">reconcileChildFibers</a></li><li><a href="/my-notes/2020/09/10/react/%E4%BA%8B%E4%BB%B6/" rel="bookmark" title="事件系统">事件系统</a></li><li><a href="/my-notes/2020/09/10/react/createElement(dom)/" rel="bookmark" title="createElement(dom)">createElement(dom)</a></li><li><a href="/my-notes/2020/09/10/react/createElement(react%20element)/" rel="bookmark" title="createElement(react element)">createElement(react element)</a></li><li><a href="/my-notes/2020/09/10/react/schedule/" rel="bookmark" title="reconcileChildFibers">reconcileChildFibers</a></li><li><a href="/my-notes/2020/09/11/react/context/" rel="bookmark" title="completeWork">completeWork</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="lokve"
+      data-src="/my-notes/images/head.jpeg">
+  <p class="name" itemprop="name">lokve</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/my-notes/archives/">
+        <span class="count">71</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/my-notes/categories/">
+        <span class="count">2</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/my-notes/tags/">
+        <span class="count">8</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xva3Zl" title="https:&#x2F;&#x2F;github.com&#x2F;lokve"><i class="ic i-github"></i></span>
+</div>
+
+<ul class="menu">
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+    
+  <li class="item">
+    <a href="/my-notes/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/my-notes/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/my-notes/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
   </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#scheduleRootUpdate"><span class="nav-number">1.</span> <span class="nav-text">scheduleRootUpdate</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#renderRoot"><span class="nav-number"></span> <span class="nav-text">renderRoot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#commitRoot"><span class="nav-number"></span> <span class="nav-text">commitRoot</span></a></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">lokve</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/my-notes/archives/">
-        
-          <span class="site-state-item-count">63</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/my-notes/tags/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/my-notes/2019/07/10/%E7%AE%97%E6%B3%95/01.%E6%8E%92%E5%BA%8F/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
 </div>
 
 
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
+        </div>
+        <div class="dimmer"></div>
       </div>
     </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">lokve</span>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+
+    <span><a href="/my-notes/2017/05/23/bue/5/" title="Bue源码阅读笔记（5）">Bue源码阅读笔记（5）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2018/01/23/vue/2/" title="Vue源码阅读笔记（2）(Vue的生命周期)">Vue源码阅读笔记（2）(Vue的生命周期)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/" title="New Api">New Api</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/09/react/function%E7%BB%84%E4%BB%B6/" title="function组件">function组件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/" title="BOM">BOM</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/" title="离线应用与客户端储存">离线应用与客户端储存</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/07/02/%E7%AE%97%E6%B3%95/0.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">数据结构</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/connect/" title="connect">connect</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2017/06/28/%E9%9A%8F%E8%AE%B0/2/" title="一些笔记">一些笔记</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/07/leetcode/241.Different%20Ways%20to%20Add%20Parentheses/index/" title="241.Different Ways to Add Parentheses">241.Different Ways to Add Parentheses</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">lokve @ hee note</span>
   </div>
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
     </span>
+    <span title="站点总字数">374k 字</span>
+
     <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
     </span>
+    <span title="站点阅读时长">5:40</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
 </div>
-
-
-
-
-
-
-
 
       </div>
     </footer>
   </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2020/09/07/react/1.初始流程/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
 
-  
-  <script src="/my-notes/lib/anime.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.ui.min.js"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
 
-<script src="/my-notes/js/utils.js"></script>
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 
-<script src="/my-notes/js/motion.js"></script>
-
-
-<script src="/my-notes/js/schemes/pisces.js"></script>
-
-
-<script src="/my-notes/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/my-notes/js/local-search.js"></script>
-
-
-
-
-
-
+<script src="/my-notes/js/app.js?v=0.2.5"></script>
 
 
 
-
-
-
-
-  
-
-  
 
 </body>
 </html>

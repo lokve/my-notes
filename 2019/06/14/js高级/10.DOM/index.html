@@ -1,519 +1,607 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.1.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/my-notes/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/my-notes/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/my-notes/images/logo.svg" color="#222">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon.png">
 
-<link rel="stylesheet" href="/my-notes/css/main.css">
+<link rel="icon" type="image/ico" sizes="32x32" href="/my-notes/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 
-<link rel="stylesheet" href="/my-notes/lib/font-awesome/css/all.min.css">
+<link rel="alternate" type="application/rss+xml" title="学习笔记" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="学习笔记" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="学习笔记" href="http://example.com/feed.json" />
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/my-notes/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-  <meta name="description" content="节点层次Node 类型123456789101112ELEMENT_NODE: 1 &#x2F;&#x2F; div等ATTRBUTE_NODE: 2TEXT_NODE: 3 &#x2F;&#x2F; 文本节点CDATA_SECTION_NODE: 4ENTITY_REFERENCE_NODE: 5ENTITY_NODE: 6PROCESSING_INSTRUCTION_NODE: 7COMMEN">
-<meta property="og:type" content="article">
-<meta property="og:title" content="DOM">
-<meta property="og:url" content="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/index.html">
-<meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="节点层次Node 类型123456789101112ELEMENT_NODE: 1 &#x2F;&#x2F; div等ATTRBUTE_NODE: 2TEXT_NODE: 3 &#x2F;&#x2F; 文本节点CDATA_SECTION_NODE: 4ENTITY_REFERENCE_NODE: 5ENTITY_NODE: 6PROCESSING_INSTRUCTION_NODE: 7COMMEN">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-06-13T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-09-15T06:11:47.434Z">
-<meta property="article:author" content="lokve">
-<meta property="article:tag" content="javascript高级笔记">
-<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/my-notes/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="javascript高级笔记" />
+
 
 <link rel="canonical" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>DOM | 学习笔记</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
+  <title>
+DOM |
+hee note = 学习笔记</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
     </div>
   </div>
-
-  <div class="site-meta">
-
-    <a href="/my-notes/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">学习笔记</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">DOM
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>3.5k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>3 分钟</span>
+  </span>
 </div>
 
 
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/my-notes/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/my-notes/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/my-notes/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/my-notes/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/my-notes/" rel="start">hee note</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
       </li>
-  </ul>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
 </nav>
 
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclh5u05ej20zk0m87df.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeuibk9fj20zk0m8ay2.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
+        </ul>
+      </div>
     </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
           
-
-          <div class="content post posts-expand">
-            
-
+  <div class="article wrap">
     
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/">
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/my-notes/">首页</a></span>
+</div>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
-    </span>
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/">
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          DOM
-        </h1>
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/my-notes/images/head.jpeg">
+    <meta itemprop="name" content="lokve">
+    <meta itemprop="description" content=", ">
+  </span>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="学习笔记">
+  </span>
 
-              <time title="创建时间：2019-06-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 14:11:47" itemprop="dateModified" datetime="2020-09-15T14:11:47+08:00">2020-09-15</time>
-              </span>
-
-          
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-
-        </div>
-      </header>
-
+  <div class="body md" itemprop="articleBody">
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
 
-      
-        <h2 id="节点层次"><a href="#节点层次" class="headerlink" title="节点层次"></a>节点层次</h2><h3 id="Node-类型"><a href="#Node-类型" class="headerlink" title="Node 类型"></a>Node 类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ELEMENT_NODE: 1 &#x2F;&#x2F; div等</span><br><span class="line">ATTRBUTE_NODE: 2</span><br><span class="line">TEXT_NODE: 3 &#x2F;&#x2F; 文本节点</span><br><span class="line">CDATA_SECTION_NODE: 4</span><br><span class="line">ENTITY_REFERENCE_NODE: 5</span><br><span class="line">ENTITY_NODE: 6</span><br><span class="line">PROCESSING_INSTRUCTION_NODE: 7</span><br><span class="line">COMMENT_NODE: 8 &#x2F;&#x2F; 注释节点</span><br><span class="line">DOCUMENT_NODE: 9 &#x2F;&#x2F; document类型</span><br><span class="line">DOCUMENT_TYPE_NODE: 10</span><br><span class="line">DOCUMENT_FRAGMENT_NODE: 11</span><br><span class="line">NOTATION_NODE: 12</span><br></pre></td></tr></table></figure>
-
-<h3 id="document-类型"><a href="#document-类型" class="headerlink" title="document 类型"></a>document 类型</h3><p>document 是 HTMLDocument 的一个实例，表示整个 html 页面。document 对象是 window 的一个属性</p>
-<h3 id="element-类型-1"><a href="#element-类型-1" class="headerlink" title="element 类型 (1)"></a>element 类型 (1)</h3><ol>
+    <h2 id="节点层次"><a class="markdownIt-Anchor" href="#节点层次">#</a> 节点层次</h2>
+<h3 id="node-类型"><a class="markdownIt-Anchor" href="#node-类型">#</a> Node 类型</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ELEMENT_NODE: 1 // div等</span><br><span class="line">ATTRBUTE_NODE: 2</span><br><span class="line">TEXT_NODE: 3 // 文本节点</span><br><span class="line">CDATA_SECTION_NODE: 4</span><br><span class="line">ENTITY_REFERENCE_NODE: 5</span><br><span class="line">ENTITY_NODE: 6</span><br><span class="line">PROCESSING_INSTRUCTION_NODE: 7</span><br><span class="line">COMMENT_NODE: 8 // 注释节点</span><br><span class="line">DOCUMENT_NODE: 9 // document类型</span><br><span class="line">DOCUMENT_TYPE_NODE: 10</span><br><span class="line">DOCUMENT_FRAGMENT_NODE: 11</span><br><span class="line">NOTATION_NODE: 12</span><br></pre></td></tr></table></figure>
+<h3 id="document-类型"><a class="markdownIt-Anchor" href="#document-类型">#</a> document 类型</h3>
+<p>document 是 HTMLDocument 的一个实例，表示整个 html 页面。document 对象是 window 的一个属性</p>
+<h3 id="element-类型-1"><a class="markdownIt-Anchor" href="#element-类型-1">#</a> element 类型 (1)</h3>
+<ol>
 <li>html 元素</li>
 </ol>
-<p>包含<code>id</code>,<code>title</code>,<code>lang</code>,<code>className</code>,<code>dir</code>5 个基本特性，可以直接通过 div.xxx 读取或设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var div &#x3D; document.getElementById(&quot;myDiv&quot;);</span><br><span class="line">console.log(div.id)</span><br><span class="line">div.id &#x3D; &#39;id&#39;</span><br></pre></td></tr></table></figure>
-
+<p>包含 <code>id</code> , <code>title</code> , <code>lang</code> , <code>className</code> , <code>dir</code> 5 个基本特性，可以直接通过 <span class="exturl" data-url="aHR0cDovL2Rpdi54eHg=">div.xxx</span> 读取或设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var div = document.getElementById(&quot;myDiv&quot;);</span><br><span class="line">console.log(div.id)</span><br><span class="line">div.id = &#x27;id&#x27;</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>操作特性</li>
 </ol>
-<p><code>getAttribute()􏴎</code> <code>setAttribute()􏲪</code> <code>removeAttribute()</code></p>
+<p><code>getAttribute()􏴎</code>   <code>setAttribute()􏲪</code>   <code>removeAttribute()</code></p>
 <p>可以操作 html 自带的和自定义的特性</p>
 <ol start="3">
 <li>attribute 属性</li>
 </ol>
-<p>Element 类型是使用 attribute 属性的唯一一个 DOM 节点类型。<br>保存在 NamedNodeMap 中，拥有以下方法</p>
+<p>Element 类型是使用 attribute 属性的唯一一个 DOM 节点类型。<br>
+保存在 NamedNodeMap 中，拥有以下方法</p>
 <ul>
-<li>getNamedItem(name) 返回 nodeName 属性等于 name 的节点</li>
-<li>removeNamedItem(name) 删除</li>
-<li>setNamedItem(node) 向列表中添加节点、以节点的 nodeName 属性为索引</li>
-<li>item(pos) 返回唯一数字 pos 位置的节点</li>
+<li>getNamedItem (name) 返回 nodeName 属性等于 name 的节点</li>
+<li>removeNamedItem (name) 删除</li>
+<li>setNamedItem (node) 向列表中添加节点、以节点的 nodeName 属性为索引</li>
+<li>item (pos) 返回唯一数字 pos 位置的节点</li>
 </ul>
-<h3 id="Text-类型-3"><a href="#Text-类型-3" class="headerlink" title="Text 类型 (3)"></a>Text 类型 (3)</h3><p>可以通过 nodeValue 属性或 data 属性访问 Text 节点中包含的文本</p>
+<h3 id="text-类型-3"><a class="markdownIt-Anchor" href="#text-类型-3">#</a> Text 类型 (3)</h3>
+<p>可以通过 nodeValue 属性或 data 属性访问 Text 节点中包含的文本</p>
 <ul>
-<li>appendData(text) text 添加到末尾</li>
-<li>deleteData(offset, count) 删除(offset, offset+count)位置的文本</li>
-<li>insertData(offset, text) 在 offset 处插入 text</li>
-<li>replaceData(offset, count, text) 用 text 替换(offset, offset+count)位置的文本</li>
-<li>splitText(offset) 在 offset 处将文本节点拆分为两个</li>
-<li>substringData(offset, count) 获得(offset, offset+count)位置的文本</li>
+<li>appendData (text) text 添加到末尾</li>
+<li>deleteData (offset, count) 删除 (offset, offset+count) 位置的文本</li>
+<li>insertData (offset, text) 在 offset 处插入 text</li>
+<li>replaceData (offset, count, text) 用 text 替换 (offset, offset+count) 位置的文本</li>
+<li>splitText (offset) 在 offset 处将文本节点拆分为两个</li>
+<li>substringData (offset, count) 获得 (offset, offset+count) 位置的文本</li>
 </ul>
 <ol>
 <li>创建文本节点</li>
 </ol>
 <p>document.createTextNode()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var element &#x3D; document.createElement(&quot;div&quot;);</span><br><span class="line">element.className &#x3D; &quot;message&quot;;</span><br><span class="line">var textNode &#x3D; document.createTextNode(&quot;Hello world!&quot;);</span><br><span class="line">element.appendChild(textNode);</span><br><span class="line">document.body.appendChild(element);</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var element = document.createElement(&quot;div&quot;);</span><br><span class="line">element.className = &quot;message&quot;;</span><br><span class="line">var textNode = document.createTextNode(&quot;Hello world!&quot;);</span><br><span class="line">element.appendChild(textNode);</span><br><span class="line">document.body.appendChild(element);</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>规范化文本节点</li>
 </ol>
 <p><code>normalize</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var element &#x3D; document.createElement(&quot;div&quot;);</span><br><span class="line">element.className &#x3D; &quot;message&quot;;</span><br><span class="line">var textNode &#x3D; document.createTextNode(&quot;Hello world!&quot;);</span><br><span class="line">element.appendChild(textNode);</span><br><span class="line">var anotherTextNode &#x3D; document.createTextNode(&quot;Yippee!&quot;);</span><br><span class="line">element.appendChild(anotherTextNode);</span><br><span class="line">document.body.appendChild(element);</span><br><span class="line">alert(element.childNodes.length);    &#x2F;&#x2F;2</span><br><span class="line">element.normalize();</span><br><span class="line">alert(element.childNodes.length);    &#x2F;&#x2F;1</span><br><span class="line">alert(element.firstChild.nodeValue); &#x2F;&#x2F; &quot;Hello world!Yippee!&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var element = document.createElement(&quot;div&quot;);</span><br><span class="line">element.className = &quot;message&quot;;</span><br><span class="line">var textNode = document.createTextNode(&quot;Hello world!&quot;);</span><br><span class="line">element.appendChild(textNode);</span><br><span class="line">var anotherTextNode = document.createTextNode(&quot;Yippee!&quot;);</span><br><span class="line">element.appendChild(anotherTextNode);</span><br><span class="line">document.body.appendChild(element);</span><br><span class="line">alert(element.childNodes.length);    //2</span><br><span class="line">element.normalize();</span><br><span class="line">alert(element.childNodes.length);    //1</span><br><span class="line">alert(element.firstChild.nodeValue); // &quot;Hello world!Yippee!&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="comment-类型-8"><a class="markdownIt-Anchor" href="#comment-类型-8">#</a> Comment 类型 (8)</h3>
+<p>Comment 类型与 Text 类型继承自相同的基类，因此他拥有除 splitText 外的所有字符串操作方法</p>
+<h3 id="cdatasection-类型-4"><a class="markdownIt-Anchor" href="#cdatasection-类型-4">#</a> CDATASection 类型 (4)</h3>
+<p>CDATASection 类型只针对基于 XML 的文档，表示的是 CDATA 区域，方法与 Comment 类似 (拥有除 splitText 方法)</p>
+<h3 id="documenttype-类型-10"><a class="markdownIt-Anchor" href="#documenttype-类型-10">#</a> DocumentType 类型 (10)</h3>
+<p>包含于文档的 doctype 有关的所有信息，很少使用。</p>
+<p>通过 <code>document.doctype</code>  读取</p>
+<h3 id="documentfragment-类型-11"><a class="markdownIt-Anchor" href="#documentfragment-类型-11">#</a> DocumentFragment 类型 (11)</h3>
+<p>可以包含和控制节点，但不会像完整的文档那样占用额外的资源，一般当做‘临时仓库’来使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var fragment = document.createDocumentFragment();</span><br><span class="line">    var ul = document.getElementById(&quot;myList&quot;);</span><br><span class="line">    var li = null;</span><br><span class="line">    for (var i=0; i &lt; 3; i++)&#123;</span><br><span class="line">        li = document.createElement(&quot;li&quot;);</span><br><span class="line">        li.appendChild(document.createTextNode(&quot;Item &quot; + (i+1)));</span><br><span class="line">        fragment.appendChild(li);</span><br><span class="line">    &#125;</span><br><span class="line">    ul.appendChild(fragment);</span><br></pre></td></tr></table></figure>
+<h3 id="attr-类型-2"><a class="markdownIt-Anchor" href="#attr-类型-2">#</a> Attr 类型 (2)</h3>
+<p>元素的特性，id、class 等属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var attr = document.createAttribute(&quot;align&quot;);</span><br><span class="line">attr.value = &quot;left&quot;;</span><br><span class="line">element.setAttributeNode(attr);</span><br><span class="line">alert(element.attributes[&quot;align&quot;].value);</span><br><span class="line">alert(element.getAttributeNode(&quot;align&quot;).value); //&quot;left&quot;</span><br><span class="line">alert(element.getAttribute(&quot;align&quot;));           //&quot;left&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="dom-操作技术"><a class="markdownIt-Anchor" href="#dom-操作技术">#</a> DOM 操作技术</h2>
+<h3 id="动态插入脚本"><a class="markdownIt-Anchor" href="#动态插入脚本">#</a> 动态插入脚本</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function loadScriptString(code)&#123;</span><br><span class="line">    var script = document.createElement(&quot;script&quot;);</span><br><span class="line">    script.type = &quot;text/javascript&quot;;</span><br><span class="line">    try &#123;</span><br><span class="line">        script.appendChild(document.createTextNode(code));</span><br><span class="line">    &#125; catch (ex)&#123;</span><br><span class="line">        script.text = code;</span><br><span class="line">    &#125;</span><br><span class="line">    document.body.appendChild(script);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="动态样式"><a class="markdownIt-Anchor" href="#动态样式">#</a> 动态样式</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function loadStyleString(css)&#123;</span><br><span class="line">        var style = document.createElement(&quot;style&quot;);</span><br><span class="line">        style.type = &quot;text/css&quot;;</span><br><span class="line">    try&#123;</span><br><span class="line">        style.appendChild(document.createTextNode(css));</span><br><span class="line">    &#125; catch (ex)&#123;</span><br><span class="line">        style.styleSheet.cssText = css;</span><br><span class="line">    &#125;</span><br><span class="line">    var head = document.getElementsByTagName(&quot;head&quot;)[0];</span><br><span class="line">    head.appendChild(style);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="nodelist"><a class="markdownIt-Anchor" href="#nodelist">#</a> NodeList</h3>
+<p>NodeList、NamedNodeMap、HTMLCollection 都是即时的，一直保持最新</p>
 
-<h3 id="Comment-类型-8"><a href="#Comment-类型-8" class="headerlink" title="Comment 类型 (8)"></a>Comment 类型 (8)</h3><p>Comment 类型与 Text 类型继承自相同的基类，因此他拥有除 splitText 外的所有字符串操作方法</p>
-<h3 id="CDATASection-类型-4"><a href="#CDATASection-类型-4" class="headerlink" title="CDATASection 类型 (4)"></a>CDATASection 类型 (4)</h3><p>CDATASection 类型只针对基于 XML 的文档，表示的是 CDATA 区域，方法与 Comment 类似(拥有除 splitText 方法)</p>
-<h3 id="DocumentType-类型-10"><a href="#DocumentType-类型-10" class="headerlink" title="DocumentType 类型 (10)"></a>DocumentType 类型 (10)</h3><p>包含于文档的 doctype 有关的所有信息，很少使用。</p>
-<p>通过<code>document.doctype</code>读取</p>
-<h3 id="DocumentFragment-类型-11"><a href="#DocumentFragment-类型-11" class="headerlink" title="DocumentFragment 类型 (11)"></a>DocumentFragment 类型 (11)</h3><p>可以包含和控制节点，但不会像完整的文档那样占用额外的资源，一般当做‘临时仓库’来使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var fragment &#x3D; document.createDocumentFragment();</span><br><span class="line">    var ul &#x3D; document.getElementById(&quot;myList&quot;);</span><br><span class="line">    var li &#x3D; null;</span><br><span class="line">    for (var i&#x3D;0; i &lt; 3; i++)&#123;</span><br><span class="line">        li &#x3D; document.createElement(&quot;li&quot;);</span><br><span class="line">        li.appendChild(document.createTextNode(&quot;Item &quot; + (i+1)));</span><br><span class="line">        fragment.appendChild(li);</span><br><span class="line">    &#125;</span><br><span class="line">    ul.appendChild(fragment);</span><br></pre></td></tr></table></figure>
+      <div class="tags">
+          <a href="/my-notes/tags/javascript%E9%AB%98%E7%BA%A7%E7%AC%94%E8%AE%B0/" rel="tag"><i class="ic i-tag"></i> javascript高级笔记</a>
+      </div>
+  </div>
 
-<h3 id="Attr-类型-2"><a href="#Attr-类型-2" class="headerlink" title="Attr 类型 (2)"></a>Attr 类型 (2)</h3><p>元素的特性，id、class 等属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var attr &#x3D; document.createAttribute(&quot;align&quot;);</span><br><span class="line">attr.value &#x3D; &quot;left&quot;;</span><br><span class="line">element.setAttributeNode(attr);</span><br><span class="line">alert(element.attributes[&quot;align&quot;].value);</span><br><span class="line">alert(element.getAttributeNode(&quot;align&quot;).value); &#x2F;&#x2F;&quot;left&quot;</span><br><span class="line">alert(element.getAttribute(&quot;align&quot;));           &#x2F;&#x2F;&quot;left&quot;</span><br></pre></td></tr></table></figure>
+   <footer>
 
-<h2 id="DOM-操作技术"><a href="#DOM-操作技术" class="headerlink" title="DOM 操作技术"></a>DOM 操作技术</h2><h3 id="动态插入脚本"><a href="#动态插入脚本" class="headerlink" title="动态插入脚本"></a>动态插入脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function loadScriptString(code)&#123;</span><br><span class="line">    var script &#x3D; document.createElement(&quot;script&quot;);</span><br><span class="line">    script.type &#x3D; &quot;text&#x2F;javascript&quot;;</span><br><span class="line">    try &#123;</span><br><span class="line">        script.appendChild(document.createTextNode(code));</span><br><span class="line">    &#125; catch (ex)&#123;</span><br><span class="line">        script.text &#x3D; code;</span><br><span class="line">    &#125;</span><br><span class="line">    document.body.appendChild(script);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2020-09-15 14:11:47" itemprop="dateModified" datetime="2020-09-15T14:11:47+08:00">2020-09-15</time>
+  </span>
+</div>
 
-<h3 id="动态样式"><a href="#动态样式" class="headerlink" title="动态样式"></a>动态样式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function loadStyleString(css)&#123;</span><br><span class="line">        var style &#x3D; document.createElement(&quot;style&quot;);</span><br><span class="line">        style.type &#x3D; &quot;text&#x2F;css&quot;;</span><br><span class="line">    try&#123;</span><br><span class="line">        style.appendChild(document.createTextNode(css));</span><br><span class="line">    &#125; catch (ex)&#123;</span><br><span class="line">        style.styleSheet.cssText &#x3D; css;</span><br><span class="line">    &#125;</span><br><span class="line">    var head &#x3D; document.getElementsByTagName(&quot;head&quot;)[0];</span><br><span class="line">    head.appendChild(style);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/my-notes/images/wechatpay.png" alt="lokve 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/alipay.png" alt="lokve 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/paypal.png" alt="lokve 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
 
-<h3 id="NodeList"><a href="#NodeList" class="headerlink" title="NodeList"></a>NodeList</h3><p>NodeList、NamedNodeMap、HTMLCollection 都是即时的，一直保持最新</p>
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>lokve <i class="ic i-at"><em>@</em></i>学习笔记
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" title="DOM">http://example.com/2019/06/14/js高级/10.DOM/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicli3sbvtj20zk0m8x6p.jpg" title="DOM2和DOM3">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>DOM2和DOM3</h3>
+  </a>
 
     </div>
+    <div class="item right">
+      
 
-    
-    
-    
+  <a href="/my-notes/2019/07/02/%E7%AE%97%E6%B3%95/0.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclgi503lj20zk0m8hdt.jpg" title="数据结构">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>数据结构</h3>
+  </a>
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/my-notes/tags/javascript%E9%AB%98%E7%BA%A7%E7%AC%94%E8%AE%B0/" rel="tag"># javascript高级笔记</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/" rel="prev" title="DOM扩展">
-      <i class="fa fa-chevron-left"></i> DOM扩展
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/" rel="next" title="js简介">
-      js简介 <i class="fa fa-chevron-right"></i>
-    </a></div>
     </div>
-      </footer>
-    
-  </article>
+</div>
+
   
-  
-  
+  <div class="wrap" id="comments"></div>
 
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
 
         </div>
+        <div id="sidebar">
           
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E5%B1%82%E6%AC%A1"><span class="toc-number">1.</span> <span class="toc-text"> 节点层次</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#node-%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text"> Node 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#document-%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text"> document 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#element-%E7%B1%BB%E5%9E%8B-1"><span class="toc-number">1.3.</span> <span class="toc-text"> element 类型 (1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#text-%E7%B1%BB%E5%9E%8B-3"><span class="toc-number">1.4.</span> <span class="toc-text"> Text 类型 (3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#comment-%E7%B1%BB%E5%9E%8B-8"><span class="toc-number">1.5.</span> <span class="toc-text"> Comment 类型 (8)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cdatasection-%E7%B1%BB%E5%9E%8B-4"><span class="toc-number">1.6.</span> <span class="toc-text"> CDATASection 类型 (4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#documenttype-%E7%B1%BB%E5%9E%8B-10"><span class="toc-number">1.7.</span> <span class="toc-text"> DocumentType 类型 (10)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#documentfragment-%E7%B1%BB%E5%9E%8B-11"><span class="toc-number">1.8.</span> <span class="toc-text"> DocumentFragment 类型 (11)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#attr-%E7%B1%BB%E5%9E%8B-2"><span class="toc-number">1.9.</span> <span class="toc-text"> Attr 类型 (2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dom-%E6%93%8D%E4%BD%9C%E6%8A%80%E6%9C%AF"><span class="toc-number">2.</span> <span class="toc-text"> DOM 操作技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E6%8F%92%E5%85%A5%E8%84%9A%E6%9C%AC"><span class="toc-number">2.1.</span> <span class="toc-text"> 动态插入脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E6%A0%B7%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text"> 动态样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nodelist"><span class="toc-number">2.3.</span> <span class="toc-text"> NodeList</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="lokve"
+      data-src="/my-notes/images/head.jpeg">
+  <p class="name" itemprop="name">lokve</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/my-notes/archives/">
+        <span class="count">71</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/my-notes/categories/">
+        <span class="count">2</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/my-notes/tags/">
+        <span class="count">8</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xva3Zl" title="https:&#x2F;&#x2F;github.com&#x2F;lokve"><i class="ic i-github"></i></span>
+</div>
+
+<ul class="menu">
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+    
+  <li class="item">
+    <a href="/my-notes/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/my-notes/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/my-notes/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
   </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E5%B1%82%E6%AC%A1"><span class="nav-number">1.</span> <span class="nav-text">节点层次</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">Node 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#document-%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">document 类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#element-%E7%B1%BB%E5%9E%8B-1"><span class="nav-number">1.3.</span> <span class="nav-text">element 类型 (1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Text-%E7%B1%BB%E5%9E%8B-3"><span class="nav-number">1.4.</span> <span class="nav-text">Text 类型 (3)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comment-%E7%B1%BB%E5%9E%8B-8"><span class="nav-number">1.5.</span> <span class="nav-text">Comment 类型 (8)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CDATASection-%E7%B1%BB%E5%9E%8B-4"><span class="nav-number">1.6.</span> <span class="nav-text">CDATASection 类型 (4)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DocumentType-%E7%B1%BB%E5%9E%8B-10"><span class="nav-number">1.7.</span> <span class="nav-text">DocumentType 类型 (10)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DocumentFragment-%E7%B1%BB%E5%9E%8B-11"><span class="nav-number">1.8.</span> <span class="nav-text">DocumentFragment 类型 (11)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attr-%E7%B1%BB%E5%9E%8B-2"><span class="nav-number">1.9.</span> <span class="nav-text">Attr 类型 (2)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-%E6%93%8D%E4%BD%9C%E6%8A%80%E6%9C%AF"><span class="nav-number">2.</span> <span class="nav-text">DOM 操作技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%8F%92%E5%85%A5%E8%84%9A%E6%9C%AC"><span class="nav-number">2.1.</span> <span class="nav-text">动态插入脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%A0%B7%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">动态样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NodeList"><span class="nav-number">2.3.</span> <span class="nav-text">NodeList</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">lokve</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/my-notes/archives/">
-        
-          <span class="site-state-item-count">63</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/my-notes/tags/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/my-notes/2019/07/02/%E7%AE%97%E6%B3%95/0.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
 </div>
 
 
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
+        </div>
+        <div class="dimmer"></div>
       </div>
     </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">lokve</span>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="面向对象">面向对象</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2017/05/09/bue/2/" title="Bue源码阅读笔记（2）">Bue源码阅读笔记（2）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/connect/" title="connect">connect</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/08/leetcode/29.Divide%20Two%20Integers/index/" title="29.Divide Two Integers">29.Divide Two Integers</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/bindActionCreators/" title="bindActionCreators">bindActionCreators</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/09/react/function%E7%BB%84%E4%BB%B6/" title="function组件">function组件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/10/react/%E4%BA%8B%E4%BB%B6/" title="事件系统">事件系统</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/10/react/createElement(dom)/" title="createElement(dom)">createElement(dom)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/" title="New Api">New Api</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/11/react/context/" title="completeWork">completeWork</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">lokve @ hee note</span>
   </div>
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
     </span>
+    <span title="站点总字数">374k 字</span>
+
     <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
     </span>
+    <span title="站点阅读时长">5:40</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
 </div>
-
-
-
-
-
-
-
 
       </div>
     </footer>
   </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2019/06/14/js高级/10.DOM/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
 
-  
-  <script src="/my-notes/lib/anime.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.ui.min.js"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
 
-<script src="/my-notes/js/utils.js"></script>
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 
-<script src="/my-notes/js/motion.js"></script>
-
-
-<script src="/my-notes/js/schemes/pisces.js"></script>
-
-
-<script src="/my-notes/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/my-notes/js/local-search.js"></script>
-
-
-
-
-
-
+<script src="/my-notes/js/app.js?v=0.2.5"></script>
 
 
 
-
-
-
-
-  
-
-  
 
 </body>
 </html>

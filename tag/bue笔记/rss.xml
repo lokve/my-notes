@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>学习笔记 • Posts by &#34;bue笔记&#34; tag</title>
+        <link>http://example.com</link>
+        <description></description>
+        <language>zh-CN</language>
+        <pubDate>Thu, 25 May 2017 09:50:00 +0800</pubDate>
+        <lastBuildDate>Thu, 25 May 2017 09:50:00 +0800</lastBuildDate>
+        <category>Bue笔记</category>
+        <category>react-redux</category>
+        <category>Vue笔记</category>
+        <category>javascript高级笔记</category>
+        <category>随记</category>
+        <category>算法基础</category>
+        <category>react源码解析</category>
+        <category>leetcode</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2017/05/25/bue/6/</guid>
+            <title>Bue源码阅读笔记（6）</title>
+            <link>http://example.com/2017/05/25/bue/6/</link>
+            <category>Bue笔记</category>
+            <pubDate>Thu, 25 May 2017 09:50:00 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nd2luZC9idWUvdHJlZS85ZTk4MDRjMmVlODAyYzI2NTgxOTkyMzZiMTBkYTQyZDZlYTE2MTM2&#34;&gt;当前版本&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;进展&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#进展&#34;&gt;#&lt;/a&gt; 进展&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;v-on 实现&lt;/li&gt;
+&lt;li&gt;完成动态 v-if 指令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;代码执行补充&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#代码执行补充&#34;&gt;#&lt;/a&gt; 代码执行补充&lt;/h3&gt;
+&lt;p&gt;v-on: 和 v-if 类似，_init () 中把 on 指令相关函数放在了 directives 里面 --&amp;gt; 使用 on 相关指令绑定事件&lt;/p&gt;
+&lt;p&gt;v-repeat: 和 v-if 类似，_init () 中把 on 指令相关函数放在了 directives 里面 --&amp;gt; 使用 repeat 相关指令绑定事件&lt;/p&gt;
+&lt;p&gt;5.30 补充&lt;br&gt;
+这里需要详细的了解一下 repeat 指令里面的流程&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;ol&gt;
+&lt;li&gt;首先执行 bind (), 给 repeat 指定了唯一的 uid, 并创建 repeat 注释&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;upadate&lt;br&gt;
+a. 首次执行：进入 diff, 调用 build (), 给 v-repeat 内部变量 item 赋值，为 item 创建了 Bue 实例和数据缓存 (循环的子数据 (最终来看就是 item)[&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3RoaXMuaWQ=&#34;&gt;this.id&lt;/span&gt;] = vm (即新创建的 Bue 实例)), 渲染 dom&lt;br&gt;
+b. 再次执行：数据变化之后，进入 diff, 判断是否有旧数据并打上记号，删除不存在的实例，把新实例插入到正确的位置 (感觉这里的第三步代码有问题。。。)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2017/05/25/bue/readme/</guid>
+            <title>说明</title>
+            <link>http://example.com/2017/05/25/bue/readme/</link>
+            <category>Bue笔记</category>
+            <pubDate>Thu, 25 May 2017 09:50:00 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;百度 ife 任务里根据 vue 早期版本的源码研究而实现的简单 vue 项目 —Bue&lt;/p&gt;
+&lt;p&gt;这里是我对 bue 的学习笔记&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2017/05/23/bue/5/</guid>
+            <title>Bue源码阅读笔记（5）</title>
+            <link>http://example.com/2017/05/23/bue/5/</link>
+            <category>Bue笔记</category>
+            <pubDate>Tue, 23 May 2017 10:30:00 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nd2luZC9idWUvdHJlZS84MTUxYzYyYTJmYTNjNjU1ODFmOTFjNzgzY2JmMTVhYWQzMDc4YWM5&#34;&gt;当前版本&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;进展&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#进展&#34;&gt;#&lt;/a&gt; 进展&lt;/h3&gt;
+&lt;p&gt;完成动态 v-if 指令&lt;/p&gt;
+&lt;h3 id=&#34;代码执行补充&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#代码执行补充&#34;&gt;#&lt;/a&gt; 代码执行补充&lt;/h3&gt;
+&lt;p&gt;当代码执行到 dom 渲染前，这个时候会进行 attribute 检查，如果存在自定义 attr (b-if), 直接走指令绑定_bindDirective --&amp;gt; new Directive () --&amp;gt; _initDef (), 这里不同指令对应的更新 update 函数不同，所以需要分类处理&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;let def = this.vm.$options.directives[this.name];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    _.extend(this, def);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;–&amp;gt; _bind () --&amp;gt; this.update (this._watcher.value); 决定是否插入 dom (至此静态渲染已完成) --&amp;gt; 渲染 dom，对内部变量进行赋值，但需要在先前做一些准备 (这部分代码的思路有问题，仅仅用于应付 if 指令)&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;// init.js&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;if (this.$parent) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  this.$data = options.parent.$data;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125; else &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  this.$data = options.data || &amp;#123;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;if (this.$parent) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    this.observer = this.$parent.observer;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125; else &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    this.observer = Observer.create(data);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;不熟悉知识点&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#不熟悉知识点&#34;&gt;#&lt;/a&gt; 不熟悉知识点&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;document.createComment 插入注释，在这里主要用于 dom 占位&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2017/05/18/bue/4/</guid>
+            <title>Bue源码阅读笔记（4）</title>
+            <link>http://example.com/2017/05/18/bue/4/</link>
+            <category>Bue笔记</category>
+            <pubDate>Thu, 18 May 2017 11:22:00 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nd2luZC9idWUvdHJlZS82MzQ1NGIwODYyN2JhNmNjYzQ1OWFlODYxNWM2MmQ1ZjFmNzg4ODE4&#34;&gt;当前版本&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;进展&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#进展&#34;&gt;#&lt;/a&gt; 进展&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ 监听对象变化&lt;/li&gt;
+&lt;li&gt;✅ 监听数组变化&lt;/li&gt;
+&lt;li&gt;✅ watch 库&lt;/li&gt;
+&lt;li&gt;✅ 动态数据绑定&lt;/li&gt;
+&lt;li&gt;✅ 批处理更新 DOM&lt;/li&gt;
+&lt;li&gt;✅ 计算属性 computed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;代码执行补充&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#代码执行补充&#34;&gt;#&lt;/a&gt; 代码执行补充&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;批处理更新DOM : new Batcher() --&amp;gt; 在Watcher.update的时候Batcher.push()将事件添加到队列中,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  利用setTimeout执行机制，在里面执行flush --&amp;gt; flush()内执行并清空队列&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;计算属性computed(静态 -&amp;gt; 动态) : &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  静态 ：_initComputed(),把函数定义到了Object get上面 ,就能获取到值了&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  动态 ：在_initBindings()的时候, 订阅了get事件,之后$mount --&amp;gt; _compile() --&amp;gt; new Direcitve() &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    --&amp;gt; new Watcher() 在这里，进行了取值操作，就触发了get事件 --&amp;gt; 收集依赖_collectDep() --&amp;gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    把watcher放在了_sub数组里面, 当computed内部有变量改动时, 触发了set事件, 这个时候, &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    会执行Watcher.cb, 即更新dom &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;ps: 这里我想错了，一直在找 user.name 的跟新触发了 info 的跟新的函数，其实即便在静态那里，user.name 的跟新也会导致 info 数据的跟新，只不过没触发 dom 跟新，所以这里的动态只是在 user.name 的_sub 里绑了一个触发 info 的 dom 更新的 Watcher&lt;/p&gt;
+&lt;p&gt;ps2:nonono，上面我还是搞错了， &lt;code&gt;并不是&lt;/code&gt;  user.name 的跟新导致了 info 数据的跟新，而是 user.name 的_sub 里绑了一个触发 info 的 dom 更新的 Watcher，在 info 的 dom 更新的时候，需要访问 info, 从而触发了 info 的 get 方法，最终进行的是 computed 上 info 的函数，重新给 info 赋值了，所以导致了 info 的改变 (因为这个时候 user.name 已经改变了)&lt;/p&gt;
+&lt;h3 id=&#34;本文总结&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#本文总结&#34;&gt;#&lt;/a&gt; 本文总结&lt;/h3&gt;
+&lt;p&gt;这个版本的代码我反反复复的看了一个下午，总算是更加深入的了解的代码的含义，也弥补了上一篇中一知半解的地方，配合作者的文章说明，理清了代码的执行流程，不过这个代码真的是绕的不行。。。最后吐槽一下这代码的耦合程度虽然低，但是文件分的太散，每次找函数定义都要花上不少的时间&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2017/05/16/bue/3/</guid>
+            <title>Bue源码阅读笔记（3）</title>
+            <link>http://example.com/2017/05/16/bue/3/</link>
+            <category>Bue笔记</category>
+            <pubDate>Tue, 16 May 2017 10:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nd2luZC9idWUvdHJlZS84OWMwZDkzMDcxZDExN2VkZGI5Yjg1ZWRkZTk2ZmI2ZTEzMTczZDY2&#34;&gt;当前版本&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;相比之前-分离directive和watch的update操作&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#相比之前-分离directive和watch的update操作&#34;&gt;#&lt;/a&gt; 相比之前 ： 分离 directive 和 watch 的 update 操作&lt;/h2&gt;
+&lt;h3 id=&#34;代码执行顺序&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#代码执行顺序&#34;&gt;#&lt;/a&gt; 代码执行顺序&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;_initData() 数据初始化 同 2 --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;_initBindings() 创建一个Binding,在observer上订阅set监听函数 --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;$mount() --&amp;gt; compile() --&amp;gt; 初始化节点并渲染dom,若是node节点,遍历子元素;若是文本节点，绑定directive，watcher(函数绕来绕去的感觉好乱，只能大致理解意思)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  node: 遍历&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  text: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    普通文本节点：直接插入，&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    指令节点：_bindDirective --&amp;gt; 指令构造函数new Directive() --&amp;gt; 添加new Watcher(),第一次手动触发dom更新&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;当数据变动时, 执行_updateBindingAt()，它会去把对应改变了的数据那里找出所有的watcher, 然后一一执行他们的cb, 一个都不放过&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2017/05/09/bue/2/</guid>
+            <title>Bue源码阅读笔记（2）</title>
+            <link>http://example.com/2017/05/09/bue/2/</link>
+            <category>Bue笔记</category>
+            <pubDate>Tue, 09 May 2017 16:10:00 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nd2luZC9idWUvdHJlZS84MTEzOGRmNGQzNmU1MDAxNWFjODk2MmE1MGRhODI1OTY1MWVjOWVi&#34;&gt;对应版本&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ 监听对象变化&lt;/li&gt;
+&lt;li&gt;✅ 监听数组变化&lt;/li&gt;
+&lt;li&gt;✅ watch 库&lt;/li&gt;
+&lt;li&gt;✅ 动态数据绑定&lt;/li&gt;
+&lt;li&gt;❎ 不支持多层对象操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;代码执行顺序&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#代码执行顺序&#34;&gt;#&lt;/a&gt; 代码执行顺序&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;this._init() --&amp;gt; 创建观察对象Observer.create() --&amp;gt; 判断数据类型(数组或对象) --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  数组：重写Bue数组的方法，遍历子元素 -----------------↑&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  对象：重定义对象属性(添加了消息触发函数)，遍历子元素----↑&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125; -------&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;订阅监听数据并重新渲染的事件this.observer.on(&amp;#x27;set&amp;#x27;, this.$mount.bind(this));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;this.$watch 手动订阅监听事件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;不熟悉知识点&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#不熟悉知识点&#34;&gt;#&lt;/a&gt; 不熟悉知识点&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;1 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kZXZlbG9wZXIubW96aWxsYS5vcmcvemgtQ04vZG9jcy9XZWIvSmF2YVNjcmlwdC9SZWZlcmVuY2UvR2xvYmFsX09iamVjdHMvT2JqZWN0L2RlZmluZVByb3BlcnR5&#34;&gt;Object.defineProperty&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;语法 Object.defineProperty(obj, prop, descriptor)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;参数 &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  obj：要在其上定义属性的对象。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  prop：要定义或修改的属性的名称。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  descriptor：将被定义或修改的属性的描述符。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;返回值：被传递给函数的对象。&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Object.defineProperty(this.value, key, &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    enumerable: true,  //可定义的&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    configurable: true, //可枚举的&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;   // value:&amp;quot;111&amp;quot;,         //值&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    writable:true,     //可写的&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    get: function () &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        return val;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    set: function (newVal) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        if (newVal === val) return;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        val = newVal;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        console.log(&amp;#x27;你设置了&amp;#x27; + key + &amp;#x27; 新的&amp;#x27; + key + &amp;#x27; = &amp;#x27; + newVal);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        ob.notify(&amp;#x27;set&amp;#x27;, key, newVal);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        ob.notify(`set:$&amp;#123;key&amp;#125;`, key, newVal);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;总结&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#总结&#34;&gt;#&lt;/a&gt; 总结&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;1. 数据初始化的时候会给 $observer 所有的字段添加一个 parent 字段，方便之后一层层的出发监听事件&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2017/05/09/bue/1/</guid>
+            <title>Bue源码阅读笔记（1）</title>
+            <link>http://example.com/2017/05/09/bue/1/</link>
+            <category>Bue笔记</category>
+            <pubDate>Tue, 09 May 2017 15:30:00 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;最简单的数据绑定 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3lvdW5nd2luZC9idWUvdHJlZS9kN2RlZGY2ZmY4YjNjZWNkNjg5MDNiODc4NjkwZmVmMmVmOGYxOGM4&#34;&gt;对应版本&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;代码执行顺序&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#代码执行顺序&#34;&gt;#&lt;/a&gt; 代码执行顺序&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;_init() --&amp;gt; $mount() --&amp;gt; _compile() --&amp;gt; _compileNode() --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;检查html节点 &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  nodeType == 1 (元素节点) : 遍历子节点，再次检查html节点,&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;  nodeType == 3 (文本节点) : 用正则匹配&amp;#123;&amp;#123;&amp;#125;&amp;#125;，并替换成数据&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;不熟悉知识点总结&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#不熟悉知识点总结&#34;&gt;#&lt;/a&gt; 不熟悉知识点总结&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;1 Array.from: 把其他数据类型转为 array&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;const bar = [&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Array.from(bar);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;// [&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;]&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;Array.from(&amp;#x27;foo&amp;#x27;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;// [&amp;quot;f&amp;quot;, &amp;quot;o&amp;quot;, &amp;quot;o&amp;quot;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

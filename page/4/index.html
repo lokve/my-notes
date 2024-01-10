@@ -1,1314 +1,823 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.1.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/my-notes/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/my-notes/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/my-notes/images/logo.svg" color="#222">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon.png">
 
-<link rel="stylesheet" href="/my-notes/css/main.css">
+<link rel="icon" type="image/ico" sizes="32x32" href="/my-notes/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
 
-<link rel="stylesheet" href="/my-notes/lib/font-awesome/css/all.min.css">
+<link rel="alternate" type="application/rss+xml" title="学习笔记" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="学习笔记" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="学习笔记" href="http://example.com/feed.json" />
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/my-notes/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="学习笔记">
-<meta property="og:url" content="http://example.com/page/4/index.html">
-<meta property="og:site_name" content="学习笔记">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="lokve">
-<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/my-notes/css/app.css?v=0.2.5">
+
+  
 
 <link rel="canonical" href="http://example.com/page/4/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-CN'
-  };
-</script>
 
-  <title>学习笔记</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
+  <title>hee note = 学习笔记</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
     </div>
   </div>
-
-  <div class="site-meta">
-
-    <a href="/my-notes/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">学习笔记</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+            <a href="/my-notes/" class="logo" rel="start"><p class="artboard">hee note</p>
+              <h1 itemprop="name headline" class="title">学习笔记</h1>
+            </a>
+          
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
     </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/my-notes/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/my-notes/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/my-notes/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/my-notes/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
+    <ul class="menu">
+      <li class="item title"><a href="/my-notes/" rel="start">hee note</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
       </li>
-  </ul>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
 </nav>
 
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljgocqbj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclil3m4ej20zk0m8tn8.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclgi503lj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
+        </ul>
+      </div>
     </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="index wrap">
+    <div class="segments posts">
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" itemprop="url" title="常量"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gicivghyooj20zk0m8dir.jpg"></a>
   </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
-            
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2020-09-07 11:03:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
     </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
+    <time itemprop="dateCreated datePublished" datetime="2020-09-07T11:03:00+08:00">2020-09-07</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
     </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/" class="post-title-link" itemprop="url">事件</a>
-        </h2>
+    <span>4.5k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>4 分钟</span>
+  </span>
+</div>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+    <h3><a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" itemprop="url" title="常量">常量</a></h3>
+    <div class="excerpt">
+        # RootTag
+12345export type RootTag = 0 | 1 | 2;export const LegacyRoot = 0;export const BatchedRoot = 1;export const ConcurrentRoot = 2;
+# TypeOfMode
+123456789export type TypeOfMode = number;export const NoMode = 0b0000;export const StrictMode = 0b0001;// TODO: Remove BatchedMode and ConcurrentMode...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/react/" itemprop="url" title="react"><i class="ic i-flag"></i>react</a>
+      </span>
+    </div>
+    <a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" itemprop="url" title="常量" class="btn">more...</a>
+  </div>
+</article>
 
-              <time title="创建时间：2019-06-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 14:12:21" itemprop="dateModified" datetime="2020-09-15T14:12:21+08:00">2020-09-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" itemprop="url" title="初始流程"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipetfk5zwj20zk0m8e81.jpg"></a>
+  </div>
+  <div class="info">
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
+<div class="meta">
+  <span class="item" title="创建时间：2020-09-07 10:23:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2020-09-07T10:23:00+08:00">2020-09-07</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>3.9k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>4 分钟</span>
+  </span>
+</div>
 
-      
-          
-      
+    <h3><a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" itemprop="url" title="初始流程">初始流程</a></h3>
+    <div class="excerpt">
+        本次阅读会无视 DEV 等没有运行到的分支条件
+react 的渲染主要由 react-dom 完成，首先从 ReactDOM.render 开始
+12345678910var ReactDOM = &amp;#123; ... render: function (element, container, callback) &amp;#123; ... // 一些验证参数合法的方法 return legacyRenderSubtreeIntoContainer(null, element, container, false, callback); &amp;#125;,...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/react/" itemprop="url" title="react"><i class="ic i-flag"></i>react</a>
+      </span>
+    </div>
+    <a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" itemprop="url" title="初始流程" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2019/07/10/%E7%AE%97%E6%B3%95/01.%E6%8E%92%E5%BA%8F/" itemprop="url" title="数据结构"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipet8c1a2j20zk0m8kct.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-07-10 11:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-07-10T11:00:00+08:00">2019-07-10</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>1.4k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/07/10/%E7%AE%97%E6%B3%95/01.%E6%8E%92%E5%BA%8F/" itemprop="url" title="数据结构">数据结构</a></h3>
+    <div class="excerpt">
+        # 基础函数
+123456789101112131415161718192021222324252627282930313233343536function less (a, b) &amp;#123; return a &amp;lt; b;&amp;#125;function exch (arr, i ,j) &amp;#123; const cah = arr[i]; arr[i] = arr[j]; arr[j] = cah;&amp;#125;function isSorted (arr) &amp;#123; for (let i = 1; i &amp;lt;...
+    </div>
+    <a href="/my-notes/2019/07/10/%E7%AE%97%E6%B3%95/01.%E6%8E%92%E5%BA%8F/" itemprop="url" title="数据结构" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2019/07/02/%E7%AE%97%E6%B3%95/0.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" title="数据结构"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipey0a334j20zk0m8qpt.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-07-02 11:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-07-02T11:00:00+08:00">2019-07-02</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>13k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>11 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/07/02/%E7%AE%97%E6%B3%95/0.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" title="数据结构">数据结构</a></h3>
+    <div class="excerpt">
+        # 数组
+# 栈
+
+push 和 pop
+后进先出
+
+123456789101112131415161718192021class Stack &amp;#123; constructor(...items) &amp;#123; this.reverse = false; this.stack = [...items]; &amp;#125; push(...items) &amp;#123; return this.reverse ? this.stack.unshift(...items) : this.stack.push(...items); &amp;#125; pop()...
+    </div>
+    <a href="/my-notes/2019/07/02/%E7%AE%97%E6%B3%95/0.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" title="数据结构" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" itemprop="url" title="DOM"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipewr8iypj20zk0m8b29.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>3.5k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>3 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" itemprop="url" title="DOM">DOM</a></h3>
+    <div class="excerpt">
+        # 节点层次
+# Node 类型
+123456789101112ELEMENT_NODE: 1 // div等ATTRBUTE_NODE: 2TEXT_NODE: 3 // 文本节点CDATA_SECTION_NODE: 4ENTITY_REFERENCE_NODE: 5ENTITY_NODE: 6PROCESSING_INSTRUCTION_NODE: 7COMMENT_NODE: 8 // 注释节点DOCUMENT_NODE: 9 // document类型DOCUMENT_TYPE_NODE: 10DOCUMENT_FRAGMENT_NODE: 11NOTATION_NODE: 12
+#...
+    </div>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" itemprop="url" title="DOM" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/" itemprop="url" title="DOM2和DOM3"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gicliwyw55j20zk0m8hdt.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>2.6k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>2 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/" itemprop="url" title="DOM2和DOM3">DOM2和DOM3</a></h3>
+    <div class="excerpt">
+        # DOM 变化
+和 XML 有关，先不看
+# 样式
+# 访问元素样式
+1234var myDiv = document.getElementById(&amp;quot;myDiv&amp;quot;);myDiv.style.backgroundColor = &amp;quot;red&amp;quot;;myDiv.style.width = &amp;quot;100px&amp;quot;;myDiv.style.height = &amp;quot;200px&amp;quot;;
+# dom 样式的属性和方法
+
+cssText: 能通过它访问到 style 特性中的 css...
+    </div>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/" itemprop="url" title="DOM2和DOM3" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/" itemprop="url" title="DOM扩展"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>2k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>2 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/" itemprop="url" title="DOM扩展">DOM扩展</a></h3>
+    <div class="excerpt">
+        # 选择符 api
+# querySelector
+# queryselectorAll
+# matchesSelector
+123 if (document.body.matchesSelector(&amp;quot;body.page1&amp;quot;))&amp;#123; // document.body.matchesSelector is not a function&amp;#125;
+chrome 现在还没支持 (2019-6)
+# 元素遍历
+
+childElementCount 返回子元素个数（不包过文本节点和注释）
+firstElementChild...
+    </div>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/" itemprop="url" title="DOM扩展" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/" itemprop="url" title="HTML5脚本编程"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>1k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/" itemprop="url" title="HTML5脚本编程">HTML5脚本编程</a></h3>
+    <div class="excerpt">
+        # 跨文档消息传递 (XDM)
+发送消息
+1var iframeWindow = document.getElementById(&amp;quot;myframe&amp;quot;).contentWindow; iframeWindow.postMessage(&amp;quot;A secret&amp;quot;, &amp;quot;http://www.wrox.com&amp;quot;);
+接受消息
+123456EventUtil.addHandler(window, &amp;quot;message&amp;quot;, function(event)&amp;#123;...
+    </div>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/" itemprop="url" title="HTML5脚本编程" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/" itemprop="url" title="事件"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1giclx6phq6j20zk0m8e36.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>0</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/" itemprop="url" title="事件">事件</a></h3>
+    <div class="excerpt">
+        
+    </div>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/" itemprop="url" title="事件" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/15.Canvas/" itemprop="url" title="Canvas"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipesng5oej20zk0m87d4.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>2.9k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>3 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/15.Canvas/" itemprop="url" title="Canvas">Canvas</a></h3>
+    <div class="excerpt">
+        # 基本用法
+创建获取 canvas
+12345678910&amp;lt;canvas id=&amp;quot;drawing&amp;quot; width=&amp;quot; 200&amp;quot; height=&amp;quot;200&amp;quot;&amp;gt;A drawing of something.&amp;lt;/canvas&amp;gt;var drawing = document.getElementById(&amp;quot;drawing&amp;quot;);if (drawing.getContext)&amp;#123; var...
+    </div>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/15.Canvas/" itemprop="url" title="Canvas" class="btn">more...</a>
+  </div>
+</article>
+
     </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/15.Canvas/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/15.Canvas/" class="post-title-link" itemprop="url">Canvas</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 14:12:35" itemprop="dateModified" datetime="2020-09-15T14:12:35+08:00">2020-09-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>创建获取 canvas</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas id&#x3D;&quot;drawing&quot; width&#x3D;&quot; 200&quot; height&#x3D;&quot;200&quot;&gt;A drawing of something.&lt;&#x2F;canvas&gt;</span><br><span class="line"></span><br><span class="line">var drawing &#x3D; document.getElementById(&quot;drawing&quot;);</span><br><span class="line">if (drawing.getContext)&#123;</span><br><span class="line">    var context &#x3D; drawing.getContext(&quot;2d&quot;);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;􏴺􏸿􏸞􏴿 canvas转化为图片链接</span><br><span class="line">    var imgURI &#x3D; drawing.toDataURL(&quot;image&#x2F;png&quot;);</span><br><span class="line">    var image &#x3D; document.createElement(&quot;img&quot;); image.src &#x3D; imgURI; document.body.appendChild(image);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2D-上下文"><a href="#2D-上下文" class="headerlink" title="2D 上下文"></a>2D 上下文</h2><h3 id="填充-fillStyle-和描边-strokeStyle"><a href="#填充-fillStyle-和描边-strokeStyle" class="headerlink" title="填充(fillStyle)和描边(strokeStyle)"></a>填充(fillStyle)和描边(strokeStyle)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var drawing &#x3D; document.getElementById(&quot;drawing&quot;);</span><br><span class="line">if (drawing.getContext)&#123;</span><br><span class="line">    var context &#x3D; drawing.getContext(&quot;2d&quot;);</span><br><span class="line">    context.strokeStyle &#x3D; &quot;red&quot;;</span><br><span class="line">    context.fillStyle &#x3D; &quot;#0000ff&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="绘制矩形"><a href="#绘制矩形" class="headerlink" title="绘制矩形"></a>绘制矩形</h3><p><code>fillRect</code>在画布上绘制矩形会填充指定颜色</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var drawing &#x3D; document.getElementById(&quot;drawing&quot;);</span><br><span class="line">if (drawing.getContext)&#123;</span><br><span class="line">    var context &#x3D; drawing.getContext(&quot;2d&quot;);</span><br><span class="line"></span><br><span class="line">    context.fillStyle &#x3D; &quot;#ff0000&quot;;</span><br><span class="line">    context.fillRect(10, 10, 50, 50);</span><br><span class="line"></span><br><span class="line">    context.fillStyle &#x3D; &quot;rgba(0,0,255,0.5)&quot;;</span><br><span class="line">    context.fillRect(30, 30, 50, 50);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>strokeRect</code>指定矩形描边颜色</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">context.strokeStyle &#x3D; &quot;#ff0000&quot;;</span><br><span class="line">context.strokeRect(10, 10, 50, 50);</span><br></pre></td></tr></table></figure>
-
-<p><code>clearRect</code>清除画布上指定矩形区域</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">context.clearRect(40, 40, 10, 10);</span><br></pre></td></tr></table></figure>
-
-<h3 id="绘制路径"><a href="#绘制路径" class="headerlink" title="绘制路径"></a>绘制路径</h3><ul>
-<li>arc(x, y, radius, startAngle, endAngle, counterclockwise): 以(x,y)为圆心，radius 为半径画弧线，startAngle 和 endAngle 是起始结束角度，counterclockwise 为 true 是逆时针</li>
-<li>arcTo(x1, y1, x2, y2, radius): 从上一点开始画一条经过(x1,y1)(x2,y2)的以 radius 为半径的弧线</li>
-<li>bezierCurveTo(c1x, c1y, c2x, c2y, x, y)：从上一点开始绘制一条到(x,y)的曲线，以(c1x,c1y)(c2x,c2y)为控制点。三次贝塞尔曲线</li>
-<li>lineTo(x, y): 从上一点开始画到(x,y)的直线</li>
-<li>moveTo(x, y): 把游标移到想 x,y,不划线</li>
-<li>quadraticCurveTo(cx, cy, x, y): 二次曲线</li>
-<li>rect(x, y, width, height): 绘制矩形路径</li>
-</ul>
-<h3 id="绘制文本"><a href="#绘制文本" class="headerlink" title="绘制文本"></a>绘制文本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">context.font &#x3D; &quot;bold 14px Arial&quot;;</span><br><span class="line">context.textAlign &#x3D; &quot;center&quot;;</span><br><span class="line">context.textBaseline &#x3D; &quot;middle&quot;;</span><br><span class="line">context.fillText(&quot;文本&quot;, 100, 20);</span><br></pre></td></tr></table></figure>
-
-<h3 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h3><ul>
-<li>rotate(angle): 围绕远点旋转</li>
-<li>scale(scaleX,scaleY): 缩放</li>
-<li>translate(x,y)􏴣: 将坐标远点移到(x,y)</li>
-<li>transform(m1_1, m1_2, m2_1, m2_2, dx, dy): 直接修改变换矩阵,即乘以下面矩阵<br>m1_1 m1_2 dx<br>m2_1 m2_2 dy<br>0 0 1</li>
-<li>setTransform(m1_1, m1_2, m2_1, m2_2, dx, dy): 先将矩阵变为默认状态，在用 transform 处理</li>
-</ul>
-<h3 id="绘制图像"><a href="#绘制图像" class="headerlink" title="绘制图像"></a>绘制图像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var image &#x3D; document.images[0];</span><br><span class="line">context.drawImage(image, 10, 10); &#x2F;&#x2F; 指定点绘制图像</span><br><span class="line">context.drawImage(image, 50, 10, 20, 30); &#x2F;&#x2F; 指钉点绘制指定大小的图形</span><br><span class="line">context.drawImage(image, 0, 10, 50, 50, 0, 100, 40, 60) &#x2F;&#x2F; 从原图上选取区域指定点绘制图像</span><br></pre></td></tr></table></figure>
-
-<h3 id="阴影"><a href="#阴影" class="headerlink" title="阴影"></a>阴影</h3><ul>
-<li>shadowColor: 阴影颜色，默认黑</li>
-<li>shadowOffsetX: x 方向偏移量，默认 0</li>
-<li>shadowOffsetY: y 方向偏移量，默认 0</li>
-<li>shadowBlur: 模糊像素，默认 0</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">context.shadowOffsetX &#x3D; 5; context.shadowOffsetY &#x3D; 5;</span><br><span class="line">context.shadowBlur &#x3D; 4; context.shadowColor &#x3D; &quot;rgba(0, 0, 0, 0.5)&quot;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var gradient &#x3D; context.createLinearGradient(30, 30, 70, 70);</span><br><span class="line">   gradient.addColorStop(0, &quot;white&quot;);</span><br><span class="line">   gradient.addColorStop(1, &quot;black&quot;);</span><br><span class="line">   context.fillStyle &#x3D; gradient;</span><br><span class="line">   context.fillRect(30, 30, 50, 50);</span><br></pre></td></tr></table></figure>
-
-<h3 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var image &#x3D; document.images[0],</span><br><span class="line">pattern &#x3D; context.createPattern(image, &quot;repeat&quot;);</span><br><span class="line">context.fillStyle &#x3D; pattern; context.fillRect(10, 10, 150, 150);</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用图像数据"><a href="#使用图像数据" class="headerlink" title="使用图像数据"></a>使用图像数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var imageData &#x3D; context.getImageData(10, 5, 50, 50);</span><br></pre></td></tr></table></figure>
-
-<p>imageData 有 width,height,data 这些属性</p>
-<p>其中 data 是一个数组，保存了每一个像素点的色值，每个像素点取 4 个位置，如第一个点的 rgba 是 data<a href="r">0</a>,data<a href="g">1</a>,data<a href="b">2</a>,data<a href="a">3</a></p>
-<h3 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h3><ul>
-<li>globalAlpha: 操作透明值</li>
-<li>globalCompositionOperation: 当两个图像重叠时，控制重叠方案</li>
-</ul>
-<h2 id="WebGL"><a href="#WebGL" class="headerlink" title="WebGL"></a>WebGL</h2><p>TODO:暂时没必要看</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/" class="post-title-link" itemprop="url">HTML5脚本编程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 14:12:46" itemprop="dateModified" datetime="2020-09-15T14:12:46+08:00">2020-09-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="跨文档消息传递-XDM"><a href="#跨文档消息传递-XDM" class="headerlink" title="跨文档消息传递(XDM)"></a>跨文档消息传递(XDM)</h2><p>发送消息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var iframeWindow &#x3D; document.getElementById(&quot;myframe&quot;).contentWindow; iframeWindow.postMessage(&quot;A secret&quot;, &quot;http:&#x2F;&#x2F;www.wrox.com&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>接受消息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">EventUtil.addHandler(window, &quot;message&quot;, function(event)&#123;</span><br><span class="line">    if (event.origin &#x3D;&#x3D; &quot;http:&#x2F;&#x2F;www.wrox.com&quot;)&#123;</span><br><span class="line">        processMessage(event.data);</span><br><span class="line">        event.source.postMessage(&quot;Received!&quot;, &quot;http:&#x2F;&#x2F;p2p.wrox.com&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="原生拖放"><a href="#原生拖放" class="headerlink" title="原生拖放"></a>原生拖放</h2><h3 id="拖放事件"><a href="#拖放事件" class="headerlink" title="拖放事件"></a>拖放事件</h3><p>拖放元素会触发下面方法<br>(1) dragstart<br>(2) drag<br>(3) dragend</p>
-<p>目标元素会触发下面方法<br>(1) dragenter<br>(2) dragover<br>(3) dragleave 或 drop</p>
-<h3 id="dataTransfer-对象"><a href="#dataTransfer-对象" class="headerlink" title="dataTransfer 对象"></a>dataTransfer 对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">event.dataTransfer.setData(&quot;text&quot;, &quot;some text&quot;);</span><br><span class="line">var text &#x3D; event.dataTransfer.getData(&quot;text&quot;);</span><br><span class="line"></span><br><span class="line">event.dataTransfer.setData(&quot;URL&quot;, &quot;http:&#x2F;&#x2F;www.wrox.com&#x2F;&quot;);</span><br><span class="line">var url &#x3D; event.dataTransfer.getData(&quot;URL&quot;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="dropEffect-与-effectAllowed"><a href="#dropEffect-与-effectAllowed" class="headerlink" title="dropEffect 与 effectAllowed"></a>dropEffect 与 effectAllowed</h3><p>传递行为</p>
-<h2 id="媒体元素"><a href="#媒体元素" class="headerlink" title="媒体元素"></a>媒体元素</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src&#x3D;&quot;conference.mpg&quot; id&#x3D;&quot;myVideo&quot;&gt;Video player not available.&lt;&#x2F;video&gt;</span><br><span class="line">&lt;audio src&#x3D;&quot;song.mp3&quot; id&#x3D;&quot;myAudio&quot;&gt;Audio player not available.&lt;&#x2F;audio&gt;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/17.%E9%94%99%E8%AF%AF%E7%9A%84%E5%A4%84%E7%90%86%E4%B8%8E%E8%B0%83%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/17.%E9%94%99%E8%AF%AF%E7%9A%84%E5%A4%84%E7%90%86%E4%B8%8E%E8%B0%83%E8%AF%95/" class="post-title-link" itemprop="url">错误的处理与调试</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 14:13:00" itemprop="dateModified" datetime="2020-09-15T14:13:00+08:00">2020-09-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="浏览器报告的错误"><a href="#浏览器报告的错误" class="headerlink" title="浏览器报告的错误"></a>浏览器报告的错误</h2><h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><h3 id="try-catch"><a href="#try-catch" class="headerlink" title="try-catch"></a>try-catch</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">    &#x2F;&#x2F; 可能会出错的代码</span><br><span class="line">&#125; catch(error)&#123;</span><br><span class="line">    &#x2F;&#x2F; 处理</span><br><span class="line">    console.error(error)</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">    &#x2F;&#x2F; 都会执行</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="错误类型"><a href="#错误类型" class="headerlink" title="错误类型"></a>错误类型</h4><ul>
-<li>Error</li>
-<li>EvalError: eval 报错 eg: new eval();</li>
-<li>RangeError: 数值超出范围 eg: var items1 = new Array(-20);</li>
-<li>ReferenceError: 访问不存在的变量</li>
-<li>SyntaxError: 在 eval 中使用错误语法 eg: eval(“a ++ b”)</li>
-<li>TypeError: 类型错误 eg: var o = new 10;</li>
-<li>URIError: encodeURI 传入格式不正确</li>
-</ul>
-<h3 id="抛出错误"><a href="#抛出错误" class="headerlink" title="抛出错误"></a>抛出错误</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">throw 12345;</span><br><span class="line">&#x2F;&#x2F; 模拟浏览器错误</span><br><span class="line">throw new SyntaxError(&quot;I don’t like your syntax.&quot;);</span><br><span class="line">throw new TypeError(&quot;What type of variable do you take me for?&quot;); throw new RangeError(&quot;Sorry, you just don’t have the range.&quot;);</span><br><span class="line">throw new EvalError(&quot;That doesn’t evaluate.&quot;);</span><br><span class="line">throw new URIError(&quot;Uri, is that you?&quot;);</span><br><span class="line">throw new ReferenceError(&quot;You didn’t cite your references properly.&quot;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="错误事件"><a href="#错误事件" class="headerlink" title="错误事件"></a>错误事件</h3><p>没有通过 try-catch 处理的错误都会触发 window.error</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.onerror &#x3D; function(message, url, line)&#123;</span><br><span class="line">        alert(message);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/2.%E5%9C%A8html%E4%BD%BF%E7%94%A8js/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/2.%E5%9C%A8html%E4%BD%BF%E7%94%A8js/" class="post-title-link" itemprop="url">在html使用js</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 14:10:18" itemprop="dateModified" datetime="2020-09-15T14:10:18+08:00">2020-09-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="script"><a href="#script" class="headerlink" title="script"></a>script</h3><ul>
-<li>async 异步加载，立即执行</li>
-<li>defer 异步加载，延迟执行（在所有元素解析完成之后，DOMContentLoaded 事件触发之前）</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/21.Ajax%E4%B8%8EComet/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/21.Ajax%E4%B8%8EComet/" class="post-title-link" itemprop="url">Ajax与Comet</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 14:13:12" itemprop="dateModified" datetime="2020-09-15T14:13:12+08:00">2020-09-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="XMLHttpRequest-对象"><a href="#XMLHttpRequest-对象" class="headerlink" title="XMLHttpRequest 对象"></a>XMLHttpRequest 对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; ie7以前</span><br><span class="line">function createXHR()&#123;</span><br><span class="line">    if (typeof arguments.callee.activeXString !&#x3D; &quot;string&quot;)&#123;</span><br><span class="line">        var versions &#x3D; [&quot;MSXML2.XMLHttp.6.0&quot;, &quot;MSXML2.XMLHttp.3.0&quot;,</span><br><span class="line">                        &quot;MSXML2.XMLHttp&quot;],i, len;</span><br><span class="line">        for (i&#x3D;0,len&#x3D;versions.length; i &lt; len; i++)&#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                new ActiveXObject(versions[i]);</span><br><span class="line">                arguments.callee.activeXString &#x3D; versions[i];</span><br><span class="line">                break;</span><br><span class="line">            &#125; catch (ex)&#123;</span><br><span class="line">                &#x2F;&#x2F;􏰳􏰴</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return new ActiveXObject(arguments.callee.activeXString);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ie7之后</span><br><span class="line">new XMLHttpRequest()</span><br></pre></td></tr></table></figure>
-
-<h3 id="XHR-用法"><a href="#XHR-用法" class="headerlink" title="XHR 用法"></a>XHR 用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(&quot;get&quot;, &quot;example.php&quot;, false); &#x2F;&#x2F; 方法、url、是否异步</span><br><span class="line">xhr.send(null); &#x2F;&#x2F; 发送数据</span><br></pre></td></tr></table></figure>
-
-<p>响应之后 hxr 会有以下属性</p>
-<ul>
-<li>responseText: 返回数据</li>
-<li>responseXML: 内容类型</li>
-<li>status: http 状态</li>
-<li>statusText: http 状态说明</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if ((xhr.status &gt;&#x3D; 200 &amp;&amp; xhr.status &lt; 300) || xhr.status &#x3D;&#x3D; 304)&#123;</span><br><span class="line">      alert(xhr.responseText);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">      alert(&quot;Request was unsuccessful: &quot; + xhr.status);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>异步发送时，需判断 xhr 的 readyState,才能确定 ajax 的状态</p>
-<ul>
-<li>0：未初始化。未调用 open</li>
-<li>1：启动。已 open 未 send</li>
-<li>2：发送。已 send 未接收到响应</li>
-<li>3：接收。已接收到部分响应数据</li>
-<li>4：完成。接收到全部数据</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var xhr &#x3D; createXHR();</span><br><span class="line">xhr.onreadystatechange &#x3D; function()&#123;</span><br><span class="line">    if (xhr.readyState &#x3D;&#x3D; 4)&#123;</span><br><span class="line">        if ((xhr.status &gt;&#x3D; 200 &amp;&amp; xhr.status &lt; 300) || xhr.status &#x3D;&#x3D; 304)&#123;</span><br><span class="line">              alert(xhr.responseText);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">             alert(&quot;Request was unsuccessful: &quot; + xhr.status);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">xhr.open(&quot;get&quot;, &quot;example.txt&quot;, true);</span><br><span class="line">xhr.send(null);</span><br></pre></td></tr></table></figure>
-
-<h3 id="HTTP-头部信息"><a href="#HTTP-头部信息" class="headerlink" title="HTTP 头部信息"></a>HTTP 头部信息</h3><p>发送头部信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.setRequestHeader(&quot;MyHeader&quot;, &quot;MyValue&quot;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="XMLHttpRequest-2-级"><a href="#XMLHttpRequest-2-级" class="headerlink" title="XMLHttpRequest 2 级"></a>XMLHttpRequest 2 级</h2><h3 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h3><p>发送表单数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var form &#x3D; document.getElementById(&quot;user-info&quot;);</span><br><span class="line">xhr.send(new FormData(form));</span><br></pre></td></tr></table></figure>
-
-<h3 id="超时设定"><a href="#超时设定" class="headerlink" title="超时设定"></a>超时设定</h3><p>响应时间过长会停止</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">xhr.timeout &#x3D; 1000; &#x2F;&#x2F;􏿬􏼭􏾭􏱵􏱹􏱺1􏱻􏱼􏱽􏱾􏱖􏿅􏱗IE8+􏱿</span><br><span class="line">xhr.ontimeout &#x3D; function()&#123;</span><br><span class="line">    alert(&quot;Request did not return in a second.&quot;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="overrideMimeType"><a href="#overrideMimeType" class="headerlink" title="overrideMimeType()"></a>overrideMimeType()</h3><p>重写返回的 MIME 类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var xhr &#x3D; createXHR();</span><br><span class="line">xhr.open(&quot;get&quot;, &quot;text.php&quot;, true); xhr.overrideMimeType(&quot;text&#x2F;xml&quot;);</span><br><span class="line">xhr.send(null);</span><br></pre></td></tr></table></figure>
-
-<h2 id="进度事件"><a href="#进度事件" class="headerlink" title="进度事件"></a>进度事件</h2><ul>
-<li>loadstart: 在接收到相应数据的第一个字节时触发</li>
-<li>progress: 响应期间持续触发</li>
-<li>error: 请求发生错误触发</li>
-<li>abort: 在主动调用 abort 时触发</li>
-<li>load: 接收完整数据后触发</li>
-<li>loadend: 类似 finally,结束都会触发</li>
-</ul>
-<p>progress 进度条</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var xhr &#x3D; createXHR(); 21 xhr.onload &#x3D; function(event)&#123;</span><br><span class="line">    if ((xhr.status &gt;&#x3D; 200 &amp;&amp; xhr.status &lt; 300) ||</span><br><span class="line">            xhr.status &#x3D;&#x3D; 304)&#123;</span><br><span class="line">        alert(xhr.responseText);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        alert(&quot;Request was unsuccessful: &quot; + xhr.status);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">xhr.onprogress &#x3D; function(event)&#123;</span><br><span class="line">    var divStatus &#x3D; document.getElementById(&quot;status&quot;);</span><br><span class="line">    if (event.lengthComputable)&#123;</span><br><span class="line">        divStatus.innerHTML &#x3D; &quot;Received &quot; + event.position + &quot; of &quot; +</span><br><span class="line">            event.totalSize +&quot; bytes&quot;;</span><br><span class="line">    &#125;;</span><br><span class="line">xhr.open(&quot;get&quot;, &quot;altevents.php&quot;, true);</span><br><span class="line">xhr.send(null);</span><br></pre></td></tr></table></figure>
-
-<h2 id="跨域资源共享"><a href="#跨域资源共享" class="headerlink" title="跨域资源共享"></a>跨域资源共享</h2><h2 id="其他跨域技术"><a href="#其他跨域技术" class="headerlink" title="其他跨域技术"></a>其他跨域技术</h2><h3 id="图像-ping"><a href="#图像-ping" class="headerlink" title="图像 ping"></a>图像 ping</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var img &#x3D; new Image();</span><br><span class="line">img.onload &#x3D; img.onerror &#x3D; function()&#123;</span><br><span class="line">    alert(&quot;Done!&quot;);</span><br><span class="line">&#125;;</span><br><span class="line">img.src &#x3D; &quot;http:&#x2F;&#x2F;www.example.com&#x2F;test?name&#x3D;Nicholas&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>只能 get,无法响应返回文本，是单向通信</p>
-<h3 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h3><p>利用 script 请求数据</p>
-<h3 id="Comet"><a href="#Comet" class="headerlink" title="Comet"></a>Comet</h3><p>服务器推送技术，有长轮询和流两种实现方式</p>
-<h4 id="长轮询"><a href="#长轮询" class="headerlink" title="长轮询"></a>长轮询</h4><p>浏览器发送请求，和服务器保持连接状态，直到服务器有数据更新，结束然后开始新的一次</p>
-<h4 id="流"><a href="#流" class="headerlink" title="流"></a>流</h4><p>readyState 会周期性的变更为 3<br>利用 readyState 状态 3，持续接收比较数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function createStreamingClient(url, progress, finished)&#123;</span><br><span class="line">    var xhr &#x3D; new XMLHttpRequest(),</span><br><span class="line">        received &#x3D; 0;</span><br><span class="line">    xhr.open(&quot;get&quot;, url, true);</span><br><span class="line">    xhr.onreadystatechange &#x3D; function()&#123;</span><br><span class="line">        var result;</span><br><span class="line">        if (xhr.readyState &#x3D;&#x3D; 3)&#123;</span><br><span class="line">            result &#x3D; xhr.responseText.substring(received);</span><br><span class="line">            received +&#x3D; result.length;</span><br><span class="line">            progress(result);</span><br><span class="line">        &#125; else if (xhr.readyState &#x3D;&#x3D; 4)&#123;</span><br><span class="line">            finished(xhr.responseText);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    xhr.send(null);</span><br><span class="line">    return xhr;</span><br><span class="line">&#125;</span><br><span class="line">var client &#x3D; createStreamingClient(&quot;streaming.php&quot;, function(data)&#123;</span><br><span class="line">    alert(&quot;Received: &quot; + data);</span><br><span class="line">&#125;, function(data)&#123;</span><br><span class="line">   alert(&quot;Done!&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="服务器发送事件"><a href="#服务器发送事件" class="headerlink" title="服务器发送事件"></a>服务器发送事件</h3><p>SSE api 用于创建到服务器的单向连接，服务器可发送任意数据。服务器的响应 MIME 必须是 text/event-stream</p>
-<h4 id="SSE-API"><a href="#SSE-API" class="headerlink" title="SSE API"></a>SSE API</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var source &#x3D; new EventSource(&quot;myevents.php&quot;);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>open: 建立连接是触发</li>
-<li>mesage：从服务器收到新事件时触发</li>
-<li>error: 无法建立连接触发</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">source.onmessage &#x3D; function(event)&#123;</span><br><span class="line">    var data &#x3D; event.data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">source.close(); &#x2F;&#x2F; 关闭</span><br></pre></td></tr></table></figure>
-
-<h3 id="Web-Sockets"><a href="#Web-Sockets" class="headerlink" title="Web Sockets"></a>Web Sockets</h3><p>Web Sockets 的目标是在一个单独的持久连接上提供全双工、双向通信。</p>
-<h4 id="Web-Sockets-API"><a href="#Web-Sockets-API" class="headerlink" title="Web Sockets API"></a>Web Sockets API</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var socket &#x3D; new WebSocket(&quot;ws:&#x2F;&#x2F;www.example.com&#x2F;server.php&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>同源策略对 websockets 不适用<br>WebSocket 也有 readyState 属性</p>
-<ul>
-<li>WebSocket.OPENING (0)：正在建立连接</li>
-<li>WebSocket.OPEN (1)􏴣：已经建立连接</li>
-<li>WebSocket.CLOSING (2)：正在关闭连接</li>
-<li>WebSocket.CLOSE (3)：已经关闭连接</li>
-</ul>
-<p>socket.close(); 可以主动关闭连接</p>
-<h4 id="发送和接收数据"><a href="#发送和接收数据" class="headerlink" title="发送和接收数据"></a>发送和接收数据</h4><p>只能发送纯文本数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var socket &#x3D; new WebSocket(&quot;ws:&#x2F;&#x2F;www.example.com&#x2F;server.php&quot;);</span><br><span class="line">    socket.send(&quot;Hello world!&quot;);</span><br><span class="line">    socket.send(JSON.stringify(message));</span><br></pre></td></tr></table></figure>
-
-<p>接收数据(只能纯文本)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">socket.onmessage &#x3D; function(event)&#123;</span><br><span class="line">    var data &#x3D; event.data;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h4 id="其他事件"><a href="#其他事件" class="headerlink" title="其他事件"></a>其他事件</h4><p>在生命周期阶段触发</p>
-<ul>
-<li>open：成功建立连接触发</li>
-<li>error：发生错误是触发，连接不能持续</li>
-<li>close：连接关闭时触发</li>
-</ul>
-<p>只有 close 有 event<br>wasClean􏱢(是否关闭)、code(状态码)、reason(服务器返回信息)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">socket.onclose &#x3D; function(event)&#123;</span><br><span class="line">    console.log(&quot;Was clean? &quot; + event.wasClean + &quot; Code&#x3D;&quot; + event.code + &quot; Reason&#x3D;&quot; + event.reason);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">高级技巧</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 14:13:25" itemprop="dateModified" datetime="2020-09-15T14:13:25+08:00">2020-09-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="高级函数"><a href="#高级函数" class="headerlink" title="高级函数"></a>高级函数</h2><h3 id="安全的类型检测"><a href="#安全的类型检测" class="headerlink" title="安全的类型检测"></a>安全的类型检测</h3><p><code>Object.prototype.toString.call</code></p>
-<h3 id="作用域安全的构造函数"><a href="#作用域安全的构造函数" class="headerlink" title="作用域安全的构造函数"></a>作用域安全的构造函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Person(name, age, job)&#123;</span><br><span class="line">    if (this instanceof Person)&#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line">        this.job &#x3D; job;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return new Person(name, age, job);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="惰性载入函数"><a href="#惰性载入函数" class="headerlink" title="惰性载入函数"></a>惰性载入函数</h3><p>在判断之后直接把判断后的函数赋给当前函数，这样就不用每次都判断了</p>
-<h3 id="函数-curry-化"><a href="#函数-curry-化" class="headerlink" title="函数 curry 化"></a>函数 curry 化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function curry(fn)&#123;</span><br><span class="line">    var args &#x3D; Array.prototype.slice.call(arguments, 1);</span><br><span class="line">    return function()&#123;</span><br><span class="line">        var innerArgs &#x3D; Array.prototype.slice.call(arguments);</span><br><span class="line">        var finalArgs &#x3D; args.concat(innerArgs);</span><br><span class="line">        return fn.apply(null, finalArgs);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="防篡改对象"><a href="#防篡改对象" class="headerlink" title="防篡改对象"></a>防篡改对象</h2><h3 id="不可扩展对象"><a href="#不可扩展对象" class="headerlink" title="不可扩展对象"></a>不可扩展对象</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var person &#x3D; &#123; name: &quot;Nicholas&quot; &#125;;</span><br><span class="line">Object.preventExtensions(person);</span><br><span class="line">person.age &#x3D; 29;</span><br><span class="line">alert(person.age); &#x2F;&#x2F;undefined</span><br><span class="line">alert(Object.isExtensible(person)); &#x2F;&#x2F;false</span><br></pre></td></tr></table></figure>
-
-<h3 id="密封的对象"><a href="#密封的对象" class="headerlink" title="密封的对象"></a>密封的对象</h3><p>不可扩展，[[Configurable]]为 flase</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person &#x3D; &#123; name: &quot;Nicholas&quot; &#125;;</span><br><span class="line">Object.seal(person);</span><br><span class="line">person.age &#x3D; 29;</span><br><span class="line">alert(person.age); &#x2F;&#x2F;undefined</span><br><span class="line">delete person.name;</span><br><span class="line">alert(person.name); &#x2F;&#x2F;&quot;Nicholas&quot;</span><br><span class="line">alert(Object.isExtensible(person)); &#x2F;&#x2F;false</span><br><span class="line">alert(Object.isSealed(person));     &#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
-
-<h3 id="冻结对象"><a href="#冻结对象" class="headerlink" title="冻结对象"></a>冻结对象</h3><p>既不可扩展，又是密封的，[[Writable]]为 false</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var person &#x3D; &#123; name: &quot;Nicholas&quot; &#125;;</span><br><span class="line">Object.freeze(person);</span><br><span class="line">person.age &#x3D; 29;</span><br><span class="line">alert(person.age); &#x2F;&#x2F;undefined</span><br><span class="line">delete person.name;</span><br><span class="line">alert(person.name); &#x2F;&#x2F;&quot;Nicholas&quot;</span><br><span class="line">person.name &#x3D; &quot;Greg&quot;;</span><br><span class="line">alert(person.name); &#x2F;&#x2F;&quot;Nicholas&quot;</span><br><span class="line">alert(Object.isExtensible(person)); &#x2F;&#x2F; false</span><br><span class="line">alert(Object.isSealed(person)); &#x2F;&#x2F; true</span><br><span class="line">alert(Object.isFrozen(person)); &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
-
-<h2 id="高级定时器"><a href="#高级定时器" class="headerlink" title="高级定时器"></a>高级定时器</h2><h3 id="重复的定时器"><a href="#重复的定时器" class="headerlink" title="重复的定时器"></a>重复的定时器</h3><p><code>setTimeout</code> <code>setInterval</code><br>定时器的时间并不一定准确</p>
-<h3 id="Yielding-Processes"><a href="#Yielding-Processes" class="headerlink" title="Yielding Processes"></a>Yielding Processes</h3><h2 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h2><p>观察者模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">function EventTarget()&#123;</span><br><span class="line">        this.handlers &#x3D; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line">    EventTarget.prototype &#x3D; &#123;</span><br><span class="line">        constructor: EventTarget,</span><br><span class="line">        addHandler: function(type, handler)&#123;</span><br><span class="line">            if (typeof this.handlers[type] &#x3D;&#x3D; &quot;undefined&quot;)&#123;</span><br><span class="line">                this.handlers[type] &#x3D; [];</span><br><span class="line">&#125;</span><br><span class="line">            this.handlers[type].push(handler);</span><br><span class="line">        &#125;,</span><br><span class="line">        fire: function(event)&#123;</span><br><span class="line">            if (!event.target)&#123;</span><br><span class="line">                event.target &#x3D; this;</span><br><span class="line">            &#125;</span><br><span class="line">            if (this.handlers[event.type] instanceof Array)&#123;</span><br><span class="line">                var handlers &#x3D; this.handlers[event.type];</span><br><span class="line">                for (var i&#x3D;0, len&#x3D;handlers.length; i &lt; len; i++)&#123;</span><br><span class="line">                    handlers[i](event);</span><br><span class="line">                &#125;</span><br><span class="line">&#125; &#125;,</span><br><span class="line">        removeHandler: function(type, handler)&#123;</span><br><span class="line">            if (this.handlers[type] instanceof Array)&#123;</span><br><span class="line">                var handlers &#x3D; this.handlers[type];</span><br><span class="line">                for (var i&#x3D;0, len&#x3D;handlers.length; i &lt; len; i++)&#123;</span><br><span class="line">                    if (handlers[i] &#x3D;&#x3D;&#x3D; handler)&#123;</span><br><span class="line">                        break;</span><br><span class="line">&#125; &#125;</span><br><span class="line">                handlers.splice(i, 1);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/" class="post-title-link" itemprop="url">离线应用与客户端储存</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 14:13:37" itemprop="dateModified" datetime="2020-09-15T14:13:37+08:00">2020-09-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="离线检测"><a href="#离线检测" class="headerlink" title="离线检测"></a>离线检测</h2><p>1、<br><code>navigator.onLine</code></p>
-<p>2、</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">EventUtil.addHandler(window, &quot;online&quot;, function()&#123;</span><br><span class="line">    alert(&quot;Online&quot;);</span><br><span class="line">&#125;);</span><br><span class="line">EventUtil.addHandler(window, &quot;offline&quot;, function()&#123;</span><br><span class="line">    alert(&quot;Offline&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="应用缓存"><a href="#应用缓存" class="headerlink" title="应用缓存"></a>应用缓存</h2><p>/offline.manifest 中包含着描述文件，这个文件的 MIME 类型必须是 text/cache-manifest</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;html manifest&#x3D;&quot;&#x2F;offline.manifest&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><h4 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h4><p>每个浏览器的 cookie 数量限制不一样, 最少的只有 20 个<br>尺寸限制 20k 以内</p>
-<h4 id="cookie-的构成"><a href="#cookie-的构成" class="headerlink" title="cookie 的构成"></a>cookie 的构成</h4><ul>
-<li>名称</li>
-<li>值</li>
-<li>域</li>
-<li>路径</li>
-<li>失效时间</li>
-<li>安全标志</li>
-</ul>
-<h3 id="storage"><a href="#storage" class="headerlink" title="storage"></a>storage</h3><p>最少的 2.5M</p>
-<h3 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a>IndexedDB</h3><p>浏览器数据库<br>TODO: 用的时候再看</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/" class="post-title-link" itemprop="url">New Api</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 14:14:04" itemprop="dateModified" datetime="2020-09-15T14:14:04+08:00">2020-09-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="requestAnimationFrame"><a href="#requestAnimationFrame" class="headerlink" title="requestAnimationFrame"></a>requestAnimationFrame</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;</span><br><span class="line">        function draw(timestamp)&#123;</span><br><span class="line">        var drawStart &#x3D; (timestamp || Date.now()),</span><br><span class="line">        diff &#x3D; drawStart - startTime;</span><br><span class="line">        startTime &#x3D; drawStart;</span><br><span class="line">            requestAnimationFrame(draw);</span><br><span class="line">        &#125;</span><br><span class="line">        var requestAnimationFrame &#x3D; window.requestAnimationFrame ||</span><br><span class="line">                                    window.mozRequestAnimationFrame ||</span><br><span class="line">                                    window.webkitRequestAnimationFrame ||</span><br><span class="line">                                    window.msRequestAnimationFrame,</span><br><span class="line">            startTime &#x3D; window.mozAnimationStartTime || Date.now();</span><br><span class="line">        requestAnimationFrame(draw);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-
-<h2 id="Page-Visibility-API"><a href="#Page-Visibility-API" class="headerlink" title="Page Visibility API"></a>Page Visibility API</h2><ul>
-<li>document.hidden: 页面影藏。包括页面在后台标签或浏览器最小化</li>
-<li>document.visibilityState (现不推荐使用)<ul>
-<li>页面在后台标签或浏览器最小化</li>
-<li>页面在前台标签</li>
-<li>页面已隐藏，但通过类似 win7 的预览窗口看到</li>
-<li>页面在屏幕外执行预渲染处理</li>
-</ul>
-</li>
-<li>visibilitychange: 文档可见(不可见)变化触发</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function isHiddenSupported()&#123;</span><br><span class="line">        return typeof (document.hidden || document.msHidden ||</span><br><span class="line">            document.webkitHidden) !&#x3D; &quot;undefined&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">if (document.hidden || document.msHidden || document.webKitHidden)&#123;</span><br><span class="line">    &#x2F;&#x2F;􏸌􏴌􏸍􏸎􏿲页面隐藏了</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    &#x2F;&#x2F;􏸌􏴌􏾼􏸍􏸎没隐藏</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function handleVisibilityChange()&#123;</span><br><span class="line">    var output &#x3D; document.getElementById(&quot;output&quot;),</span><br><span class="line">    msg;</span><br><span class="line">    if (document.hidden || document.msHidden || document.webkitHidden)&#123;</span><br><span class="line">        msg &#x3D; &quot;Page is now hidden. &quot; + (new Date()) + &quot;&lt;br&gt;&quot;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        msg &#x3D; &quot;Page is now visible. &quot; + (new Date()) + &quot;&lt;br&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    output.innerHTML +&#x3D; msg;</span><br><span class="line">&#125;</span><br><span class="line">EventUtil.addHandler(document, &quot;msvisibilitychange&quot;, handleVisibilityChange); EventUtil.addHandler(document, &quot;webkitvisibilitychange&quot;,handleVisibilityChange)</span><br></pre></td></tr></table></figure>
-
-<h2 id="Geolocation-API"><a href="#Geolocation-API" class="headerlink" title="Geolocation API"></a>Geolocation API</h2><p>地理定位<code>navigator.geolocation </code></p>
-<p>getCurrentPosition()</p>
-<ul>
-<li>latitude: 十进制维度</li>
-<li>longitude：十进制经度</li>
-<li>accuracy：坐标精度，单位米</li>
-<li>altitude：海拔高度(m)</li>
-<li>altitudeAccuracy: 海拔高度精度(m)</li>
-<li>heading: 指南针方向 0 表示正北</li>
-<li>speed：每秒移动多少米</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">navigator.geolocation.getCurrentPosition(function(position)&#123;</span><br><span class="line">    drawMapCenteredAt(position.coords.latitude, positions.coords.longitude);</span><br><span class="line">&#125;, function(error)&#123; &#x2F;&#x2F; 错误处理</span><br><span class="line">    console.log(&quot;Error code: &quot; + error.code); console.log(&quot;Error message: &quot; + error.message);</span><br><span class="line">&#125;, &#123; &#x2F;&#x2F; 设定信息类型</span><br><span class="line">        enableHighAccuracy: true, &#x2F;&#x2F; 尽可能使用最准确的信息</span><br><span class="line">        timeout: 5000, &#x2F;&#x2F; 等待位置信息最长时间</span><br><span class="line">        maximumAge: 25000 &#x2F;&#x2F; 重获坐标时间</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p><code>watchPosition</code> 持续获取位置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var watchId &#x3D; navigator.geolocation.watchPosition(function(position)&#123;</span><br><span class="line">    drawMapCenteredAt(position.coords.latitude, positions.coords.longitude);</span><br><span class="line">&#125;, function(error)&#123;</span><br><span class="line">    console.log(&quot;Error code: &quot; + error.code); console.log(&quot;Error message: &quot; + error.message);</span><br><span class="line">&#125;);</span><br><span class="line">clearWatch(watchId); &#x2F;&#x2F; 取消</span><br></pre></td></tr></table></figure>
-
-<h2 id="file-API"><a href="#file-API" class="headerlink" title="file API"></a>file API</h2><h3 id="FileReader"><a href="#FileReader" class="headerlink" title="FileReader"></a>FileReader</h3><ul>
-<li><p>readAsText(file,encoding)：以纯文本读取文件</p>
-</li>
-<li><p>readAsDataURL(file)：读取文件并以数据 uri 的形式保存</p>
-</li>
-<li><p>readAsBinaryString(file)：读取文件字符窜，字符窜中的每一个字符表示一个字节</p>
-</li>
-<li><p>readAsArrayBuffer(file)：读取文件 ArrayBuffer 形式</p>
-</li>
-<li><p>progress􏱢 50ms 触发一次</p>
-</li>
-<li><p>error</p>
-</li>
-<li><p>load</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reader &#x3D; new FileReader();</span><br><span class="line">reader.onerror &#x3D; function()&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="读取部分内容"><a href="#读取部分内容" class="headerlink" title="读取部分内容"></a>读取部分内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function blobSlice(blob, startByte, length)&#123;</span><br><span class="line">    if (blob.slice)&#123;</span><br><span class="line">        return blob.slice(startByte, length);</span><br><span class="line">    &#125; else if (blob.webkitSlice)&#123;</span><br><span class="line">        return blob.webkitSlice(startByte, length);</span><br><span class="line">    &#125; else if (blob.mozSlice)&#123;</span><br><span class="line">        return blob.mozSlice(startByte, length);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">blob &#x3D; blobSlice(files[0], 0, 32);</span><br></pre></td></tr></table></figure>
-
-<h3 id="对象-URL"><a href="#对象-URL" class="headerlink" title="对象 URL"></a>对象 URL</h3><p>引用保存在 Blob 或 File 中数据的 url</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function createObjectURL(blob)&#123;</span><br><span class="line">    if (window.URL)&#123;</span><br><span class="line">        return window.URL.createObjectURL(blob);</span><br><span class="line">    &#125; else if (window.webkitURL)&#123;</span><br><span class="line">        return window.webkitURL.createObjectURL(blob);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">url &#x3D; createObjectURL(files[0]);</span><br><span class="line">...</span><br><span class="line">output.innerHTML &#x3D; &quot;&lt;img src&#x3D;\&quot;&quot; + url + &quot;\&quot;&gt;&quot;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="读取拖放的文件"><a href="#读取拖放的文件" class="headerlink" title="读取拖放的文件"></a>读取拖放的文件</h3><p><code>files = event.dataTransfer.files;</code></p>
-<h3 id="使用-XHR-上传文件"><a href="#使用-XHR-上传文件" class="headerlink" title="使用 XHR 上传文件"></a>使用 XHR 上传文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">data &#x3D; new FormData();</span><br><span class="line">files &#x3D; event.dataTransfer.files;</span><br><span class="line">i &#x3D; 0;</span><br><span class="line">len &#x3D; files.length;</span><br><span class="line">while (i &lt; len)&#123;</span><br><span class="line">    data.append(&quot;file&quot; + i, files[i]);</span><br><span class="line">i++; &#125;</span><br><span class="line">xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">xhr.open(&quot;post&quot;, &quot;FileAPIExample06Upload.php&quot;, true);</span><br><span class="line">xhr.onreadystatechange &#x3D; function()&#123;</span><br><span class="line">    if (xhr.readyState &#x3D;&#x3D; 4)&#123;</span><br><span class="line">        alert(xhr.responseText);</span><br><span class="line">&#125; &#125;;</span><br><span class="line">        xhr.send(data);</span><br></pre></td></tr></table></figure>
-
-<h2 id="Web-计时"><a href="#Web-计时" class="headerlink" title="Web 计时"></a>Web 计时</h2><p><code>window.performance </code></p>
-<h2 id="Web-Workers"><a href="#Web-Workers" class="headerlink" title="Web Workers"></a>Web Workers</h2><p>让 javascript 在后台运行</p>
-<h3 id="使用-Worker"><a href="#使用-Worker" class="headerlink" title="使用 Worker"></a>使用 Worker</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var worker &#x3D; new Worker(&quot;stufftodo.js&quot;);</span><br><span class="line">worker.postMessage(􏸢start! &quot;); &#x2F;&#x2F; 发送消息，可传对象</span><br><span class="line">worker.postMessage(&#123;</span><br><span class="line">        type: &quot;command&quot;,</span><br><span class="line">        message: &quot;start! &quot;</span><br><span class="line"> &#125;);</span><br><span class="line"> worker.onmessage &#x3D; function(event)&#123;</span><br><span class="line">        var data &#x3D; event.data;</span><br><span class="line">&#125;</span><br><span class="line">worker.onerror &#x3D; function(event)&#123; &#x2F;&#x2F; 运行错误</span><br><span class="line">        console.log(&quot;ERROR: &quot; + event.filename + &quot; (&quot; + event.lineno + &quot;): &quot; +</span><br><span class="line">                    event.message);</span><br><span class="line">&#125;;</span><br><span class="line">worker.terminate(); &#x2F;&#x2F; 停止worker</span><br></pre></td></tr></table></figure>
-
-<h3 id="Worker-全局作用域"><a href="#Worker-全局作用域" class="headerlink" title="Worker 全局作用域"></a>Worker 全局作用域</h3><p>worker 与当前网页不共享作用域，也不能访问 dom</p>
-<ul>
-<li>navigator 部分属性</li>
-<li>只读 location 对象</li>
-<li>定时器</li>
-<li>XMLHttpRequest</li>
-</ul>
-<p>eg: worker 排序</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// worker内部代码</span></span><br><span class="line">self.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> data = event.data;</span><br><span class="line">    data.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> a – b;</span><br><span class="line">    &#125;);</span><br><span class="line">    self.postMessage(data);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 页面代码</span></span><br><span class="line"><span class="keyword">var</span> data = [<span class="number">23</span>,<span class="number">4</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">2</span>,<span class="number">14</span>,<span class="number">6</span>,<span class="number">651</span>,<span class="number">87</span>,<span class="number">41</span>,<span class="number">7798</span>,<span class="number">24</span>],</span><br><span class="line">    worker = <span class="keyword">new</span> Worker(<span class="string">&quot;WebWorkerExample01.js&quot;</span>);</span><br><span class="line">worker.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> data = event.data;</span><br><span class="line">    <span class="comment">// data是排序后的数组</span></span><br><span class="line">&#125;;</span><br><span class="line">worker.postMessage(data);</span><br><span class="line"></span><br><span class="line"><span class="comment">// worker内部</span></span><br><span class="line">self.close(); <span class="comment">// 关闭worker</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/my-notes/images/avatar.gif">
-      <meta itemprop="name" content="lokve">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习笔记">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">基本概念</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-14 00:00:00" itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-15 14:10:30" itemprop="dateModified" datetime="2020-09-15T14:10:30+08:00">2020-09-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="􏽃􏽄􏽅􏸀􏽃􏽄􏽅􏸀-数据类型"><a href="#􏽃􏽄􏽅􏸀􏽃􏽄􏽅􏸀-数据类型" class="headerlink" title="􏽃􏽄􏽅􏸀􏽃􏽄􏽅􏸀 数据类型"></a>􏽃􏽄􏽅􏸀􏽃􏽄􏽅􏸀 数据类型</h3><p>undefined, null, boolean, string, number, object, symbol(es6)</p>
-<h3 id="boolean-转换"><a href="#boolean-转换" class="headerlink" title="boolean 转换"></a>boolean 转换</h3><p>true: 非空字符串、非零数值、任何对象<br>false: ‘’、0|NaN、null、undefined</p>
-<h3 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h3><ul>
-<li>调用 toString 方法</li>
-<li>特定值：null, undedined, NaN -&gt; ‘null’, ‘undefined’, ‘NaN’</li>
-</ul>
-<h3 id="Number"><a href="#Number" class="headerlink" title="Number()"></a>Number()</h3><ul>
-<li>true -&gt; 1, false -&gt; 0</li>
-<li>null -&gt; 0, undefined -&gt; NaN</li>
-<li>字符串只有纯数字和进制会被转成 10 进制，’’ -&gt; 0，其他 -&gt; NaN</li>
-<li>对象 先调用 valueof,如果是 NaN,在调用 toString</li>
-</ul>
-<h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><ul>
-<li>constructor 构造函数</li>
-<li>hasOwnProperty 检测属性是否在对象</li>
-<li>isPrototypeOf 检查传入的对象是否是原型</li>
-<li>propertyIsEnumerable 是否能用 for-in 枚举</li>
-<li>toLocalString 返回对象的字符串表示，结果和执行所在地区有关</li>
-<li>toString 返回对象的字符串表示</li>
-<li>valueOf 返回对象字符串、数值或布尔表示，通常与 toString 相同</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
+  </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/my-notes/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/my-notes/">1</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/my-notes/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/7/">7</a><a class="extend next" rel="next" href="/my-notes/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/my-notes/page/3/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/my-notes/">1</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/my-notes/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/8/">8</a><a class="extend next" rel="next" href="/my-notes/page/5/"><i class="ic i-angle-right" aria-label="下一页"></i></a>
+    </div>
   </nav>
 
 
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
 
         </div>
+        <div id="sidebar">
           
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="lokve"
+      data-src="/my-notes/images/head.jpeg">
+  <p class="name" itemprop="name">lokve</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/my-notes/archives/">
+        <span class="count">71</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/my-notes/categories/">
+        <span class="count">2</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/my-notes/tags/">
+        <span class="count">8</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xva3Zl" title="https:&#x2F;&#x2F;github.com&#x2F;lokve"><i class="ic i-github"></i></span>
+</div>
+
+<ul class="menu">
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+    
+  <li class="item">
+    <a href="/my-notes/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/my-notes/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/my-notes/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
   </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">lokve</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/my-notes/archives/">
-        
-          <span class="site-state-item-count">63</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/my-notes/tags/">
-          
-        <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/my-notes/page/3/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/my-notes/page/5/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
 </div>
 
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
+        </div>
+        <div class="dimmer"></div>
       </div>
     </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">lokve</span>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/17.%E9%94%99%E8%AF%AF%E7%9A%84%E5%A4%84%E7%90%86%E4%B8%8E%E8%B0%83%E8%AF%95/" title="错误的处理与调试">错误的处理与调试</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/7.%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="函数表达式">函数表达式</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/08/leetcode/29.Divide%20Two%20Integers/index/" title="29.Divide Two Integers">29.Divide Two Integers</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/selectorFactory/" title="selectorFactory">selectorFactory</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/" title="js简介">js简介</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/5.%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" title="引用类型">引用类型</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/09/react/hooks/" title="hooks">hooks</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/connectAdvanced/" title="connectAdvanced">connectAdvanced</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/bindActionCreators/" title="bindActionCreators">bindActionCreators</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/10/react/schedule/" title="reconcileChildFibers">reconcileChildFibers</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">lokve @ hee note</span>
   </div>
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
     </span>
+    <span title="站点总字数">374k 字</span>
+
     <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
     </span>
+    <span title="站点阅读时长">5:40</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
 </div>
-
-
-
-
-
-
-
 
       </div>
     </footer>
   </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: 'page/4/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
 
-  
-  <script src="/my-notes/lib/anime.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.min.js"></script>
-  <script src="/my-notes/lib/velocity/velocity.ui.min.js"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
 
-<script src="/my-notes/js/utils.js"></script>
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
 
-<script src="/my-notes/js/motion.js"></script>
-
-
-<script src="/my-notes/js/schemes/pisces.js"></script>
-
-
-<script src="/my-notes/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/my-notes/js/local-search.js"></script>
-
-
-
-
-
-
+<script src="/my-notes/js/app.js?v=0.2.5"></script>
 
 
 
-
-
-
-
-  
-
-  
 
 </body>
 </html>
