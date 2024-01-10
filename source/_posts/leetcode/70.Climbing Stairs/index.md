@@ -1,6 +1,8 @@
 ---
 title: 70.Climbing Stairs
 tags: leetcode
+categories:
+  - leetcode
 date: 2024-1-9 10:00
 ---
 

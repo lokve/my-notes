@@ -1,6 +1,8 @@
 ---
 title: function组件
 tags: react源码解析
+categories:
+  - react
 date: 2020-9-9 14:00
 ---
 

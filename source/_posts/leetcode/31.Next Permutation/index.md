@@ -1,6 +1,8 @@
 ---
 title: 31.Next Permutation
 tags: leetcode
+categories:
+  - leetcode
 date: 2024-1-8 16:00
 ---
 

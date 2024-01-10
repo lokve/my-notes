@@ -1,6 +1,8 @@
 ---
 title: fiber
 tags: react源码解析
+categories:
+  - react
 date: 2020-9-8 14:00
 ---
 

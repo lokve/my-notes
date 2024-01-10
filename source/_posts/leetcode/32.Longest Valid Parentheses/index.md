@@ -1,6 +1,8 @@
 ---
 title: 32.Longest Valid Parentheses
 tags: leetcode
+categories:
+  - leetcode
 date: 2024-1-8 16:00
 ---
 

@@ -1,6 +1,8 @@
 ---
 title: 6.Zigzag Conversion
 tags: leetcode
+categories:
+  - leetcode
 date: 2024-1-7 16:00
 ---
 

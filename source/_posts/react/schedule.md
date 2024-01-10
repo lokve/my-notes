@@ -1,6 +1,8 @@
 ---
 title: reconcileChildFibers
 tags: react源码解析
+categories:
+  - react
 date: 2020-9-10 14:00
 ---
 

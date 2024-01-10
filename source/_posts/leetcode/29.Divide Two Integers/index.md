@@ -1,6 +1,8 @@
 ---
 title: 29.Divide Two Integers
 tags: leetcode
+categories:
+  - leetcode
 date: 2024-1-8 16:00
 ---
 

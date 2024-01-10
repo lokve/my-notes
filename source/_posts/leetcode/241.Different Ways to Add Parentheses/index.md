@@ -1,6 +1,8 @@
 ---
 title: 241.Different Ways to Add Parentheses
 tags: leetcode
+categories:
+  - leetcode
 date: 2024-1-7 16:00
 ---
 

@@ -1,6 +1,8 @@
 ---
 title: 198.House Robber
 tags: leetcode
+categories:
+  - leetcode
 date: 2024-1-9 14:00
 ---
 
