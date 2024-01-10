@@ -6,11 +6,11 @@
     <updated>2018-06-07T06:08:00.000Z</updated>
     <category term="Bue笔记" />
     <category term="javascript高级笔记" />
-    <category term="随记" />
-    <category term="算法基础" />
-    <category term="Vue笔记" />
     <category term="react源码解析" />
     <category term="react-redux" />
+    <category term="Vue笔记" />
+    <category term="随记" />
+    <category term="算法基础" />
     <category term="leetcode" />
     <entry>
         <id>http://example.com/2018/06/07/vue/attr/</id>
