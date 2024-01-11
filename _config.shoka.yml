@@ -158,11 +158,12 @@ valine:
   lang: zh-CN
   visitor: true # 文章访问量统计
   NoRecordIP: false # 不记录 IP
-  serverURLs: # When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)
+  # When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)
+  serverURLs: https://fmoh1fvr.api.lncldglobal.com
   powerMode: true # 默认打开评论框输入特效
   tagMeta:
-    visitor: 新朋友
-    master: 主人
+    visitor: 游客
+    master: Admin
     friend: 小伙伴
     investor: 金主粑粑
   tagColor:
@@ -171,7 +172,7 @@ valine:
     investor: "var(--color-pink)"
   tagMember:
     master:
-    # - hash of master@email.com
+     - dce1b596ccd9bc35a8f56bf34fd25b9c
     # - hash of master2@email.com
     friend:
     # - hash of friend@email.com
@@ -185,6 +186,8 @@ sidebar:
   #position: right
   # Replace the default avatar image and set the url here.
   avatar: head.jpeg
+
+image_server: "https://api.ouyangqiqi.cn/dm/img-webp.php"
 
 
 # 本文作者： Ruri Shimotsuki @優萌初華
