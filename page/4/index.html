@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?299054"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?62433"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?30043"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?902214"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?432707"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?915298"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?165051"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?31156"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?542959"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?272298"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?219855"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?672998"></li>
         </ul>
       </div>
     </header>
@@ -119,7 +119,138 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2020/09/08/react/%E5%90%84%E7%A7%8D%E5%AF%B9%E8%B1%A1/" itemprop="url" title="一些对象定义"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?463157"></a>
+    <a href="/my-notes/2020/09/09/react/commitRoot/" itemprop="url" title="commitRoot"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?619576"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2020-09-09 11:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2020-09-09T11:00:00+08:00">2020-09-09</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>20k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>18 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2020/09/09/react/commitRoot/" itemprop="url" title="commitRoot">commitRoot</a></h3>
+    <div class="excerpt">
+        # commitRoot
+12345678910111213141516171819function commitRoot(root) &amp;#123; // 开始渲染流程 // debugger; // 优先级相关，最后还是运行commitRootImpl runWithPriority(ImmediatePriority, commitRootImpl.bind(null, root)); // 渲染并执行componentDidMount // If there are passive effects, schedule a callback to flush them. This...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/react/" itemprop="url" title="react"><i class="ic i-flag"></i>react</a>
+      </span>
+    </div>
+    <a href="/my-notes/2020/09/09/react/commitRoot/" itemprop="url" title="commitRoot" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2020/09/08/react/fiber/" itemprop="url" title="fiber"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?686506"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2020-09-08 14:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2020-09-08T14:00:00+08:00">2020-09-08</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>5.9k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>5 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2020/09/08/react/fiber/" itemprop="url" title="fiber">fiber</a></h3>
+    <div class="excerpt">
+        从 ReactSyncRoot 开始
+123// dom, 0, falseconst root = createContainer(container, tag, hydrate); // FiberRootNodethis._internalRoot = root;
+createContainer 在 react-reconciler/inline.dom , 引用的 ./src/ReactFiberReconciler
+12345678export function createContainer( containerInfo: Container, tag: RootTag,...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/react/" itemprop="url" title="react"><i class="ic i-flag"></i>react</a>
+      </span>
+    </div>
+    <a href="/my-notes/2020/09/08/react/fiber/" itemprop="url" title="fiber" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2020/09/08/react/renderRoot/" itemprop="url" title="renderRoot"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?79915"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2020-09-08 14:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2020-09-08T14:00:00+08:00">2020-09-08</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>33k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>30 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2020/09/08/react/renderRoot/" itemprop="url" title="renderRoot">renderRoot</a></h3>
+    <div class="excerpt">
+        构建 fiber 树和 dom 树，互相对应为参数，能互相找到，并执行了渲染前的生命周期
+# 然后是...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/react/" itemprop="url" title="react"><i class="ic i-flag"></i>react</a>
+      </span>
+    </div>
+    <a href="/my-notes/2020/09/08/react/renderRoot/" itemprop="url" title="renderRoot" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2020/09/08/react/%E5%90%84%E7%A7%8D%E5%AF%B9%E8%B1%A1/" itemprop="url" title="一些对象定义"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?913600"></a>
   </div>
   <div class="info">
     
@@ -162,7 +293,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2020/09/08/react/%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/" itemprop="url" title="时间"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?276159"></a>
+    <a href="/my-notes/2020/09/08/react/%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/" itemprop="url" title="时间"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?45772"></a>
   </div>
   <div class="info">
     
@@ -204,7 +335,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" itemprop="url" title="常量"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?533513"></a>
+    <a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" itemprop="url" title="常量"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?409035"></a>
   </div>
   <div class="info">
     
@@ -249,7 +380,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" itemprop="url" title="初始流程"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?718069"></a>
+    <a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" itemprop="url" title="初始流程"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?416319"></a>
   </div>
   <div class="info">
     
@@ -293,7 +424,7 @@ react 的渲染主要由 react-dom 完成，首先从 ReactDOM.render 开始
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2019/07/10/%E7%AE%97%E6%B3%95/01.%E6%8E%92%E5%BA%8F/" itemprop="url" title="数据结构"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?222311"></a>
+    <a href="/my-notes/2019/07/10/%E7%AE%97%E6%B3%95/01.%E6%8E%92%E5%BA%8F/" itemprop="url" title="数据结构"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?482000"></a>
   </div>
   <div class="info">
     
@@ -331,7 +462,7 @@ react 的渲染主要由 react-dom 完成，首先从 ReactDOM.render 开始
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2019/07/02/%E7%AE%97%E6%B3%95/0.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" title="数据结构"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?557881"></a>
+    <a href="/my-notes/2019/07/02/%E7%AE%97%E6%B3%95/0.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" title="数据结构"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?119088"></a>
   </div>
   <div class="info">
     
@@ -374,48 +505,7 @@ push 和 pop
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/" itemprop="url" title="js简介"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?222874"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2019-06-14 00:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>56</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/" itemprop="url" title="js简介">js简介</a></h3>
-    <div class="excerpt">
-        # javascript
-
-􏵛􏴞􏲛 核心（ECMAScript􏲜）
-文档对象模型（DOM）
-浏览器对象模型（BOM）
-    </div>
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/" itemprop="url" title="js简介" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/" itemprop="url" title="DOM扩展"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?572918"></a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/" itemprop="url" title="DOM扩展"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?751235"></a>
   </div>
   <div class="info">
     
@@ -458,90 +548,6 @@ firstElementChild...
   </div>
 </article>
 
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/" itemprop="url" title="DOM2和DOM3"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?606282"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2019-06-14 00:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>2.6k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>2 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/" itemprop="url" title="DOM2和DOM3">DOM2和DOM3</a></h3>
-    <div class="excerpt">
-        # DOM 变化
-和 XML 有关，先不看
-# 样式
-# 访问元素样式
-1234var myDiv = document.getElementById(&amp;quot;myDiv&amp;quot;);myDiv.style.backgroundColor = &amp;quot;red&amp;quot;;myDiv.style.width = &amp;quot;100px&amp;quot;;myDiv.style.height = &amp;quot;200px&amp;quot;;
-# dom 样式的属性和方法
-
-cssText: 能通过它访问到 style 特性中的 css...
-    </div>
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/" itemprop="url" title="DOM2和DOM3" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" itemprop="url" title="DOM"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?797955"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2019-06-14 00:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>3.5k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>3 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" itemprop="url" title="DOM">DOM</a></h3>
-    <div class="excerpt">
-        # 节点层次
-# Node 类型
-123456789101112ELEMENT_NODE: 1 // div等ATTRBUTE_NODE: 2TEXT_NODE: 3 // 文本节点CDATA_SECTION_NODE: 4ENTITY_REFERENCE_NODE: 5ENTITY_NODE: 6PROCESSING_INSTRUCTION_NODE: 7COMMENT_NODE: 8 // 注释节点DOCUMENT_NODE: 9 // document类型DOCUMENT_TYPE_NODE: 10DOCUMENT_FRAGMENT_NODE: 11NOTATION_NODE: 12
-#...
-    </div>
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" itemprop="url" title="DOM" class="btn">more...</a>
-  </div>
-</article>
-
     </div>
 
   </div>
@@ -577,7 +583,7 @@ cssText: 能通过它访问到 style 特性中的 css...
 <nav class="state">
     <div class="item posts">
       <a href="/my-notes/archives/">
-        <span class="count">73</span>
+        <span class="count">76</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -669,7 +675,17 @@ cssText: 能通过它访问到 style 特性中的 css...
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2017/05/23/bue/5/" title="Bue源码阅读笔记（5）">Bue源码阅读笔记（5）</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/" title="js简介">js简介</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/11/react/context/" title="completeWork">completeWork</a></span>
   </li>
 
       
@@ -678,35 +694,7 @@ cssText: 能通过它访问到 style 特性中的 css...
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2020/09/14/react-redux/Subscription/" title="selectorFactory">selectorFactory</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2017/06/28/%E9%9A%8F%E8%AE%B0/2/" title="一些笔记">一些笔记</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-</div>
-
-    <span><a href="/my-notes/2024/01/08/leetcode/29.Divide%20Two%20Integers/index/" title="29.Divide Two Integers">29.Divide Two Integers</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/" title="DOM扩展">DOM扩展</a></span>
+    <span><a href="/my-notes/2018/06/07/vue/attr/" title="attr">attr</a></span>
   </li>
 
       
@@ -723,10 +711,10 @@ cssText: 能通过它访问到 style 特性中的 css...
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
-    <span><a href="/my-notes/2024/01/09/leetcode/198.House%20Robber/index/" title="198.House Robber">198.House Robber</a></span>
+    <span><a href="/my-notes/2020/09/09/react/hooks/" title="hooks">hooks</a></span>
   </li>
 
       
@@ -735,7 +723,16 @@ cssText: 能通过它访问到 style 特性中的 css...
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2019/07/02/%E7%AE%97%E6%B3%95/0.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">数据结构</a></span>
+    <span><a href="/my-notes/2017/05/25/bue/6/" title="Bue源码阅读笔记（6）">Bue源码阅读笔记（6）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/" title="离线应用与客户端储存">离线应用与客户端储存</a></span>
   </li>
 
       
@@ -745,7 +742,7 @@ cssText: 能通过它访问到 style 特性中的 css...
 <a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
-    <span><a href="/my-notes/2020/09/08/react/fiber/" title="fiber">fiber</a></span>
+    <span><a href="/my-notes/2020/09/09/react/function%E7%BB%84%E4%BB%B6/" title="function组件">function组件</a></span>
   </li>
 
       
@@ -754,7 +751,17 @@ cssText: 能通过它访问到 style 特性中的 css...
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2020/09/14/react-redux/connectAdvanced/" title="connectAdvanced">connectAdvanced</a></span>
+    <span><a href="/my-notes/2019/07/10/%E7%AE%97%E6%B3%95/01.%E6%8E%92%E5%BA%8F/" title="数据结构">数据结构</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" title="常量">常量</a></span>
   </li>
 
   </ul>
@@ -779,13 +786,13 @@ cssText: 能通过它访问到 style 特性中的 css...
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">375k 字</span>
+    <span title="站点总字数">377k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:41</span>
+    <span title="站点阅读时长">5:43</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?963945"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?766778"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?558787"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?199465"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?167344"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?520039"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?554945"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?17264"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?761425"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?987003"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?574499"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?97260"></li>
         </ul>
       </div>
     </header>
@@ -119,7 +119,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/7.%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url" title="函数表达式"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?550238"></a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/" itemprop="url" title="New Api"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?792792"></a>
   </div>
   <div class="info">
     
@@ -134,34 +134,30 @@
     <span class="icon">
       <i class="ic i-pen"></i>
     </span>
-    <span>1.9k</span>
+    <span>4.7k</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="阅读时长">
     <span class="icon">
       <i class="ic i-clock"></i>
     </span>
-    <span>2 分钟</span>
+    <span>4 分钟</span>
   </span>
 </div>
 
-    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/7.%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url" title="函数表达式">函数表达式</a></h3>
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/" itemprop="url" title="New Api">New Api</a></h3>
     <div class="excerpt">
-        # 函数闭包
-闭包 是指有权访问另一个函数作用域中的变量的函数
-# 内存泄漏
-123456function assignHandler()&amp;#123; var element = document.getElementById(&amp;quot;someElement&amp;quot;); element.onclick = function()&amp;#123; alert(element.id); &amp;#125;;&amp;#125;
-↓
-12345678function assignHandler()&amp;#123;var element =...
+        # requestAnimationFrame
+1234567891011121314(function()&amp;#123; function draw(timestamp)&amp;#123; var drawStart = (timestamp || Date.now()), diff = drawStart - startTime; startTime = drawStart; requestAnimationFrame(draw); &amp;#125; var requestAnimationFrame = window.requestAnimationFrame ||...
     </div>
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/7.%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url" title="函数表达式" class="btn">more...</a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/" itemprop="url" title="New Api" class="btn">more...</a>
   </div>
 </article>
 
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/" itemprop="url" title="BOM"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?101391"></a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" itemprop="url" title="基本概念"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?778477"></a>
   </div>
   <div class="info">
     
@@ -176,7 +172,7 @@
     <span class="icon">
       <i class="ic i-pen"></i>
     </span>
-    <span>573</span>
+    <span>527</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="阅读时长">
@@ -187,25 +183,74 @@
   </span>
 </div>
 
-    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/" itemprop="url" title="BOM">BOM</a></h3>
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" itemprop="url" title="基本概念">基本概念</a></h3>
     <div class="excerpt">
-        # window
-即使 js 访问浏览器的接口，也是 ESCMScript 的全局 Global 对象
-# 全局作用域
-1234567var age = 29;function sayAge()&amp;#123; alert(this.age);&amp;#125;alert(window.age); //29sayAge(); //29 window.sayAge(); //29
-使用 var 添加的全局属性的 configurable 默认为 false, 所有不能 delete window.age （无效）
-# 弹出窗口
-检测弹出窗是否被屏蔽
-123456789101112var...
+        # 􏽃􏽄􏽅􏸀􏽃􏽄􏽅􏸀 数据类型
+undefined, null, boolean, string, number, object, symbol(es6)
+# boolean 转换
+true: 非空字符串、非零数值、任何对象
+false: ‘’、0|NaN、null、undefined
+# String()
+
+调用 toString 方法
+特定值：null, undedined, NaN -&amp;gt; ‘null’, ‘undefined’, ‘NaN’
+
+# Number()
+
+true -&amp;gt; 1, false -&amp;gt; 0
+null...
     </div>
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/" itemprop="url" title="BOM" class="btn">more...</a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" itemprop="url" title="基本概念" class="btn">more...</a>
   </div>
 </article>
 
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" itemprop="url" title="面向对象"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?3701"></a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/5.%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" itemprop="url" title="引用类型"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?587334"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>91</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/5.%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" itemprop="url" title="引用类型">引用类型</a></h3>
+    <div class="excerpt">
+        # RegExp 实力属性
+
+global g 全局
+ignoreCase i 不区分大小写
+lastIndex 开始搜索下一个匹配项的字符位置，默认 0
+multiline m 多行
+source 正则的字符串表示
+    </div>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/5.%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" itemprop="url" title="引用类型" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" itemprop="url" title="面向对象"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?247505"></a>
   </div>
   <div class="info">
     
@@ -256,7 +301,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/4.%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98/" itemprop="url" title="变量作用域内存"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?214944"></a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/7.%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url" title="函数表达式"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?987874"></a>
   </div>
   <div class="info">
     
@@ -271,29 +316,34 @@
     <span class="icon">
       <i class="ic i-pen"></i>
     </span>
-    <span>0</span>
+    <span>1.9k</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="阅读时长">
     <span class="icon">
       <i class="ic i-clock"></i>
     </span>
-    <span>1 分钟</span>
+    <span>2 分钟</span>
   </span>
 </div>
 
-    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/4.%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98/" itemprop="url" title="变量作用域内存">变量作用域内存</a></h3>
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/7.%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url" title="函数表达式">函数表达式</a></h3>
     <div class="excerpt">
-        
+        # 函数闭包
+闭包 是指有权访问另一个函数作用域中的变量的函数
+# 内存泄漏
+123456function assignHandler()&amp;#123; var element = document.getElementById(&amp;quot;someElement&amp;quot;); element.onclick = function()&amp;#123; alert(element.id); &amp;#125;;&amp;#125;
+↓
+12345678function assignHandler()&amp;#123;var element =...
     </div>
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/4.%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98/" itemprop="url" title="变量作用域内存" class="btn">more...</a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/7.%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url" title="函数表达式" class="btn">more...</a>
   </div>
 </article>
 
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" itemprop="url" title="基本概念"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?481929"></a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/" itemprop="url" title="离线应用与客户端储存"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?273530"></a>
   </div>
   <div class="info">
     
@@ -308,7 +358,7 @@
     <span class="icon">
       <i class="ic i-pen"></i>
     </span>
-    <span>527</span>
+    <span>460</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="阅读时长">
@@ -319,31 +369,109 @@
   </span>
 </div>
 
-    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" itemprop="url" title="基本概念">基本概念</a></h3>
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/" itemprop="url" title="离线应用与客户端储存">离线应用与客户端储存</a></h3>
     <div class="excerpt">
-        # 􏽃􏽄􏽅􏸀􏽃􏽄􏽅􏸀 数据类型
-undefined, null, boolean, string, number, object, symbol(es6)
-# boolean 转换
-true: 非空字符串、非零数值、任何对象
-false: ‘’、0|NaN、null、undefined
-# String()
-
-调用 toString 方法
-特定值：null, undedined, NaN -&amp;gt; ‘null’, ‘undefined’, ‘NaN’
-
-# Number()
-
-true -&amp;gt; 1, false -&amp;gt; 0
-null...
+        # 离线检测
+1、
+navigator.onLine
+2、
+123456EventUtil.addHandler(window, &amp;quot;online&amp;quot;, function()&amp;#123; alert(&amp;quot;Online&amp;quot;);&amp;#125;);EventUtil.addHandler(window, &amp;quot;offline&amp;quot;, function()&amp;#123; alert(&amp;quot;Offline&amp;quot;);&amp;#125;);
+#...
     </div>
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" itemprop="url" title="基本概念" class="btn">more...</a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/" itemprop="url" title="离线应用与客户端储存" class="btn">more...</a>
   </div>
 </article>
 
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2018/06/07/vue/attr/" itemprop="url" title="attr"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?237435"></a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/" itemprop="url" title="BOM"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?587644"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>573</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/" itemprop="url" title="BOM">BOM</a></h3>
+    <div class="excerpt">
+        # window
+即使 js 访问浏览器的接口，也是 ESCMScript 的全局 Global 对象
+# 全局作用域
+1234567var age = 29;function sayAge()&amp;#123; alert(this.age);&amp;#125;alert(window.age); //29sayAge(); //29 window.sayAge(); //29
+使用 var 添加的全局属性的 configurable 默认为 false, 所有不能 delete window.age （无效）
+# 弹出窗口
+检测弹出窗是否被屏蔽
+123456789101112var...
+    </div>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/" itemprop="url" title="BOM" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" itemprop="url" title="高级技巧"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?566561"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>2.3k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>2 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" itemprop="url" title="高级技巧">高级技巧</a></h3>
+    <div class="excerpt">
+        # 高级函数
+# 安全的类型检测
+Object.prototype.toString.call
+# 作用域安全的构造函数
+123456789function Person(name, age, job)&amp;#123; if (this instanceof Person)&amp;#123; this.name = name; this.age = age; this.job = job; &amp;#125; else &amp;#123; return new Person(name, age, job); &amp;#125;&amp;#125;
+#...
+    </div>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" itemprop="url" title="高级技巧" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2018/06/07/vue/attr/" itemprop="url" title="attr"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?795144"></a>
   </div>
   <div class="info">
     
@@ -385,7 +513,7 @@ null...
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2018/06/07/vue/v-for/" itemprop="url" title="Vue源码阅读笔记 (v-for)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?186301"></a>
+    <a href="/my-notes/2018/06/07/vue/v-for/" itemprop="url" title="Vue源码阅读笔记 (v-for)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?662602"></a>
   </div>
   <div class="info">
     
@@ -425,131 +553,6 @@ null...
   </div>
 </article>
 
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2018/06/07/vue/v-if/" itemprop="url" title="Vue源码阅读笔记 (v-if)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?305559"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2018-06-07 11:08:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2018-06-07T11:08:00+08:00">2018-06-07</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>856</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2018/06/07/vue/v-if/" itemprop="url" title="Vue源码阅读笔记 (v-if)">Vue源码阅读笔记 (v-if)</a></h3>
-    <div class="excerpt">
-        # 开始
-在 parseHTML 首次处理 v-if
-代码在 vue/src/compiler/parser/index.js
-12345678910parseHTML(template, &amp;#123; ... start(tag, attrs, unary) &amp;#123; ... processIf(element); ... &amp;#125;&amp;#125;
-# processIf
-代码在 vue/src/compiler/parser/index.js
-12345678910111213141516171819202122232425function...
-    </div>
-    <a href="/my-notes/2018/06/07/vue/v-if/" itemprop="url" title="Vue源码阅读笔记 (v-if)" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2018/06/07/vue/class/" itemprop="url" title="Vue源码阅读笔记 (class,style)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?699888"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2018-06-07 09:43:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2018-06-07T09:43:00+08:00">2018-06-07</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>4.7k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>4 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2018/06/07/vue/class/" itemprop="url" title="Vue源码阅读笔记 (class,style)">Vue源码阅读笔记 (class,style)</a></h3>
-    <div class="excerpt">
-        # 开始
-在 parseHTML 首次处理 class,style
-代码在 vue/src/compiler/parser/index.js
-123456789101112parseHTML(template, &amp;#123; ... start(tag, attrs, unary) &amp;#123; ... for (let i = 0; i &amp;lt; transforms.length; i++) &amp;#123; transforms[i](element, options) &amp;#125; ......
-    </div>
-    <a href="/my-notes/2018/06/07/vue/class/" itemprop="url" title="Vue源码阅读笔记 (class,style)" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2018/05/25/vue/4/" itemprop="url" title="Vue源码阅读笔记（4）(compile)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?639540"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2018-05-25 10:14:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2018-05-25T10:14:00+08:00">2018-05-25</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>23k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>21 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2018/05/25/vue/4/" itemprop="url" title="Vue源码阅读笔记（4）(compile)">Vue源码阅读笔记（4）(compile)</a></h3>
-    <div class="excerpt">
-        参考了的文章
-从这里开始我会尽可能的把源码里所有的 if 情况考虑进去，还是以一个简单例子开始，之后会不断的把这个例子补充完整，以完成对每一行的解读
-# 开始
-模板编译分为三个阶段：生成 ast、优化静态内容、生成 render
-以下面代码开始
-1234567891011121314&amp;lt;body&amp;gt;&amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;...
-    </div>
-    <a href="/my-notes/2018/05/25/vue/4/" itemprop="url" title="Vue源码阅读笔记（4）(compile)" class="btn">more...</a>
-  </div>
-</article>
-
     </div>
 
   </div>
@@ -585,7 +588,7 @@ null...
 <nav class="state">
     <div class="item posts">
       <a href="/my-notes/archives/">
-        <span class="count">73</span>
+        <span class="count">76</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -675,20 +678,73 @@ null...
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
 </div>
 
-    <span><a href="/my-notes/2024/01/10/leetcode/213.House%20Robber%20II/index/" title="213.House Robber II">213.House Robber II</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/" title="HTML5脚本编程">HTML5脚本编程</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
-    <span><a href="/my-notes/2024/01/09/leetcode/198.House%20Robber/index/" title="198.House Robber">198.House Robber</a></span>
+    <span><a href="/my-notes/2020/09/08/react/fiber/" title="fiber">fiber</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/" title="New Api">New Api</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/createStore/" title="createStore">createStore</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" title="DOM">DOM</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/Provider/" title="Provider">Provider</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/2.%E5%9C%A8html%E4%BD%BF%E7%94%A8js/" title="在html使用js">在html使用js</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2018/06/07/vue/v-if/" title="Vue源码阅读笔记 (v-if)">Vue源码阅读笔记 (v-if)</a></span>
   </li>
 
       
@@ -705,66 +761,9 @@ null...
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
 </div>
 
-    <span><a href="/my-notes/2024/01/08/leetcode/29.Divide%20Two%20Integers/index/" title="29.Divide Two Integers">29.Divide Two Integers</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/5.%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" title="引用类型">引用类型</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-</div>
-
-    <span><a href="/my-notes/2024/01/07/leetcode/241.Different%20Ways%20to%20Add%20Parentheses/index/" title="241.Different Ways to Add Parentheses">241.Different Ways to Add Parentheses</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2018/01/23/vue/3/" title="Vue源码阅读笔记（3）(Vue的双向数据绑定)">Vue源码阅读笔记（3）(Vue的双向数据绑定)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/react/" title="分类于 react">react</a>
-</div>
-
-    <span><a href="/my-notes/2020/09/10/react/schedule/" title="reconcileChildFibers">reconcileChildFibers</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2017/05/23/bue/5/" title="Bue源码阅读笔记（5）">Bue源码阅读笔记（5）</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" title="DOM">DOM</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/" title="离线应用与客户端储存">离线应用与客户端储存</a></span>
   </li>
 
   </ul>
@@ -789,13 +788,13 @@ null...
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">375k 字</span>
+    <span title="站点总字数">377k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:41</span>
+    <span title="站点阅读时长">5:43</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
