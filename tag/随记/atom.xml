@@ -5,11 +5,11 @@
     <link href="http://example.com" />
     <updated>2017-06-28T07:00:00.000Z</updated>
     <category term="Bue笔记" />
+    <category term="react-redux" />
     <category term="javascript高级笔记" />
     <category term="Vue笔记" />
-    <category term="react-redux" />
-    <category term="算法基础" />
     <category term="随记" />
+    <category term="算法基础" />
     <category term="react源码解析" />
     <category term="leetcode" />
     <entry>
