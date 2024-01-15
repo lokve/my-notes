@@ -8,13 +8,27 @@
         <pubDate>Fri, 14 Jun 2019 00:00:00 +0800</pubDate>
         <lastBuildDate>Fri, 14 Jun 2019 00:00:00 +0800</lastBuildDate>
         <category>Bue笔记</category>
-        <category>react源码解析</category>
-        <category>javascript高级笔记</category>
         <category>react-redux</category>
+        <category>react源码解析</category>
         <category>Vue笔记</category>
+        <category>javascript高级笔记</category>
         <category>随记</category>
         <category>算法基础</category>
         <category>leetcode</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/</guid>
+            <title>js简介</title>
+            <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/</link>
+            <category>javascript高级笔记</category>
+            <pubDate>Fri, 14 Jun 2019 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;javascript&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#javascript&#34;&gt;#&lt;/a&gt; javascript&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;􏵛􏴞􏲛 核心（ECMAScript􏲜）&lt;/li&gt;
+&lt;li&gt;文档对象模型（DOM）&lt;/li&gt;
+&lt;li&gt;浏览器对象模型（BOM）&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/</guid>
             <title>DOM</title>
@@ -91,20 +105,6 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/</guid>
-            <title>js简介</title>
-            <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/</link>
-            <category>javascript高级笔记</category>
-            <pubDate>Fri, 14 Jun 2019 00:00:00 +0800</pubDate>
-            <description><![CDATA[ &lt;h3 id=&#34;javascript&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#javascript&#34;&gt;#&lt;/a&gt; javascript&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;􏵛􏴞􏲛 核心（ECMAScript􏲜）&lt;/li&gt;
-&lt;li&gt;文档对象模型（DOM）&lt;/li&gt;
-&lt;li&gt;浏览器对象模型（BOM）&lt;/li&gt;
-&lt;/ul&gt;
- ]]></description>
-        </item>
-        <item>
             <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/</guid>
             <title>DOM扩展</title>
             <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/</link>
@@ -171,12 +171,105 @@
  ]]></description>
         </item>
         <item>
+            <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/</guid>
+            <title>DOM2和DOM3</title>
+            <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/</link>
+            <category>javascript高级笔记</category>
+            <pubDate>Fri, 14 Jun 2019 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;dom-变化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dom-变化&#34;&gt;#&lt;/a&gt; DOM 变化&lt;/h2&gt;
+&lt;p&gt;和 XML 有关，先不看&lt;/p&gt;
+&lt;h2 id=&#34;样式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#样式&#34;&gt;#&lt;/a&gt; 样式&lt;/h2&gt;
+&lt;h3 id=&#34;访问元素样式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#访问元素样式&#34;&gt;#&lt;/a&gt; 访问元素样式&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var myDiv = document.getElementById(&amp;quot;myDiv&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;myDiv.style.backgroundColor = &amp;quot;red&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;myDiv.style.width = &amp;quot;100px&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;myDiv.style.height = &amp;quot;200px&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;dom-样式的属性和方法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dom-样式的属性和方法&#34;&gt;#&lt;/a&gt; dom 样式的属性和方法&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;cssText: 能通过它访问到 style 特性中的 css 代码&lt;/li&gt;
+&lt;li&gt;length: style 中 css 数量&lt;/li&gt;
+&lt;li&gt;parentRule: 表示 css 信息的 cssRule 对象&lt;/li&gt;
+&lt;li&gt;getPropertyCSSValue (propertyName): 返回包含给定属性值的 cssValue 对象&lt;/li&gt;
+&lt;li&gt;getPropertyPriority (propertyName): 如果给定的属性使用了！import，返回 import; 否则返回空字符串&lt;/li&gt;
+&lt;li&gt;getPropertyValue (propertyName): 返回给定属性的字符串值&lt;/li&gt;
+&lt;li&gt;item (index): 返回给定位置的 css 属性的名称&lt;/li&gt;
+&lt;li&gt;removeProperty (propertyName): 从样式中删除属性&lt;/li&gt;
+&lt;li&gt;setProperty (propertyName,value,priority): 给属性设值，！import&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;myDiv.style.cssText = &amp;quot;width: 25px; height: 100px; background-color: green&amp;quot;; alert(myDiv.style.cssText);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;计算的样式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#计算的样式&#34;&gt;#&lt;/a&gt; 计算的样式&lt;/h4&gt;
+&lt;p&gt;xxx.style 只能获取 style 里面的属性&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;lt;title&amp;gt;Computed Styles Example&amp;lt;/title&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        #myDiv &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            background-color: blue;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            width: 100px;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            height: 200px;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;lt;div id=&amp;quot;myDiv&amp;quot; style=&amp;quot;background-color: red; border: 1px solid black&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var myDiv = document.getElementById(&amp;quot;myDiv&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var computedStyle = document.defaultView.getComputedStyle(myDiv, null);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var computedStyle = myDiv.currentStyle; // IE&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; alert(computedStyle.backgroundColor);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(computedStyle.width);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(computedStyle.height);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(computedStyle.border);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;元素大小&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#元素大小&#34;&gt;#&lt;/a&gt; 元素大小&lt;/h3&gt;
+&lt;h4 id=&#34;偏移量&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#偏移量&#34;&gt;#&lt;/a&gt; 偏移量&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;offsetHeight: 元素在垂直方向上占用空间大小，包括元素的高度、(可见的) 水平滚动条的高度、上下边框高度&lt;/li&gt;
+&lt;li&gt;offsetWidth: 水平方向。。。。&lt;/li&gt;
+&lt;li&gt;offsetLeft: 元素左外边框至父元素左内边框之间的距离&lt;/li&gt;
+&lt;li&gt;offsetTop: 上。。。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;客户区大小&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#客户区大小&#34;&gt;#&lt;/a&gt; 客户区大小&lt;/h4&gt;
+&lt;p&gt;元素内容及其内边距所占据的空间大小&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;clientWidth: 内容 + 内边距的宽度&lt;/li&gt;
+&lt;li&gt;clientHeight: 内容 + 内边距的高度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;滚动大小&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#滚动大小&#34;&gt;#&lt;/a&gt; 滚动大小&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;scrollHeight: 没有滚动条的情况下，元素内容的总高度&lt;/li&gt;
+&lt;li&gt;scrollWidth: 。。。。总宽度&lt;/li&gt;
+&lt;li&gt;scrollLeft: 被影藏在内容区左侧的像素数，可以用来设置滚动条位置&lt;/li&gt;
+&lt;li&gt;scrollTop: 上方&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;遍历&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#遍历&#34;&gt;#&lt;/a&gt; 遍历&lt;/h3&gt;
+&lt;h4 id=&#34;nodeiterator&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#nodeiterator&#34;&gt;#&lt;/a&gt; NodeIterator&lt;/h4&gt;
+&lt;p&gt;document.createNodeIterator(root, whatToShow, filter, entityReferenceExpansion)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;root: 搜索起点的节点&lt;/li&gt;
+&lt;li&gt;whatToShow: 表示要访问哪些节点的数字代码&lt;/li&gt;
+&lt;li&gt;filter: 是一个 NodeFilter 对象，或一个表示应该接受还是拒绝某种特定节点的函数&lt;/li&gt;
+&lt;li&gt;entityReferenceExpansion: 表示是否要扩展实体引用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var div = document.getElementById(&amp;quot;div1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    var filter = function(node)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        return node.tagName.toLowerCase() == &amp;quot;li&amp;quot; ?&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            NodeFilter.FILTER_ACCEPT :&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            NodeFilter.FILTER_SKIP;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var iterator = document.createNodeIterator(div, NodeFilter.SHOW_ELEMENT, filter, false);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var node = iterator.nextNode();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;while (node !== null) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    alert(node.tagName);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    node = iterator.nextNode();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;treeworker&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#treeworker&#34;&gt;#&lt;/a&gt; TreeWorker&lt;/h4&gt;
+&lt;p&gt;document.createTreeWalker () 4 个参数同 createNodeIterator&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var div = document.getElementById(&amp;quot;div1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var walker = document.createTreeWalker(div, NodeFilter.SHOW_ELEMENT, null, false);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;walker.firstChild();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;walker.nextSibling();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var node = walker.firstChild();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;while (node !== null) &amp;#123; alert(node.tagName);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;node = walker.nextSibling();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;范围&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#范围&#34;&gt;#&lt;/a&gt; 范围&lt;/h2&gt;
+ ]]></description>
+        </item>
+        <item>
             <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/</guid>
             <title>事件</title>
             <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/</link>
             <category>javascript高级笔记</category>
             <pubDate>Fri, 14 Jun 2019 00:00:00 +0800</pubDate>
             <description><![CDATA[  ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/</guid>
+            <title>HTML5脚本编程</title>
+            <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/</link>
+            <category>javascript高级笔记</category>
+            <pubDate>Fri, 14 Jun 2019 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;跨文档消息传递xdm&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#跨文档消息传递xdm&#34;&gt;#&lt;/a&gt; 跨文档消息传递 (XDM)&lt;/h2&gt;
+&lt;p&gt;发送消息&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var iframeWindow = document.getElementById(&amp;quot;myframe&amp;quot;).contentWindow; iframeWindow.postMessage(&amp;quot;A secret&amp;quot;, &amp;quot;http://www.wrox.com&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;接受消息&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;EventUtil.addHandler(window, &amp;quot;message&amp;quot;, function(event)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    if (event.origin == &amp;quot;http://www.wrox.com&amp;quot;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        processMessage(event.data);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        event.source.postMessage(&amp;quot;Received!&amp;quot;, &amp;quot;http://p2p.wrox.com&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;原生拖放&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#原生拖放&#34;&gt;#&lt;/a&gt; 原生拖放&lt;/h2&gt;
+&lt;h3 id=&#34;拖放事件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#拖放事件&#34;&gt;#&lt;/a&gt; 拖放事件&lt;/h3&gt;
+&lt;p&gt;拖放元素会触发下面方法&lt;br&gt;
+ (1) dragstart&lt;br&gt;
+(2) drag&lt;br&gt;
+(3) dragend&lt;/p&gt;
+&lt;p&gt;目标元素会触发下面方法&lt;br&gt;
+ (1) dragenter&lt;br&gt;
+(2) dragover&lt;br&gt;
+ (3) dragleave 或 drop&lt;/p&gt;
+&lt;h3 id=&#34;datatransfer-对象&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#datatransfer-对象&#34;&gt;#&lt;/a&gt; dataTransfer 对象&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;event.dataTransfer.setData(&amp;quot;text&amp;quot;, &amp;quot;some text&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var text = event.dataTransfer.getData(&amp;quot;text&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;event.dataTransfer.setData(&amp;quot;URL&amp;quot;, &amp;quot;http://www.wrox.com/&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var url = event.dataTransfer.getData(&amp;quot;URL&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;dropeffect-与-effectallowed&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dropeffect-与-effectallowed&#34;&gt;#&lt;/a&gt; dropEffect 与 effectAllowed&lt;/h3&gt;
+&lt;p&gt;传递行为&lt;/p&gt;
+&lt;h2 id=&#34;媒体元素&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#媒体元素&#34;&gt;#&lt;/a&gt; 媒体元素&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;video src=&amp;quot;conference.mpg&amp;quot; id=&amp;quot;myVideo&amp;quot;&amp;gt;Video player not available.&amp;lt;/video&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;audio src=&amp;quot;song.mp3&amp;quot; id=&amp;quot;myAudio&amp;quot;&amp;gt;Audio player not available.&amp;lt;/audio&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+ ]]></description>
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/15.Canvas/</guid>
@@ -261,67 +354,30 @@ m2_1 m2_2 dy&lt;br&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/</guid>
-            <title>DOM2和DOM3</title>
-            <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/</link>
+            <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/17.%E9%94%99%E8%AF%AF%E7%9A%84%E5%A4%84%E7%90%86%E4%B8%8E%E8%B0%83%E8%AF%95/</guid>
+            <title>错误的处理与调试</title>
+            <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/17.%E9%94%99%E8%AF%AF%E7%9A%84%E5%A4%84%E7%90%86%E4%B8%8E%E8%B0%83%E8%AF%95/</link>
             <category>javascript高级笔记</category>
             <pubDate>Fri, 14 Jun 2019 00:00:00 +0800</pubDate>
-            <description><![CDATA[ &lt;h2 id=&#34;dom-变化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dom-变化&#34;&gt;#&lt;/a&gt; DOM 变化&lt;/h2&gt;
-&lt;p&gt;和 XML 有关，先不看&lt;/p&gt;
-&lt;h2 id=&#34;样式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#样式&#34;&gt;#&lt;/a&gt; 样式&lt;/h2&gt;
-&lt;h3 id=&#34;访问元素样式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#访问元素样式&#34;&gt;#&lt;/a&gt; 访问元素样式&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var myDiv = document.getElementById(&amp;quot;myDiv&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;myDiv.style.backgroundColor = &amp;quot;red&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;myDiv.style.width = &amp;quot;100px&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;myDiv.style.height = &amp;quot;200px&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&#34;dom-样式的属性和方法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dom-样式的属性和方法&#34;&gt;#&lt;/a&gt; dom 样式的属性和方法&lt;/h4&gt;
+            <description><![CDATA[ &lt;h2 id=&#34;浏览器报告的错误&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#浏览器报告的错误&#34;&gt;#&lt;/a&gt; 浏览器报告的错误&lt;/h2&gt;
+&lt;h2 id=&#34;错误处理&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#错误处理&#34;&gt;#&lt;/a&gt; 错误处理&lt;/h2&gt;
+&lt;h3 id=&#34;try-catch&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#try-catch&#34;&gt;#&lt;/a&gt; try-catch&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;try&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    // 可能会出错的代码&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125; catch(error)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    // 处理&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    console.error(error)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125; finally &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    // 都会执行&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&#34;错误类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#错误类型&#34;&gt;#&lt;/a&gt; 错误类型&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;cssText: 能通过它访问到 style 特性中的 css 代码&lt;/li&gt;
-&lt;li&gt;length: style 中 css 数量&lt;/li&gt;
-&lt;li&gt;parentRule: 表示 css 信息的 cssRule 对象&lt;/li&gt;
-&lt;li&gt;getPropertyCSSValue (propertyName): 返回包含给定属性值的 cssValue 对象&lt;/li&gt;
-&lt;li&gt;getPropertyPriority (propertyName): 如果给定的属性使用了！import，返回 import; 否则返回空字符串&lt;/li&gt;
-&lt;li&gt;getPropertyValue (propertyName): 返回给定属性的字符串值&lt;/li&gt;
-&lt;li&gt;item (index): 返回给定位置的 css 属性的名称&lt;/li&gt;
-&lt;li&gt;removeProperty (propertyName): 从样式中删除属性&lt;/li&gt;
-&lt;li&gt;setProperty (propertyName,value,priority): 给属性设值，！import&lt;/li&gt;
+&lt;li&gt;Error&lt;/li&gt;
+&lt;li&gt;EvalError: eval 报错 eg: new eval ();&lt;/li&gt;
+&lt;li&gt;RangeError: 数值超出范围 eg: var items1 = new Array (-20);&lt;/li&gt;
+&lt;li&gt;ReferenceError: 访问不存在的变量&lt;/li&gt;
+&lt;li&gt;SyntaxError: 在 eval 中使用错误语法 eg: eval (“a ++ b”)&lt;/li&gt;
+&lt;li&gt;TypeError: 类型错误 eg: var o = new 10;&lt;/li&gt;
+&lt;li&gt;URIError: encodeURI 传入格式不正确&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;myDiv.style.cssText = &amp;quot;width: 25px; height: 100px; background-color: green&amp;quot;; alert(myDiv.style.cssText);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&#34;计算的样式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#计算的样式&#34;&gt;#&lt;/a&gt; 计算的样式&lt;/h4&gt;
-&lt;p&gt;xxx.style 只能获取 style 里面的属性&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;lt;title&amp;gt;Computed Styles Example&amp;lt;/title&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        #myDiv &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            background-color: blue;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            width: 100px;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            height: 200px;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;lt;div id=&amp;quot;myDiv&amp;quot; style=&amp;quot;background-color: red; border: 1px solid black&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var myDiv = document.getElementById(&amp;quot;myDiv&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var computedStyle = document.defaultView.getComputedStyle(myDiv, null);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var computedStyle = myDiv.currentStyle; // IE&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt; alert(computedStyle.backgroundColor);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(computedStyle.width);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(computedStyle.height);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(computedStyle.border);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;元素大小&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#元素大小&#34;&gt;#&lt;/a&gt; 元素大小&lt;/h3&gt;
-&lt;h4 id=&#34;偏移量&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#偏移量&#34;&gt;#&lt;/a&gt; 偏移量&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;offsetHeight: 元素在垂直方向上占用空间大小，包括元素的高度、(可见的) 水平滚动条的高度、上下边框高度&lt;/li&gt;
-&lt;li&gt;offsetWidth: 水平方向。。。。&lt;/li&gt;
-&lt;li&gt;offsetLeft: 元素左外边框至父元素左内边框之间的距离&lt;/li&gt;
-&lt;li&gt;offsetTop: 上。。。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;客户区大小&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#客户区大小&#34;&gt;#&lt;/a&gt; 客户区大小&lt;/h4&gt;
-&lt;p&gt;元素内容及其内边距所占据的空间大小&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;clientWidth: 内容 + 内边距的宽度&lt;/li&gt;
-&lt;li&gt;clientHeight: 内容 + 内边距的高度&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;滚动大小&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#滚动大小&#34;&gt;#&lt;/a&gt; 滚动大小&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;scrollHeight: 没有滚动条的情况下，元素内容的总高度&lt;/li&gt;
-&lt;li&gt;scrollWidth: 。。。。总宽度&lt;/li&gt;
-&lt;li&gt;scrollLeft: 被影藏在内容区左侧的像素数，可以用来设置滚动条位置&lt;/li&gt;
-&lt;li&gt;scrollTop: 上方&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;遍历&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#遍历&#34;&gt;#&lt;/a&gt; 遍历&lt;/h3&gt;
-&lt;h4 id=&#34;nodeiterator&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#nodeiterator&#34;&gt;#&lt;/a&gt; NodeIterator&lt;/h4&gt;
-&lt;p&gt;document.createNodeIterator(root, whatToShow, filter, entityReferenceExpansion)&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;root: 搜索起点的节点&lt;/li&gt;
-&lt;li&gt;whatToShow: 表示要访问哪些节点的数字代码&lt;/li&gt;
-&lt;li&gt;filter: 是一个 NodeFilter 对象，或一个表示应该接受还是拒绝某种特定节点的函数&lt;/li&gt;
-&lt;li&gt;entityReferenceExpansion: 表示是否要扩展实体引用&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var div = document.getElementById(&amp;quot;div1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    var filter = function(node)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        return node.tagName.toLowerCase() == &amp;quot;li&amp;quot; ?&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            NodeFilter.FILTER_ACCEPT :&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;            NodeFilter.FILTER_SKIP;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var iterator = document.createNodeIterator(div, NodeFilter.SHOW_ELEMENT, filter, false);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var node = iterator.nextNode();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;while (node !== null) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    alert(node.tagName);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    node = iterator.nextNode();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&#34;treeworker&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#treeworker&#34;&gt;#&lt;/a&gt; TreeWorker&lt;/h4&gt;
-&lt;p&gt;document.createTreeWalker () 4 个参数同 createNodeIterator&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var div = document.getElementById(&amp;quot;div1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var walker = document.createTreeWalker(div, NodeFilter.SHOW_ELEMENT, null, false);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;walker.firstChild();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;walker.nextSibling();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var node = walker.firstChild();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;while (node !== null) &amp;#123; alert(node.tagName);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;node = walker.nextSibling();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;范围&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#范围&#34;&gt;#&lt;/a&gt; 范围&lt;/h2&gt;
+&lt;h3 id=&#34;抛出错误&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#抛出错误&#34;&gt;#&lt;/a&gt; 抛出错误&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;throw 12345;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;// 模拟浏览器错误&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;throw new SyntaxError(&amp;quot;I don’t like your syntax.&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;throw new TypeError(&amp;quot;What type of variable do you take me for?&amp;quot;); throw new RangeError(&amp;quot;Sorry, you just don’t have the range.&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;throw new EvalError(&amp;quot;That doesn’t evaluate.&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;throw new URIError(&amp;quot;Uri, is that you?&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;throw new ReferenceError(&amp;quot;You didn’t cite your references properly.&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;错误事件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#错误事件&#34;&gt;#&lt;/a&gt; 错误事件&lt;/h3&gt;
+&lt;p&gt;没有通过 try-catch 处理的错误都会触发 window.error&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;window.onerror = function(message, url, line)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        alert(message);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
  ]]></description>
         </item>
         <item>
@@ -465,41 +521,6 @@ wasClean􏱢(是否关闭)、code (状态码)、reason (服务器返回信息)&l
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/</guid>
-            <title>离线应用与客户端储存</title>
-            <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/</link>
-            <category>javascript高级笔记</category>
-            <pubDate>Fri, 14 Jun 2019 00:00:00 +0800</pubDate>
-            <description><![CDATA[ &lt;h2 id=&#34;离线检测&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#离线检测&#34;&gt;#&lt;/a&gt; 离线检测&lt;/h2&gt;
-&lt;p&gt;1、&lt;br&gt;
- &lt;code&gt;navigator.onLine&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;2、&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;EventUtil.addHandler(window, &amp;quot;online&amp;quot;, function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    alert(&amp;quot;Online&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;EventUtil.addHandler(window, &amp;quot;offline&amp;quot;, function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    alert(&amp;quot;Offline&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;应用缓存&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#应用缓存&#34;&gt;#&lt;/a&gt; 应用缓存&lt;/h2&gt;
-&lt;p&gt;/offline.manifest 中包含着描述文件，这个文件的 MIME 类型必须是 text/cache-manifest&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;html manifest=&amp;quot;/offline.manifest&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;数据存储&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据存储&#34;&gt;#&lt;/a&gt; 数据存储&lt;/h2&gt;
-&lt;h3 id=&#34;cookie&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#cookie&#34;&gt;#&lt;/a&gt; Cookie&lt;/h3&gt;
-&lt;h4 id=&#34;限制&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#限制&#34;&gt;#&lt;/a&gt; 限制&lt;/h4&gt;
-&lt;p&gt;每个浏览器的 cookie 数量限制不一样，最少的只有 20 个&lt;br&gt;
-尺寸限制 20k 以内&lt;/p&gt;
-&lt;h4 id=&#34;cookie-的构成&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#cookie-的构成&#34;&gt;#&lt;/a&gt; cookie 的构成&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;名称&lt;/li&gt;
-&lt;li&gt;值&lt;/li&gt;
-&lt;li&gt;域&lt;/li&gt;
-&lt;li&gt;路径&lt;/li&gt;
-&lt;li&gt;失效时间&lt;/li&gt;
-&lt;li&gt;安全标志&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;storage&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#storage&#34;&gt;#&lt;/a&gt; storage&lt;/h3&gt;
-&lt;p&gt;最少的 2.5M&lt;/p&gt;
-&lt;h3 id=&#34;indexeddb&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#indexeddb&#34;&gt;#&lt;/a&gt; IndexedDB&lt;/h3&gt;
-&lt;p&gt;浏览器数据库&lt;br&gt;
- TODO: 用的时候再看&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
             <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/</guid>
             <title>New Api</title>
             <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/</link>
@@ -626,47 +647,47 @@ wasClean􏱢(是否关闭)、code (状态码)、reason (服务器返回信息)&l
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/17.%E9%94%99%E8%AF%AF%E7%9A%84%E5%A4%84%E7%90%86%E4%B8%8E%E8%B0%83%E8%AF%95/</guid>
-            <title>错误的处理与调试</title>
-            <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/17.%E9%94%99%E8%AF%AF%E7%9A%84%E5%A4%84%E7%90%86%E4%B8%8E%E8%B0%83%E8%AF%95/</link>
+            <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/</guid>
+            <title>离线应用与客户端储存</title>
+            <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/</link>
             <category>javascript高级笔记</category>
             <pubDate>Fri, 14 Jun 2019 00:00:00 +0800</pubDate>
-            <description><![CDATA[ &lt;h2 id=&#34;浏览器报告的错误&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#浏览器报告的错误&#34;&gt;#&lt;/a&gt; 浏览器报告的错误&lt;/h2&gt;
-&lt;h2 id=&#34;错误处理&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#错误处理&#34;&gt;#&lt;/a&gt; 错误处理&lt;/h2&gt;
-&lt;h3 id=&#34;try-catch&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#try-catch&#34;&gt;#&lt;/a&gt; try-catch&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;try&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    // 可能会出错的代码&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125; catch(error)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    // 处理&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    console.error(error)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125; finally &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    // 都会执行&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&#34;错误类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#错误类型&#34;&gt;#&lt;/a&gt; 错误类型&lt;/h4&gt;
+            <description><![CDATA[ &lt;h2 id=&#34;离线检测&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#离线检测&#34;&gt;#&lt;/a&gt; 离线检测&lt;/h2&gt;
+&lt;p&gt;1、&lt;br&gt;
+ &lt;code&gt;navigator.onLine&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;2、&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;EventUtil.addHandler(window, &amp;quot;online&amp;quot;, function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    alert(&amp;quot;Online&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;EventUtil.addHandler(window, &amp;quot;offline&amp;quot;, function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    alert(&amp;quot;Offline&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;应用缓存&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#应用缓存&#34;&gt;#&lt;/a&gt; 应用缓存&lt;/h2&gt;
+&lt;p&gt;/offline.manifest 中包含着描述文件，这个文件的 MIME 类型必须是 text/cache-manifest&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;html manifest=&amp;quot;/offline.manifest&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;数据存储&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据存储&#34;&gt;#&lt;/a&gt; 数据存储&lt;/h2&gt;
+&lt;h3 id=&#34;cookie&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#cookie&#34;&gt;#&lt;/a&gt; Cookie&lt;/h3&gt;
+&lt;h4 id=&#34;限制&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#限制&#34;&gt;#&lt;/a&gt; 限制&lt;/h4&gt;
+&lt;p&gt;每个浏览器的 cookie 数量限制不一样，最少的只有 20 个&lt;br&gt;
+尺寸限制 20k 以内&lt;/p&gt;
+&lt;h4 id=&#34;cookie-的构成&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#cookie-的构成&#34;&gt;#&lt;/a&gt; cookie 的构成&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;Error&lt;/li&gt;
-&lt;li&gt;EvalError: eval 报错 eg: new eval ();&lt;/li&gt;
-&lt;li&gt;RangeError: 数值超出范围 eg: var items1 = new Array (-20);&lt;/li&gt;
-&lt;li&gt;ReferenceError: 访问不存在的变量&lt;/li&gt;
-&lt;li&gt;SyntaxError: 在 eval 中使用错误语法 eg: eval (“a ++ b”)&lt;/li&gt;
-&lt;li&gt;TypeError: 类型错误 eg: var o = new 10;&lt;/li&gt;
-&lt;li&gt;URIError: encodeURI 传入格式不正确&lt;/li&gt;
+&lt;li&gt;名称&lt;/li&gt;
+&lt;li&gt;值&lt;/li&gt;
+&lt;li&gt;域&lt;/li&gt;
+&lt;li&gt;路径&lt;/li&gt;
+&lt;li&gt;失效时间&lt;/li&gt;
+&lt;li&gt;安全标志&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;抛出错误&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#抛出错误&#34;&gt;#&lt;/a&gt; 抛出错误&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;throw 12345;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;// 模拟浏览器错误&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;throw new SyntaxError(&amp;quot;I don’t like your syntax.&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;throw new TypeError(&amp;quot;What type of variable do you take me for?&amp;quot;); throw new RangeError(&amp;quot;Sorry, you just don’t have the range.&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;throw new EvalError(&amp;quot;That doesn’t evaluate.&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;throw new URIError(&amp;quot;Uri, is that you?&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;throw new ReferenceError(&amp;quot;You didn’t cite your references properly.&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;错误事件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#错误事件&#34;&gt;#&lt;/a&gt; 错误事件&lt;/h3&gt;
-&lt;p&gt;没有通过 try-catch 处理的错误都会触发 window.error&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;window.onerror = function(message, url, line)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        alert(message);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;storage&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#storage&#34;&gt;#&lt;/a&gt; storage&lt;/h3&gt;
+&lt;p&gt;最少的 2.5M&lt;/p&gt;
+&lt;h3 id=&#34;indexeddb&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#indexeddb&#34;&gt;#&lt;/a&gt; IndexedDB&lt;/h3&gt;
+&lt;p&gt;浏览器数据库&lt;br&gt;
+ TODO: 用的时候再看&lt;/p&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/5.%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/</guid>
-            <title>引用类型</title>
-            <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/5.%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/</link>
+            <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/4.%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98/</guid>
+            <title>变量作用域内存</title>
+            <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/4.%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98/</link>
             <category>javascript高级笔记</category>
             <pubDate>Fri, 14 Jun 2019 00:00:00 +0800</pubDate>
-            <description><![CDATA[ &lt;h3 id=&#34;regexp-实力属性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#regexp-实力属性&#34;&gt;#&lt;/a&gt; RegExp 实力属性&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;global g 全局&lt;/li&gt;
-&lt;li&gt;ignoreCase i 不区分大小写&lt;/li&gt;
-&lt;li&gt;lastIndex 开始搜索下一个匹配项的字符位置，默认 0&lt;/li&gt;
-&lt;li&gt;multiline m 多行&lt;/li&gt;
-&lt;li&gt;source 正则的字符串表示&lt;/li&gt;
-&lt;/ul&gt;
- ]]></description>
+            <description><![CDATA[  ]]></description>
         </item>
         <item>
             <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
@@ -766,14 +787,6 @@ Person.prototype.constructor === Person&lt;/p&gt;
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/4.%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98/</guid>
-            <title>变量作用域内存</title>
-            <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/4.%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98/</link>
-            <category>javascript高级笔记</category>
-            <pubDate>Fri, 14 Jun 2019 00:00:00 +0800</pubDate>
-            <description><![CDATA[  ]]></description>
-        </item>
-        <item>
             <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/7.%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
             <title>函数表达式</title>
             <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/7.%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
@@ -808,6 +821,22 @@ Person.prototype.constructor === Person&lt;/p&gt;
  ]]></description>
         </item>
         <item>
+            <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/5.%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/</guid>
+            <title>引用类型</title>
+            <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/5.%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/</link>
+            <category>javascript高级笔记</category>
+            <pubDate>Fri, 14 Jun 2019 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h3 id=&#34;regexp-实力属性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#regexp-实力属性&#34;&gt;#&lt;/a&gt; RegExp 实力属性&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;global g 全局&lt;/li&gt;
+&lt;li&gt;ignoreCase i 不区分大小写&lt;/li&gt;
+&lt;li&gt;lastIndex 开始搜索下一个匹配项的字符位置，默认 0&lt;/li&gt;
+&lt;li&gt;multiline m 多行&lt;/li&gt;
+&lt;li&gt;source 正则的字符串表示&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
+        <item>
             <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/</guid>
             <title>BOM</title>
             <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/</link>
@@ -830,35 +859,6 @@ Person.prototype.constructor === Person&lt;/p&gt;
 &lt;li&gt;filename&lt;/li&gt;
 &lt;li&gt;length 插件所处理的 MIME 类型数量&lt;/li&gt;
 &lt;/ul&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/</guid>
-            <title>HTML5脚本编程</title>
-            <link>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/</link>
-            <category>javascript高级笔记</category>
-            <pubDate>Fri, 14 Jun 2019 00:00:00 +0800</pubDate>
-            <description><![CDATA[ &lt;h2 id=&#34;跨文档消息传递xdm&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#跨文档消息传递xdm&#34;&gt;#&lt;/a&gt; 跨文档消息传递 (XDM)&lt;/h2&gt;
-&lt;p&gt;发送消息&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var iframeWindow = document.getElementById(&amp;quot;myframe&amp;quot;).contentWindow; iframeWindow.postMessage(&amp;quot;A secret&amp;quot;, &amp;quot;http://www.wrox.com&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;接受消息&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;EventUtil.addHandler(window, &amp;quot;message&amp;quot;, function(event)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    if (event.origin == &amp;quot;http://www.wrox.com&amp;quot;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        processMessage(event.data);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        event.source.postMessage(&amp;quot;Received!&amp;quot;, &amp;quot;http://p2p.wrox.com&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;原生拖放&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#原生拖放&#34;&gt;#&lt;/a&gt; 原生拖放&lt;/h2&gt;
-&lt;h3 id=&#34;拖放事件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#拖放事件&#34;&gt;#&lt;/a&gt; 拖放事件&lt;/h3&gt;
-&lt;p&gt;拖放元素会触发下面方法&lt;br&gt;
- (1) dragstart&lt;br&gt;
-(2) drag&lt;br&gt;
-(3) dragend&lt;/p&gt;
-&lt;p&gt;目标元素会触发下面方法&lt;br&gt;
- (1) dragenter&lt;br&gt;
-(2) dragover&lt;br&gt;
- (3) dragleave 或 drop&lt;/p&gt;
-&lt;h3 id=&#34;datatransfer-对象&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#datatransfer-对象&#34;&gt;#&lt;/a&gt; dataTransfer 对象&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;event.dataTransfer.setData(&amp;quot;text&amp;quot;, &amp;quot;some text&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var text = event.dataTransfer.getData(&amp;quot;text&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;event.dataTransfer.setData(&amp;quot;URL&amp;quot;, &amp;quot;http://www.wrox.com/&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var url = event.dataTransfer.getData(&amp;quot;URL&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;dropeffect-与-effectallowed&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dropeffect-与-effectallowed&#34;&gt;#&lt;/a&gt; dropEffect 与 effectAllowed&lt;/h3&gt;
-&lt;p&gt;传递行为&lt;/p&gt;
-&lt;h2 id=&#34;媒体元素&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#媒体元素&#34;&gt;#&lt;/a&gt; 媒体元素&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;video src=&amp;quot;conference.mpg&amp;quot; id=&amp;quot;myVideo&amp;quot;&amp;gt;Video player not available.&amp;lt;/video&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;audio src=&amp;quot;song.mp3&amp;quot; id=&amp;quot;myAudio&amp;quot;&amp;gt;Audio player not available.&amp;lt;/audio&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
  ]]></description>
         </item>
     </channel>

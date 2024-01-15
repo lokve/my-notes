@@ -27,12 +27,12 @@
   <meta name="keywords" content="leetcode" />
 
 
-<link rel="canonical" href="http://example.com/2024/01/08/leetcode/32.Longest%20Valid%20Parentheses/index/">
+<link rel="canonical" href="http://example.com/2024/01/15/leetcode/343.Integer%20Break/index/">
 
 
 
   <title>
-32.Longest Valid Parentheses - leetcode |
+343.Integer Break - leetcode |
 hee note = 学习笔记</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -60,23 +60,23 @@ hee note = 学习笔记</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">32.Longest Valid Parentheses
+  <h1 itemprop="name headline">343.Integer Break
   </h1>
   
 <div class="meta">
-  <span class="item" title="创建时间：2024-01-08 16:00:00">
+  <span class="item" title="创建时间：2024-01-15 14:37:19">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">发表于</span>
-    <time itemprop="dateCreated datePublished" datetime="2024-01-08T16:00:00+08:00">2024-01-08</time>
+    <time itemprop="dateCreated datePublished" datetime="2024-01-15T14:37:19+08:00">2024-01-15</time>
   </span>
   <span class="item" title="本文字数">
     <span class="icon">
       <i class="ic i-pen"></i>
     </span>
     <span class="text">本文字数</span>
-    <span>735</span>
+    <span>668</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="阅读时长">
@@ -117,12 +117,12 @@ hee note = 学习笔记</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?803235"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?928817"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?249504"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?987800"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?524384"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?629696"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?339220"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?491718"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?872008"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?876654"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?524909"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?599325"></li>
         </ul>
       </div>
     </header>
@@ -153,7 +153,7 @@ hee note = 学习笔记</title>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/08/leetcode/32.Longest%20Valid%20Parentheses/index/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/15/leetcode/343.Integer%20Break/index/">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/my-notes/images/head.jpeg">
@@ -169,11 +169,13 @@ hee note = 学习笔记</title>
     
 
     <h2 id="题目"><a class="markdownIt-Anchor" href="#题目">#</a> 题目</h2>
-<p><span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS5jb20vcHJvYmxlbXMvbG9uZ2VzdC12YWxpZC1wYXJlbnRoZXNlcy9kZXNjcmlwdGlvbi8=">地址</span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS5jb20vcHJvYmxlbXMvaW50ZWdlci1icmVhay8=">地址</span></p>
 <h3 id="我的答案"><a class="markdownIt-Anchor" href="#我的答案">#</a> 我的答案</h3>
-<p>遍历字符串，记住左括号的序号，如果有右括号，给这两个括号的位置标记 1，然后去到这个左括号，<br>
-这样所有能互相匹配的括号都标记了 1，最后就数最长的连续 1 是多少了</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">s</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> longestValidParentheses = <span class="keyword">function</span>(<span class="params">s</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> arr = <span class="title class_">Array</span>.<span class="title function_">from</span>(&#123;<span class="attr">length</span>: s.<span class="property">length</span>&#125;).<span class="title function_">fill</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">const</span> left = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; s.<span class="property">length</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">const</span> z = s[i];</span><br><span class="line">        <span class="keyword">if</span> (z === <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">            left.<span class="title function_">push</span>(i);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> last = s[left[left.<span class="property">length</span> - <span class="number">1</span>]];</span><br><span class="line">            <span class="keyword">if</span> (last === <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">                <span class="keyword">const</span> index = left.<span class="title function_">pop</span>()</span><br><span class="line">                arr[i] = <span class="number">1</span>;</span><br><span class="line">                arr[index] = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(arr);</span><br><span class="line">    <span class="keyword">let</span> max = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">    arr.<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (item === <span class="number">1</span>) &#123;</span><br><span class="line">            sum += <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            max = <span class="title class_">Math</span>.<span class="title function_">max</span>(sum, max)</span><br><span class="line">            sum = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    max = <span class="title class_">Math</span>.<span class="title function_">max</span>(sum, max)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>找数学规律，以 3 为基础是最大的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 2,1 × 1 = 1</span></span><br><span class="line"><span class="comment"> * 3,1 × 2 = 2</span></span><br><span class="line"><span class="comment"> * 4,2 × 2 = 4</span></span><br><span class="line"><span class="comment"> * 5,2 × 3 = 6 3的出现让乘积已经大于和了</span></span><br><span class="line"><span class="comment"> * 6,3 × 3 = 9</span></span><br><span class="line"><span class="comment"> * 7,3 × 2 × 2 = 12</span></span><br><span class="line"><span class="comment"> * 8,3 × 3 × 2 = 18</span></span><br><span class="line"><span class="comment"> * 9,3 × 3 × 3 = 27</span></span><br><span class="line"><span class="comment"> * 10,3 × 3 × 2 × 2 = 36</span></span><br><span class="line"><span class="comment"> * 11,3 × 3 × 2 × 3 = 54</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">n</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> integerBreak = <span class="keyword">function</span>(<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">4</span>) <span class="keyword">return</span> n-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> rst = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (sum &lt; n - <span class="number">4</span>) &#123;</span><br><span class="line">        sum += <span class="number">3</span>;</span><br><span class="line">        rst *= <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    rst *= (n - sum);</span><br><span class="line">    <span class="keyword">return</span> rst;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="参考答案"><a class="markdownIt-Anchor" href="#参考答案">#</a> 参考答案</h3>
+<p>动态规划，把所有的组合都尝试一下，前几项的最大值已经被记录，不需要重复计算</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> integerBreak = <span class="keyword">function</span>(<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> dp = <span class="title class_">Array</span>.<span class="title function_">from</span>(&#123;<span class="attr">length</span>: n + <span class="number">1</span>&#125;).<span class="title function_">fill</span>(<span class="number">0</span>)</span><br><span class="line">    dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">1</span>; j &lt;= i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">            dp[i] = <span class="title class_">Math</span>.<span class="title function_">max</span>(dp[i], <span class="title class_">Math</span>.<span class="title function_">max</span>(j * dp[i - j], j * (i - j)));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       <div class="tags">
           <a href="/my-notes/tags/leetcode/" rel="tag"><i class="ic i-tag"></i> leetcode</a>
       </div>
@@ -187,9 +189,9 @@ hee note = 学习笔记</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2024-01-10 14:46:33" itemprop="dateModified" datetime="2024-01-10T14:46:33+08:00">2024-01-10</time>
+    <time title="修改时间：2024-01-15 15:15:36" itemprop="dateModified" datetime="2024-01-15T15:15:36+08:00">2024-01-15</time>
   </span>
-  <span id="2024/01/08/leetcode/32.Longest Valid Parentheses/index/" class="item leancloud_visitors" data-flag-title="32.Longest Valid Parentheses" title="阅读次数">
+  <span id="2024/01/15/leetcode/343.Integer Break/index/" class="item leancloud_visitors" data-flag-title="343.Integer Break" title="阅读次数">
       <span class="icon">
         <i class="ic i-eye"></i>
       </span>
@@ -231,7 +233,7 @@ hee note = 学习笔记</title>
   </li>
   <li class="link">
     <strong>本文链接：</strong>
-    <a href="http://example.com/2024/01/08/leetcode/32.Longest%20Valid%20Parentheses/index/" title="32.Longest Valid Parentheses">http://example.com/2024/01/08/leetcode/32.Longest Valid Parentheses/index/</a>
+    <a href="http://example.com/2024/01/15/leetcode/343.Integer%20Break/index/" title="343.Integer Break">http://example.com/2024/01/15/leetcode/343.Integer Break/index/</a>
   </li>
   <li class="license">
     <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -250,22 +252,14 @@ hee note = 学习笔记</title>
     <div class="item left">
       
 
-  <a href="/my-notes/2024/01/08/leetcode/31.Next%20Permutation/index/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;api.ouyangqiqi.cn&#x2F;dm&#x2F;img-webp.php?785758" title="31.Next Permutation">
+  <a href="/my-notes/2024/01/11/leetcode/413.Arithmetic%20Slices/index/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;api.ouyangqiqi.cn&#x2F;dm&#x2F;img-webp.php?529006" title="413.Arithmetic Slices">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> leetcode</span>
-  <h3>31.Next Permutation</h3>
+  <h3>413.Arithmetic Slices</h3>
   </a>
 
     </div>
     <div class="item right">
-      
-
-  <a href="/my-notes/2024/01/08/leetcode/29.Divide%20Two%20Integers/index/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;api.ouyangqiqi.cn&#x2F;dm&#x2F;img-webp.php?72589" title="29.Divide Two Integers">
-  <span class="type">下一篇</span>
-  <span class="category"><i class="ic i-flag"></i> leetcode</span>
-  <h3>29.Divide Two Integers</h3>
-  </a>
-
     </div>
 </div>
 
@@ -282,11 +276,11 @@ hee note = 学习笔记</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text"> 题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E7%AD%94%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text"> 我的答案</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text"> 题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E7%AD%94%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text"> 我的答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88"><span class="toc-number">1.2.</span> <span class="toc-text"> 参考答案</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
-          <li><a href="/my-notes/2024/01/07/leetcode/241.Different%20Ways%20to%20Add%20Parentheses/index/" rel="bookmark" title="241.Different Ways to Add Parentheses">241.Different Ways to Add Parentheses</a></li><li><a href="/my-notes/2024/01/07/leetcode/6.Zigzag%20Conversion/index/" rel="bookmark" title="6.Zigzag Conversion">6.Zigzag Conversion</a></li><li><a href="/my-notes/2024/01/08/leetcode/29.Divide%20Two%20Integers/index/" rel="bookmark" title="29.Divide Two Integers">29.Divide Two Integers</a></li><li class="active"><a href="/my-notes/2024/01/08/leetcode/32.Longest%20Valid%20Parentheses/index/" rel="bookmark" title="32.Longest Valid Parentheses">32.Longest Valid Parentheses</a></li><li><a href="/my-notes/2024/01/08/leetcode/31.Next%20Permutation/index/" rel="bookmark" title="31.Next Permutation">31.Next Permutation</a></li><li><a href="/my-notes/2024/01/09/leetcode/70.Climbing%20Stairs/index/" rel="bookmark" title="70.Climbing Stairs">70.Climbing Stairs</a></li><li><a href="/my-notes/2024/01/09/leetcode/198.House%20Robber/index/" rel="bookmark" title="198.House Robber">198.House Robber</a></li><li><a href="/my-notes/2024/01/10/leetcode/213.House%20Robber%20II/index/" rel="bookmark" title="213.House Robber II">213.House Robber II</a></li><li><a href="/my-notes/2024/01/10/leetcode/64.Minimum%20Path%20Sum/index/" rel="bookmark" title="64.Minimum Path Sum">64.Minimum Path Sum</a></li><li><a href="/my-notes/2024/01/10/leetcode/62.Unique%20Paths/index/" rel="bookmark" title="62.Unique Paths">62.Unique Paths</a></li><li><a href="/my-notes/2024/01/11/leetcode/303.Range%20Sum%20Query%20-%20Immutable/index/" rel="bookmark" title="303.Range Sum Query - Immutable">303.Range Sum Query - Immutable</a></li><li><a href="/my-notes/2024/01/11/leetcode/53.Maximum%20Subarray/index/" rel="bookmark" title="53.Maximum Subarray">53.Maximum Subarray</a></li><li><a href="/my-notes/2024/01/11/leetcode/413.Arithmetic%20Slices/index/" rel="bookmark" title="413.Arithmetic Slices">413.Arithmetic Slices</a></li><li><a href="/my-notes/2024/01/15/leetcode/343.Integer%20Break/index/" rel="bookmark" title="343.Integer Break">343.Integer Break</a></li>
+          <li><a href="/my-notes/2024/01/07/leetcode/241.Different%20Ways%20to%20Add%20Parentheses/index/" rel="bookmark" title="241.Different Ways to Add Parentheses">241.Different Ways to Add Parentheses</a></li><li><a href="/my-notes/2024/01/07/leetcode/6.Zigzag%20Conversion/index/" rel="bookmark" title="6.Zigzag Conversion">6.Zigzag Conversion</a></li><li><a href="/my-notes/2024/01/08/leetcode/29.Divide%20Two%20Integers/index/" rel="bookmark" title="29.Divide Two Integers">29.Divide Two Integers</a></li><li><a href="/my-notes/2024/01/08/leetcode/32.Longest%20Valid%20Parentheses/index/" rel="bookmark" title="32.Longest Valid Parentheses">32.Longest Valid Parentheses</a></li><li><a href="/my-notes/2024/01/08/leetcode/31.Next%20Permutation/index/" rel="bookmark" title="31.Next Permutation">31.Next Permutation</a></li><li><a href="/my-notes/2024/01/09/leetcode/70.Climbing%20Stairs/index/" rel="bookmark" title="70.Climbing Stairs">70.Climbing Stairs</a></li><li><a href="/my-notes/2024/01/09/leetcode/198.House%20Robber/index/" rel="bookmark" title="198.House Robber">198.House Robber</a></li><li><a href="/my-notes/2024/01/10/leetcode/213.House%20Robber%20II/index/" rel="bookmark" title="213.House Robber II">213.House Robber II</a></li><li><a href="/my-notes/2024/01/10/leetcode/64.Minimum%20Path%20Sum/index/" rel="bookmark" title="64.Minimum Path Sum">64.Minimum Path Sum</a></li><li><a href="/my-notes/2024/01/10/leetcode/62.Unique%20Paths/index/" rel="bookmark" title="62.Unique Paths">62.Unique Paths</a></li><li><a href="/my-notes/2024/01/11/leetcode/303.Range%20Sum%20Query%20-%20Immutable/index/" rel="bookmark" title="303.Range Sum Query - Immutable">303.Range Sum Query - Immutable</a></li><li><a href="/my-notes/2024/01/11/leetcode/53.Maximum%20Subarray/index/" rel="bookmark" title="53.Maximum Subarray">53.Maximum Subarray</a></li><li><a href="/my-notes/2024/01/11/leetcode/413.Arithmetic%20Slices/index/" rel="bookmark" title="413.Arithmetic Slices">413.Arithmetic Slices</a></li><li class="active"><a href="/my-notes/2024/01/15/leetcode/343.Integer%20Break/index/" rel="bookmark" title="343.Integer Break">343.Integer Break</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="站点概览">
@@ -364,12 +358,10 @@ hee note = 学习笔记</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/my-notes/2024/01/08/leetcode/31.Next%20Permutation/index/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/my-notes/2024/01/08/leetcode/29.Divide%20Two%20Integers/index/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -391,9 +383,10 @@ hee note = 学习笔记</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
 </div>
 
-    <span><a href="/my-notes/2020/09/14/react-redux/selectorFactory/" title="selectorFactory">selectorFactory</a></span>
+    <span><a href="/my-notes/2024/01/08/leetcode/32.Longest%20Valid%20Parentheses/index/" title="32.Longest Valid Parentheses">32.Longest Valid Parentheses</a></span>
   </li>
 
       
@@ -402,7 +395,26 @@ hee note = 学习笔记</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2017/05/18/bue/4/" title="Bue源码阅读笔记（4）">Bue源码阅读笔记（4）</a></span>
+    <span><a href="/my-notes/2017/06/02/%E9%9A%8F%E8%AE%B0/1/" title="一些笔记">一些笔记</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/08/react/%E5%90%84%E7%A7%8D%E5%AF%B9%E8%B1%A1/" title="一些对象定义">一些对象定义</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/" title="js简介">js简介</a></span>
   </li>
 
       
@@ -412,27 +424,7 @@ hee note = 学习笔记</title>
 <a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
 </div>
 
-    <span><a href="/my-notes/2024/01/11/leetcode/413.Arithmetic%20Slices/index/" title="413.Arithmetic Slices">413.Arithmetic Slices</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-</div>
-
-    <span><a href="/my-notes/2024/01/10/leetcode/62.Unique%20Paths/index/" title="62.Unique Paths">62.Unique Paths</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/react/" title="分类于 react">react</a>
-</div>
-
-    <span><a href="/my-notes/2020/09/10/react/createElement(dom)/" title="createElement(dom)">createElement(dom)</a></span>
+    <span><a href="/my-notes/2024/01/11/leetcode/303.Range%20Sum%20Query%20-%20Immutable/index/" title="303.Range Sum Query - Immutable">303.Range Sum Query - Immutable</a></span>
   </li>
 
       
@@ -441,17 +433,7 @@ hee note = 学习笔记</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/2.%E5%9C%A8html%E4%BD%BF%E7%94%A8js/" title="在html使用js">在html使用js</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/react/" title="分类于 react">react</a>
-</div>
-
-    <span><a href="/my-notes/2020/09/10/react/createElement(react%20element)/" title="createElement(react element)">createElement(react element)</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/15.Canvas/" title="Canvas">Canvas</a></span>
   </li>
 
       
@@ -460,7 +442,25 @@ hee note = 学习笔记</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/" title="BOM">BOM</a></span>
+    <span><a href="/my-notes/2017/05/09/bue/1/" title="Bue源码阅读笔记（1）">Bue源码阅读笔记（1）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/07/02/%E7%AE%97%E6%B3%95/0.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">数据结构</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2018/05/25/vue/4/" title="Vue源码阅读笔记（4）(compile)">Vue源码阅读笔记（4）(compile)</a></span>
   </li>
 
       
@@ -470,16 +470,7 @@ hee note = 学习笔记</title>
 <a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
-    <span><a href="/my-notes/2020/09/08/react/fiber/" title="fiber">fiber</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="面向对象">面向对象</a></span>
+    <span><a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" title="初始流程">初始流程</a></span>
   </li>
 
   </ul>
@@ -522,7 +513,7 @@ hee note = 学习笔记</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: '2024/01/08/leetcode/32.Longest Valid Parentheses/index/',
+    path: '2024/01/15/leetcode/343.Integer Break/index/',
     favicon: {
       show: "（●´3｀●）やれやれだぜ",
       hide: "(´Д｀)大変だ！"
