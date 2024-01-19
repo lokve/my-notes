@@ -1,8 +1,12 @@
 ---
 title: 413.Arithmetic Slices
-tags: leetcode
+tags:
+  - leetcode
+  - 动态规划
+  - DP
 categories:
   - leetcode
+  - 动态规划
 ---
 
 ## 题目

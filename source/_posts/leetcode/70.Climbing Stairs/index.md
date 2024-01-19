@@ -1,8 +1,12 @@
 ---
 title: 70.Climbing Stairs
-tags: leetcode
+tags: 
+  - leetcode 
+  - 动态规划 
+  - DP
 categories:
   - leetcode
+  - 动态规划
 date: 2024-1-9 10:00
 ---
 

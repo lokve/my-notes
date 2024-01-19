@@ -1,8 +1,12 @@
 ---
 title: 64.Minimum Path Sum
-tags: leetcode
+tags:
+  - leetcode
+  - 动态规划
+  - DP
 categories:
   - leetcode
+  - 动态规划
 ---
 
 
