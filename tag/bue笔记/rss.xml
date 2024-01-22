@@ -7,24 +7,17 @@
         <language>zh-CN</language>
         <pubDate>Thu, 25 May 2017 09:50:00 +0800</pubDate>
         <lastBuildDate>Thu, 25 May 2017 09:50:00 +0800</lastBuildDate>
-        <category>react-redux</category>
         <category>Bue笔记</category>
-        <category>Vue笔记</category>
-        <category>react源码解析</category>
         <category>javascript高级笔记</category>
+        <category>react源码解析</category>
+        <category>Vue笔记</category>
         <category>随记</category>
         <category>算法基础</category>
+        <category>react-redux</category>
         <category>leetcode</category>
-        <item>
-            <guid isPermalink="true">http://example.com/2017/05/25/bue/readme/</guid>
-            <title>说明</title>
-            <link>http://example.com/2017/05/25/bue/readme/</link>
-            <category>Bue笔记</category>
-            <pubDate>Thu, 25 May 2017 09:50:00 +0800</pubDate>
-            <description><![CDATA[ &lt;p&gt;百度 ife 任务里根据 vue 早期版本的源码研究而实现的简单 vue 项目 —Bue&lt;/p&gt;
-&lt;p&gt;这里是我对 bue 的学习笔记&lt;/p&gt;
- ]]></description>
-        </item>
+        <category>分治算法</category>
+        <category>动态规划</category>
+        <category>DP</category>
         <item>
             <guid isPermalink="true">http://example.com/2017/05/25/bue/6/</guid>
             <title>Bue源码阅读笔记（6）</title>
@@ -56,6 +49,16 @@ b. 再次执行：数据变化之后，进入 diff, 判断是否有旧数据并�
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+ ]]></description>
+        </item>
+        <item>
+            <guid isPermalink="true">http://example.com/2017/05/25/bue/readme/</guid>
+            <title>说明</title>
+            <link>http://example.com/2017/05/25/bue/readme/</link>
+            <category>Bue笔记</category>
+            <pubDate>Thu, 25 May 2017 09:50:00 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;百度 ife 任务里根据 vue 早期版本的源码研究而实现的简单 vue 项目 —Bue&lt;/p&gt;
+&lt;p&gt;这里是我对 bue 的学习笔记&lt;/p&gt;
  ]]></description>
         </item>
         <item>

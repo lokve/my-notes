@@ -7,14 +7,17 @@
         <language>zh-CN</language>
         <pubDate>Wed, 28 Jun 2017 15:00:00 +0800</pubDate>
         <lastBuildDate>Wed, 28 Jun 2017 15:00:00 +0800</lastBuildDate>
-        <category>react-redux</category>
         <category>Bue笔记</category>
-        <category>Vue笔记</category>
-        <category>react源码解析</category>
         <category>javascript高级笔记</category>
+        <category>react源码解析</category>
+        <category>Vue笔记</category>
         <category>随记</category>
         <category>算法基础</category>
+        <category>react-redux</category>
         <category>leetcode</category>
+        <category>分治算法</category>
+        <category>动态规划</category>
+        <category>DP</category>
         <item>
             <guid isPermalink="true">http://example.com/2017/06/28/%E9%9A%8F%E8%AE%B0/2/</guid>
             <title>一些笔记</title>

@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?56145"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?643080"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?563528"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?295523"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?706379"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?117189"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?696700"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?269693"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?32595"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?103721"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?641280"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?459877"></li>
         </ul>
       </div>
     </header>
@@ -119,7 +119,96 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2019/07/10/%E7%AE%97%E6%B3%95/01.%E6%8E%92%E5%BA%8F/" itemprop="url" title="数据结构"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?199644"></a>
+    <a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" itemprop="url" title="常量"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?39715"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2020-09-07 11:03:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2020-09-07T11:03:00+08:00">2020-09-07</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>4.5k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>4 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" itemprop="url" title="常量">常量</a></h3>
+    <div class="excerpt">
+        # RootTag
+12345export type RootTag = 0 | 1 | 2;export const LegacyRoot = 0;export const BatchedRoot = 1;export const ConcurrentRoot = 2;
+# TypeOfMode
+123456789export type TypeOfMode = number;export const NoMode = 0b0000;export const StrictMode = 0b0001;// TODO: Remove BatchedMode and ConcurrentMode...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/react/" itemprop="url" title="react"><i class="ic i-flag"></i>react</a>
+      </span>
+    </div>
+    <a href="/my-notes/2020/09/07/react/%E5%B8%B8%E9%87%8F/" itemprop="url" title="常量" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" itemprop="url" title="初始流程"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?204410"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2020-09-07 10:23:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2020-09-07T10:23:00+08:00">2020-09-07</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>3.9k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>4 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" itemprop="url" title="初始流程">初始流程</a></h3>
+    <div class="excerpt">
+        本次阅读会无视 DEV 等没有运行到的分支条件
+react 的渲染主要由 react-dom 完成，首先从 ReactDOM.render 开始
+12345678910var ReactDOM = &amp;#123; ... render: function (element, container, callback) &amp;#123; ... // 一些验证参数合法的方法 return legacyRenderSubtreeIntoContainer(null, element, container, false, callback); &amp;#125;,...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/react/" itemprop="url" title="react"><i class="ic i-flag"></i>react</a>
+      </span>
+    </div>
+    <a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" itemprop="url" title="初始流程" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2019/07/10/%E7%AE%97%E6%B3%95/01.%E6%8E%92%E5%BA%8F/" itemprop="url" title="数据结构"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?996523"></a>
   </div>
   <div class="info">
     
@@ -157,7 +246,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2019/07/02/%E7%AE%97%E6%B3%95/0.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" title="数据结构"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?702930"></a>
+    <a href="/my-notes/2019/07/02/%E7%AE%97%E6%B3%95/0.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" title="数据结构"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?198295"></a>
   </div>
   <div class="info">
     
@@ -200,7 +289,48 @@ push 和 pop
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/" itemprop="url" title="DOM扩展"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?779174"></a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/" itemprop="url" title="js简介"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?606604"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>56</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/" itemprop="url" title="js简介">js简介</a></h3>
+    <div class="excerpt">
+        # javascript
+
+􏵛􏴞􏲛 核心（ECMAScript􏲜）
+文档对象模型（DOM）
+浏览器对象模型（BOM）
+    </div>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/" itemprop="url" title="js简介" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/" itemprop="url" title="DOM扩展"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?331975"></a>
   </div>
   <div class="info">
     
@@ -246,88 +376,7 @@ firstElementChild...
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" itemprop="url" title="DOM"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?153857"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2019-06-14 00:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>3.5k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>3 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" itemprop="url" title="DOM">DOM</a></h3>
-    <div class="excerpt">
-        # 节点层次
-# Node 类型
-123456789101112ELEMENT_NODE: 1 // div等ATTRBUTE_NODE: 2TEXT_NODE: 3 // 文本节点CDATA_SECTION_NODE: 4ENTITY_REFERENCE_NODE: 5ENTITY_NODE: 6PROCESSING_INSTRUCTION_NODE: 7COMMENT_NODE: 8 // 注释节点DOCUMENT_NODE: 9 // document类型DOCUMENT_TYPE_NODE: 10DOCUMENT_FRAGMENT_NODE: 11NOTATION_NODE: 12
-#...
-    </div>
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" itemprop="url" title="DOM" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/" itemprop="url" title="js简介"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?569366"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2019-06-14 00:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>56</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/" itemprop="url" title="js简介">js简介</a></h3>
-    <div class="excerpt">
-        # javascript
-
-􏵛􏴞􏲛 核心（ECMAScript􏲜）
-文档对象模型（DOM）
-浏览器对象模型（BOM）
-    </div>
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/" itemprop="url" title="js简介" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/" itemprop="url" title="DOM2和DOM3"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?389467"></a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/" itemprop="url" title="DOM2和DOM3"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?830382"></a>
   </div>
   <div class="info">
     
@@ -371,7 +420,7 @@ cssText: 能通过它访问到 style 特性中的 css...
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/" itemprop="url" title="事件"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?987396"></a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/" itemprop="url" title="事件"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?370153"></a>
   </div>
   <div class="info">
     
@@ -408,7 +457,47 @@ cssText: 能通过它访问到 style 特性中的 css...
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/" itemprop="url" title="HTML5脚本编程"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?226317"></a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" itemprop="url" title="DOM"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?674452"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>3.5k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>3 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" itemprop="url" title="DOM">DOM</a></h3>
+    <div class="excerpt">
+        # 节点层次
+# Node 类型
+123456789101112ELEMENT_NODE: 1 // div等ATTRBUTE_NODE: 2TEXT_NODE: 3 // 文本节点CDATA_SECTION_NODE: 4ENTITY_REFERENCE_NODE: 5ENTITY_NODE: 6PROCESSING_INSTRUCTION_NODE: 7COMMENT_NODE: 8 // 注释节点DOCUMENT_NODE: 9 // document类型DOCUMENT_TYPE_NODE: 10DOCUMENT_FRAGMENT_NODE: 11NOTATION_NODE: 12
+#...
+    </div>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" itemprop="url" title="DOM" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/" itemprop="url" title="HTML5脚本编程"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?727616"></a>
   </div>
   <div class="info">
     
@@ -446,87 +535,6 @@ cssText: 能通过它访问到 style 特性中的 css...
   </div>
 </article>
 
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/15.Canvas/" itemprop="url" title="Canvas"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?549241"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2019-06-14 00:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>2.9k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>3 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/15.Canvas/" itemprop="url" title="Canvas">Canvas</a></h3>
-    <div class="excerpt">
-        # 基本用法
-创建获取 canvas
-12345678910&amp;lt;canvas id=&amp;quot;drawing&amp;quot; width=&amp;quot; 200&amp;quot; height=&amp;quot;200&amp;quot;&amp;gt;A drawing of something.&amp;lt;/canvas&amp;gt;var drawing = document.getElementById(&amp;quot;drawing&amp;quot;);if (drawing.getContext)&amp;#123; var...
-    </div>
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/15.Canvas/" itemprop="url" title="Canvas" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" itemprop="url" title="高级技巧"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?35252"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2019-06-14 00:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>2.3k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>2 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" itemprop="url" title="高级技巧">高级技巧</a></h3>
-    <div class="excerpt">
-        # 高级函数
-# 安全的类型检测
-Object.prototype.toString.call
-# 作用域安全的构造函数
-123456789function Person(name, age, job)&amp;#123; if (this instanceof Person)&amp;#123; this.name = name; this.age = age; this.job = job; &amp;#125; else &amp;#123; return new Person(name, age, job); &amp;#125;&amp;#125;
-#...
-    </div>
-    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" itemprop="url" title="高级技巧" class="btn">more...</a>
-  </div>
-</article>
-
     </div>
 
   </div>
@@ -534,7 +542,7 @@ Object.prototype.toString.call
   
   <nav class="pagination">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/my-notes/page/4/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/my-notes/">1</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/my-notes/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/8/">8</a><a class="extend next" rel="next" href="/my-notes/page/6/"><i class="ic i-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/my-notes/page/4/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/my-notes/">1</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/my-notes/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/9/">9</a><a class="extend next" rel="next" href="/my-notes/page/6/"><i class="ic i-angle-right" aria-label="下一页"></i></a>
     </div>
   </nav>
 
@@ -562,19 +570,19 @@ Object.prototype.toString.call
 <nav class="state">
     <div class="item posts">
       <a href="/my-notes/archives/">
-        <span class="count">79</span>
+        <span class="count">81</span>
         <span class="name">文章</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/my-notes/categories/">
-        <span class="count">2</span>
+        <span class="count">4</span>
         <span class="name">分类</span>
       </a>
     </div>
     <div class="item tags">
       <a href="/my-notes/tags/">
-        <span class="count">8</span>
+        <span class="count">11</span>
         <span class="name">标签</span>
       </a>
     </div>
@@ -652,9 +660,46 @@ Object.prototype.toString.call
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
-    <span><a href="/my-notes/2018/01/23/vue/2/" title="Vue源码阅读笔记（2）(Vue的生命周期)">Vue源码阅读笔记（2）(Vue的生命周期)</a></span>
+    <span><a href="/my-notes/2020/09/10/react/createElement(react%20element)/" title="createElement(react element)">createElement(react element)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/" title="事件">事件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/connectAdvanced/" title="connectAdvanced">connectAdvanced</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/21.Ajax%E4%B8%8EComet/" title="Ajax与Comet">Ajax与Comet</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" title="高级技巧">高级技巧</a></span>
   </li>
 
       
@@ -662,45 +707,8 @@ Object.prototype.toString.call
     
 <div class="breadcrumb">
 <a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-</div>
-
-    <span><a href="/my-notes/2024/01/10/leetcode/64.Minimum%20Path%20Sum/index/" title="64.Minimum Path Sum">64.Minimum Path Sum</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-</div>
-
-    <span><a href="/my-notes/2024/01/15/leetcode/343.Integer%20Break/index/" title="343.Integer Break">343.Integer Break</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-</div>
-
-    <span><a href="/my-notes/2024/01/07/leetcode/6.Zigzag%20Conversion/index/" title="6.Zigzag Conversion">6.Zigzag Conversion</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/17.%E9%94%99%E8%AF%AF%E7%9A%84%E5%A4%84%E7%90%86%E4%B8%8E%E8%B0%83%E8%AF%95/" title="错误的处理与调试">错误的处理与调试</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
 </div>
 
     <span><a href="/my-notes/2024/01/10/leetcode/213.House%20Robber%20II/index/" title="213.House Robber II">213.House Robber II</a></span>
@@ -710,9 +718,10 @@ Object.prototype.toString.call
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
-    <span><a href="/my-notes/2017/06/02/%E9%9A%8F%E8%AE%B0/1/" title="一些笔记">一些笔记</a></span>
+    <span><a href="/my-notes/2020/09/07/react/1.%E5%88%9D%E5%A7%8B%E6%B5%81%E7%A8%8B/" title="初始流程">初始流程</a></span>
   </li>
 
       
@@ -721,7 +730,7 @@ Object.prototype.toString.call
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/5.%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" title="引用类型">引用类型</a></span>
+    <span><a href="/my-notes/2018/06/07/vue/v-for/" title="Vue源码阅读笔记 (v-for)">Vue源码阅读笔记 (v-for)</a></span>
   </li>
 
       
@@ -731,16 +740,17 @@ Object.prototype.toString.call
 <a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
-    <span><a href="/my-notes/2020/09/08/react/fiber/" title="fiber">fiber</a></span>
+    <span><a href="/my-notes/2020/09/08/react/%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97/" title="时间">时间</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
-    <span><a href="/my-notes/2020/09/14/react-redux/Subscription/" title="selectorFactory">selectorFactory</a></span>
+    <span><a href="/my-notes/2020/09/10/react/createElement(dom)/" title="createElement(dom)">createElement(dom)</a></span>
   </li>
 
   </ul>
@@ -765,13 +775,13 @@ Object.prototype.toString.call
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">383k 字</span>
+    <span title="站点总字数">386k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:48</span>
+    <span title="站点阅读时长">5:51</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

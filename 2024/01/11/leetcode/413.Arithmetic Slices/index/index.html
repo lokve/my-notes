@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="/my-notes/css/app.css?v=0.2.5">
 
   
-  <meta name="keywords" content="leetcode" />
+  <meta name="keywords" content="leetcode,动态规划,DP" />
 
 
 <link rel="canonical" href="http://example.com/2024/01/11/leetcode/413.Arithmetic%20Slices/index/">
@@ -32,7 +32,7 @@
 
 
   <title>
-413.Arithmetic Slices - leetcode |
+413.Arithmetic Slices - 动态规划 - leetcode |
 hee note = 学习笔记</title>
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -117,12 +117,12 @@ hee note = 学习笔记</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?54880"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?904535"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?44812"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?73456"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?388591"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?152508"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?622921"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?836317"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?852560"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?174829"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?764309"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?407222"></li>
         </ul>
       </div>
     </header>
@@ -148,8 +148,11 @@ hee note = 学习笔记</title>
 <div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
 <i class="ic i-home"></i>
 <span><a href="/my-notes/">首页</a></span><i class="ic i-angle-right"></i>
-<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/my-notes/categories/leetcode/" itemprop="item" rel="index" title="分类于 leetcode"><span itemprop="name">leetcode</span></a>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/my-notes/categories/leetcode/" itemprop="item" rel="index" title="分类于 leetcode"><span itemprop="name">leetcode</span></a>
 <meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="item" rel="index" title="分类于 动态规划"><span itemprop="name">动态规划</span></a>
+<meta itemprop="position" content="2" /></span>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
@@ -181,6 +184,8 @@ hee note = 学习笔记</title>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numberOfArithmeticSlices = <span class="keyword">function</span>(<span class="params">nums</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> table = <span class="keyword">new</span> <span class="title class_">Array</span>(nums.<span class="property">length</span>).<span class="title function_">fill</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">2</span>, n = nums.<span class="property">length</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">let</span> diff1 = nums[i] - nums[i-<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">let</span> diff2 = nums[i-<span class="number">1</span>] - nums[i-<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (diff1 == diff2)&#123;</span><br><span class="line">            table[i] = table[i-<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">            ans += table[i-<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       <div class="tags">
           <a href="/my-notes/tags/leetcode/" rel="tag"><i class="ic i-tag"></i> leetcode</a>
+          <a href="/my-notes/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"><i class="ic i-tag"></i> 动态规划</a>
+          <a href="/my-notes/tags/DP/" rel="tag"><i class="ic i-tag"></i> DP</a>
       </div>
   </div>
 
@@ -192,7 +197,7 @@ hee note = 学习笔记</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2024-01-15 11:18:33" itemprop="dateModified" datetime="2024-01-15T11:18:33+08:00">2024-01-15</time>
+    <time title="修改时间：2024-01-19 15:38:14" itemprop="dateModified" datetime="2024-01-19T15:38:14+08:00">2024-01-19</time>
   </span>
   <span id="2024/01/11/leetcode/413.Arithmetic Slices/index/" class="item leancloud_visitors" data-flag-title="413.Arithmetic Slices" title="阅读次数">
       <span class="icon">
@@ -255,9 +260,9 @@ hee note = 学习笔记</title>
     <div class="item left">
       
 
-  <a href="/my-notes/2024/01/11/leetcode/53.Maximum%20Subarray/index/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;api.ouyangqiqi.cn&#x2F;dm&#x2F;img-webp.php?529281" title="53.Maximum Subarray">
+  <a href="/my-notes/2024/01/11/leetcode/53.Maximum%20Subarray/index/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;api.ouyangqiqi.cn&#x2F;dm&#x2F;img-webp.php?657000" title="53.Maximum Subarray">
   <span class="type">上一篇</span>
-  <span class="category"><i class="ic i-flag"></i> leetcode</span>
+  <span class="category"><i class="ic i-flag"></i> 动态规划</span>
   <h3>53.Maximum Subarray</h3>
   </a>
 
@@ -265,9 +270,9 @@ hee note = 学习笔记</title>
     <div class="item right">
       
 
-  <a href="/my-notes/2024/01/15/leetcode/343.Integer%20Break/index/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;api.ouyangqiqi.cn&#x2F;dm&#x2F;img-webp.php?670622" title="343.Integer Break">
+  <a href="/my-notes/2024/01/15/leetcode/343.Integer%20Break/index/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;api.ouyangqiqi.cn&#x2F;dm&#x2F;img-webp.php?435101" title="343.Integer Break">
   <span class="type">下一篇</span>
-  <span class="category"><i class="ic i-flag"></i> leetcode</span>
+  <span class="category"><i class="ic i-flag"></i> 动态规划</span>
   <h3>343.Integer Break</h3>
   </a>
 
@@ -291,7 +296,7 @@ hee note = 学习笔记</title>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
-          <li><a href="/my-notes/2024/01/07/leetcode/241.Different%20Ways%20to%20Add%20Parentheses/index/" rel="bookmark" title="241.Different Ways to Add Parentheses">241.Different Ways to Add Parentheses</a></li><li><a href="/my-notes/2024/01/07/leetcode/6.Zigzag%20Conversion/index/" rel="bookmark" title="6.Zigzag Conversion">6.Zigzag Conversion</a></li><li><a href="/my-notes/2024/01/08/leetcode/29.Divide%20Two%20Integers/index/" rel="bookmark" title="29.Divide Two Integers">29.Divide Two Integers</a></li><li><a href="/my-notes/2024/01/08/leetcode/32.Longest%20Valid%20Parentheses/index/" rel="bookmark" title="32.Longest Valid Parentheses">32.Longest Valid Parentheses</a></li><li><a href="/my-notes/2024/01/08/leetcode/31.Next%20Permutation/index/" rel="bookmark" title="31.Next Permutation">31.Next Permutation</a></li><li><a href="/my-notes/2024/01/09/leetcode/70.Climbing%20Stairs/index/" rel="bookmark" title="70.Climbing Stairs">70.Climbing Stairs</a></li><li><a href="/my-notes/2024/01/09/leetcode/198.House%20Robber/index/" rel="bookmark" title="198.House Robber">198.House Robber</a></li><li><a href="/my-notes/2024/01/10/leetcode/213.House%20Robber%20II/index/" rel="bookmark" title="213.House Robber II">213.House Robber II</a></li><li><a href="/my-notes/2024/01/10/leetcode/64.Minimum%20Path%20Sum/index/" rel="bookmark" title="64.Minimum Path Sum">64.Minimum Path Sum</a></li><li><a href="/my-notes/2024/01/10/leetcode/62.Unique%20Paths/index/" rel="bookmark" title="62.Unique Paths">62.Unique Paths</a></li><li><a href="/my-notes/2024/01/11/leetcode/303.Range%20Sum%20Query%20-%20Immutable/index/" rel="bookmark" title="303.Range Sum Query - Immutable">303.Range Sum Query - Immutable</a></li><li><a href="/my-notes/2024/01/11/leetcode/53.Maximum%20Subarray/index/" rel="bookmark" title="53.Maximum Subarray">53.Maximum Subarray</a></li><li class="active"><a href="/my-notes/2024/01/11/leetcode/413.Arithmetic%20Slices/index/" rel="bookmark" title="413.Arithmetic Slices">413.Arithmetic Slices</a></li><li><a href="/my-notes/2024/01/15/leetcode/343.Integer%20Break/index/" rel="bookmark" title="343.Integer Break">343.Integer Break</a></li><li><a href="/my-notes/2024/01/16/leetcode/279.Perfect%20Squares/index/" rel="bookmark" title="279.Perfect Squares">279.Perfect Squares</a></li><li><a href="/my-notes/2024/01/19/leetcode/91.Decode%20Ways/index/" rel="bookmark" title="91.Decode Ways">91.Decode Ways</a></li>
+          <li><a href="/my-notes/2024/01/09/leetcode/70.Climbing%20Stairs/index/" rel="bookmark" title="70.Climbing Stairs">70.Climbing Stairs</a></li><li><a href="/my-notes/2024/01/09/leetcode/198.House%20Robber/index/" rel="bookmark" title="198.House Robber">198.House Robber</a></li><li><a href="/my-notes/2024/01/10/leetcode/213.House%20Robber%20II/index/" rel="bookmark" title="213.House Robber II">213.House Robber II</a></li><li><a href="/my-notes/2024/01/10/leetcode/64.Minimum%20Path%20Sum/index/" rel="bookmark" title="64.Minimum Path Sum">64.Minimum Path Sum</a></li><li><a href="/my-notes/2024/01/10/leetcode/62.Unique%20Paths/index/" rel="bookmark" title="62.Unique Paths">62.Unique Paths</a></li><li><a href="/my-notes/2024/01/11/leetcode/53.Maximum%20Subarray/index/" rel="bookmark" title="53.Maximum Subarray">53.Maximum Subarray</a></li><li class="active"><a href="/my-notes/2024/01/11/leetcode/413.Arithmetic%20Slices/index/" rel="bookmark" title="413.Arithmetic Slices">413.Arithmetic Slices</a></li><li><a href="/my-notes/2024/01/15/leetcode/343.Integer%20Break/index/" rel="bookmark" title="343.Integer Break">343.Integer Break</a></li><li><a href="/my-notes/2024/01/16/leetcode/279.Perfect%20Squares/index/" rel="bookmark" title="279.Perfect Squares">279.Perfect Squares</a></li><li><a href="/my-notes/2024/01/19/leetcode/91.Decode%20Ways/index/" rel="bookmark" title="91.Decode Ways">91.Decode Ways</a></li><li><a href="/my-notes/2024/01/22/leetcode/300.Longest%20Increasing%20Subsequence/index/" rel="bookmark" title="300.Longest Increasing Subsequence">300.Longest Increasing Subsequence</a></li><li><a href="/my-notes/2024/01/22/leetcode/646.Maximum%20Length%20of%20Pair%20Chain/index/" rel="bookmark" title="646.Maximum Length of Pair Chain">646.Maximum Length of Pair Chain</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="站点概览">
@@ -305,19 +310,19 @@ hee note = 学习笔记</title>
 <nav class="state">
     <div class="item posts">
       <a href="/my-notes/archives/">
-        <span class="count">79</span>
+        <span class="count">81</span>
         <span class="name">文章</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/my-notes/categories/">
-        <span class="count">2</span>
+        <span class="count">4</span>
         <span class="name">分类</span>
       </a>
     </div>
     <div class="item tags">
       <a href="/my-notes/tags/">
-        <span class="count">8</span>
+        <span class="count">11</span>
         <span class="name">标签</span>
       </a>
     </div>
@@ -396,19 +401,10 @@ hee note = 学习笔记</title>
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" title="DOM">DOM</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-</div>
-
-    <span><a href="/my-notes/2024/01/08/leetcode/31.Next%20Permutation/index/" title="31.Next Permutation">31.Next Permutation</a></span>
+    <span><a href="/my-notes/2020/09/09/react/commitRoot/" title="commitRoot">commitRoot</a></span>
   </li>
 
       
@@ -417,7 +413,7 @@ hee note = 学习笔记</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2020/09/14/react-redux/Provider/" title="Provider">Provider</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/" title="事件">事件</a></span>
   </li>
 
       
@@ -426,7 +422,34 @@ hee note = 学习笔记</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/21.Ajax%E4%B8%8EComet/" title="Ajax与Comet">Ajax与Comet</a></span>
+    <span><a href="/my-notes/2020/09/14/react-redux/%E5%BC%80%E5%A7%8B/" title="流程">流程</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2018/06/07/vue/v-if/" title="Vue源码阅读笔记 (v-if)">Vue源码阅读笔记 (v-if)</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/" title="DOM扩展">DOM扩展</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2017/05/23/bue/5/" title="Bue源码阅读笔记（5）">Bue源码阅读笔记（5）</a></span>
   </li>
 
       
@@ -436,25 +459,7 @@ hee note = 学习笔记</title>
 <a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
-    <span><a href="/my-notes/2020/09/08/react/renderRoot/" title="renderRoot">renderRoot</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2017/06/28/%E9%9A%8F%E8%AE%B0/2/" title="一些笔记">一些笔记</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2020/09/14/react-redux/connectAdvanced/" title="connectAdvanced">connectAdvanced</a></span>
+    <span><a href="/my-notes/2020/09/09/react/reconcileChildFibers/" title="reconcileChildFibers">reconcileChildFibers</a></span>
   </li>
 
       
@@ -462,28 +467,32 @@ hee note = 学习笔记</title>
     
 <div class="breadcrumb">
 <a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/16/leetcode/279.Perfect%20Squares/index/" title="279.Perfect Squares">279.Perfect Squares</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2018/01/22/vue/readme/" title="说明">说明</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
 </div>
 
     <span><a href="/my-notes/2024/01/10/leetcode/62.Unique%20Paths/index/" title="62.Unique Paths">62.Unique Paths</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2018/01/23/vue/3/" title="Vue源码阅读笔记（3）(Vue的双向数据绑定)">Vue源码阅读笔记（3）(Vue的双向数据绑定)</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/react/" title="分类于 react">react</a>
-</div>
-
-    <span><a href="/my-notes/2020/09/08/react/%E5%90%84%E7%A7%8D%E5%AF%B9%E8%B1%A1/" title="一些对象定义">一些对象定义</a></span>
   </li>
 
   </ul>
@@ -508,13 +517,13 @@ hee note = 学习笔记</title>
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">383k 字</span>
+    <span title="站点总字数">386k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">5:48</span>
+    <span title="站点阅读时长">5:51</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
