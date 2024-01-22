@@ -1,8 +1,11 @@
 ---
 title: 241.Different Ways to Add Parentheses
-tags: leetcode
+tags: 
+  - leetcode
+  - 分治算法
 categories:
   - leetcode
+  - 分治算法
 date: 2024-1-7 16:00
 ---
 
