@@ -24,7 +24,7 @@ sum(P) + sum(N) + sum(P) - sum(N) = target + sum(P) + sum(N)
 2 * sum(P) = target + sum(nums)
 ```
 
-受上面公式启发，以及[题46](https://leetcode.com/problems/partition-equal-subset-sum/description/)，使用`01背包`解决问题
+受上面公式启发，以及[题416](https://leetcode.com/problems/partition-equal-subset-sum/description/)，使用`01背包`解决问题
 
 这里dp[i]表示nums里面相加能产生的和的数量
 
@@ -51,4 +51,24 @@ var findTargetSumWays = function(nums, S) {
 
 console.log(findTargetSumWays([100], -200));
 
+```
+
+DPS解法
+
+```js
+function findTargetSumWays(nums, S) {
+  return findTargetSumWay(nums, 0, S);
+}
+
+function findTargetSumWay(nums, start, S) {
+  if (start === nums.length) {
+    return S === 0 ? 1 : 0;
+  }
+  return (
+    findTargetSumWay(nums, start + 1, S + nums[start]) +
+    findTargetSumWay(nums, start + 1, S - nums[start])
+  );
+}
+
+console.log(findTargetSumWays([1,1,1,1,1], 3));
 ```
