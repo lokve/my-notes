@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?799472"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?623310"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?875505"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?728937"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?676312"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?934817"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?189380"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?137292"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?358560"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?737908"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?897162"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?230076"></li>
         </ul>
       </div>
     </header>
@@ -119,7 +119,334 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2024/01/11/leetcode/303.Range%20Sum%20Query%20-%20Immutable/index/" itemprop="url" title="303.Range Sum Query - Immutable"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?341970"></a>
+    <a href="/my-notes/2024/01/22/leetcode/646.Maximum%20Length%20of%20Pair%20Chain/index/" itemprop="url" title="646.Maximum Length of Pair Chain"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?852130"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-01-22 16:42:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-01-22T16:42:45+08:00">2024-01-22</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>877</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/01/22/leetcode/646.Maximum%20Length%20of%20Pair%20Chain/index/" itemprop="url" title="646.Maximum Length of Pair Chain">646.Maximum Length of Pair Chain</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案
+借用 300 题的思路，先排序，再算数量，不过时间和空间都很差
+1234567891011121314151617181920212223242526/** * @param &amp;#123;number[][]&amp;#125; pairs * @return &amp;#123;number&amp;#125; */var findLongestChain = function(pairs) &amp;#123; if (!pairs.length) return 0; if (pairs.length === 1) return 1;...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/01/22/leetcode/646.Maximum%20Length%20of%20Pair%20Chain/index/" itemprop="url" title="646.Maximum Length of Pair Chain" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/01/22/leetcode/300.Longest%20Increasing%20Subsequence/index/" itemprop="url" title="300.Longest Increasing Subsequence"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?412948"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-01-22 10:23:05">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-01-22T10:23:05+08:00">2024-01-22</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>2.6k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>2 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/01/22/leetcode/300.Longest%20Increasing%20Subsequence/index/" itemprop="url" title="300.Longest Increasing Subsequence">300.Longest Increasing Subsequence</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案
+把所有的情况都列出来，答案应该是对的，但是超时了
+1234567891011121314151617181920212223242526272829/** * @param &amp;#123;number[]&amp;#125; nums * @return &amp;#123;number&amp;#125; */var lengthOfLIS = function(nums) &amp;#123; if (!nums.length) return 0; if (nums.length === 1) return 1; const dp =...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/01/22/leetcode/300.Longest%20Increasing%20Subsequence/index/" itemprop="url" title="300.Longest Increasing Subsequence" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/01/19/leetcode/91.Decode%20Ways/index/" itemprop="url" title="91.Decode Ways"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?471657"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-01-19 14:53:06">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-01-19T14:53:06+08:00">2024-01-19</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>1.7k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>2 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/01/19/leetcode/91.Decode%20Ways/index/" itemprop="url" title="91.Decode Ways">91.Decode Ways</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案
+尝试了这么多例子才出，已经搞懵了
+这个题目本质是爬楼梯，但是要考虑 0 和 &amp;gt;26 的情况
+
+当 s[i] === 0 的时候，如果和前一个字母组成的数 &amp;gt;26 或者 =0 ，整个结果就是 0 了；不然他们只能是一个整体，所以 dp[i] = dp[i-2]
+当 s[i-1] === 0 时，他和前一个字母只能是一个整体，所以 dp[i] = dp[i-1]
+其他的时候就符合爬楼梯， dp[i] = dp[i-2] + dp[i-1]
+另外， i=1...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/01/19/leetcode/91.Decode%20Ways/index/" itemprop="url" title="91.Decode Ways" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/01/16/leetcode/279.Perfect%20Squares/index/" itemprop="url" title="279.Perfect Squares"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?527952"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-01-16 10:15:29">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-01-16T10:15:29+08:00">2024-01-16</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>1.8k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>2 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/01/16/leetcode/279.Perfect%20Squares/index/" itemprop="url" title="279.Perfect Squares">279.Perfect Squares</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案
+挨个算出最小的组合，然后后面的组合可以由前面的组合拼起来，及 dq[i] = Math.min(dq[i], dq[j] + dq[i - j]);
+12345678910111213141516171819202122232425262728/** * 1, 1, 1, dq[1] * 2, 1 + 1, 2, dq[1] + dq[1] * 3, 1 + 1 + 1, 3 dq[1] + dq[2] * 4, 4, 1 * 5, 4 + 1, 2, * 6, 4 + 1 + 1, 3 * 7, 4 + 1 + 1 + 1, 4 * 8, 4 + 4, 2 *...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/01/16/leetcode/279.Perfect%20Squares/index/" itemprop="url" title="279.Perfect Squares" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/01/15/leetcode/343.Integer%20Break/index/" itemprop="url" title="343.Integer Break"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?347405"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-01-15 14:37:19">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-01-15T14:37:19+08:00">2024-01-15</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>668</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/01/15/leetcode/343.Integer%20Break/index/" itemprop="url" title="343.Integer Break">343.Integer Break</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案
+找数学规律，以 3 为基础是最大的
+1234567891011121314151617181920212223242526/** * 2,1 × 1 = 1 * 3,1 × 2 = 2 * 4,2 × 2 = 4 * 5,2 × 3 = 6 3的出现让乘积已经大于和了 * 6,3 × 3 = 9 * 7,3 × 2 × 2 = 12 * 8,3 × 3 × 2 = 18 * 9,3 × 3 × 3 = 27 * 10,3 × 3 × 2 × 2 = 36 * 11,3 × 3 × 2 × 3 = 54 * @param...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/01/15/leetcode/343.Integer%20Break/index/" itemprop="url" title="343.Integer Break" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/01/11/leetcode/413.Arithmetic%20Slices/index/" itemprop="url" title="413.Arithmetic Slices"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?526556"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-01-11 15:47:16">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-01-11T15:47:16+08:00">2024-01-11</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>1.6k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/01/11/leetcode/413.Arithmetic%20Slices/index/" itemprop="url" title="413.Arithmetic Slices">413.Arithmetic Slices</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案
+先计算每一项之间的差，然后根据差相同的个数计算数量
+1234567891011121314151617181920212223242526272829303132333435363738394041424344/** * @param &amp;#123;number[]&amp;#125; nums * @return &amp;#123;number&amp;#125; */var numberOfArithmeticSlices = function (nums) &amp;#123; if (nums.length &amp;lt; 3)...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/01/11/leetcode/413.Arithmetic%20Slices/index/" itemprop="url" title="413.Arithmetic Slices" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/01/11/leetcode/53.Maximum%20Subarray/index/" itemprop="url" title="53.Maximum Subarray"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?239955"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-01-11 15:29:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-01-11T15:29:32+08:00">2024-01-11</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>319</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/01/11/leetcode/53.Maximum%20Subarray/index/" itemprop="url" title="53.Maximum Subarray">53.Maximum Subarray</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案
+把从开始到结束的最大累加值记录下来，并找到最大的累加值就行
+123456789101112131415/** * @param &amp;#123;number[]&amp;#125; nums * @return &amp;#123;number&amp;#125; */var maxSubArray = function(nums) &amp;#123; let max = nums[0] for (let i = 1; i &amp;lt; nums.length; i++) &amp;#123; const sum = nums[i - 1] +...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/01/11/leetcode/53.Maximum%20Subarray/index/" itemprop="url" title="53.Maximum Subarray" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/01/11/leetcode/303.Range%20Sum%20Query%20-%20Immutable/index/" itemprop="url" title="303.Range Sum Query - Immutable"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?627319"></a>
   </div>
   <div class="info">
     
@@ -164,7 +491,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2024/01/10/leetcode/62.Unique%20Paths/index/" itemprop="url" title="62.Unique Paths"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?807854"></a>
+    <a href="/my-notes/2024/01/10/leetcode/62.Unique%20Paths/index/" itemprop="url" title="62.Unique Paths"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?146189"></a>
   </div>
   <div class="info">
     
@@ -210,7 +537,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2024/01/10/leetcode/64.Minimum%20Path%20Sum/index/" itemprop="url" title="64.Minimum Path Sum"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?774652"></a>
+    <a href="/my-notes/2024/01/10/leetcode/64.Minimum%20Path%20Sum/index/" itemprop="url" title="64.Minimum Path Sum"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?758903"></a>
   </div>
   <div class="info">
     
@@ -253,338 +580,6 @@
   </div>
 </article>
 
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2024/01/10/leetcode/213.House%20Robber%20II/index/" itemprop="url" title="213.House Robber II"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?464899"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2024-01-10 14:46:33">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-01-10T14:46:33+08:00">2024-01-10</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>1k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2024/01/10/leetcode/213.House%20Robber%20II/index/" itemprop="url" title="213.House Robber II">213.House Robber II</a></h3>
-    <div class="excerpt">
-        # 题目
-地址
-# 我的答案
-环形 rob, 有两种可能，0 肯定抢或不强，分别得出最大值
-123456789101112131415161718192021/** * @param &amp;#123;number[]&amp;#125; nums * @return &amp;#123;number&amp;#125; */var rob = function(nums) &amp;#123; if (nums.length &amp;lt;= 2) return Math.max(...nums); const rst1 = [nums[0], nums[1]]; rst1[1] =...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
-      </span>
-    </div>
-    <a href="/my-notes/2024/01/10/leetcode/213.House%20Robber%20II/index/" itemprop="url" title="213.House Robber II" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2024/01/09/leetcode/198.House%20Robber/index/" itemprop="url" title="198.House Robber"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?531166"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2024-01-09 14:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-01-09T14:00:00+08:00">2024-01-09</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>385</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2024/01/09/leetcode/198.House%20Robber/index/" itemprop="url" title="198.House Robber">198.House Robber</a></h3>
-    <div class="excerpt">
-        # 题目
-地址
-# 我的答案
-从第三个开始，最大总和 S [n] = max (S [n-1], S [n-2] + nums [n]), 在下面把每一次的最大总和记录到 nums 里面了
-
-123456789101112131415/** * @param &amp;#123;number[]&amp;#125; nums * @return &amp;#123;number&amp;#125; */var rob = function(nums) &amp;#123; if (nums.length &amp;lt;= 2) return Math.max(...nums);...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
-      </span>
-    </div>
-    <a href="/my-notes/2024/01/09/leetcode/198.House%20Robber/index/" itemprop="url" title="198.House Robber" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2024/01/09/leetcode/70.Climbing%20Stairs/index/" itemprop="url" title="70.Climbing Stairs"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?324835"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2024-01-09 10:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-01-09T10:00:00+08:00">2024-01-09</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>515</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2024/01/09/leetcode/70.Climbing%20Stairs/index/" itemprop="url" title="70.Climbing Stairs">70.Climbing Stairs</a></h3>
-    <div class="excerpt">
-        # 题目
-地址
-# 参考答案
-斐波那契数列
-学习算法思想（动态规划算法）的例题
-1dq[n] = dq[n - 1] + dq[n- 2]
-12345678910111213/** * 用数组 * @param &amp;#123;number&amp;#125; n * @return &amp;#123;number&amp;#125; */var climbStairs = function(n) &amp;#123; var arr = [1, 2] var i = 2; for (; i &amp;lt; n; i++) &amp;#123; arr[i] = arr[i-1] +...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
-      </span>
-    </div>
-    <a href="/my-notes/2024/01/09/leetcode/70.Climbing%20Stairs/index/" itemprop="url" title="70.Climbing Stairs" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2024/01/08/leetcode/31.Next%20Permutation/index/" itemprop="url" title="31.Next Permutation"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?801816"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2024-01-08 16:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-01-08T16:00:00+08:00">2024-01-08</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>2.3k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>2 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2024/01/08/leetcode/31.Next%20Permutation/index/" itemprop="url" title="31.Next Permutation">31.Next Permutation</a></h3>
-    <div class="excerpt">
-        # 题目
-地址
-[2,4,5,1,3] -&amp;gt; [2,4,5,3,1] -&amp;gt; [2,5,1,3,4] -&amp;gt; [2,5,1,4,3] -&amp;gt; [2,5,3,1,4]
-# 我的答案
-组合的整体顺序是以从小到大为开始的组合顺序，所以先排序。
-已排序为基础，找到当前那个的位置，然后位置的下一个就是结果
-
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455/** * @param...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/leetcode/" itemprop="url" title="leetcode"><i class="ic i-flag"></i>leetcode</a>
-      </span>
-    </div>
-    <a href="/my-notes/2024/01/08/leetcode/31.Next%20Permutation/index/" itemprop="url" title="31.Next Permutation" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2024/01/08/leetcode/32.Longest%20Valid%20Parentheses/index/" itemprop="url" title="32.Longest Valid Parentheses"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?456830"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2024-01-08 16:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-01-08T16:00:00+08:00">2024-01-08</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>735</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2024/01/08/leetcode/32.Longest%20Valid%20Parentheses/index/" itemprop="url" title="32.Longest Valid Parentheses">32.Longest Valid Parentheses</a></h3>
-    <div class="excerpt">
-        # 题目
-地址
-# 我的答案
-遍历字符串，记住左括号的序号，如果有右括号，给这两个括号的位置标记 1，然后去到这个左括号，
-这样所有能互相匹配的括号都标记了 1，最后就数最长的连续 1 是多少了
-123456789101112131415161718192021222324252627282930313233343536373839/** * @param &amp;#123;string&amp;#125; s * @return &amp;#123;number&amp;#125; */var longestValidParentheses = function(s) &amp;#123;...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/leetcode/" itemprop="url" title="leetcode"><i class="ic i-flag"></i>leetcode</a>
-      </span>
-    </div>
-    <a href="/my-notes/2024/01/08/leetcode/32.Longest%20Valid%20Parentheses/index/" itemprop="url" title="32.Longest Valid Parentheses" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2024/01/08/leetcode/29.Divide%20Two%20Integers/index/" itemprop="url" title="29.Divide Two Integers"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?141186"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2024-01-08 16:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-01-08T16:00:00+08:00">2024-01-08</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>1.3k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2024/01/08/leetcode/29.Divide%20Two%20Integers/index/" itemprop="url" title="29.Divide Two Integers">29.Divide Two Integers</a></h3>
-    <div class="excerpt">
-        # 题目
-地址
-# 我的答案
-使用加法累加，模拟乘法
-未通过，时间不够
-1234567891011121314151617181920212223242526272829303132/** * @param &amp;#123;number&amp;#125; dividend * @param &amp;#123;number&amp;#125; divisor * @return &amp;#123;number&amp;#125; */var divide = function(dividend, divisor) &amp;#123; const symbol = dividend...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/leetcode/" itemprop="url" title="leetcode"><i class="ic i-flag"></i>leetcode</a>
-      </span>
-    </div>
-    <a href="/my-notes/2024/01/08/leetcode/29.Divide%20Two%20Integers/index/" itemprop="url" title="29.Divide Two Integers" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2024/01/07/leetcode/241.Different%20Ways%20to%20Add%20Parentheses/index/" itemprop="url" title="241.Different Ways to Add Parentheses"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?473057"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2024-01-07 16:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-01-07T16:00:00+08:00">2024-01-07</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>2.7k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>2 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2024/01/07/leetcode/241.Different%20Ways%20to%20Add%20Parentheses/index/" itemprop="url" title="241.Different Ways to Add Parentheses">241.Different Ways to Add Parentheses</a></h3>
-    <div class="excerpt">
-        # 题目
-地址
-# 我的答案 1
-按照题目思路，先遍历出搜索算式，再挨个计算算式结果
-分两步走，性能太差了
-
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283/** * @param &amp;#123;string&amp;#125; expression * @return...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/leetcode/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/" itemprop="url" title="分治算法"><i class="ic i-flag"></i>分治算法</a>
-      </span>
-    </div>
-    <a href="/my-notes/2024/01/07/leetcode/241.Different%20Ways%20to%20Add%20Parentheses/index/" itemprop="url" title="241.Different Ways to Add Parentheses" class="btn">more...</a>
-  </div>
-</article>
-
     </div>
 
   </div>
@@ -592,7 +587,7 @@
   
   <nav class="pagination">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/my-notes/page/2/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/my-notes/">1</a><a class="page-number" href="/my-notes/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/my-notes/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/10/">10</a><a class="extend next" rel="next" href="/my-notes/page/4/"><i class="ic i-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/my-notes/page/2/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/my-notes/">1</a><a class="page-number" href="/my-notes/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/my-notes/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/11/">11</a><a class="extend next" rel="next" href="/my-notes/page/4/"><i class="ic i-angle-right" aria-label="下一页"></i></a>
     </div>
   </nav>
 
@@ -620,19 +615,19 @@
 <nav class="state">
     <div class="item posts">
       <a href="/my-notes/archives/">
-        <span class="count">94</span>
+        <span class="count">101</span>
         <span class="name">文章</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/my-notes/categories/">
-        <span class="count">5</span>
+        <span class="count">6</span>
         <span class="name">分类</span>
       </a>
     </div>
     <div class="item tags">
       <a href="/my-notes/tags/">
-        <span class="count">14</span>
+        <span class="count">15</span>
         <span class="name">标签</span>
       </a>
     </div>
@@ -710,9 +705,22 @@
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
 </div>
 
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/" title="DOM扩展">DOM扩展</a></span>
+    <span><a href="/my-notes/2024/01/08/leetcode/29.Divide%20Two%20Integers/index/" title="29.Divide Two Integers">29.Divide Two Integers</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/23/leetcode/376.Wiggle%20Subsequence/index/" title="376.Wiggle Subsequence">376.Wiggle Subsequence</a></span>
   </li>
 
       
@@ -721,7 +729,7 @@
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/" title="BOM">BOM</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/" title="离线应用与客户端储存">离线应用与客户端储存</a></span>
   </li>
 
       
@@ -730,7 +738,7 @@
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="面向对象">面向对象</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/15.Canvas/" title="Canvas">Canvas</a></span>
   </li>
 
       
@@ -740,7 +748,28 @@
 <a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
-    <span><a href="/my-notes/2020/09/09/react/reconcileChildFibers/" title="reconcileChildFibers">reconcileChildFibers</a></span>
+    <span><a href="/my-notes/2020/09/09/react/hooks/" title="hooks">hooks</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
+</div>
+
+    <span><a href="/my-notes/2024/02/20/leetcode/650.2%20Keys%20Keyboard/index/" title="650.2 Keys Keyboard">650.2 Keys Keyboard</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/selectorFactory/" title="selectorFactory">selectorFactory</a></span>
   </li>
 
       
@@ -757,54 +786,19 @@
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-<i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
 </div>
 
-    <span><a href="/my-notes/2024/01/16/leetcode/279.Perfect%20Squares/index/" title="279.Perfect Squares">279.Perfect Squares</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/" title="事件">事件</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" title="基本概念">基本概念</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-<i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/" title="分类于 分治算法">分治算法</a>
-</div>
-
-    <span><a href="/my-notes/2024/01/07/leetcode/241.Different%20Ways%20to%20Add%20Parentheses/index/" title="241.Different Ways to Add Parentheses">241.Different Ways to Add Parentheses</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-<i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
-</div>
-
-    <span><a href="/my-notes/2024/01/22/leetcode/646.Maximum%20Length%20of%20Pair%20Chain/index/" title="646.Maximum Length of Pair Chain">646.Maximum Length of Pair Chain</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2019/07/10/%E7%AE%97%E6%B3%95/01.%E6%8E%92%E5%BA%8F/" title="数据结构">数据结构</a></span>
+    <span><a href="/my-notes/2020/09/09/react/function%E7%BB%84%E4%BB%B6/" title="function组件">function组件</a></span>
   </li>
 
   </ul>
@@ -829,13 +823,13 @@
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">399k 字</span>
+    <span title="站点总字数">402k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:03</span>
+    <span title="站点阅读时长">6:06</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

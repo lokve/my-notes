@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?467374"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?866839"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?359803"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?767392"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?949755"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?504899"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?935517"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?976940"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?81558"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?140309"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?729096"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?813821"></li>
         </ul>
       </div>
     </header>
@@ -119,7 +119,312 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2018/05/25/vue/4/" itemprop="url" title="Vue源码阅读笔记（4）(compile)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?265903"></a>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" itemprop="url" title="面向对象"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?423080"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>6.6k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>6 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" itemprop="url" title="面向对象">面向对象</a></h3>
+    <div class="excerpt">
+        # 对象
+# 属性类型
+# 数据属性
+
+[[Configurable]] 能否通过 delete 删除属性，通过 defineProperty 编辑数据属性 默认 true
+
+[[Enumerable]] 能否用 for-in 循环属性 默认 true
+
+[[Wtirable]] 能否修改属性的值 默认 true
+
+[[Value]] 属性的数据值 默认 undefined
+
+[[Get]] 在读取属性时调用的函数 默认 undefined 旧浏览器兼容可使用 defineGetter
+
+[[Set]] 在写入属性时调用的函数 默认 undefined 旧浏览器兼容可使用...
+    </div>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" itemprop="url" title="面向对象" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/" itemprop="url" title="BOM"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?767929"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>573</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/" itemprop="url" title="BOM">BOM</a></h3>
+    <div class="excerpt">
+        # window
+即使 js 访问浏览器的接口，也是 ESCMScript 的全局 Global 对象
+# 全局作用域
+1234567var age = 29;function sayAge()&amp;#123; alert(this.age);&amp;#125;alert(window.age); //29sayAge(); //29 window.sayAge(); //29
+使用 var 添加的全局属性的 configurable 默认为 false, 所有不能 delete window.age （无效）
+# 弹出窗口
+检测弹出窗是否被屏蔽
+123456789101112var...
+    </div>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/" itemprop="url" title="BOM" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/7.%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url" title="函数表达式"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?632997"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2019-06-14 00:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2019-06-14T00:00:00+08:00">2019-06-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>1.9k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>2 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/7.%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url" title="函数表达式">函数表达式</a></h3>
+    <div class="excerpt">
+        # 函数闭包
+闭包 是指有权访问另一个函数作用域中的变量的函数
+# 内存泄漏
+123456function assignHandler()&amp;#123; var element = document.getElementById(&amp;quot;someElement&amp;quot;); element.onclick = function()&amp;#123; alert(element.id); &amp;#125;;&amp;#125;
+↓
+12345678function assignHandler()&amp;#123;var element =...
+    </div>
+    <a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/7.%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="url" title="函数表达式" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2018/06/07/vue/attr/" itemprop="url" title="attr"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?837327"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2018-06-07 14:08:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2018-06-07T14:08:00+08:00">2018-06-07</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>2.2k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>2 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2018/06/07/vue/attr/" itemprop="url" title="attr">attr</a></h3>
+    <div class="excerpt">
+        # 开始
+在 parseHTML 首次处理 (剩下的属性都在这个方法里进行了第一次处理)
+代码在 vue/src/compiler/parser/index.js
+1234567891011parseHTML(template, &amp;#123; ... start(tag, attrs, unary) &amp;#123; ... // 对element的其他属性做处理 processAttrs(element); ... &amp;#125;&amp;#125;
+# processAttrs
+代码在...
+    </div>
+    <a href="/my-notes/2018/06/07/vue/attr/" itemprop="url" title="attr" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2018/06/07/vue/v-for/" itemprop="url" title="Vue源码阅读笔记 (v-for)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?471641"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2018-06-07 11:08:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2018-06-07T11:08:00+08:00">2018-06-07</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>1.5k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2018/06/07/vue/v-for/" itemprop="url" title="Vue源码阅读笔记 (v-for)">Vue源码阅读笔记 (v-for)</a></h3>
+    <div class="excerpt">
+        # 开始
+在 parseHTML 首次处理 v-for
+代码在 vue/src/compiler/parser/index.js
+12345678910parseHTML(template, &amp;#123; ... start(tag, attrs, unary) &amp;#123; ... processFor(element); ... &amp;#125;&amp;#125;
+# processFor
+代码在 vue/src/compiler/parser/index.js
+123456789101112131415161718192021222324252627function...
+    </div>
+    <a href="/my-notes/2018/06/07/vue/v-for/" itemprop="url" title="Vue源码阅读笔记 (v-for)" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2018/06/07/vue/v-if/" itemprop="url" title="Vue源码阅读笔记 (v-if)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?800545"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2018-06-07 11:08:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2018-06-07T11:08:00+08:00">2018-06-07</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>856</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2018/06/07/vue/v-if/" itemprop="url" title="Vue源码阅读笔记 (v-if)">Vue源码阅读笔记 (v-if)</a></h3>
+    <div class="excerpt">
+        # 开始
+在 parseHTML 首次处理 v-if
+代码在 vue/src/compiler/parser/index.js
+12345678910parseHTML(template, &amp;#123; ... start(tag, attrs, unary) &amp;#123; ... processIf(element); ... &amp;#125;&amp;#125;
+# processIf
+代码在 vue/src/compiler/parser/index.js
+12345678910111213141516171819202122232425function...
+    </div>
+    <a href="/my-notes/2018/06/07/vue/v-if/" itemprop="url" title="Vue源码阅读笔记 (v-if)" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2018/06/07/vue/class/" itemprop="url" title="Vue源码阅读笔记 (class,style)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?254106"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2018-06-07 09:43:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2018-06-07T09:43:00+08:00">2018-06-07</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>4.7k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>4 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2018/06/07/vue/class/" itemprop="url" title="Vue源码阅读笔记 (class,style)">Vue源码阅读笔记 (class,style)</a></h3>
+    <div class="excerpt">
+        # 开始
+在 parseHTML 首次处理 class,style
+代码在 vue/src/compiler/parser/index.js
+123456789101112parseHTML(template, &amp;#123; ... start(tag, attrs, unary) &amp;#123; ... for (let i = 0; i &amp;lt; transforms.length; i++) &amp;#123; transforms[i](element, options) &amp;#125; ......
+    </div>
+    <a href="/my-notes/2018/06/07/vue/class/" itemprop="url" title="Vue源码阅读笔记 (class,style)" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2018/05/25/vue/4/" itemprop="url" title="Vue源码阅读笔记（4）(compile)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?781968"></a>
   </div>
   <div class="info">
     
@@ -161,49 +466,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2018/01/23/vue/2/" itemprop="url" title="Vue源码阅读笔记（2）(Vue的生命周期)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?271806"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2018-01-23 14:30:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2018-01-23T14:30:00+08:00">2018-01-23</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>45k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>41 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2018/01/23/vue/2/" itemprop="url" title="Vue源码阅读笔记（2）(Vue的生命周期)">Vue源码阅读笔记（2）(Vue的生命周期)</a></h3>
-    <div class="excerpt">
-        参考了的文章
-以文章提供的思路自己过一遍代码
-------------- 咯咯咯 ----------
-# 开始
-以下实例
-1234567891011121314151617181920&amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt; &amp;lt;p&amp;gt;&amp;#123;&amp;#123;message&amp;#125;&amp;#125;&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;script...
-    </div>
-    <a href="/my-notes/2018/01/23/vue/2/" itemprop="url" title="Vue源码阅读笔记（2）(Vue的生命周期)" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2018/01/23/vue/3/" itemprop="url" title="Vue源码阅读笔记（3）(Vue的双向数据绑定)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?149556"></a>
+    <a href="/my-notes/2018/01/23/vue/3/" itemprop="url" title="Vue源码阅读笔记（3）(Vue的双向数据绑定)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?459421"></a>
   </div>
   <div class="info">
     
@@ -244,302 +507,42 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2018/01/22/vue/1/" itemprop="url" title="Vue源码阅读笔记（1）(从入口文件开始)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?626562"></a>
+    <a href="/my-notes/2018/01/23/vue/2/" itemprop="url" title="Vue源码阅读笔记（2）(Vue的生命周期)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?545391"></a>
   </div>
   <div class="info">
     
 <div class="meta">
-  <span class="item" title="创建时间：2018-01-22 14:30:00">
+  <span class="item" title="创建时间：2018-01-23 14:30:00">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
-    <time itemprop="dateCreated datePublished" datetime="2018-01-22T14:30:00+08:00">2018-01-22</time>
+    <time itemprop="dateCreated datePublished" datetime="2018-01-23T14:30:00+08:00">2018-01-23</time>
   </span>
   <span class="item" title="本文字数">
     <span class="icon">
       <i class="ic i-pen"></i>
     </span>
-    <span>2.2k</span>
+    <span>45k</span>
     <span class="text">字</span>
   </span>
   <span class="item" title="阅读时长">
     <span class="icon">
       <i class="ic i-clock"></i>
     </span>
-    <span>2 分钟</span>
+    <span>41 分钟</span>
   </span>
 </div>
 
-    <h3><a href="/my-notes/2018/01/22/vue/1/" itemprop="url" title="Vue源码阅读笔记（1）(从入口文件开始)">Vue源码阅读笔记（1）(从入口文件开始)</a></h3>
+    <h3><a href="/my-notes/2018/01/23/vue/2/" itemprop="url" title="Vue源码阅读笔记（2）(Vue的生命周期)">Vue源码阅读笔记（2）(Vue的生命周期)</a></h3>
     <div class="excerpt">
-        // 这是 vue 2.2.6 的源码阅读笔记
-参考了的文章
+        参考了的文章
 以文章提供的思路自己过一遍代码
-# 先过一遍流程（文件加载顺序）
-按 npm run dev 的命令找来，文件执行顺序应该是
-1234/src/entries/web-runtime-with-compiler.js // $mount二次加工--&amp;gt; /src/entries/web-runtime.js // 定义了Vue.config的一些方法、$mount、__patch__--&amp;gt; /src/core/index.js--&amp;gt; /src/core/instance/index.js
-#...
+------------- 咯咯咯 ----------
+# 开始
+以下实例
+1234567891011121314151617181920&amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt; &amp;lt;p&amp;gt;&amp;#123;&amp;#123;message&amp;#125;&amp;#125;&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;script...
     </div>
-    <a href="/my-notes/2018/01/22/vue/1/" itemprop="url" title="Vue源码阅读笔记（1）(从入口文件开始)" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2018/01/22/vue/readme/" itemprop="url" title="说明"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?501920"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2018-01-22 14:30:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2018-01-22T14:30:00+08:00">2018-01-22</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>52</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2018/01/22/vue/readme/" itemprop="url" title="说明">说明</a></h3>
-    <div class="excerpt">
-        vue2.2.6 的源码阅读笔记
-利用官方 vue 项目，配合 debugger 和 npm dev 命令，学习 vue 源码
-    </div>
-    <a href="/my-notes/2018/01/22/vue/readme/" itemprop="url" title="说明" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2017/06/28/%E9%9A%8F%E8%AE%B0/2/" itemprop="url" title="一些笔记"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?598494"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2017-06-28 15:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2017-06-28T15:00:00+08:00">2017-06-28</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>243</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2017/06/28/%E9%9A%8F%E8%AE%B0/2/" itemprop="url" title="一些笔记">一些笔记</a></h3>
-    <div class="excerpt">
-        # 一些项目经验
-
-vue 用 cdn, 就不需要给其子组件 (vuex, vue-router 等) 使用 Vue.use
-toString.apply 可以用于区分数据类型
-
-12toString.apply([]) // &amp;#x27;[object Array]&amp;#x27;toString.apply(/aa/) // &amp;quot;[object RegExp]&amp;quot;
-
-关于 scroll 进度条隐藏的小技巧
-
-123width: ? // 父级宽度 + 20overflow-y: scroll;padding-right: 20px;
-    </div>
-    <a href="/my-notes/2017/06/28/%E9%9A%8F%E8%AE%B0/2/" itemprop="url" title="一些笔记" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2017/06/02/%E9%9A%8F%E8%AE%B0/1/" itemprop="url" title="一些笔记"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?876414"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2017-06-02 11:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2017-06-02T11:00:00+08:00">2017-06-02</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>2.9k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>3 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2017/06/02/%E9%9A%8F%E8%AE%B0/1/" itemprop="url" title="一些笔记">一些笔记</a></h3>
-    <div class="excerpt">
-        # 《你不知道的 javascript》(中) 笔记
-
-undefined 和 undeclared 是两码事
-通过 typeof 来检查变量是否存在，还能够适应不同环境 (不局限于浏览器)
-数字用指数格式显示用 toExponential () 方法
-
-1234567var a = 5E10;a; /* 50000000000 */a.toExponential(); /* &amp;quot;5e+10&amp;quot; */var b = a * a;b; /* 2.5e+21 */var c = 1 / a;c; /* 2e-11 */
-
-toPrecision (…)...
-    </div>
-    <a href="/my-notes/2017/06/02/%E9%9A%8F%E8%AE%B0/1/" itemprop="url" title="一些笔记" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2017/05/25/bue/6/" itemprop="url" title="Bue源码阅读笔记（6）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?26720"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2017-05-25 09:50:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2017-05-25T09:50:00+08:00">2017-05-25</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>426</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2017/05/25/bue/6/" itemprop="url" title="Bue源码阅读笔记（6）">Bue源码阅读笔记（6）</a></h3>
-    <div class="excerpt">
-        当前版本
-# 进展
-
-v-on 实现
-完成动态 v-if 指令
-
-# 代码执行补充
-v-on: 和 v-if 类似，_init () 中把 on 指令相关函数放在了 directives 里面 --&amp;gt; 使用 on 相关指令绑定事件
-v-repeat: 和 v-if 类似，_init () 中把 on 指令相关函数放在了 directives 里面 --&amp;gt; 使用 repeat 相关指令绑定事件
-5.30 补充
-这里需要详细的了解一下 repeat 指令里面的流程
-
-首先执行 bind (), 给 repeat 指定了唯一的 uid, 并创建 repeat...
-    </div>
-    <a href="/my-notes/2017/05/25/bue/6/" itemprop="url" title="Bue源码阅读笔记（6）" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2017/05/25/bue/readme/" itemprop="url" title="说明"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?570062"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2017-05-25 09:50:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2017-05-25T09:50:00+08:00">2017-05-25</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>50</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2017/05/25/bue/readme/" itemprop="url" title="说明">说明</a></h3>
-    <div class="excerpt">
-        百度 ife 任务里根据 vue 早期版本的源码研究而实现的简单 vue 项目 —Bue
-这里是我对 bue 的学习笔记
-    </div>
-    <a href="/my-notes/2017/05/25/bue/readme/" itemprop="url" title="说明" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2017/05/23/bue/5/" itemprop="url" title="Bue源码阅读笔记（5）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?948695"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2017-05-23 10:30:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2017-05-23T10:30:00+08:00">2017-05-23</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>653</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2017/05/23/bue/5/" itemprop="url" title="Bue源码阅读笔记（5）">Bue源码阅读笔记（5）</a></h3>
-    <div class="excerpt">
-        当前版本
-# 进展
-完成动态 v-if 指令
-# 代码执行补充
-当代码执行到 dom 渲染前，这个时候会进行 attribute 检查，如果存在自定义 attr (b-if), 直接走指令绑定_bindDirective --&amp;gt; new Directive () --&amp;gt; _initDef (), 这里不同指令对应的更新 update 函数不同，所以需要分类处理
-12let def = this.vm.$options.directives[this.name]; _.extend(this, def);
-–&amp;gt; _bind () --&amp;gt;...
-    </div>
-    <a href="/my-notes/2017/05/23/bue/5/" itemprop="url" title="Bue源码阅读笔记（5）" class="btn">more...</a>
+    <a href="/my-notes/2018/01/23/vue/2/" itemprop="url" title="Vue源码阅读笔记（2）(Vue的生命周期)" class="btn">more...</a>
   </div>
 </article>
 
@@ -550,7 +553,7 @@ v-repeat: 和 v-if 类似，_init () 中把 on 指令相关函数放在了 direc
   
   <nav class="pagination">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/my-notes/page/8/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/my-notes/">1</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/my-notes/page/10/">10</a><a class="extend next" rel="next" href="/my-notes/page/10/"><i class="ic i-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/my-notes/page/8/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/my-notes/">1</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/my-notes/page/10/">10</a><a class="page-number" href="/my-notes/page/11/">11</a><a class="extend next" rel="next" href="/my-notes/page/10/"><i class="ic i-angle-right" aria-label="下一页"></i></a>
     </div>
   </nav>
 
@@ -578,19 +581,19 @@ v-repeat: 和 v-if 类似，_init () 中把 on 指令相关函数放在了 direc
 <nav class="state">
     <div class="item posts">
       <a href="/my-notes/archives/">
-        <span class="count">94</span>
+        <span class="count">101</span>
         <span class="name">文章</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/my-notes/categories/">
-        <span class="count">5</span>
+        <span class="count">6</span>
         <span class="name">分类</span>
       </a>
     </div>
     <div class="item tags">
       <a href="/my-notes/tags/">
-        <span class="count">14</span>
+        <span class="count">15</span>
         <span class="name">标签</span>
       </a>
     </div>
@@ -668,51 +671,6 @@ v-repeat: 和 v-if 类似，_init () 中把 on 指令相关函数放在了 direc
   <li class="item">
     
 <div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2020/09/14/react-redux/%E5%BC%80%E5%A7%8B/" title="流程">流程</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/17.%E9%94%99%E8%AF%AF%E7%9A%84%E5%A4%84%E7%90%86%E4%B8%8E%E8%B0%83%E8%AF%95/" title="错误的处理与调试">错误的处理与调试</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2020/09/14/react-redux/Subscription/" title="selectorFactory">selectorFactory</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/" title="离线应用与客户端储存">离线应用与客户端储存</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2020/09/14/react-redux/Provider/" title="Provider">Provider</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
 <i class="ic i-angle-right"></i>
 <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
@@ -728,9 +686,23 @@ v-repeat: 和 v-if 类似，_init () 中把 on 指令相关函数放在了 direc
 <a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
 <i class="ic i-angle-right"></i>
 <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E4%B9%B0%E8%82%A1%E7%A5%A8/" title="分类于 买股票">买股票</a>
 </div>
 
-    <span><a href="/my-notes/2024/01/10/leetcode/62.Unique%20Paths/index/" title="62.Unique Paths">62.Unique Paths</a></span>
+    <span><a href="/my-notes/2024/02/02/leetcode/188.Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV/index/" title="188.Best Time to Buy and Sell Stock IV">188.Best Time to Buy and Sell Stock IV</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/09/leetcode/198.House%20Robber/index/" title="198.House Robber">198.House Robber</a></span>
   </li>
 
       
@@ -739,7 +711,49 @@ v-repeat: 和 v-if 类似，_init () 中把 on 指令相关函数放在了 direc
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/" title="BOM">BOM</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/" title="HTML5脚本编程">HTML5脚本编程</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/16/leetcode/279.Perfect%20Squares/index/" title="279.Perfect Squares">279.Perfect Squares</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2018/06/07/vue/attr/" title="attr">attr</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/connect/" title="connect">connect</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/19/leetcode/91.Decode%20Ways/index/" title="91.Decode Ways">91.Decode Ways</a></span>
   </li>
 
       
@@ -757,7 +771,7 @@ v-repeat: 和 v-if 类似，_init () 中把 on 指令相关函数放在了 direc
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2018/05/25/vue/4/" title="Vue源码阅读笔记（4）(compile)">Vue源码阅读笔记（4）(compile)</a></span>
+    <span><a href="/my-notes/2020/09/14/react-redux/Provider/" title="Provider">Provider</a></span>
   </li>
 
   </ul>
@@ -782,13 +796,13 @@ v-repeat: 和 v-if 类似，_init () 中把 on 指令相关函数放在了 direc
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">399k 字</span>
+    <span title="站点总字数">402k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:03</span>
+    <span title="站点阅读时长">6:06</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
