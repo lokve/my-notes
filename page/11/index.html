@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?795926"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?676115"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?18953"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?253493"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?136659"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?637092"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?585070"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?564516"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?606712"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?210282"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?644944"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?566279"></li>
         </ul>
       </div>
     </header>
@@ -119,16 +119,188 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2017/05/09/bue/1/" itemprop="url" title="Bue源码阅读笔记（1）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?564045"></a>
+    <a href="/my-notes/2018/01/22/vue/1/" itemprop="url" title="Vue源码阅读笔记（1）(从入口文件开始)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?796222"></a>
   </div>
   <div class="info">
     
 <div class="meta">
-  <span class="item" title="创建时间：2017-05-09 15:30:00">
+  <span class="item" title="创建时间：2018-01-22 14:30:00">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
-    <time itemprop="dateCreated datePublished" datetime="2017-05-09T15:30:00+08:00">2017-05-09</time>
+    <time itemprop="dateCreated datePublished" datetime="2018-01-22T14:30:00+08:00">2018-01-22</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>2.2k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>2 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2018/01/22/vue/1/" itemprop="url" title="Vue源码阅读笔记（1）(从入口文件开始)">Vue源码阅读笔记（1）(从入口文件开始)</a></h3>
+    <div class="excerpt">
+        // 这是 vue 2.2.6 的源码阅读笔记
+参考了的文章
+以文章提供的思路自己过一遍代码
+# 先过一遍流程（文件加载顺序）
+按 npm run dev 的命令找来，文件执行顺序应该是
+1234/src/entries/web-runtime-with-compiler.js // $mount二次加工--&amp;gt; /src/entries/web-runtime.js // 定义了Vue.config的一些方法、$mount、__patch__--&amp;gt; /src/core/index.js--&amp;gt; /src/core/instance/index.js
+#...
+    </div>
+    <a href="/my-notes/2018/01/22/vue/1/" itemprop="url" title="Vue源码阅读笔记（1）(从入口文件开始)" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2018/01/22/vue/readme/" itemprop="url" title="说明"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?442368"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2018-01-22 14:30:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2018-01-22T14:30:00+08:00">2018-01-22</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>52</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2018/01/22/vue/readme/" itemprop="url" title="说明">说明</a></h3>
+    <div class="excerpt">
+        vue2.2.6 的源码阅读笔记
+利用官方 vue 项目，配合 debugger 和 npm dev 命令，学习 vue 源码
+    </div>
+    <a href="/my-notes/2018/01/22/vue/readme/" itemprop="url" title="说明" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2017/06/28/%E9%9A%8F%E8%AE%B0/2/" itemprop="url" title="一些笔记"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?527097"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2017-06-28 15:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2017-06-28T15:00:00+08:00">2017-06-28</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>243</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2017/06/28/%E9%9A%8F%E8%AE%B0/2/" itemprop="url" title="一些笔记">一些笔记</a></h3>
+    <div class="excerpt">
+        # 一些项目经验
+
+vue 用 cdn, 就不需要给其子组件 (vuex, vue-router 等) 使用 Vue.use
+toString.apply 可以用于区分数据类型
+
+12toString.apply([]) // &amp;#x27;[object Array]&amp;#x27;toString.apply(/aa/) // &amp;quot;[object RegExp]&amp;quot;
+
+关于 scroll 进度条隐藏的小技巧
+
+123width: ? // 父级宽度 + 20overflow-y: scroll;padding-right: 20px;
+    </div>
+    <a href="/my-notes/2017/06/28/%E9%9A%8F%E8%AE%B0/2/" itemprop="url" title="一些笔记" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2017/06/02/%E9%9A%8F%E8%AE%B0/1/" itemprop="url" title="一些笔记"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?510422"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2017-06-02 11:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2017-06-02T11:00:00+08:00">2017-06-02</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>2.9k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>3 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2017/06/02/%E9%9A%8F%E8%AE%B0/1/" itemprop="url" title="一些笔记">一些笔记</a></h3>
+    <div class="excerpt">
+        # 《你不知道的 javascript》(中) 笔记
+
+undefined 和 undeclared 是两码事
+通过 typeof 来检查变量是否存在，还能够适应不同环境 (不局限于浏览器)
+数字用指数格式显示用 toExponential () 方法
+
+1234567var a = 5E10;a; /* 50000000000 */a.toExponential(); /* &amp;quot;5e+10&amp;quot; */var b = a * a;b; /* 2.5e+21 */var c = 1 / a;c; /* 2e-11 */
+
+toPrecision (…)...
+    </div>
+    <a href="/my-notes/2017/06/02/%E9%9A%8F%E8%AE%B0/1/" itemprop="url" title="一些笔记" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2017/05/25/bue/6/" itemprop="url" title="Bue源码阅读笔记（6）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?735495"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2017-05-25 09:50:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2017-05-25T09:50:00+08:00">2017-05-25</time>
   </span>
   <span class="item" title="本文字数">
     <span class="icon">
@@ -145,16 +317,238 @@
   </span>
 </div>
 
-    <h3><a href="/my-notes/2017/05/09/bue/1/" itemprop="url" title="Bue源码阅读笔记（1）">Bue源码阅读笔记（1）</a></h3>
+    <h3><a href="/my-notes/2017/05/25/bue/6/" itemprop="url" title="Bue源码阅读笔记（6）">Bue源码阅读笔记（6）</a></h3>
     <div class="excerpt">
-        最简单的数据绑定 对应版本
-# 代码执行顺序
-1234567_init() --&amp;gt; $mount() --&amp;gt; _compile() --&amp;gt; _compileNode() --&amp;gt;检查html节点 &amp;#123; nodeType == 1 (元素节点) : 遍历子节点，再次检查html节点, nodeType == 3 (文本节点) : 用正则匹配&amp;#123;&amp;#123;&amp;#125;&amp;#125;，并替换成数据&amp;#125;
-# 不熟悉知识点总结
+        当前版本
+# 进展
 
-1 Array.from: 把其他数据类型转为...
+v-on 实现
+完成动态 v-if 指令
+
+# 代码执行补充
+v-on: 和 v-if 类似，_init () 中把 on 指令相关函数放在了 directives 里面 --&amp;gt; 使用 on 相关指令绑定事件
+v-repeat: 和 v-if 类似，_init () 中把 on 指令相关函数放在了 directives 里面 --&amp;gt; 使用 repeat 相关指令绑定事件
+5.30 补充
+这里需要详细的了解一下 repeat 指令里面的流程
+
+首先执行 bind (), 给 repeat 指定了唯一的 uid, 并创建 repeat...
     </div>
-    <a href="/my-notes/2017/05/09/bue/1/" itemprop="url" title="Bue源码阅读笔记（1）" class="btn">more...</a>
+    <a href="/my-notes/2017/05/25/bue/6/" itemprop="url" title="Bue源码阅读笔记（6）" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2017/05/25/bue/readme/" itemprop="url" title="说明"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?543504"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2017-05-25 09:50:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2017-05-25T09:50:00+08:00">2017-05-25</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>50</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2017/05/25/bue/readme/" itemprop="url" title="说明">说明</a></h3>
+    <div class="excerpt">
+        百度 ife 任务里根据 vue 早期版本的源码研究而实现的简单 vue 项目 —Bue
+这里是我对 bue 的学习笔记
+    </div>
+    <a href="/my-notes/2017/05/25/bue/readme/" itemprop="url" title="说明" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2017/05/23/bue/5/" itemprop="url" title="Bue源码阅读笔记（5）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?879964"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2017-05-23 10:30:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2017-05-23T10:30:00+08:00">2017-05-23</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>653</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2017/05/23/bue/5/" itemprop="url" title="Bue源码阅读笔记（5）">Bue源码阅读笔记（5）</a></h3>
+    <div class="excerpt">
+        当前版本
+# 进展
+完成动态 v-if 指令
+# 代码执行补充
+当代码执行到 dom 渲染前，这个时候会进行 attribute 检查，如果存在自定义 attr (b-if), 直接走指令绑定_bindDirective --&amp;gt; new Directive () --&amp;gt; _initDef (), 这里不同指令对应的更新 update 函数不同，所以需要分类处理
+12let def = this.vm.$options.directives[this.name]; _.extend(this, def);
+–&amp;gt; _bind () --&amp;gt;...
+    </div>
+    <a href="/my-notes/2017/05/23/bue/5/" itemprop="url" title="Bue源码阅读笔记（5）" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2017/05/18/bue/4/" itemprop="url" title="Bue源码阅读笔记（4）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?528424"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2017-05-18 11:22:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2017-05-18T11:22:00+08:00">2017-05-18</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>964</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2017/05/18/bue/4/" itemprop="url" title="Bue源码阅读笔记（4）">Bue源码阅读笔记（4）</a></h3>
+    <div class="excerpt">
+        当前版本
+# 进展
+
+✅ 监听对象变化
+✅ 监听数组变化
+✅ watch 库
+✅ 动态数据绑定
+✅ 批处理更新 DOM
+✅ 计算属性 computed
+
+# 代码执行补充
+1234567891011批处理更新DOM : new Batcher() --&amp;gt; 在Watcher.update的时候Batcher.push()将事件添加到队列中, 利用setTimeout执行机制，在里面执行flush --&amp;gt; flush()内执行并清空队列计算属性computed(静态 -&amp;gt; 动态) : &amp;#123; 静态...
+    </div>
+    <a href="/my-notes/2017/05/18/bue/4/" itemprop="url" title="Bue源码阅读笔记（4）" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2017/05/16/bue/3/" itemprop="url" title="Bue源码阅读笔记（3）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?414278"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2017-05-16 10:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2017-05-16T10:00:00+08:00">2017-05-16</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>446</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2017/05/16/bue/3/" itemprop="url" title="Bue源码阅读笔记（3）">Bue源码阅读笔记（3）</a></h3>
+    <div class="excerpt">
+        当前版本
+# 相比之前 ： 分离 directive 和 watch 的 update 操作
+# 代码执行顺序
+12345678910111213141516_initData() 数据初始化 同 2 --&amp;gt;_initBindings() 创建一个Binding,在observer上订阅set监听函数 --&amp;gt;$mount() --&amp;gt; compile() --&amp;gt; 初始化节点并渲染dom,若是node节点,遍历子元素;若是文本节点，绑定directive，watcher(函数绕来绕去的感觉好乱，只能大致理解意思)&amp;#123;...
+    </div>
+    <a href="/my-notes/2017/05/16/bue/3/" itemprop="url" title="Bue源码阅读笔记（3）" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2017/05/09/bue/2/" itemprop="url" title="Bue源码阅读笔记（2）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?174107"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2017-05-09 16:10:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2017-05-09T16:10:00+08:00">2017-05-09</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>977</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2017/05/09/bue/2/" itemprop="url" title="Bue源码阅读笔记（2）">Bue源码阅读笔记（2）</a></h3>
+    <div class="excerpt">
+        对应版本
+
+✅ 监听对象变化
+✅ 监听数组变化
+✅ watch 库
+✅ 动态数据绑定
+❎ 不支持多层对象操作
+
+# 代码执行顺序
+123456789101112this._init() --&amp;gt; 创建观察对象Observer.create() --&amp;gt; 判断数据类型(数组或对象) --&amp;gt;&amp;#123; 数组：重写Bue数组的方法，遍历子元素 -----------------↑ 对象：重定义对象属性(添加了消息触发函数)，遍历子元素----↑&amp;#125;...
+    </div>
+    <a href="/my-notes/2017/05/09/bue/2/" itemprop="url" title="Bue源码阅读笔记（2）" class="btn">more...</a>
   </div>
 </article>
 
@@ -165,7 +559,7 @@
   
   <nav class="pagination">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/my-notes/page/10/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/my-notes/">1</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/10/">10</a><span class="page-number current">11</span>
+    <a class="extend prev" rel="prev" href="/my-notes/page/10/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/my-notes/">1</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/my-notes/page/12/">12</a><a class="extend next" rel="next" href="/my-notes/page/12/"><i class="ic i-angle-right" aria-label="下一页"></i></a>
     </div>
   </nav>
 
@@ -193,19 +587,19 @@
 <nav class="state">
     <div class="item posts">
       <a href="/my-notes/archives/">
-        <span class="count">101</span>
+        <span class="count">111</span>
         <span class="name">文章</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/my-notes/categories/">
-        <span class="count">6</span>
+        <span class="count">7</span>
         <span class="name">分类</span>
       </a>
     </div>
     <div class="item tags">
       <a href="/my-notes/tags/">
-        <span class="count">15</span>
+        <span class="count">16</span>
         <span class="name">标签</span>
       </a>
     </div>
@@ -262,6 +656,7 @@
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
+        <a href="/my-notes/page/12/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -282,20 +677,18 @@
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
 </div>
 
-    <span><a href="/my-notes/2024/01/08/leetcode/31.Next%20Permutation/index/" title="31.Next Permutation">31.Next Permutation</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/21.Ajax%E4%B8%8EComet/" title="Ajax与Comet">Ajax与Comet</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
-    <span><a href="/my-notes/2020/09/09/react/reconcileChildFibers/" title="reconcileChildFibers">reconcileChildFibers</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" title="基本概念">基本概念</a></span>
   </li>
 
       
@@ -304,12 +697,10 @@
 <div class="breadcrumb">
 <a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
 <i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
-<i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E4%B9%B0%E8%82%A1%E7%A5%A8/" title="分类于 买股票">买股票</a>
+<a href="/my-notes/categories/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/" title="分类于 二分法">二分法</a>
 </div>
 
-    <span><a href="/my-notes/2024/02/02/leetcode/123.Best%20Time%20to%20Buy%20and%20Sell%20Stock%20III/index/" title="123.Best Time to Buy and Sell Stock III">123.Best Time to Buy and Sell Stock III</a></span>
+    <span><a href="/my-notes/2024/02/23/leetcode/744.Find%20Smallest%20Letter%20Greater%20Than%20Target/index/" title="744.Find Smallest Letter Greater Than Target">744.Find Smallest Letter Greater Than Target</a></span>
   </li>
 
       
@@ -318,7 +709,7 @@
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2018/01/23/vue/2/" title="Vue源码阅读笔记（2）(Vue的生命周期)">Vue源码阅读笔记（2）(Vue的生命周期)</a></span>
+    <span><a href="/my-notes/2020/09/14/react-redux/connect/" title="connect">connect</a></span>
   </li>
 
       
@@ -337,9 +728,24 @@
   <li class="item">
     
 <div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/" title="分类于 二分法">二分法</a>
 </div>
 
-    <span><a href="/my-notes/2018/06/07/vue/v-for/" title="Vue源码阅读笔记 (v-for)">Vue源码阅读笔记 (v-for)</a></span>
+    <span><a href="/my-notes/2024/02/23/leetcode/278.First%20Bad%20Version/index/" title="278.First Bad Version">278.First Bad Version</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
+</div>
+
+    <span><a href="/my-notes/2024/02/20/leetcode/650.2%20Keys%20Keyboard/index/" title="650.2 Keys Keyboard">650.2 Keys Keyboard</a></span>
   </li>
 
       
@@ -348,7 +754,7 @@
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2020/09/14/react-redux/selectorFactory/" title="selectorFactory">selectorFactory</a></span>
+    <span><a href="/my-notes/2020/09/14/react-redux/bindActionCreators/" title="bindActionCreators">bindActionCreators</a></span>
   </li>
 
       
@@ -357,7 +763,7 @@
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2018/01/22/vue/1/" title="Vue源码阅读笔记（1）(从入口文件开始)">Vue源码阅读笔记（1）(从入口文件开始)</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/7.%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="函数表达式">函数表达式</a></span>
   </li>
 
       
@@ -366,16 +772,7 @@
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2018/01/22/vue/readme/" title="说明">说明</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/8.BOM/" title="BOM">BOM</a></span>
+    <span><a href="/my-notes/2017/05/18/bue/4/" title="Bue源码阅读笔记（4）">Bue源码阅读笔记（4）</a></span>
   </li>
 
   </ul>
@@ -400,13 +797,13 @@
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">402k 字</span>
+    <span title="站点总字数">410k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:06</span>
+    <span title="站点阅读时长">6:13</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
