@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?386737"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?443376"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?62356"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?603730"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?751597"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?16578"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?810491"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?108916"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?5614"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?784922"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?207308"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?240362"></li>
         </ul>
       </div>
     </header>
@@ -119,7 +119,227 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2020/09/14/react-redux/connect/" itemprop="url" title="connect"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?277719"></a>
+    <a href="/my-notes/2024/01/08/leetcode/32.Longest%20Valid%20Parentheses/index/" itemprop="url" title="32.Longest Valid Parentheses"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?408267"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-01-08 16:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-01-08T16:00:00+08:00">2024-01-08</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>735</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/01/08/leetcode/32.Longest%20Valid%20Parentheses/index/" itemprop="url" title="32.Longest Valid Parentheses">32.Longest Valid Parentheses</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案
+遍历字符串，记住左括号的序号，如果有右括号，给这两个括号的位置标记 1，然后去到这个左括号，
+这样所有能互相匹配的括号都标记了 1，最后就数最长的连续 1 是多少了
+123456789101112131415161718192021222324252627282930313233343536373839/** * @param &amp;#123;string&amp;#125; s * @return &amp;#123;number&amp;#125; */var longestValidParentheses = function(s) &amp;#123;...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/" itemprop="url" title="leetcode"><i class="ic i-flag"></i>leetcode</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/01/08/leetcode/32.Longest%20Valid%20Parentheses/index/" itemprop="url" title="32.Longest Valid Parentheses" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/01/07/leetcode/241.Different%20Ways%20to%20Add%20Parentheses/index/" itemprop="url" title="241.Different Ways to Add Parentheses"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?885457"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-01-07 16:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-01-07T16:00:00+08:00">2024-01-07</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>2.7k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>2 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/01/07/leetcode/241.Different%20Ways%20to%20Add%20Parentheses/index/" itemprop="url" title="241.Different Ways to Add Parentheses">241.Different Ways to Add Parentheses</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案 1
+按照题目思路，先遍历出搜索算式，再挨个计算算式结果
+分两步走，性能太差了
+
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283/** * @param &amp;#123;string&amp;#125; expression * @return...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/" itemprop="url" title="分治算法"><i class="ic i-flag"></i>分治算法</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/01/07/leetcode/241.Different%20Ways%20to%20Add%20Parentheses/index/" itemprop="url" title="241.Different Ways to Add Parentheses" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/01/07/leetcode/6.Zigzag%20Conversion/index/" itemprop="url" title="6.Zigzag Conversion"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?835570"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-01-07 16:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-01-07T16:00:00+08:00">2024-01-07</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>512</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/01/07/leetcode/6.Zigzag%20Conversion/index/" itemprop="url" title="6.Zigzag Conversion">6.Zigzag Conversion</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案 1
+以两列为一组，塞数字到矩阵
+
+1234567891011121314151617181920/** * @param &amp;#123;string&amp;#125; s * @param &amp;#123;number&amp;#125; numRows * @return &amp;#123;string&amp;#125; */var convert = function(s, numRows) &amp;#123; const arr = Array.from(&amp;#123;length: numRows&amp;#125;).map(()...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/" itemprop="url" title="leetcode"><i class="ic i-flag"></i>leetcode</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/01/07/leetcode/6.Zigzag%20Conversion/index/" itemprop="url" title="6.Zigzag Conversion" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2020/09/14/react-redux/Subscription/" itemprop="url" title="selectorFactory"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?593935"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2020-09-14 14:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2020-09-14T14:00:00+08:00">2020-09-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>2.8k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>3 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2020/09/14/react-redux/Subscription/" itemprop="url" title="selectorFactory">selectorFactory</a></h3>
+    <div class="excerpt">
+        redux 订阅管理
+redux 默认 batch 来源
+12export &amp;#123;unstable_batchedUpdates&amp;#125; from &amp;#x27;react-dom&amp;#x27;;setBatch(unstable_batchedUpdates);
+batchedUpdates, 涉及到 react 跟新机制，在执行 listeners 后，执行同步队列，统一跟新
+12345678910111213export function batchedUpdates&amp;lt;A, R&amp;gt;(fn: (A) =&amp;gt; R,...
+    </div>
+    <a href="/my-notes/2020/09/14/react-redux/Subscription/" itemprop="url" title="selectorFactory" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2020/09/14/react-redux/bindActionCreators/" itemprop="url" title="bindActionCreators"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?949220"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2020-09-14 14:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2020-09-14T14:00:00+08:00">2020-09-14</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>2k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>2 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2020/09/14/react-redux/bindActionCreators/" itemprop="url" title="bindActionCreators">bindActionCreators</a></h3>
+    <div class="excerpt">
+        1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253// 本质 dispatch(&amp;#123;type: &amp;#x27;ADD&amp;#x27;, value: &amp;#x27;...&amp;#x27;&amp;#125;)function bindActionCreator(actionCreator, dispatch) &amp;#123; return function () &amp;#123; return...
+    </div>
+    <a href="/my-notes/2020/09/14/react-redux/bindActionCreators/" itemprop="url" title="bindActionCreators" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2020/09/14/react-redux/connect/" itemprop="url" title="connect"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?33469"></a>
   </div>
   <div class="info">
     
@@ -156,7 +376,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2020/09/14/react-redux/connectAdvanced/" itemprop="url" title="connectAdvanced"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?929828"></a>
+    <a href="/my-notes/2020/09/14/react-redux/connectAdvanced/" itemprop="url" title="connectAdvanced"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?550901"></a>
   </div>
   <div class="info">
     
@@ -193,7 +413,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2020/09/14/react-redux/createStore/" itemprop="url" title="createStore"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?207985"></a>
+    <a href="/my-notes/2020/09/14/react-redux/createStore/" itemprop="url" title="createStore"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?547866"></a>
   </div>
   <div class="info">
     
@@ -230,7 +450,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2020/09/14/react-redux/selectorFactory/" itemprop="url" title="selectorFactory"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?732670"></a>
+    <a href="/my-notes/2020/09/14/react-redux/selectorFactory/" itemprop="url" title="selectorFactory"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?395928"></a>
   </div>
   <div class="info">
     
@@ -267,7 +487,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2020/09/14/react-redux/Provider/" itemprop="url" title="Provider"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?397287"></a>
+    <a href="/my-notes/2020/09/14/react-redux/Provider/" itemprop="url" title="Provider"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?904622"></a>
   </div>
   <div class="info">
     
@@ -300,222 +520,6 @@ Provider 接收 3 个参数，context 也可以自定义
 12345678910111213141516171819202122232425262728293031function Provider(&amp;#123;store, context, children&amp;#125;) &amp;#123; const contextValue = useMemo(() =&amp;gt; &amp;#123; const subscription = new Subscription(store); // 初始化订阅...
     </div>
     <a href="/my-notes/2020/09/14/react-redux/Provider/" itemprop="url" title="Provider" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2020/09/14/react-redux/%E5%BC%80%E5%A7%8B/" itemprop="url" title="流程"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?216611"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2020-09-14 10:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2020-09-14T10:00:00+08:00">2020-09-14</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>896</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2020/09/14/react-redux/%E5%BC%80%E5%A7%8B/" itemprop="url" title="流程">流程</a></h3>
-    <div class="excerpt">
-        # 初始化
-从 createStore 开始
-见 createStore.md , 返回了一个对象
-1234567return &amp;#123; dispatch, subscribe, getState, replaceReducer, [$$observable]: observable,&amp;#125;;
-使用 Provider 传递 store
-123&amp;lt;Provider store=&amp;#123;store&amp;#125;&amp;gt; &amp;lt;App /&amp;gt;&amp;lt;/Provider&amp;gt;
-看...
-    </div>
-    <a href="/my-notes/2020/09/14/react-redux/%E5%BC%80%E5%A7%8B/" itemprop="url" title="流程" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2020/09/11/react/context/" itemprop="url" title="completeWork"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?418705"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2020-09-11 11:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2020-09-11T11:00:00+08:00">2020-09-11</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>10k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>9 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2020/09/11/react/context/" itemprop="url" title="completeWork">completeWork</a></h3>
-    <div class="excerpt">
-        # 创建
-# createContext
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051export function createContext&amp;lt;T&amp;gt;( defaultValue: T, calculateChangedBits: ?(a: T, b: T) =&amp;gt; number,): ReactContext&amp;lt;T&amp;gt; &amp;#123; if (calculateChangedBits...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/react/" itemprop="url" title="react"><i class="ic i-flag"></i>react</a>
-      </span>
-    </div>
-    <a href="/my-notes/2020/09/11/react/context/" itemprop="url" title="completeWork" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2020/09/10/react/createElement(dom)/" itemprop="url" title="createElement(dom)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?711966"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2020-09-10 14:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2020-09-10T14:00:00+08:00">2020-09-10</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>2.5k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>2 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2020/09/10/react/createElement(dom)/" itemprop="url" title="createElement(dom)">createElement(dom)</a></h3>
-    <div class="excerpt">
-        # createElement
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566export function createElement( type: string, props: Object, rootContainerElement: Element | Document, parentNamespace: string,): Element &amp;#123; let...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/react/" itemprop="url" title="react"><i class="ic i-flag"></i>react</a>
-      </span>
-    </div>
-    <a href="/my-notes/2020/09/10/react/createElement(dom)/" itemprop="url" title="createElement(dom)" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2020/09/10/react/createElement(react%20element)/" itemprop="url" title="createElement(react element)"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?525056"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2020-09-10 14:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2020-09-10T14:00:00+08:00">2020-09-10</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>3.2k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>3 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2020/09/10/react/createElement(react%20element)/" itemprop="url" title="createElement(react element)">createElement(react element)</a></h3>
-    <div class="excerpt">
-        # createElement
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374/** * Create and return a new ReactElement of the given type. * See https://reactjs.org/docs/react-api.html#createelement * type: 标签类型，如div,p等 *...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/react/" itemprop="url" title="react"><i class="ic i-flag"></i>react</a>
-      </span>
-    </div>
-    <a href="/my-notes/2020/09/10/react/createElement(react%20element)/" itemprop="url" title="createElement(react element)" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2020/09/10/react/schedule/" itemprop="url" title="reconcileChildFibers"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?608345"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2020-09-10 14:00:00">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2020-09-10T14:00:00+08:00">2020-09-10</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>15k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>13 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2020/09/10/react/schedule/" itemprop="url" title="reconcileChildFibers">reconcileChildFibers</a></h3>
-    <div class="excerpt">
-        # scheduleWork
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768export function scheduleUpdateOnFiber(fiber: Fiber, expirationTime: ExpirationTime) &amp;#123; checkForNestedUpdates(); // 判断是否超出更新限制 50条，否则报错 //...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/react/" itemprop="url" title="react"><i class="ic i-flag"></i>react</a>
-      </span>
-    </div>
-    <a href="/my-notes/2020/09/10/react/schedule/" itemprop="url" title="reconcileChildFibers" class="btn">more...</a>
   </div>
 </article>
 
@@ -554,19 +558,19 @@ Provider 接收 3 个参数，context 也可以自定义
 <nav class="state">
     <div class="item posts">
       <a href="/my-notes/archives/">
-        <span class="count">111</span>
+        <span class="count">116</span>
         <span class="name">文章</span>
       </a>
     </div>
     <div class="item categories">
       <a href="/my-notes/categories/">
-        <span class="count">7</span>
+        <span class="count">9</span>
         <span class="name">分类</span>
       </a>
     </div>
     <div class="item tags">
       <a href="/my-notes/tags/">
-        <span class="count">16</span>
+        <span class="count">18</span>
         <span class="name">标签</span>
       </a>
     </div>
@@ -644,12 +648,10 @@ Provider 接收 3 个参数，context 也可以自定义
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-<i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="分类于 贪心算法">贪心算法</a>
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
-    <span><a href="/my-notes/2024/02/21/leetcode/406.Queue%20Reconstruction%20by%20Height/index/" title="406.Queue Reconstruction by Height">406.Queue Reconstruction by Height</a></span>
+    <span><a href="/my-notes/2020/09/10/react/createElement(dom)/" title="createElement(dom)">createElement(dom)</a></span>
   </li>
 
       
@@ -658,7 +660,61 @@ Provider 接收 3 个参数，context 也可以自定义
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2018/05/25/vue/4/" title="Vue源码阅读笔记（4）(compile)">Vue源码阅读笔记（4）(compile)</a></span>
+    <span><a href="/my-notes/2020/09/14/react-redux/%E5%BC%80%E5%A7%8B/" title="流程">流程</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/30/leetcode/377.Combination%20Sum%20IV/index/" title="377.Combination Sum IV">377.Combination Sum IV</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/15.Canvas/" title="Canvas">Canvas</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/createStore/" title="createStore">createStore</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/19/leetcode/91.Decode%20Ways/index/" title="91.Decode Ways">91.Decode Ways</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/23/leetcode/376.Wiggle%20Subsequence/index/" title="376.Wiggle Subsequence">376.Wiggle Subsequence</a></span>
   </li>
 
       
@@ -677,25 +733,7 @@ Provider 接收 3 个参数，context 也可以自定义
 <a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
 </div>
 
-    <span><a href="/my-notes/2024/01/11/leetcode/303.Range%20Sum%20Query%20-%20Immutable/index/" title="303.Range Sum Query - Immutable">303.Range Sum Query - Immutable</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/" title="DOM扩展">DOM扩展</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2017/05/23/bue/5/" title="Bue源码阅读笔记（5）">Bue源码阅读笔记（5）</a></span>
+    <span><a href="/my-notes/2024/01/08/leetcode/29.Divide%20Two%20Integers/index/" title="29.Divide Two Integers">29.Divide Two Integers</a></span>
   </li>
 
       
@@ -704,40 +742,10 @@ Provider 接收 3 个参数，context 也可以自定义
 <div class="breadcrumb">
 <a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
 <i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
+<a href="/my-notes/categories/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/" title="分类于 二分法">二分法</a>
 </div>
 
-    <span><a href="/my-notes/2024/01/16/leetcode/279.Perfect%20Squares/index/" title="279.Perfect Squares">279.Perfect Squares</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2020/09/14/react-redux/Provider/" title="Provider">Provider</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-<i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="分类于 贪心算法">贪心算法</a>
-</div>
-
-    <span><a href="/my-notes/2024/02/20/leetcode/455.Assign%20Cookies/index/" title="455.Assign Cookies">455.Assign Cookies</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2017/05/16/bue/3/" title="Bue源码阅读笔记（3）">Bue源码阅读笔记（3）</a></span>
+    <span><a href="/my-notes/2024/02/23/leetcode/540.Single%20Element%20in%20a%20Sorted%20Array/index/" title="69.Sqrt(x)">69.Sqrt(x)</a></span>
   </li>
 
   </ul>
@@ -762,13 +770,13 @@ Provider 接收 3 个参数，context 也可以自定义
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">410k 字</span>
+    <span title="站点总字数">420k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:13</span>
+    <span title="站点阅读时长">6:21</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

@@ -5,21 +5,23 @@
     <link href="http://example.com" />
     <updated>2019-06-13T16:00:00.000Z</updated>
     <category term="Bue笔记" />
-    <category term="react源码解析" />
-    <category term="react-redux" />
-    <category term="Vue笔记" />
     <category term="算法基础" />
+    <category term="react-redux" />
     <category term="随记" />
-    <category term="javascript高级笔记" />
+    <category term="Vue笔记" />
+    <category term="react源码解析" />
     <category term="leetcode" />
     <category term="动态规划" />
     <category term="买股票" />
+    <category term="javascript高级笔记" />
+    <category term="二分法" />
+    <category term="BFS" />
     <category term="DP" />
     <category term="完全背包" />
-    <category term="二分法" />
+    <category term="DFS" />
     <category term="分治算法" />
-    <category term="01背包" />
     <category term="贪心算法" />
+    <category term="01背包" />
     <entry>
         <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/</id>
         <title>js简介</title>
@@ -30,81 +32,6 @@
 &lt;li&gt;文档对象模型（DOM）&lt;/li&gt;
 &lt;li&gt;浏览器对象模型（BOM）&lt;/li&gt;
 &lt;/ul&gt;
-</content>
-        <category term="javascript高级笔记" />
-        <updated>2019-06-13T16:00:00.000Z</updated>
-    </entry>
-    <entry>
-        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/</id>
-        <title>DOM</title>
-        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/"/>
-        <content type="html">&lt;h2 id=&#34;节点层次&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#节点层次&#34;&gt;#&lt;/a&gt; 节点层次&lt;/h2&gt;
-&lt;h3 id=&#34;node-类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#node-类型&#34;&gt;#&lt;/a&gt; Node 类型&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;ELEMENT_NODE: 1 // div等&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ATTRBUTE_NODE: 2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;TEXT_NODE: 3 // 文本节点&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;CDATA_SECTION_NODE: 4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ENTITY_REFERENCE_NODE: 5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ENTITY_NODE: 6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;PROCESSING_INSTRUCTION_NODE: 7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;COMMENT_NODE: 8 // 注释节点&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;DOCUMENT_NODE: 9 // document类型&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;DOCUMENT_TYPE_NODE: 10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;DOCUMENT_FRAGMENT_NODE: 11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;NOTATION_NODE: 12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;document-类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#document-类型&#34;&gt;#&lt;/a&gt; document 类型&lt;/h3&gt;
-&lt;p&gt;document 是 HTMLDocument 的一个实例，表示整个 html 页面。document 对象是 window 的一个属性&lt;/p&gt;
-&lt;h3 id=&#34;element-类型-1&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#element-类型-1&#34;&gt;#&lt;/a&gt; element 类型 (1)&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;html 元素&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;包含 &lt;code&gt;id&lt;/code&gt; , &lt;code&gt;title&lt;/code&gt; , &lt;code&gt;lang&lt;/code&gt; , &lt;code&gt;className&lt;/code&gt; , &lt;code&gt;dir&lt;/code&gt; 5 个基本特性，可以直接通过 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2Rpdi54eHg=&#34;&gt;div.xxx&lt;/span&gt; 读取或设置&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var div = document.getElementById(&amp;quot;myDiv&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(div.id)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;div.id = &amp;#x27;id&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;操作特性&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;code&gt;getAttribute()􏴎&lt;/code&gt;   &lt;code&gt;setAttribute()􏲪&lt;/code&gt;   &lt;code&gt;removeAttribute()&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;可以操作 html 自带的和自定义的特性&lt;/p&gt;
-&lt;ol start=&#34;3&#34;&gt;
-&lt;li&gt;attribute 属性&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Element 类型是使用 attribute 属性的唯一一个 DOM 节点类型。&lt;br&gt;
-保存在 NamedNodeMap 中，拥有以下方法&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;getNamedItem (name) 返回 nodeName 属性等于 name 的节点&lt;/li&gt;
-&lt;li&gt;removeNamedItem (name) 删除&lt;/li&gt;
-&lt;li&gt;setNamedItem (node) 向列表中添加节点、以节点的 nodeName 属性为索引&lt;/li&gt;
-&lt;li&gt;item (pos) 返回唯一数字 pos 位置的节点&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;text-类型-3&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#text-类型-3&#34;&gt;#&lt;/a&gt; Text 类型 (3)&lt;/h3&gt;
-&lt;p&gt;可以通过 nodeValue 属性或 data 属性访问 Text 节点中包含的文本&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;appendData (text) text 添加到末尾&lt;/li&gt;
-&lt;li&gt;deleteData (offset, count) 删除 (offset, offset+count) 位置的文本&lt;/li&gt;
-&lt;li&gt;insertData (offset, text) 在 offset 处插入 text&lt;/li&gt;
-&lt;li&gt;replaceData (offset, count, text) 用 text 替换 (offset, offset+count) 位置的文本&lt;/li&gt;
-&lt;li&gt;splitText (offset) 在 offset 处将文本节点拆分为两个&lt;/li&gt;
-&lt;li&gt;substringData (offset, count) 获得 (offset, offset+count) 位置的文本&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol&gt;
-&lt;li&gt;创建文本节点&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;document.createTextNode()&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var element = document.createElement(&amp;quot;div&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.className = &amp;quot;message&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var textNode = document.createTextNode(&amp;quot;Hello world!&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.appendChild(textNode);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;document.body.appendChild(element);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;规范化文本节点&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;code&gt;normalize&lt;/code&gt;&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var element = document.createElement(&amp;quot;div&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.className = &amp;quot;message&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var textNode = document.createTextNode(&amp;quot;Hello world!&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.appendChild(textNode);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var anotherTextNode = document.createTextNode(&amp;quot;Yippee!&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.appendChild(anotherTextNode);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;document.body.appendChild(element);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(element.childNodes.length);    //2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.normalize();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(element.childNodes.length);    //1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(element.firstChild.nodeValue); // &amp;quot;Hello world!Yippee!&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;comment-类型-8&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#comment-类型-8&#34;&gt;#&lt;/a&gt; Comment 类型 (8)&lt;/h3&gt;
-&lt;p&gt;Comment 类型与 Text 类型继承自相同的基类，因此他拥有除 splitText 外的所有字符串操作方法&lt;/p&gt;
-&lt;h3 id=&#34;cdatasection-类型-4&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#cdatasection-类型-4&#34;&gt;#&lt;/a&gt; CDATASection 类型 (4)&lt;/h3&gt;
-&lt;p&gt;CDATASection 类型只针对基于 XML 的文档，表示的是 CDATA 区域，方法与 Comment 类似 (拥有除 splitText 方法)&lt;/p&gt;
-&lt;h3 id=&#34;documenttype-类型-10&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#documenttype-类型-10&#34;&gt;#&lt;/a&gt; DocumentType 类型 (10)&lt;/h3&gt;
-&lt;p&gt;包含于文档的 doctype 有关的所有信息，很少使用。&lt;/p&gt;
-&lt;p&gt;通过 &lt;code&gt;document.doctype&lt;/code&gt;  读取&lt;/p&gt;
-&lt;h3 id=&#34;documentfragment-类型-11&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#documentfragment-类型-11&#34;&gt;#&lt;/a&gt; DocumentFragment 类型 (11)&lt;/h3&gt;
-&lt;p&gt;可以包含和控制节点，但不会像完整的文档那样占用额外的资源，一般当做‘临时仓库’来使用&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var fragment = document.createDocumentFragment();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    var ul = document.getElementById(&amp;quot;myList&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    var li = null;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    for (var i=0; i &amp;lt; 3; i++)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        li = document.createElement(&amp;quot;li&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        li.appendChild(document.createTextNode(&amp;quot;Item &amp;quot; + (i+1)));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        fragment.appendChild(li);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    ul.appendChild(fragment);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;attr-类型-2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#attr-类型-2&#34;&gt;#&lt;/a&gt; Attr 类型 (2)&lt;/h3&gt;
-&lt;p&gt;元素的特性，id、class 等属性&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var attr = document.createAttribute(&amp;quot;align&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;attr.value = &amp;quot;left&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.setAttributeNode(attr);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(element.attributes[&amp;quot;align&amp;quot;].value);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(element.getAttributeNode(&amp;quot;align&amp;quot;).value); //&amp;quot;left&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(element.getAttribute(&amp;quot;align&amp;quot;));           //&amp;quot;left&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;dom-操作技术&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dom-操作技术&#34;&gt;#&lt;/a&gt; DOM 操作技术&lt;/h2&gt;
-&lt;h3 id=&#34;动态插入脚本&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#动态插入脚本&#34;&gt;#&lt;/a&gt; 动态插入脚本&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;function loadScriptString(code)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    var script = document.createElement(&amp;quot;script&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    script.type = &amp;quot;text/javascript&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    try &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        script.appendChild(document.createTextNode(code));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125; catch (ex)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        script.text = code;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    document.body.appendChild(script);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;动态样式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#动态样式&#34;&gt;#&lt;/a&gt; 动态样式&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;function loadStyleString(css)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        var style = document.createElement(&amp;quot;style&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        style.type = &amp;quot;text/css&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    try&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        style.appendChild(document.createTextNode(css));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125; catch (ex)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        style.styleSheet.cssText = css;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    var head = document.getElementsByTagName(&amp;quot;head&amp;quot;)[0];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    head.appendChild(style);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;nodelist&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#nodelist&#34;&gt;#&lt;/a&gt; NodeList&lt;/h3&gt;
-&lt;p&gt;NodeList、NamedNodeMap、HTMLCollection 都是即时的，一直保持最新&lt;/p&gt;
 </content>
         <category term="javascript高级笔记" />
         <updated>2019-06-13T16:00:00.000Z</updated>
@@ -240,10 +167,77 @@
         <updated>2019-06-13T16:00:00.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/</id>
-        <title>事件</title>
-        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/"/>
-        <content type="html"></content>
+        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/</id>
+        <title>DOM</title>
+        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/"/>
+        <content type="html">&lt;h2 id=&#34;节点层次&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#节点层次&#34;&gt;#&lt;/a&gt; 节点层次&lt;/h2&gt;
+&lt;h3 id=&#34;node-类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#node-类型&#34;&gt;#&lt;/a&gt; Node 类型&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;ELEMENT_NODE: 1 // div等&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ATTRBUTE_NODE: 2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;TEXT_NODE: 3 // 文本节点&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;CDATA_SECTION_NODE: 4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ENTITY_REFERENCE_NODE: 5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ENTITY_NODE: 6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;PROCESSING_INSTRUCTION_NODE: 7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;COMMENT_NODE: 8 // 注释节点&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;DOCUMENT_NODE: 9 // document类型&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;DOCUMENT_TYPE_NODE: 10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;DOCUMENT_FRAGMENT_NODE: 11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;NOTATION_NODE: 12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;document-类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#document-类型&#34;&gt;#&lt;/a&gt; document 类型&lt;/h3&gt;
+&lt;p&gt;document 是 HTMLDocument 的一个实例，表示整个 html 页面。document 对象是 window 的一个属性&lt;/p&gt;
+&lt;h3 id=&#34;element-类型-1&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#element-类型-1&#34;&gt;#&lt;/a&gt; element 类型 (1)&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;html 元素&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;包含 &lt;code&gt;id&lt;/code&gt; , &lt;code&gt;title&lt;/code&gt; , &lt;code&gt;lang&lt;/code&gt; , &lt;code&gt;className&lt;/code&gt; , &lt;code&gt;dir&lt;/code&gt; 5 个基本特性，可以直接通过 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2Rpdi54eHg=&#34;&gt;div.xxx&lt;/span&gt; 读取或设置&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var div = document.getElementById(&amp;quot;myDiv&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;console.log(div.id)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;div.id = &amp;#x27;id&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;操作特性&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;getAttribute()􏴎&lt;/code&gt;   &lt;code&gt;setAttribute()􏲪&lt;/code&gt;   &lt;code&gt;removeAttribute()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;可以操作 html 自带的和自定义的特性&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;attribute 属性&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Element 类型是使用 attribute 属性的唯一一个 DOM 节点类型。&lt;br&gt;
+保存在 NamedNodeMap 中，拥有以下方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;getNamedItem (name) 返回 nodeName 属性等于 name 的节点&lt;/li&gt;
+&lt;li&gt;removeNamedItem (name) 删除&lt;/li&gt;
+&lt;li&gt;setNamedItem (node) 向列表中添加节点、以节点的 nodeName 属性为索引&lt;/li&gt;
+&lt;li&gt;item (pos) 返回唯一数字 pos 位置的节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;text-类型-3&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#text-类型-3&#34;&gt;#&lt;/a&gt; Text 类型 (3)&lt;/h3&gt;
+&lt;p&gt;可以通过 nodeValue 属性或 data 属性访问 Text 节点中包含的文本&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;appendData (text) text 添加到末尾&lt;/li&gt;
+&lt;li&gt;deleteData (offset, count) 删除 (offset, offset+count) 位置的文本&lt;/li&gt;
+&lt;li&gt;insertData (offset, text) 在 offset 处插入 text&lt;/li&gt;
+&lt;li&gt;replaceData (offset, count, text) 用 text 替换 (offset, offset+count) 位置的文本&lt;/li&gt;
+&lt;li&gt;splitText (offset) 在 offset 处将文本节点拆分为两个&lt;/li&gt;
+&lt;li&gt;substringData (offset, count) 获得 (offset, offset+count) 位置的文本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;创建文本节点&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;document.createTextNode()&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var element = document.createElement(&amp;quot;div&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.className = &amp;quot;message&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var textNode = document.createTextNode(&amp;quot;Hello world!&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.appendChild(textNode);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;document.body.appendChild(element);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;规范化文本节点&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;normalize&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var element = document.createElement(&amp;quot;div&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.className = &amp;quot;message&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var textNode = document.createTextNode(&amp;quot;Hello world!&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.appendChild(textNode);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var anotherTextNode = document.createTextNode(&amp;quot;Yippee!&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.appendChild(anotherTextNode);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;document.body.appendChild(element);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(element.childNodes.length);    //2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.normalize();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(element.childNodes.length);    //1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(element.firstChild.nodeValue); // &amp;quot;Hello world!Yippee!&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;comment-类型-8&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#comment-类型-8&#34;&gt;#&lt;/a&gt; Comment 类型 (8)&lt;/h3&gt;
+&lt;p&gt;Comment 类型与 Text 类型继承自相同的基类，因此他拥有除 splitText 外的所有字符串操作方法&lt;/p&gt;
+&lt;h3 id=&#34;cdatasection-类型-4&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#cdatasection-类型-4&#34;&gt;#&lt;/a&gt; CDATASection 类型 (4)&lt;/h3&gt;
+&lt;p&gt;CDATASection 类型只针对基于 XML 的文档，表示的是 CDATA 区域，方法与 Comment 类似 (拥有除 splitText 方法)&lt;/p&gt;
+&lt;h3 id=&#34;documenttype-类型-10&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#documenttype-类型-10&#34;&gt;#&lt;/a&gt; DocumentType 类型 (10)&lt;/h3&gt;
+&lt;p&gt;包含于文档的 doctype 有关的所有信息，很少使用。&lt;/p&gt;
+&lt;p&gt;通过 &lt;code&gt;document.doctype&lt;/code&gt;  读取&lt;/p&gt;
+&lt;h3 id=&#34;documentfragment-类型-11&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#documentfragment-类型-11&#34;&gt;#&lt;/a&gt; DocumentFragment 类型 (11)&lt;/h3&gt;
+&lt;p&gt;可以包含和控制节点，但不会像完整的文档那样占用额外的资源，一般当做‘临时仓库’来使用&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var fragment = document.createDocumentFragment();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    var ul = document.getElementById(&amp;quot;myList&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    var li = null;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    for (var i=0; i &amp;lt; 3; i++)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        li = document.createElement(&amp;quot;li&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        li.appendChild(document.createTextNode(&amp;quot;Item &amp;quot; + (i+1)));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        fragment.appendChild(li);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    ul.appendChild(fragment);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;attr-类型-2&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#attr-类型-2&#34;&gt;#&lt;/a&gt; Attr 类型 (2)&lt;/h3&gt;
+&lt;p&gt;元素的特性，id、class 等属性&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var attr = document.createAttribute(&amp;quot;align&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;attr.value = &amp;quot;left&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.setAttributeNode(attr);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(element.attributes[&amp;quot;align&amp;quot;].value);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(element.getAttributeNode(&amp;quot;align&amp;quot;).value); //&amp;quot;left&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(element.getAttribute(&amp;quot;align&amp;quot;));           //&amp;quot;left&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;dom-操作技术&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dom-操作技术&#34;&gt;#&lt;/a&gt; DOM 操作技术&lt;/h2&gt;
+&lt;h3 id=&#34;动态插入脚本&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#动态插入脚本&#34;&gt;#&lt;/a&gt; 动态插入脚本&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;function loadScriptString(code)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    var script = document.createElement(&amp;quot;script&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    script.type = &amp;quot;text/javascript&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    try &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        script.appendChild(document.createTextNode(code));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125; catch (ex)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        script.text = code;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    document.body.appendChild(script);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;动态样式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#动态样式&#34;&gt;#&lt;/a&gt; 动态样式&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;function loadStyleString(css)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        var style = document.createElement(&amp;quot;style&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        style.type = &amp;quot;text/css&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    try&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        style.appendChild(document.createTextNode(css));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125; catch (ex)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        style.styleSheet.cssText = css;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    var head = document.getElementsByTagName(&amp;quot;head&amp;quot;)[0];&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    head.appendChild(style);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;nodelist&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#nodelist&#34;&gt;#&lt;/a&gt; NodeList&lt;/h3&gt;
+&lt;p&gt;NodeList、NamedNodeMap、HTMLCollection 都是即时的，一直保持最新&lt;/p&gt;
+</content>
         <category term="javascript高级笔记" />
         <updated>2019-06-13T16:00:00.000Z</updated>
     </entry>
@@ -373,15 +367,10 @@ m2_1 m2_2 dy&lt;br&gt;
         <updated>2019-06-13T16:00:00.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/2.%E5%9C%A8html%E4%BD%BF%E7%94%A8js/</id>
-        <title>在html使用js</title>
-        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/2.%E5%9C%A8html%E4%BD%BF%E7%94%A8js/"/>
-        <content type="html">&lt;h3 id=&#34;script&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#script&#34;&gt;#&lt;/a&gt; script&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;async 异步加载，立即执行&lt;/li&gt;
-&lt;li&gt;defer 异步加载，延迟执行（在所有元素解析完成之后，DOMContentLoaded 事件触发之前）&lt;/li&gt;
-&lt;/ul&gt;
-</content>
+        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/</id>
+        <title>事件</title>
+        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/"/>
+        <content type="html"></content>
         <category term="javascript高级笔记" />
         <updated>2019-06-13T16:00:00.000Z</updated>
     </entry>
@@ -492,6 +481,19 @@ wasClean􏱢(是否关闭)、code (状态码)、reason (服务器返回信息)&l
         <updated>2019-06-13T16:00:00.000Z</updated>
     </entry>
     <entry>
+        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/2.%E5%9C%A8html%E4%BD%BF%E7%94%A8js/</id>
+        <title>在html使用js</title>
+        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/2.%E5%9C%A8html%E4%BD%BF%E7%94%A8js/"/>
+        <content type="html">&lt;h3 id=&#34;script&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#script&#34;&gt;#&lt;/a&gt; script&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;async 异步加载，立即执行&lt;/li&gt;
+&lt;li&gt;defer 异步加载，延迟执行（在所有元素解析完成之后，DOMContentLoaded 事件触发之前）&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        <category term="javascript高级笔记" />
+        <updated>2019-06-13T16:00:00.000Z</updated>
+    </entry>
+    <entry>
         <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/</id>
         <title>高级技巧</title>
         <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/22.%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/"/>
@@ -526,36 +528,36 @@ wasClean􏱢(是否关闭)、code (状态码)、reason (服务器返回信息)&l
         <updated>2019-06-13T16:00:00.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/</id>
-        <title>离线应用与客户端储存</title>
-        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/"/>
-        <content type="html">&lt;h2 id=&#34;离线检测&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#离线检测&#34;&gt;#&lt;/a&gt; 离线检测&lt;/h2&gt;
-&lt;p&gt;1、&lt;br&gt;
- &lt;code&gt;navigator.onLine&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;2、&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;EventUtil.addHandler(window, &amp;quot;online&amp;quot;, function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    alert(&amp;quot;Online&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;EventUtil.addHandler(window, &amp;quot;offline&amp;quot;, function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    alert(&amp;quot;Offline&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;应用缓存&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#应用缓存&#34;&gt;#&lt;/a&gt; 应用缓存&lt;/h2&gt;
-&lt;p&gt;/offline.manifest 中包含着描述文件，这个文件的 MIME 类型必须是 text/cache-manifest&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;html manifest=&amp;quot;/offline.manifest&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;数据存储&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据存储&#34;&gt;#&lt;/a&gt; 数据存储&lt;/h2&gt;
-&lt;h3 id=&#34;cookie&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#cookie&#34;&gt;#&lt;/a&gt; Cookie&lt;/h3&gt;
-&lt;h4 id=&#34;限制&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#限制&#34;&gt;#&lt;/a&gt; 限制&lt;/h4&gt;
-&lt;p&gt;每个浏览器的 cookie 数量限制不一样，最少的只有 20 个&lt;br&gt;
-尺寸限制 20k 以内&lt;/p&gt;
-&lt;h4 id=&#34;cookie-的构成&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#cookie-的构成&#34;&gt;#&lt;/a&gt; cookie 的构成&lt;/h4&gt;
+        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</id>
+        <title>基本概念</title>
+        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
+        <content type="html">&lt;h3 id=&#34;数据类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据类型&#34;&gt;#&lt;/a&gt; 􏽃􏽄􏽅􏸀􏽃􏽄􏽅􏸀 数据类型&lt;/h3&gt;
+&lt;p&gt;undefined, null, boolean, string, number, object, symbol(es6)&lt;/p&gt;
+&lt;h3 id=&#34;boolean-转换&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#boolean-转换&#34;&gt;#&lt;/a&gt; boolean 转换&lt;/h3&gt;
+&lt;p&gt;true: 非空字符串、非零数值、任何对象&lt;br&gt;
+ false: ‘’、0|NaN、null、undefined&lt;/p&gt;
+&lt;h3 id=&#34;string&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#string&#34;&gt;#&lt;/a&gt; String()&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;名称&lt;/li&gt;
-&lt;li&gt;值&lt;/li&gt;
-&lt;li&gt;域&lt;/li&gt;
-&lt;li&gt;路径&lt;/li&gt;
-&lt;li&gt;失效时间&lt;/li&gt;
-&lt;li&gt;安全标志&lt;/li&gt;
+&lt;li&gt;调用 toString 方法&lt;/li&gt;
+&lt;li&gt;特定值：null, undedined, NaN -&amp;gt; ‘null’, ‘undefined’, ‘NaN’&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;storage&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#storage&#34;&gt;#&lt;/a&gt; storage&lt;/h3&gt;
-&lt;p&gt;最少的 2.5M&lt;/p&gt;
-&lt;h3 id=&#34;indexeddb&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#indexeddb&#34;&gt;#&lt;/a&gt; IndexedDB&lt;/h3&gt;
-&lt;p&gt;浏览器数据库&lt;br&gt;
- TODO: 用的时候再看&lt;/p&gt;
+&lt;h3 id=&#34;number&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#number&#34;&gt;#&lt;/a&gt; Number()&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;true -&amp;gt; 1, false -&amp;gt; 0&lt;/li&gt;
+&lt;li&gt;null -&amp;gt; 0, undefined -&amp;gt; NaN&lt;/li&gt;
+&lt;li&gt;字符串只有纯数字和进制会被转成 10 进制，’’ -&amp;gt; 0，其他 -&amp;gt; NaN&lt;/li&gt;
+&lt;li&gt;对象 先调用 valueof, 如果是 NaN, 在调用 toString&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;object&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#object&#34;&gt;#&lt;/a&gt; Object&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;constructor 构造函数&lt;/li&gt;
+&lt;li&gt;hasOwnProperty 检测属性是否在对象&lt;/li&gt;
+&lt;li&gt;isPrototypeOf 检查传入的对象是否是原型&lt;/li&gt;
+&lt;li&gt;propertyIsEnumerable 是否能用 for-in 枚举&lt;/li&gt;
+&lt;li&gt;toLocalString 返回对象的字符串表示，结果和执行所在地区有关&lt;/li&gt;
+&lt;li&gt;toString 返回对象的字符串表示&lt;/li&gt;
+&lt;li&gt;valueOf 返回对象字符串、数值或布尔表示，通常与 toString 相同&lt;/li&gt;
+&lt;/ul&gt;
 </content>
         <category term="javascript高级笔记" />
         <updated>2019-06-13T16:00:00.000Z</updated>
@@ -647,41 +649,6 @@ wasClean􏱢(是否关闭)、code (状态码)、reason (服务器返回信息)&l
 &lt;/ul&gt;
 &lt;p&gt;eg: worker 排序&lt;/p&gt;
 &lt;figure class=&#34;highlight js&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// worker内部代码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;self.&lt;span class=&#34;property&#34;&gt;onmessage&lt;/span&gt; = &lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;event&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; data = event.&lt;span class=&#34;property&#34;&gt;data&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    data.&lt;span class=&#34;title function_&#34;&gt;sort&lt;/span&gt;(&lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;a, b&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;       &lt;span class=&#34;keyword&#34;&gt;return&lt;/span&gt; a – b;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    self.&lt;span class=&#34;title function_&#34;&gt;postMessage&lt;/span&gt;(data);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 页面代码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; data = [&lt;span class=&#34;number&#34;&gt;23&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;4&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;7&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;9&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;14&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;6&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;651&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;87&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;41&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;7798&lt;/span&gt;,&lt;span class=&#34;number&#34;&gt;24&lt;/span&gt;],&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    worker = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;title class_&#34;&gt;Worker&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;WebWorkerExample01.js&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;worker.&lt;span class=&#34;property&#34;&gt;onmessage&lt;/span&gt; = &lt;span class=&#34;keyword&#34;&gt;function&lt;/span&gt;(&lt;span class=&#34;params&#34;&gt;event&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt; data = event.&lt;span class=&#34;property&#34;&gt;data&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;comment&#34;&gt;// data是排序后的数组&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;worker.&lt;span class=&#34;title function_&#34;&gt;postMessage&lt;/span&gt;(data);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// worker内部&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;self.&lt;span class=&#34;title function_&#34;&gt;close&lt;/span&gt;(); &lt;span class=&#34;comment&#34;&gt;// 关闭worker&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-</content>
-        <category term="javascript高级笔记" />
-        <updated>2019-06-13T16:00:00.000Z</updated>
-    </entry>
-    <entry>
-        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</id>
-        <title>基本概念</title>
-        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/3.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
-        <content type="html">&lt;h3 id=&#34;数据类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据类型&#34;&gt;#&lt;/a&gt; 􏽃􏽄􏽅􏸀􏽃􏽄􏽅􏸀 数据类型&lt;/h3&gt;
-&lt;p&gt;undefined, null, boolean, string, number, object, symbol(es6)&lt;/p&gt;
-&lt;h3 id=&#34;boolean-转换&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#boolean-转换&#34;&gt;#&lt;/a&gt; boolean 转换&lt;/h3&gt;
-&lt;p&gt;true: 非空字符串、非零数值、任何对象&lt;br&gt;
- false: ‘’、0|NaN、null、undefined&lt;/p&gt;
-&lt;h3 id=&#34;string&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#string&#34;&gt;#&lt;/a&gt; String()&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;调用 toString 方法&lt;/li&gt;
-&lt;li&gt;特定值：null, undedined, NaN -&amp;gt; ‘null’, ‘undefined’, ‘NaN’&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;number&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#number&#34;&gt;#&lt;/a&gt; Number()&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;true -&amp;gt; 1, false -&amp;gt; 0&lt;/li&gt;
-&lt;li&gt;null -&amp;gt; 0, undefined -&amp;gt; NaN&lt;/li&gt;
-&lt;li&gt;字符串只有纯数字和进制会被转成 10 进制，’’ -&amp;gt; 0，其他 -&amp;gt; NaN&lt;/li&gt;
-&lt;li&gt;对象 先调用 valueof, 如果是 NaN, 在调用 toString&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;object&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#object&#34;&gt;#&lt;/a&gt; Object&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;constructor 构造函数&lt;/li&gt;
-&lt;li&gt;hasOwnProperty 检测属性是否在对象&lt;/li&gt;
-&lt;li&gt;isPrototypeOf 检查传入的对象是否是原型&lt;/li&gt;
-&lt;li&gt;propertyIsEnumerable 是否能用 for-in 枚举&lt;/li&gt;
-&lt;li&gt;toLocalString 返回对象的字符串表示，结果和执行所在地区有关&lt;/li&gt;
-&lt;li&gt;toString 返回对象的字符串表示&lt;/li&gt;
-&lt;li&gt;valueOf 返回对象字符串、数值或布尔表示，通常与 toString 相同&lt;/li&gt;
-&lt;/ul&gt;
 </content>
         <category term="javascript高级笔记" />
         <updated>2019-06-13T16:00:00.000Z</updated>
@@ -862,6 +829,41 @@ Person.prototype.constructor === Person&lt;/p&gt;
 &lt;li&gt;filename&lt;/li&gt;
 &lt;li&gt;length 插件所处理的 MIME 类型数量&lt;/li&gt;
 &lt;/ul&gt;
+</content>
+        <category term="javascript高级笔记" />
+        <updated>2019-06-13T16:00:00.000Z</updated>
+    </entry>
+    <entry>
+        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/</id>
+        <title>离线应用与客户端储存</title>
+        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/23.%E7%A6%BB%E7%BA%BF%E5%BA%94%E7%94%A8%E4%B8%8E%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%82%A8%E5%AD%98/"/>
+        <content type="html">&lt;h2 id=&#34;离线检测&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#离线检测&#34;&gt;#&lt;/a&gt; 离线检测&lt;/h2&gt;
+&lt;p&gt;1、&lt;br&gt;
+ &lt;code&gt;navigator.onLine&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;2、&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;EventUtil.addHandler(window, &amp;quot;online&amp;quot;, function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    alert(&amp;quot;Online&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;EventUtil.addHandler(window, &amp;quot;offline&amp;quot;, function()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    alert(&amp;quot;Offline&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;应用缓存&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#应用缓存&#34;&gt;#&lt;/a&gt; 应用缓存&lt;/h2&gt;
+&lt;p&gt;/offline.manifest 中包含着描述文件，这个文件的 MIME 类型必须是 text/cache-manifest&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;html manifest=&amp;quot;/offline.manifest&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;数据存储&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#数据存储&#34;&gt;#&lt;/a&gt; 数据存储&lt;/h2&gt;
+&lt;h3 id=&#34;cookie&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#cookie&#34;&gt;#&lt;/a&gt; Cookie&lt;/h3&gt;
+&lt;h4 id=&#34;限制&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#限制&#34;&gt;#&lt;/a&gt; 限制&lt;/h4&gt;
+&lt;p&gt;每个浏览器的 cookie 数量限制不一样，最少的只有 20 个&lt;br&gt;
+尺寸限制 20k 以内&lt;/p&gt;
+&lt;h4 id=&#34;cookie-的构成&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#cookie-的构成&#34;&gt;#&lt;/a&gt; cookie 的构成&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;名称&lt;/li&gt;
+&lt;li&gt;值&lt;/li&gt;
+&lt;li&gt;域&lt;/li&gt;
+&lt;li&gt;路径&lt;/li&gt;
+&lt;li&gt;失效时间&lt;/li&gt;
+&lt;li&gt;安全标志&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;storage&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#storage&#34;&gt;#&lt;/a&gt; storage&lt;/h3&gt;
+&lt;p&gt;最少的 2.5M&lt;/p&gt;
+&lt;h3 id=&#34;indexeddb&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#indexeddb&#34;&gt;#&lt;/a&gt; IndexedDB&lt;/h3&gt;
+&lt;p&gt;浏览器数据库&lt;br&gt;
+ TODO: 用的时候再看&lt;/p&gt;
 </content>
         <category term="javascript高级笔记" />
         <updated>2019-06-13T16:00:00.000Z</updated>
