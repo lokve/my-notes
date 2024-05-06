@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?587406"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?619618"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?228271"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?965521"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?464704"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?945174"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?935550"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?198233"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?394246"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?511763"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?677515"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?399527"></li>
         </ul>
       </div>
     </header>
@@ -119,7 +119,334 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2024/02/19/leetcode/72.Edit%20Distance/index/" itemprop="url" title="72.Edit Distance"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?732637"></a>
+    <a href="/my-notes/2024/02/22/leetcode/763.Partition%20Labels/index/" itemprop="url" title="763.Partition Labels"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?375982"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-02-22 10:51:41">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-02-22T10:51:41+08:00">2024-02-22</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>1.6k</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/02/22/leetcode/763.Partition%20Labels/index/" itemprop="url" title="763.Partition Labels">763.Partition Labels</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案
+这题完全没有 get 到 (尽可能分组的) 意思，不知道该如何下手，不过基于网友提示，得到下面答案
+思路：先收集每个字符出现的位置间隔，然后排序。判断间隔重叠，则分为一组，否则分为两组
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546/** 提示 * Imo you can entirely approach this as an intervals question. You are merging the intervals of two...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" itemprop="url" title="贪心算法"><i class="ic i-flag"></i>贪心算法</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/02/22/leetcode/763.Partition%20Labels/index/" itemprop="url" title="763.Partition Labels" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/02/21/leetcode/406.Queue%20Reconstruction%20by%20Height/index/" itemprop="url" title="406.Queue Reconstruction by Height"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?158408"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-02-21 15:36:49">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-02-21T15:36:49+08:00">2024-02-21</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>987</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/02/21/leetcode/406.Queue%20Reconstruction%20by%20Height/index/" itemprop="url" title="406.Queue Reconstruction by Height">406.Queue Reconstruction by Height</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案
+先排列 people，然后比较数值和大小插入
+1234567891011121314151617181920212223242526272829303132/** * @param &amp;#123;number[][]&amp;#125; people * @return &amp;#123;number[][]&amp;#125; */var reconstructQueue = function (people) &amp;#123; // people 先按people[n][1]从小到大排序，再按people[n][0]从大到小排序...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" itemprop="url" title="贪心算法"><i class="ic i-flag"></i>贪心算法</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/02/21/leetcode/406.Queue%20Reconstruction%20by%20Height/index/" itemprop="url" title="406.Queue Reconstruction by Height" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/02/20/leetcode/455.Assign%20Cookies/index/" itemprop="url" title="455.Assign Cookies"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?194674"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-02-20 15:34:40">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-02-20T15:34:40+08:00">2024-02-20</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>419</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/02/20/leetcode/455.Assign%20Cookies/index/" itemprop="url" title="455.Assign Cookies">455.Assign Cookies</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案
+先排序，在比较
+12345678910111213141516171819202122232425/** * @param &amp;#123;number[]&amp;#125; g * @param &amp;#123;number[]&amp;#125; s * @return &amp;#123;number&amp;#125; */var findContentChildren = function(g, s) &amp;#123; g.sort((x,y) =&amp;gt; x - y); s.sort((x,y) =&amp;gt; x - y);...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" itemprop="url" title="贪心算法"><i class="ic i-flag"></i>贪心算法</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/02/20/leetcode/455.Assign%20Cookies/index/" itemprop="url" title="455.Assign Cookies" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/02/20/leetcode/452.Minimum%20Number%20of%20Arrows%20to%20Burst%20Balloons/index/" itemprop="url" title="452.Minimum Number of Arrows to Burst Balloons"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?416860"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-02-20 15:32:15">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-02-20T15:32:15+08:00">2024-02-20</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>444</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/02/20/leetcode/452.Minimum%20Number%20of%20Arrows%20to%20Burst%20Balloons/index/" itemprop="url" title="452.Minimum Number of Arrows to Burst Balloons">452.Minimum Number of Arrows to Burst Balloons</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案
+和 435 同理，计算重叠点个数
+123456789101112131415161718192021/** * @param &amp;#123;number[][]&amp;#125; points * @return &amp;#123;number&amp;#125; */var findMinArrowShots = function(points) &amp;#123; if (!points.length) return 0; points.sort((x,y) =&amp;gt; x[1] - y[1]); let num = 1; let min...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" itemprop="url" title="贪心算法"><i class="ic i-flag"></i>贪心算法</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/02/20/leetcode/452.Minimum%20Number%20of%20Arrows%20to%20Burst%20Balloons/index/" itemprop="url" title="452.Minimum Number of Arrows to Burst Balloons" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/02/20/leetcode/435.Non-overlapping%20Intervals/index/" itemprop="url" title="435.Non-overlapping Intervals"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?158784"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-02-20 14:54:54">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-02-20T14:54:54+08:00">2024-02-20</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>425</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/02/20/leetcode/435.Non-overlapping%20Intervals/index/" itemprop="url" title="435.Non-overlapping Intervals">435.Non-overlapping Intervals</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案
+先排序，然后看是否重合，选择的区间结尾越小，留给后面的区间的空间越大，那么后面能够选择的区间个数也就越大
+12345678910111213141516171819/** * @param &amp;#123;number[][]&amp;#125; intervals * @return &amp;#123;number&amp;#125; */var eraseOverlapIntervals = function(intervals) &amp;#123; intervals.sort((x,y) =&amp;gt; x[1] - y[1]); let...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" itemprop="url" title="贪心算法"><i class="ic i-flag"></i>贪心算法</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/02/20/leetcode/435.Non-overlapping%20Intervals/index/" itemprop="url" title="435.Non-overlapping Intervals" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/02/20/leetcode/650.2%20Keys%20Keyboard/index/" itemprop="url" title="650.2 Keys Keyboard"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?673333"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-02-20 11:24:18">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-02-20T11:24:18+08:00">2024-02-20</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>561</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/02/20/leetcode/650.2%20Keys%20Keyboard/index/" itemprop="url" title="650.2 Keys Keyboard">650.2 Keys Keyboard</a></h3>
+    <div class="excerpt">
+        # 题目
+地址
+# 我的答案
+数学规律，结果和约数有关
+1234567891011121314151617181920212223242526/** * 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 * 0, 2, 3, 4, 5, 5, 7, 6, 6, 7 * @param &amp;#123;number&amp;#125; n * @return &amp;#123;number&amp;#125; */var minSteps = function(n) &amp;#123; const dp = Array.from(&amp;#123;length: n +...
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/02/20/leetcode/650.2%20Keys%20Keyboard/index/" itemprop="url" title="650.2 Keys Keyboard" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/02/19/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划总结"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?690914"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2024-02-19 17:17:41">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2024-02-19T17:17:41+08:00">2024-02-19</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>62</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2024/02/19/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划总结">动态规划总结</a></h3>
+    <div class="excerpt">
+        动态规划五部曲
+
+确定 dp 数组（dp table）以及下标的含义
+确定递推公式
+dp 数组如何初始化
+确定遍历顺序
+举例推导 dp 数组
+
+参考文档
+    </div>
+    <div class="meta footer">
+      <span>
+        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
+      </span>
+    </div>
+    <a href="/my-notes/2024/02/19/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划总结" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2024/02/19/leetcode/72.Edit%20Distance/index/" itemprop="url" title="72.Edit Distance"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?633820"></a>
   </div>
   <div class="info">
     
@@ -164,7 +491,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2024/02/18/leetcode/583.Delete%20Operation%20for%20Two%20Strings/index/" itemprop="url" title="583.Delete Operation for Two Strings"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?644885"></a>
+    <a href="/my-notes/2024/02/18/leetcode/583.Delete%20Operation%20for%20Two%20Strings/index/" itemprop="url" title="583.Delete Operation for Two Strings"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?598766"></a>
   </div>
   <div class="info">
     
@@ -210,7 +537,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2024/02/02/leetcode/188.Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV/index/" itemprop="url" title="188.Best Time to Buy and Sell Stock IV"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?877600"></a>
+    <a href="/my-notes/2024/02/02/leetcode/188.Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV/index/" itemprop="url" title="188.Best Time to Buy and Sell Stock IV"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?557064"></a>
   </div>
   <div class="info">
     
@@ -253,325 +580,6 @@
   </div>
 </article>
 
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2024/02/02/leetcode/123.Best%20Time%20to%20Buy%20and%20Sell%20Stock%20III/index/" itemprop="url" title="123.Best Time to Buy and Sell Stock III"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?410793"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2024-02-02 16:43:53">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-02-02T16:43:53+08:00">2024-02-02</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>1.2k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2024/02/02/leetcode/123.Best%20Time%20to%20Buy%20and%20Sell%20Stock%20III/index/" itemprop="url" title="123.Best Time to Buy and Sell Stock III">123.Best Time to Buy and Sell Stock III</a></h3>
-    <div class="excerpt">
-        # 题目
-地址
-# 答案
-通用解法
-1234for 0 &amp;lt;= i &amp;lt;= n: // n is the number of days	for i &amp;lt;= k &amp;lt;= k: // k is the maximum number of transactions		for s in &amp;#123;1,0&amp;#125;: // s is the rest state				dp[i][k][s] =...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E4%B9%B0%E8%82%A1%E7%A5%A8/" itemprop="url" title="买股票"><i class="ic i-flag"></i>买股票</a>
-      </span>
-    </div>
-    <a href="/my-notes/2024/02/02/leetcode/123.Best%20Time%20to%20Buy%20and%20Sell%20Stock%20III/index/" itemprop="url" title="123.Best Time to Buy and Sell Stock III" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2024/02/02/leetcode/%E4%B9%B0%E8%82%A1%E7%A5%A8/" itemprop="url" title="买股票总结"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?741569"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2024-02-02 16:01:23">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-02-02T16:01:23+08:00">2024-02-02</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>4</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2024/02/02/leetcode/%E4%B9%B0%E8%82%A1%E7%A5%A8/" itemprop="url" title="买股票总结">买股票总结</a></h3>
-    <div class="excerpt">
-        参考文章
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E4%B9%B0%E8%82%A1%E7%A5%A8/" itemprop="url" title="买股票"><i class="ic i-flag"></i>买股票</a>
-      </span>
-    </div>
-    <a href="/my-notes/2024/02/02/leetcode/%E4%B9%B0%E8%82%A1%E7%A5%A8/" itemprop="url" title="买股票总结" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2024/02/01/leetcode/122.Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II/index/" itemprop="url" title="122.Best Time to Buy and Sell Stock II"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?103585"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2024-02-01 14:35:10">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-02-01T14:35:10+08:00">2024-02-01</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>993</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2024/02/01/leetcode/122.Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II/index/" itemprop="url" title="122.Best Time to Buy and Sell Stock II">122.Best Time to Buy and Sell Stock II</a></h3>
-    <div class="excerpt">
-        # 题目
-地址
-# 我的答案
-动态规划
-123456789101112/** * @param &amp;#123;number[]&amp;#125; prices * @return &amp;#123;number&amp;#125; */var maxProfit = function (prices) &amp;#123; const dp = Array.from(&amp;#123;length: prices.length + 1&amp;#125;).fill(0); for (let i = 2; i &amp;lt;= prices.length; i++)...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E4%B9%B0%E8%82%A1%E7%A5%A8/" itemprop="url" title="买股票"><i class="ic i-flag"></i>买股票</a>
-      </span>
-    </div>
-    <a href="/my-notes/2024/02/01/leetcode/122.Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II/index/" itemprop="url" title="122.Best Time to Buy and Sell Stock II" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2024/01/31/leetcode/121.Best%20Time%20to%20Buy%20and%20Sell%20Stock/index/" itemprop="url" title="121.Best Time to Buy and Sell Stock"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?671899"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2024-01-31 10:28:56">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-01-31T10:28:56+08:00">2024-01-31</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>1.2k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2024/01/31/leetcode/121.Best%20Time%20to%20Buy%20and%20Sell%20Stock/index/" itemprop="url" title="121.Best Time to Buy and Sell Stock">121.Best Time to Buy and Sell Stock</a></h3>
-    <div class="excerpt">
-        # 题目
-地址
-# 我的答案
-找出所有的结果，取最大的，但是时间不够
-1234567891011121314151617/** * @param &amp;#123;number[]&amp;#125; prices * @return &amp;#123;number&amp;#125; */var maxProfit = function (prices) &amp;#123; let rst = 0; for (let i = 0; i &amp;lt; prices.length; i++) &amp;#123; for (let j = i + 1; j &amp;lt;...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E4%B9%B0%E8%82%A1%E7%A5%A8/" itemprop="url" title="买股票"><i class="ic i-flag"></i>买股票</a>
-      </span>
-    </div>
-    <a href="/my-notes/2024/01/31/leetcode/121.Best%20Time%20to%20Buy%20and%20Sell%20Stock/index/" itemprop="url" title="121.Best Time to Buy and Sell Stock" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2024/01/30/leetcode/377.Combination%20Sum%20IV/index/" itemprop="url" title="377.Combination Sum IV"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?504385"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2024-01-30 14:38:22">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-01-30T14:38:22+08:00">2024-01-30</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>468</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2024/01/30/leetcode/377.Combination%20Sum%20IV/index/" itemprop="url" title="377.Combination Sum IV">377.Combination Sum IV</a></h3>
-    <div class="excerpt">
-        # 题目
-地址
-# 我的答案
-完全背包的遍历顺序会影响结果是排列 (有顺序) 还是组合，当然只算最大 / 小值就无所谓遍历顺序
-参考
-1234567891011121314151617181920/** * @param &amp;#123;number[]&amp;#125; nums * @param &amp;#123;number&amp;#125; target * @return &amp;#123;number&amp;#125; */var combinationSum4 = function(nums, target) &amp;#123; const dp =...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
-      </span>
-    </div>
-    <a href="/my-notes/2024/01/30/leetcode/377.Combination%20Sum%20IV/index/" itemprop="url" title="377.Combination Sum IV" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2024/01/30/leetcode/322.Coin%20Change/index/" itemprop="url" title="322.Coin Change"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?833175"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2024-01-30 10:19:50">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-01-30T10:19:50+08:00">2024-01-30</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>615</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2024/01/30/leetcode/322.Coin%20Change/index/" itemprop="url" title="322.Coin Change">322.Coin Change</a></h3>
-    <div class="excerpt">
-        # 题目
-地址
-# 我的答案
-完全背包
-1234567891011121314151617181920212223/** * @param &amp;#123;number[]&amp;#125; coins * @param &amp;#123;number&amp;#125; amount * @return &amp;#123;number&amp;#125; */var coinChange = function(coins, amount) &amp;#123; if (amount === 0) return 0; const max =...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
-      </span>
-    </div>
-    <a href="/my-notes/2024/01/30/leetcode/322.Coin%20Change/index/" itemprop="url" title="322.Coin Change" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/my-notes/2024/01/29/leetcode/474.Ones%20and%20Zeroes/index/" itemprop="url" title="474.Ones and Zeroes"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?886199"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="创建时间：2024-01-29 15:31:35">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2024-01-29T15:31:35+08:00">2024-01-29</time>
-  </span>
-  <span class="item" title="本文字数">
-    <span class="icon">
-      <i class="ic i-pen"></i>
-    </span>
-    <span>1.1k</span>
-    <span class="text">字</span>
-  </span>
-  <span class="item" title="阅读时长">
-    <span class="icon">
-      <i class="ic i-clock"></i>
-    </span>
-    <span>1 分钟</span>
-  </span>
-</div>
-
-    <h3><a href="/my-notes/2024/01/29/leetcode/474.Ones%20and%20Zeroes/index/" itemprop="url" title="474.Ones and Zeroes">474.Ones and Zeroes</a></h3>
-    <div class="excerpt">
-        # 题目
-地址
-# 我的答案
-01 背包
-12345678910111213141516171819202122232425262728293031323334/** * @param &amp;#123;string[]&amp;#125; strs * @param &amp;#123;number&amp;#125; m * @param &amp;#123;number&amp;#125; n * @return &amp;#123;number&amp;#125; */var findMaxForm = function (strs, m, n) &amp;#123; const...
-    </div>
-    <div class="meta footer">
-      <span>
-        <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" title="动态规划"><i class="ic i-flag"></i>动态规划</a>
-      </span>
-    </div>
-    <a href="/my-notes/2024/01/29/leetcode/474.Ones%20and%20Zeroes/index/" itemprop="url" title="474.Ones and Zeroes" class="btn">more...</a>
-  </div>
-</article>
-
     </div>
 
   </div>
@@ -579,7 +587,7 @@
   
   <nav class="pagination">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/my-notes/page/2/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/my-notes/">1</a><a class="page-number" href="/my-notes/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/my-notes/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/12/">12</a><a class="extend next" rel="next" href="/my-notes/page/4/"><i class="ic i-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/my-notes/page/2/"><i class="ic i-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/my-notes/">1</a><a class="page-number" href="/my-notes/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/my-notes/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/my-notes/page/13/">13</a><a class="extend next" rel="next" href="/my-notes/page/4/"><i class="ic i-angle-right" aria-label="下一页"></i></a>
     </div>
   </nav>
 
@@ -607,7 +615,7 @@
 <nav class="state">
     <div class="item posts">
       <a href="/my-notes/archives/">
-        <span class="count">116</span>
+        <span class="count">123</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -697,12 +705,28 @@
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-<i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="分类于 贪心算法">贪心算法</a>
 </div>
 
-    <span><a href="/my-notes/2024/02/22/leetcode/605.Can%20Place%20Flowers/index/" title="605.Can Place Flowers">605.Can Place Flowers</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="面向对象">面向对象</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/connectAdvanced/" title="connectAdvanced">connectAdvanced</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+</div>
+
+    <span><a href="/my-notes/2020/09/09/react/commitRoot/" title="commitRoot">commitRoot</a></span>
   </li>
 
       
@@ -711,10 +735,32 @@
 <div class="breadcrumb">
 <a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
 <i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/" title="分类于 二分法">二分法</a>
+<a href="/my-notes/categories/leetcode/BFS/" title="分类于 BFS">BFS</a>
 </div>
 
-    <span><a href="/my-notes/2024/02/23/leetcode/540.Single%20Element%20in%20a%20Sorted%20Array/index/" title="69.Sqrt(x)">69.Sqrt(x)</a></span>
+    <span><a href="/my-notes/2024/02/27/leetcode/127.Word%20Ladder/index/" title="127.Word Ladder">127.Word Ladder</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/08/leetcode/31.Next%20Permutation/index/" title="31.Next Permutation">31.Next Permutation</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/DFS/" title="分类于 DFS">DFS</a>
+</div>
+
+    <span><a href="/my-notes/2024/04/30/leetcode/417.Pacific%20Atlantic%20Water%20Flow/index/" title="417.Pacific Atlantic Water Flow">417.Pacific Atlantic Water Flow</a></span>
   </li>
 
       
@@ -731,42 +777,6 @@
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-<i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
-</div>
-
-    <span><a href="/my-notes/2024/01/10/leetcode/64.Minimum%20Path%20Sum/index/" title="64.Minimum Path Sum">64.Minimum Path Sum</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-<i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="分类于 贪心算法">贪心算法</a>
-</div>
-
-    <span><a href="/my-notes/2024/02/20/leetcode/455.Assign%20Cookies/index/" title="455.Assign Cookies">455.Assign Cookies</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-<i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
-</div>
-
-    <span><a href="/my-notes/2024/01/09/leetcode/70.Climbing%20Stairs/index/" title="70.Climbing Stairs">70.Climbing Stairs</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
@@ -777,29 +787,24 @@
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E4%BA%8C%E5%88%86%E6%B3%95/" title="分类于 二分法">二分法</a>
 </div>
 
-    <span><a href="/my-notes/2020/09/10/react/%E4%BA%8B%E4%BB%B6/" title="事件系统">事件系统</a></span>
+    <span><a href="/my-notes/2024/02/23/leetcode/744.Find%20Smallest%20Letter%20Greater%20Than%20Target/index/" title="744.Find Smallest Letter Greater Than Target">744.Find Smallest Letter Greater Than Target</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/my-notes/categories/react/" title="分类于 react">react</a>
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/DFS/" title="分类于 DFS">DFS</a>
 </div>
 
-    <span><a href="/my-notes/2020/09/09/react/hooks/" title="hooks">hooks</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/10.DOM/" title="DOM">DOM</a></span>
+    <span><a href="/my-notes/2024/05/06/leetcode/257.Binary%20Tree%20Paths/index/" title="79.Binary Tree Paths">79.Binary Tree Paths</a></span>
   </li>
 
   </ul>
@@ -824,13 +829,13 @@
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">420k 字</span>
+    <span title="站点总字数">431k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:21</span>
+    <span title="站点阅读时长">6:32</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
