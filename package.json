@@ -30,5 +30,16 @@
     "hexo-symbols-count-time": "^0.7.1",
     "hexo-theme-landscape": "^1.0.0",
     "nunjucks": "^3.2.4"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 4,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "bracketSpacing": false,
+    "arrowParens": "avoid"
   }
 }
