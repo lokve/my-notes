@@ -1,0 +1,567 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/my-notes/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/my-notes/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="学习笔记" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="学习笔记" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="学习笔记" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/my-notes/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="leetcode,DFS" />
+
+
+<link rel="canonical" href="http://example.com/2024/05/11/leetcode/77.Combinations/index/">
+
+
+
+  <title>
+77.combinations - DFS - leetcode |
+hee note = 学习笔记</title>
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">77.combinations
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2024-05-11 15:17:35">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-05-11T15:17:35+08:00">2024-05-11</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span class="text">本文字数</span>
+    <span>978</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span class="text">阅读时长</span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/my-notes/" rel="start">hee note</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?154799"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?313903"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?238483"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?196338"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?343745"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?863372"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/my-notes/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/my-notes/categories/leetcode/" itemprop="item" rel="index" title="分类于 leetcode"><span itemprop="name">leetcode</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/my-notes/categories/leetcode/DFS/" itemprop="item" rel="index" title="分类于 DFS"><span itemprop="name">DFS</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2024/05/11/leetcode/77.Combinations/index/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/my-notes/images/head.jpeg">
+    <meta itemprop="name" content="lokve">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="学习笔记">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="题目"><a class="markdownIt-Anchor" href="#题目">#</a> 题目</h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly9sZWV0Y29kZS5jb20vcHJvYmxlbXMvY29tYmluYXRpb25zL2Rlc2NyaXB0aW9uLw==">地址</span></p>
+<h3 id="我的答案"><a class="markdownIt-Anchor" href="#我的答案">#</a> 我的答案</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">n</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">k</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number[][]</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> combine = <span class="keyword">function</span>(<span class="params">n, k</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> arr = <span class="title class_">Array</span>.<span class="title function_">from</span>(&#123;<span class="attr">length</span>: n&#125;).<span class="title function_">map</span>(<span class="function">(<span class="params">_, i</span>) =&gt;</span> i + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">const</span> res = [];</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">dfs</span> = (<span class="params">arr, path, start</span>) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (path.<span class="property">length</span> === k) &#123;</span><br><span class="line">            res.<span class="title function_">push</span>([...path]);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt; arr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">            path.<span class="title function_">push</span>(arr[i]);</span><br><span class="line">            <span class="title function_">dfs</span>(arr, path, i + <span class="number">1</span>);</span><br><span class="line">            path.<span class="title function_">pop</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">dfs</span>(arr, [], <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">combine</span>(<span class="number">5</span>, <span class="number">3</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="参考答案"><a class="markdownIt-Anchor" href="#参考答案">#</a> 参考答案</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">n</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">k</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number[][]</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> combine = <span class="keyword">function</span>(<span class="params">n, k</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> result = [];</span><br><span class="line">    <span class="title function_">generateCombinations</span>(<span class="number">1</span>, n, k, [], result);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">generateCombinations</span>(<span class="params">start, n, k, combination, result</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (k === <span class="number">0</span>) &#123;</span><br><span class="line">        result.<span class="title function_">push</span>([...combination]);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = start; i &lt;= n; ++i) &#123;</span><br><span class="line">        combination.<span class="title function_">push</span>(i);</span><br><span class="line">        <span class="title function_">generateCombinations</span>(i + <span class="number">1</span>, n, k - <span class="number">1</span>, combination, result);</span><br><span class="line">        combination.<span class="title function_">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/my-notes/tags/leetcode/" rel="tag"><i class="ic i-tag"></i> leetcode</a>
+          <a href="/my-notes/tags/DFS/" rel="tag"><i class="ic i-tag"></i> DFS</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2024-05-11 17:18:53" itemprop="dateModified" datetime="2024-05-11T17:18:53+08:00">2024-05-11</time>
+  </span>
+  <span id="2024/05/11/leetcode/77.Combinations/index/" class="item leancloud_visitors" data-flag-title="77.combinations" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/my-notes/images/wechatpay.png" alt="lokve 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/alipay.png" alt="lokve 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/my-notes/images/paypal.png" alt="lokve 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>lokve <i class="ic i-at"><em>@</em></i>学习笔记
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2024/05/11/leetcode/77.Combinations/index/" title="77.combinations">http://example.com/2024/05/11/leetcode/77.Combinations/index/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/my-notes/2024/05/06/leetcode/47.Permutations%20II/index/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;api.ouyangqiqi.cn&#x2F;dm&#x2F;img-webp.php?60797" title="47.Permutations II">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> DFS</span>
+  <h3>47.Permutations II</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/my-notes/2024/05/11/leetcode/39.Combination%20Sum/index/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;api.ouyangqiqi.cn&#x2F;dm&#x2F;img-webp.php?661449" title="39.combination-sum">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> DFS</span>
+  <h3>39.combination-sum</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text"> 题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E7%AD%94%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text"> 我的答案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88"><span class="toc-number">1.2.</span> <span class="toc-text"> 参考答案</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/my-notes/2024/02/28/leetcode/695.Max%20Area%20of%20Island/index/" rel="bookmark" title="695.Max Area of Island">695.Max Area of Island</a></li><li><a href="/my-notes/2024/02/28/leetcode/200.Number%20of%20Islands/index/" rel="bookmark" title="200.Number of Islands">200.Number of Islands</a></li><li><a href="/my-notes/2024/02/28/leetcode/547.Number%20of%20Provinces/index/" rel="bookmark" title="547.Number of Provinces">547.Number of Provinces</a></li><li><a href="/my-notes/2024/02/29/leetcode/130.Surrounded%20Regions/index/" rel="bookmark" title="130.Surrounded Regions">130.Surrounded Regions</a></li><li><a href="/my-notes/2024/04/30/leetcode/417.Pacific%20Atlantic%20Water%20Flow/index/" rel="bookmark" title="417.Pacific Atlantic Water Flow">417.Pacific Atlantic Water Flow</a></li><li><a href="/my-notes/2024/04/30/leetcode/93.Restore%20IP%20Addresses/index/" rel="bookmark" title="93.Restore IP Addresses">93.Restore IP Addresses</a></li><li><a href="/my-notes/2024/05/06/leetcode/79.Word%20Search/index/" rel="bookmark" title="79.Word Search">79.Word Search</a></li><li><a href="/my-notes/2024/05/06/leetcode/257.Binary%20Tree%20Paths/index/" rel="bookmark" title="79.Binary Tree Paths">79.Binary Tree Paths</a></li><li><a href="/my-notes/2024/05/06/leetcode/46.Permutations/index/" rel="bookmark" title="46.Permutations">46.Permutations</a></li><li><a href="/my-notes/2024/05/06/leetcode/47.Permutations%20II/index/" rel="bookmark" title="47.Permutations II">47.Permutations II</a></li><li class="active"><a href="/my-notes/2024/05/11/leetcode/77.Combinations/index/" rel="bookmark" title="77.combinations">77.combinations</a></li><li><a href="/my-notes/2024/05/11/leetcode/39.Combination%20Sum/index/" rel="bookmark" title="39.combination-sum">39.combination-sum</a></li><li><a href="/my-notes/2024/05/11/leetcode/40.Combination%20Sum%20II/index/" rel="bookmark" title="40.combination-sum II">40.combination-sum II</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="lokve"
+      data-src="/my-notes/images/head.jpeg">
+  <p class="name" itemprop="name">lokve</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/my-notes/archives/">
+        <span class="count">126</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/my-notes/categories/">
+        <span class="count">9</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/my-notes/tags/">
+        <span class="count">18</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xva3Zl" title="https:&#x2F;&#x2F;github.com&#x2F;lokve"><i class="ic i-github"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/my-notes/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/my-notes/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/my-notes/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/my-notes/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/my-notes/2024/05/06/leetcode/47.Permutations%20II/index/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/my-notes/2024/05/11/leetcode/39.Combination%20Sum/index/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2020/09/14/react-redux/connectAdvanced/" title="connectAdvanced">connectAdvanced</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2018/01/22/vue/readme/" title="说明">说明</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/16/leetcode/279.Perfect%20Squares/index/" title="279.Perfect Squares">279.Perfect Squares</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2017/05/09/bue/1/" title="Bue源码阅读笔记（1）">Bue源码阅读笔记（1）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/2.%E5%9C%A8html%E4%BD%BF%E7%94%A8js/" title="在html使用js">在html使用js</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/25.New%20Api/" title="New Api">New Api</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="分类于 贪心算法">贪心算法</a>
+</div>
+
+    <span><a href="/my-notes/2024/02/22/leetcode/763.Partition%20Labels/index/" title="763.Partition Labels">763.Partition Labels</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/DFS/" title="分类于 DFS">DFS</a>
+</div>
+
+    <span><a href="/my-notes/2024/05/06/leetcode/79.Word%20Search/index/" title="79.Word Search">79.Word Search</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/" title="事件">事件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/17.%E9%94%99%E8%AF%AF%E7%9A%84%E5%A4%84%E7%90%86%E4%B8%8E%E8%B0%83%E8%AF%95/" title="错误的处理与调试">错误的处理与调试</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">lokve @ hee note</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="站点总字数">433k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="站点阅读时长">6:34</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/05/11/leetcode/77.Combinations/index/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/my-notes/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?963635"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?9119"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?412832"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?669957"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?456196"></li>
-          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?493076"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?400004"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?270750"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?185595"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?213247"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?265117"></li>
+          <li class="item" data-background-image="https://api.ouyangqiqi.cn/dm/img-webp.php?146799"></li>
         </ul>
       </div>
     </header>
@@ -119,7 +119,147 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2017/05/16/bue/3/" itemprop="url" title="Bue源码阅读笔记（3）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?757242"></a>
+    <a href="/my-notes/2017/05/25/bue/6/" itemprop="url" title="Bue源码阅读笔记（6）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?349375"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2017-05-25 09:50:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2017-05-25T09:50:00+08:00">2017-05-25</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>426</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2017/05/25/bue/6/" itemprop="url" title="Bue源码阅读笔记（6）">Bue源码阅读笔记（6）</a></h3>
+    <div class="excerpt">
+        当前版本
+# 进展
+
+v-on 实现
+完成动态 v-if 指令
+
+# 代码执行补充
+v-on: 和 v-if 类似，_init () 中把 on 指令相关函数放在了 directives 里面 --&amp;gt; 使用 on 相关指令绑定事件
+v-repeat: 和 v-if 类似，_init () 中把 on 指令相关函数放在了 directives 里面 --&amp;gt; 使用 repeat 相关指令绑定事件
+5.30 补充
+这里需要详细的了解一下 repeat 指令里面的流程
+
+首先执行 bind (), 给 repeat 指定了唯一的 uid, 并创建 repeat...
+    </div>
+    <a href="/my-notes/2017/05/25/bue/6/" itemprop="url" title="Bue源码阅读笔记（6）" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2017/05/23/bue/5/" itemprop="url" title="Bue源码阅读笔记（5）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?93807"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2017-05-23 10:30:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2017-05-23T10:30:00+08:00">2017-05-23</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>653</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2017/05/23/bue/5/" itemprop="url" title="Bue源码阅读笔记（5）">Bue源码阅读笔记（5）</a></h3>
+    <div class="excerpt">
+        当前版本
+# 进展
+完成动态 v-if 指令
+# 代码执行补充
+当代码执行到 dom 渲染前，这个时候会进行 attribute 检查，如果存在自定义 attr (b-if), 直接走指令绑定_bindDirective --&amp;gt; new Directive () --&amp;gt; _initDef (), 这里不同指令对应的更新 update 函数不同，所以需要分类处理
+12let def = this.vm.$options.directives[this.name]; _.extend(this, def);
+–&amp;gt; _bind () --&amp;gt;...
+    </div>
+    <a href="/my-notes/2017/05/23/bue/5/" itemprop="url" title="Bue源码阅读笔记（5）" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2017/05/18/bue/4/" itemprop="url" title="Bue源码阅读笔记（4）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?316252"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="创建时间：2017-05-18 11:22:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2017-05-18T11:22:00+08:00">2017-05-18</time>
+  </span>
+  <span class="item" title="本文字数">
+    <span class="icon">
+      <i class="ic i-pen"></i>
+    </span>
+    <span>964</span>
+    <span class="text">字</span>
+  </span>
+  <span class="item" title="阅读时长">
+    <span class="icon">
+      <i class="ic i-clock"></i>
+    </span>
+    <span>1 分钟</span>
+  </span>
+</div>
+
+    <h3><a href="/my-notes/2017/05/18/bue/4/" itemprop="url" title="Bue源码阅读笔记（4）">Bue源码阅读笔记（4）</a></h3>
+    <div class="excerpt">
+        当前版本
+# 进展
+
+✅ 监听对象变化
+✅ 监听数组变化
+✅ watch 库
+✅ 动态数据绑定
+✅ 批处理更新 DOM
+✅ 计算属性 computed
+
+# 代码执行补充
+1234567891011批处理更新DOM : new Batcher() --&amp;gt; 在Watcher.update的时候Batcher.push()将事件添加到队列中, 利用setTimeout执行机制，在里面执行flush --&amp;gt; flush()内执行并清空队列计算属性computed(静态 -&amp;gt; 动态) : &amp;#123; 静态...
+    </div>
+    <a href="/my-notes/2017/05/18/bue/4/" itemprop="url" title="Bue源码阅读笔记（4）" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/my-notes/2017/05/16/bue/3/" itemprop="url" title="Bue源码阅读笔记（3）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?226596"></a>
   </div>
   <div class="info">
     
@@ -159,7 +299,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2017/05/09/bue/2/" itemprop="url" title="Bue源码阅读笔记（2）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?979887"></a>
+    <a href="/my-notes/2017/05/09/bue/2/" itemprop="url" title="Bue源码阅读笔记（2）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?799063"></a>
   </div>
   <div class="info">
     
@@ -205,7 +345,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/my-notes/2017/05/09/bue/1/" itemprop="url" title="Bue源码阅读笔记（1）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?605228"></a>
+    <a href="/my-notes/2017/05/09/bue/1/" itemprop="url" title="Bue源码阅读笔记（1）"><img data-src="https://api.ouyangqiqi.cn/dm/img-webp.php?372819"></a>
   </div>
   <div class="info">
     
@@ -279,7 +419,7 @@
 <nav class="state">
     <div class="item posts">
       <a href="/my-notes/archives/">
-        <span class="count">123</span>
+        <span class="count">126</span>
         <span class="name">文章</span>
       </a>
     </div>
@@ -370,7 +510,28 @@
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/" title="DOM2和DOM3">DOM2和DOM3</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/7.%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="函数表达式">函数表达式</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/4.%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E5%AD%98/" title="变量作用域内存">变量作用域内存</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
+<i class="ic i-angle-right"></i>
+<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
+</div>
+
+    <span><a href="/my-notes/2024/01/30/leetcode/377.Combination%20Sum%20IV/index/" title="377.Combination Sum IV">377.Combination Sum IV</a></span>
   </li>
 
       
@@ -388,29 +549,7 @@
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/my-notes/2020/09/14/react-redux/createStore/" title="createStore">createStore</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-<i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/DFS/" title="分类于 DFS">DFS</a>
-</div>
-
-    <span><a href="/my-notes/2024/02/28/leetcode/200.Number%20of%20Islands/index/" title="200.Number of Islands">200.Number of Islands</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/my-notes/categories/react/" title="分类于 react">react</a>
-</div>
-
-    <span><a href="/my-notes/2020/09/09/react/hooks/" title="hooks">hooks</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/" title="DOM扩展">DOM扩展</a></span>
   </li>
 
       
@@ -420,7 +559,7 @@
 <a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
 </div>
 
-    <span><a href="/my-notes/2024/01/07/leetcode/6.Zigzag%20Conversion/index/" title="6.Zigzag Conversion">6.Zigzag Conversion</a></span>
+    <span><a href="/my-notes/2024/01/08/leetcode/32.Longest%20Valid%20Parentheses/index/" title="32.Longest Valid Parentheses">32.Longest Valid Parentheses</a></span>
   </li>
 
       
@@ -432,7 +571,7 @@
 <a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
 </div>
 
-    <span><a href="/my-notes/2024/01/15/leetcode/343.Integer%20Break/index/" title="343.Integer Break">343.Integer Break</a></span>
+    <span><a href="/my-notes/2024/01/19/leetcode/91.Decode%20Ways/index/" title="91.Decode Ways">91.Decode Ways</a></span>
   </li>
 
       
@@ -441,32 +580,28 @@
 <div class="breadcrumb">
 <a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
 <i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="分类于 动态规划">动态规划</a>
+<a href="/my-notes/categories/leetcode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" title="分类于 贪心算法">贪心算法</a>
 </div>
 
-    <span><a href="/my-notes/2024/01/24/leetcode/416.Partition%20Equal%20Subset%20Sum/index/" title="416.Partition Equal Subset Sum">416.Partition Equal Subset Sum</a></span>
+    <span><a href="/my-notes/2024/02/20/leetcode/452.Minimum%20Number%20of%20Arrows%20to%20Burst%20Balloons/index/" title="452.Minimum Number of Arrows to Burst Balloons">452.Minimum Number of Arrows to Burst Balloons</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/my-notes/categories/react/" title="分类于 react">react</a>
 </div>
 
-    <span><a href="/my-notes/2020/09/10/react/%E4%BA%8B%E4%BB%B6/" title="事件系统">事件系统</a></span>
+    <span><a href="/my-notes/2019/06/14/js%E9%AB%98%E7%BA%A7/5.%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/" title="引用类型">引用类型</a></span>
   </li>
 
       
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/my-notes/categories/leetcode/" title="分类于 leetcode">leetcode</a>
-<i class="ic i-angle-right"></i>
-<a href="/my-notes/categories/leetcode/DFS/" title="分类于 DFS">DFS</a>
 </div>
 
-    <span><a href="/my-notes/2024/05/06/leetcode/46.Permutations/index/" title="46.Permutations">46.Permutations</a></span>
+    <span><a href="/my-notes/2020/09/14/react-redux/connectAdvanced/" title="connectAdvanced">connectAdvanced</a></span>
   </li>
 
   </ul>
@@ -491,13 +626,13 @@
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">431k 字</span>
+    <span title="站点总字数">433k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">6:32</span>
+    <span title="站点阅读时长">6:34</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
