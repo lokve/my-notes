@@ -5,23 +5,25 @@
     <link href="http://example.com" />
     <updated>2019-06-13T16:00:00.000Z</updated>
     <category term="Bue笔记" />
-    <category term="react源码解析" />
     <category term="javascript高级笔记" />
     <category term="react-redux" />
-    <category term="算法基础" />
+    <category term="react源码解析" />
     <category term="随记" />
+    <category term="Vue笔记" />
     <category term="leetcode" />
     <category term="动态规划" />
     <category term="买股票" />
-    <category term="Vue笔记" />
+    <category term="算法基础" />
     <category term="BFS" />
     <category term="DFS" />
+    <category term="二分法" />
     <category term="DP" />
     <category term="完全背包" />
-    <category term="二分法" />
     <category term="分治算法" />
     <category term="贪心算法" />
     <category term="01背包" />
+    <category term="数组" />
+    <category term="二分查找" />
     <entry>
         <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/1.js%E7%AE%80%E4%BB%8B/</id>
         <title>js简介</title>
@@ -32,6 +34,72 @@
 &lt;li&gt;文档对象模型（DOM）&lt;/li&gt;
 &lt;li&gt;浏览器对象模型（BOM）&lt;/li&gt;
 &lt;/ul&gt;
+</content>
+        <category term="javascript高级笔记" />
+        <updated>2019-06-13T16:00:00.000Z</updated>
+    </entry>
+    <entry>
+        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/</id>
+        <title>DOM扩展</title>
+        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/"/>
+        <content type="html">&lt;h2 id=&#34;选择符-api&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#选择符-api&#34;&gt;#&lt;/a&gt; 选择符 api&lt;/h2&gt;
+&lt;h3 id=&#34;queryselector&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#queryselector&#34;&gt;#&lt;/a&gt; querySelector&lt;/h3&gt;
+&lt;h3 id=&#34;queryselectorall&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#queryselectorall&#34;&gt;#&lt;/a&gt; queryselectorAll&lt;/h3&gt;
+&lt;h3 id=&#34;matchesselector&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#matchesselector&#34;&gt;#&lt;/a&gt; matchesSelector&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt; if (document.body.matchesSelector(&amp;quot;body.page1&amp;quot;))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        // document.body.matchesSelector is not a function&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;chrome 现在还没支持 (2019-6)&lt;/p&gt;
+&lt;h2 id=&#34;元素遍历&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#元素遍历&#34;&gt;#&lt;/a&gt; 元素遍历&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;childElementCount 返回子元素个数（不包过文本节点和注释）&lt;/li&gt;
+&lt;li&gt;firstElementChild 返回第一个子元素&lt;/li&gt;
+&lt;li&gt;lastElementChild 返回最后一个子元素&lt;/li&gt;
+&lt;li&gt;previousElementSibling 前一个同辈元素&lt;/li&gt;
+&lt;li&gt;nextElementSibling 后一个同辈元素&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;html5&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#html5&#34;&gt;#&lt;/a&gt; HTML5&lt;/h2&gt;
+&lt;h3 id=&#34;class-相关扩充&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#class-相关扩充&#34;&gt;#&lt;/a&gt; class 相关扩充&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;getElementByClassName&lt;/li&gt;
+&lt;li&gt;classList&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;add (value) 添加一个类，重复不添加&lt;/li&gt;
+&lt;li&gt;contains (vale) 是否包含一个类&lt;/li&gt;
+&lt;li&gt;remove (value) 删除一个类&lt;/li&gt;
+&lt;li&gt;toggle (value) 存在就删除，不存在就添加&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;div.classList.remove(&amp;quot;disabled&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;div.classList.add(&amp;quot;current&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;只有 firefox 和 chrome 支持&lt;/p&gt;
+&lt;h3 id=&#34;焦点管理&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#焦点管理&#34;&gt;#&lt;/a&gt; 焦点管理&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var button = document.getElementById(&amp;quot;myButton&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;button.focus();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(document.activeElement === button);   //true&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(document.hasFocus());  //true&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;document.activeElement 默认是 document.body&lt;/p&gt;
+&lt;h3 id=&#34;htmldocument-变化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#htmldocument-变化&#34;&gt;#&lt;/a&gt; HTMLDocument 变化&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;readyState: loading (正在加载) complete (加载完文档)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;if (document.readyState == &amp;quot;complete&amp;quot;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    // TODO􏴤􏱣􏰉􏰊&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;兼容模式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;if (document.compatMode == &amp;quot;CSS1Compat&amp;quot;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        alert(&amp;quot;Standards mode&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125; else &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        alert(&amp;quot;Quirks mode&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;head&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var head = document.head || document.getElementsByTagName(&amp;quot;head&amp;quot;)[0];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;字符集属性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字符集属性&#34;&gt;#&lt;/a&gt; 字符集属性&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;alert(document.charset); //&amp;quot;UTF-16&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;document.charset = &amp;quot;UTF-8&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;自定义属性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#自定义属性&#34;&gt;#&lt;/a&gt; 自定义属性&lt;/h3&gt;
+&lt;p&gt;data-*&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var div = document.getElementById(&amp;quot;myDiv&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//􏱏􏷚􏰎定􏰐􏰪􏰌的􏰯&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var appId = div.dataset.appId; var myName = div.dataset.myname;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//􏰓􏰔􏰯&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;div.dataset.appId = 23456; div.dataset.myname = &amp;quot;Michael&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;插入标记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#插入标记&#34;&gt;#&lt;/a&gt; 插入标记&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;innerHTML&lt;/li&gt;
+&lt;li&gt;outerHTML&lt;/li&gt;
+&lt;li&gt;insertAdjacentHTML&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;//􏰊􏰝􏱛􏰚􏰒􏱐􏺘􏰶􏰷􏶈􏳖 作为前一个同辈元素插入&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.insertAdjacentHTML(&amp;quot;beforebegin&amp;quot;, &amp;quot;&amp;lt;p&amp;gt;Hello world!&amp;lt;/p&amp;gt;&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//􏰊􏰝􏰀􏰚􏰒􏱁􏰶􏰷􏶈􏳖 第一个&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.insertAdjacentHTML(&amp;quot;afterbegin&amp;quot;, &amp;quot;&amp;lt;p&amp;gt;Hello world!&amp;lt;/p&amp;gt;&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//􏰊􏰝􏰣􏲄􏰚􏰒􏱁􏰶􏰷􏶈􏳖 最后一个&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.insertAdjacentHTML(&amp;quot;beforeend&amp;quot;, &amp;quot;&amp;lt;p&amp;gt;Hello world!&amp;lt;/p&amp;gt;&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//􏰊􏰝􏲄􏰚􏰒􏱐􏺘􏰶􏰷􏶈􏳖 后一个&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.insertAdjacentHTML(&amp;quot;afterend&amp;quot;, &amp;quot;&amp;lt;p&amp;gt;Hello world!&amp;lt;/p&amp;gt;&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;scrollintoview&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#scrollintoview&#34;&gt;#&lt;/a&gt; scrollIntoView&lt;/h3&gt;
+&lt;p&gt;让元素进入可见范围&lt;/p&gt;
 </content>
         <category term="javascript高级笔记" />
         <updated>2019-06-13T16:00:00.000Z</updated>
@@ -112,72 +180,6 @@
         <updated>2019-06-13T16:00:00.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/</id>
-        <title>DOM扩展</title>
-        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/11.DOM%E6%89%A9%E5%B1%95/"/>
-        <content type="html">&lt;h2 id=&#34;选择符-api&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#选择符-api&#34;&gt;#&lt;/a&gt; 选择符 api&lt;/h2&gt;
-&lt;h3 id=&#34;queryselector&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#queryselector&#34;&gt;#&lt;/a&gt; querySelector&lt;/h3&gt;
-&lt;h3 id=&#34;queryselectorall&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#queryselectorall&#34;&gt;#&lt;/a&gt; queryselectorAll&lt;/h3&gt;
-&lt;h3 id=&#34;matchesselector&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#matchesselector&#34;&gt;#&lt;/a&gt; matchesSelector&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt; if (document.body.matchesSelector(&amp;quot;body.page1&amp;quot;))&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        // document.body.matchesSelector is not a function&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;chrome 现在还没支持 (2019-6)&lt;/p&gt;
-&lt;h2 id=&#34;元素遍历&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#元素遍历&#34;&gt;#&lt;/a&gt; 元素遍历&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;childElementCount 返回子元素个数（不包过文本节点和注释）&lt;/li&gt;
-&lt;li&gt;firstElementChild 返回第一个子元素&lt;/li&gt;
-&lt;li&gt;lastElementChild 返回最后一个子元素&lt;/li&gt;
-&lt;li&gt;previousElementSibling 前一个同辈元素&lt;/li&gt;
-&lt;li&gt;nextElementSibling 后一个同辈元素&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;html5&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#html5&#34;&gt;#&lt;/a&gt; HTML5&lt;/h2&gt;
-&lt;h3 id=&#34;class-相关扩充&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#class-相关扩充&#34;&gt;#&lt;/a&gt; class 相关扩充&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;getElementByClassName&lt;/li&gt;
-&lt;li&gt;classList&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;add (value) 添加一个类，重复不添加&lt;/li&gt;
-&lt;li&gt;contains (vale) 是否包含一个类&lt;/li&gt;
-&lt;li&gt;remove (value) 删除一个类&lt;/li&gt;
-&lt;li&gt;toggle (value) 存在就删除，不存在就添加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;div.classList.remove(&amp;quot;disabled&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;div.classList.add(&amp;quot;current&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;只有 firefox 和 chrome 支持&lt;/p&gt;
-&lt;h3 id=&#34;焦点管理&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#焦点管理&#34;&gt;#&lt;/a&gt; 焦点管理&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var button = document.getElementById(&amp;quot;myButton&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;button.focus();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(document.activeElement === button);   //true&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;alert(document.hasFocus());  //true&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;document.activeElement 默认是 document.body&lt;/p&gt;
-&lt;h3 id=&#34;htmldocument-变化&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#htmldocument-变化&#34;&gt;#&lt;/a&gt; HTMLDocument 变化&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;readyState: loading (正在加载) complete (加载完文档)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;if (document.readyState == &amp;quot;complete&amp;quot;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    // TODO􏴤􏱣􏰉􏰊&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;兼容模式&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;if (document.compatMode == &amp;quot;CSS1Compat&amp;quot;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        alert(&amp;quot;Standards mode&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125; else &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        alert(&amp;quot;Quirks mode&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ul&gt;
-&lt;li&gt;head&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var head = document.head || document.getElementsByTagName(&amp;quot;head&amp;quot;)[0];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;字符集属性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字符集属性&#34;&gt;#&lt;/a&gt; 字符集属性&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;alert(document.charset); //&amp;quot;UTF-16&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;document.charset = &amp;quot;UTF-8&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;自定义属性&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#自定义属性&#34;&gt;#&lt;/a&gt; 自定义属性&lt;/h3&gt;
-&lt;p&gt;data-*&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var div = document.getElementById(&amp;quot;myDiv&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//􏱏􏷚􏰎定􏰐􏰪􏰌的􏰯&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var appId = div.dataset.appId; var myName = div.dataset.myname;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//􏰓􏰔􏰯&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;div.dataset.appId = 23456; div.dataset.myname = &amp;quot;Michael&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;插入标记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#插入标记&#34;&gt;#&lt;/a&gt; 插入标记&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;innerHTML&lt;/li&gt;
-&lt;li&gt;outerHTML&lt;/li&gt;
-&lt;li&gt;insertAdjacentHTML&lt;/li&gt;
-&lt;/ol&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;//􏰊􏰝􏱛􏰚􏰒􏱐􏺘􏰶􏰷􏶈􏳖 作为前一个同辈元素插入&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.insertAdjacentHTML(&amp;quot;beforebegin&amp;quot;, &amp;quot;&amp;lt;p&amp;gt;Hello world!&amp;lt;/p&amp;gt;&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//􏰊􏰝􏰀􏰚􏰒􏱁􏰶􏰷􏶈􏳖 第一个&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.insertAdjacentHTML(&amp;quot;afterbegin&amp;quot;, &amp;quot;&amp;lt;p&amp;gt;Hello world!&amp;lt;/p&amp;gt;&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//􏰊􏰝􏰣􏲄􏰚􏰒􏱁􏰶􏰷􏶈􏳖 最后一个&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.insertAdjacentHTML(&amp;quot;beforeend&amp;quot;, &amp;quot;&amp;lt;p&amp;gt;Hello world!&amp;lt;/p&amp;gt;&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;//􏰊􏰝􏲄􏰚􏰒􏱐􏺘􏰶􏰷􏶈􏳖 后一个&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;element.insertAdjacentHTML(&amp;quot;afterend&amp;quot;, &amp;quot;&amp;lt;p&amp;gt;Hello world!&amp;lt;/p&amp;gt;&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;scrollintoview&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#scrollintoview&#34;&gt;#&lt;/a&gt; scrollIntoView&lt;/h3&gt;
-&lt;p&gt;让元素进入可见范围&lt;/p&gt;
-</content>
-        <category term="javascript高级笔记" />
-        <updated>2019-06-13T16:00:00.000Z</updated>
-    </entry>
-    <entry>
         <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/</id>
         <title>DOM2和DOM3</title>
         <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/12.DOM2%E5%92%8CDOM3/"/>
@@ -242,31 +244,10 @@
         <updated>2019-06-13T16:00:00.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/</id>
-        <title>HTML5脚本编程</title>
-        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/"/>
-        <content type="html">&lt;h2 id=&#34;跨文档消息传递xdm&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#跨文档消息传递xdm&#34;&gt;#&lt;/a&gt; 跨文档消息传递 (XDM)&lt;/h2&gt;
-&lt;p&gt;发送消息&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var iframeWindow = document.getElementById(&amp;quot;myframe&amp;quot;).contentWindow; iframeWindow.postMessage(&amp;quot;A secret&amp;quot;, &amp;quot;http://www.wrox.com&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;接受消息&lt;/p&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;EventUtil.addHandler(window, &amp;quot;message&amp;quot;, function(event)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    if (event.origin == &amp;quot;http://www.wrox.com&amp;quot;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        processMessage(event.data);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        event.source.postMessage(&amp;quot;Received!&amp;quot;, &amp;quot;http://p2p.wrox.com&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;原生拖放&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#原生拖放&#34;&gt;#&lt;/a&gt; 原生拖放&lt;/h2&gt;
-&lt;h3 id=&#34;拖放事件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#拖放事件&#34;&gt;#&lt;/a&gt; 拖放事件&lt;/h3&gt;
-&lt;p&gt;拖放元素会触发下面方法&lt;br&gt;
- (1) dragstart&lt;br&gt;
-(2) drag&lt;br&gt;
-(3) dragend&lt;/p&gt;
-&lt;p&gt;目标元素会触发下面方法&lt;br&gt;
- (1) dragenter&lt;br&gt;
-(2) dragover&lt;br&gt;
- (3) dragleave 或 drop&lt;/p&gt;
-&lt;h3 id=&#34;datatransfer-对象&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#datatransfer-对象&#34;&gt;#&lt;/a&gt; dataTransfer 对象&lt;/h3&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;event.dataTransfer.setData(&amp;quot;text&amp;quot;, &amp;quot;some text&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var text = event.dataTransfer.getData(&amp;quot;text&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;event.dataTransfer.setData(&amp;quot;URL&amp;quot;, &amp;quot;http://www.wrox.com/&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var url = event.dataTransfer.getData(&amp;quot;URL&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&#34;dropeffect-与-effectallowed&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dropeffect-与-effectallowed&#34;&gt;#&lt;/a&gt; dropEffect 与 effectAllowed&lt;/h3&gt;
-&lt;p&gt;传递行为&lt;/p&gt;
-&lt;h2 id=&#34;媒体元素&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#媒体元素&#34;&gt;#&lt;/a&gt; 媒体元素&lt;/h2&gt;
-&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;video src=&amp;quot;conference.mpg&amp;quot; id=&amp;quot;myVideo&amp;quot;&amp;gt;Video player not available.&amp;lt;/video&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;audio src=&amp;quot;song.mp3&amp;quot; id=&amp;quot;myAudio&amp;quot;&amp;gt;Audio player not available.&amp;lt;/audio&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-</content>
+        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/</id>
+        <title>事件</title>
+        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/"/>
+        <content type="html"></content>
         <category term="javascript高级笔记" />
         <updated>2019-06-13T16:00:00.000Z</updated>
     </entry>
@@ -340,10 +321,31 @@ m2_1 m2_2 dy&lt;br&gt;
         <updated>2019-06-13T16:00:00.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/</id>
-        <title>事件</title>
-        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/13.%E4%BA%8B%E4%BB%B6/"/>
-        <content type="html"></content>
+        <id>http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/</id>
+        <title>HTML5脚本编程</title>
+        <link rel="alternate" href="http://example.com/2019/06/14/js%E9%AB%98%E7%BA%A7/16.HTML5%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B/"/>
+        <content type="html">&lt;h2 id=&#34;跨文档消息传递xdm&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#跨文档消息传递xdm&#34;&gt;#&lt;/a&gt; 跨文档消息传递 (XDM)&lt;/h2&gt;
+&lt;p&gt;发送消息&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;var iframeWindow = document.getElementById(&amp;quot;myframe&amp;quot;).contentWindow; iframeWindow.postMessage(&amp;quot;A secret&amp;quot;, &amp;quot;http://www.wrox.com&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;接受消息&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;EventUtil.addHandler(window, &amp;quot;message&amp;quot;, function(event)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    if (event.origin == &amp;quot;http://www.wrox.com&amp;quot;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        processMessage(event.data);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        event.source.postMessage(&amp;quot;Received!&amp;quot;, &amp;quot;http://p2p.wrox.com&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;原生拖放&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#原生拖放&#34;&gt;#&lt;/a&gt; 原生拖放&lt;/h2&gt;
+&lt;h3 id=&#34;拖放事件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#拖放事件&#34;&gt;#&lt;/a&gt; 拖放事件&lt;/h3&gt;
+&lt;p&gt;拖放元素会触发下面方法&lt;br&gt;
+ (1) dragstart&lt;br&gt;
+(2) drag&lt;br&gt;
+(3) dragend&lt;/p&gt;
+&lt;p&gt;目标元素会触发下面方法&lt;br&gt;
+ (1) dragenter&lt;br&gt;
+(2) dragover&lt;br&gt;
+ (3) dragleave 或 drop&lt;/p&gt;
+&lt;h3 id=&#34;datatransfer-对象&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#datatransfer-对象&#34;&gt;#&lt;/a&gt; dataTransfer 对象&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;event.dataTransfer.setData(&amp;quot;text&amp;quot;, &amp;quot;some text&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var text = event.dataTransfer.getData(&amp;quot;text&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;event.dataTransfer.setData(&amp;quot;URL&amp;quot;, &amp;quot;http://www.wrox.com/&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;var url = event.dataTransfer.getData(&amp;quot;URL&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;dropeffect-与-effectallowed&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dropeffect-与-effectallowed&#34;&gt;#&lt;/a&gt; dropEffect 与 effectAllowed&lt;/h3&gt;
+&lt;p&gt;传递行为&lt;/p&gt;
+&lt;h2 id=&#34;媒体元素&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#媒体元素&#34;&gt;#&lt;/a&gt; 媒体元素&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;video src=&amp;quot;conference.mpg&amp;quot; id=&amp;quot;myVideo&amp;quot;&amp;gt;Video player not available.&amp;lt;/video&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;lt;audio src=&amp;quot;song.mp3&amp;quot; id=&amp;quot;myAudio&amp;quot;&amp;gt;Audio player not available.&amp;lt;/audio&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
         <category term="javascript高级笔记" />
         <updated>2019-06-13T16:00:00.000Z</updated>
     </entry>

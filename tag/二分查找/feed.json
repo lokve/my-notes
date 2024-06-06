@@ -1,0 +1,20 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "学习笔记 • All posts by \"二分查找\" tag",
+    "description": "",
+    "home_page_url": "http://example.com",
+    "items": [
+        {
+            "id": "http://example.com/2024/06/05/leetcode/704.Binary%20Search/index/",
+            "url": "http://example.com/2024/06/05/leetcode/704.Binary%20Search/index/",
+            "title": "704.Binary Search",
+            "date_published": "2024-06-05T08:56:43.991Z",
+            "content_html": "<h2 id=\"题目\"><a class=\"markdownIt-Anchor\" href=\"#题目\">#</a> 题目</h2>\n<p><span class=\"exturl\" data-url=\"aHR0cHM6Ly9sZWV0Y29kZS5jb20vcHJvYmxlbXMvYmluYXJ5LXNlYXJjaC9kZXNjcmlwdGlvbi8=\">地址</span></p>\n<h3 id=\"ai的答案\"><a class=\"markdownIt-Anchor\" href=\"#ai的答案\">#</a> AI 的答案</h3>\n<figure class=\"highlight js\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br><span class=\"line\">2</span><br><span class=\"line\">3</span><br><span class=\"line\">4</span><br><span class=\"line\">5</span><br><span class=\"line\">6</span><br><span class=\"line\">7</span><br><span class=\"line\">8</span><br><span class=\"line\">9</span><br><span class=\"line\">10</span><br><span class=\"line\">11</span><br><span class=\"line\">12</span><br><span class=\"line\">13</span><br><span class=\"line\">14</span><br><span class=\"line\">15</span><br><span class=\"line\">16</span><br><span class=\"line\">17</span><br></pre></td><td class=\"code\"><pre><span class=\"line\"><span class=\"comment\">/**</span></span><br><span class=\"line\"><span class=\"comment\"> * <span class=\"doctag\">@param</span> &#123;<span class=\"type\">number[]</span>&#125; <span class=\"variable\">nums</span></span></span><br><span class=\"line\"><span class=\"comment\"> * <span class=\"doctag\">@param</span> &#123;<span class=\"type\">number</span>&#125; <span class=\"variable\">target</span></span></span><br><span class=\"line\"><span class=\"comment\"> * <span class=\"doctag\">@return</span> &#123;<span class=\"type\">number</span>&#125;</span></span><br><span class=\"line\"><span class=\"comment\"> */</span></span><br><span class=\"line\"><span class=\"keyword\">var</span> search = <span class=\"keyword\">function</span>(<span class=\"params\">nums, target</span>) &#123;</span><br><span class=\"line\">    <span class=\"keyword\">let</span> l = <span class=\"number\">0</span>, r = nums.<span class=\"property\">length</span> - <span class=\"number\">1</span>;</span><br><span class=\"line\">    <span class=\"keyword\">while</span> (l &lt;= r) &#123;</span><br><span class=\"line\">        <span class=\"keyword\">let</span> mid = <span class=\"title class_\">Math</span>.<span class=\"title function_\">floor</span>((l + r) / <span class=\"number\">2</span>);</span><br><span class=\"line\">        <span class=\"keyword\">if</span> (nums[mid] === target) <span class=\"keyword\">return</span> mid;</span><br><span class=\"line\">        <span class=\"keyword\">if</span> (nums[mid] &lt; target) l = mid + <span class=\"number\">1</span>;</span><br><span class=\"line\">        <span class=\"keyword\">else</span> r = mid - <span class=\"number\">1</span>;</span><br><span class=\"line\">    &#125;</span><br><span class=\"line\">    <span class=\"keyword\">return</span> -<span class=\"number\">1</span>;</span><br><span class=\"line\">&#125;;</span><br><span class=\"line\"></span><br><span class=\"line\"><span class=\"variable language_\">console</span>.<span class=\"title function_\">log</span>(<span class=\"title function_\">search</span>([-<span class=\"number\">1</span>,<span class=\"number\">0</span>,<span class=\"number\">3</span>,<span class=\"number\">5</span>,<span class=\"number\">9</span>,<span class=\"number\">12</span>], <span class=\"number\">3</span>));</span><br></pre></td></tr></table></figure>\n",
+            "tags": [
+                "leetcode",
+                "数组",
+                "二分查找"
+            ]
+        }
+    ]
+}

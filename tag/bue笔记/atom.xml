@@ -5,33 +5,25 @@
     <link href="http://example.com" />
     <updated>2017-05-25T01:50:00.000Z</updated>
     <category term="Bue笔记" />
-    <category term="react源码解析" />
     <category term="javascript高级笔记" />
     <category term="react-redux" />
-    <category term="算法基础" />
+    <category term="react源码解析" />
     <category term="随记" />
+    <category term="Vue笔记" />
     <category term="leetcode" />
     <category term="动态规划" />
     <category term="买股票" />
-    <category term="Vue笔记" />
+    <category term="算法基础" />
     <category term="BFS" />
     <category term="DFS" />
+    <category term="二分法" />
     <category term="DP" />
     <category term="完全背包" />
-    <category term="二分法" />
     <category term="分治算法" />
     <category term="贪心算法" />
     <category term="01背包" />
-    <entry>
-        <id>http://example.com/2017/05/25/bue/readme/</id>
-        <title>说明</title>
-        <link rel="alternate" href="http://example.com/2017/05/25/bue/readme/"/>
-        <content type="html">&lt;p&gt;百度 ife 任务里根据 vue 早期版本的源码研究而实现的简单 vue 项目 —Bue&lt;/p&gt;
-&lt;p&gt;这里是我对 bue 的学习笔记&lt;/p&gt;
-</content>
-        <category term="Bue笔记" />
-        <updated>2017-05-25T01:50:00.000Z</updated>
-    </entry>
+    <category term="数组" />
+    <category term="二分查找" />
     <entry>
         <id>http://example.com/2017/05/25/bue/6/</id>
         <title>Bue源码阅读笔记（6）</title>
@@ -61,6 +53,16 @@ b. 再次执行：数据变化之后，进入 diff, 判断是否有旧数据并�
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+</content>
+        <category term="Bue笔记" />
+        <updated>2017-05-25T01:50:00.000Z</updated>
+    </entry>
+    <entry>
+        <id>http://example.com/2017/05/25/bue/readme/</id>
+        <title>说明</title>
+        <link rel="alternate" href="http://example.com/2017/05/25/bue/readme/"/>
+        <content type="html">&lt;p&gt;百度 ife 任务里根据 vue 早期版本的源码研究而实现的简单 vue 项目 —Bue&lt;/p&gt;
+&lt;p&gt;这里是我对 bue 的学习笔记&lt;/p&gt;
 </content>
         <category term="Bue笔记" />
         <updated>2017-05-25T01:50:00.000Z</updated>
